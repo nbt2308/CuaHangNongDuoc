@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +22,14 @@ namespace CuahangNongduoc
         KhachHangController ctrlKH = new KhachHangController();
         private void frmDanhsachPhieuNhap_Load(object sender, EventArgs e)
         {
+            dataGridView.DataError += dataGridView_DataError;
             ctrlKH.HienthiKhachHangDataGridviewComboBox(colKhachhang);
             ctrl.HienthiPhieuBanLe(bindingNavigator, dataGridView);
+        }
+
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
         }
 
         private void MoLaiDanhSach()
@@ -39,6 +45,12 @@ namespace CuahangNongduoc
 
         private string MaPhieuDangChon()
         {
+            if (dataGridView.CurrentRow != null && dataGridView.CurrentRow.DataBoundItem != null)
+            {
+                DataRowView drv = dataGridView.CurrentRow.DataBoundItem as DataRowView;
+                if (drv != null && drv.Row.Table.Columns.Contains("ID") && drv["ID"] != DBNull.Value)
+                    return Convert.ToString(drv["ID"]);
+            }
             if (bindingNavigator.BindingSource == null || bindingNavigator.BindingSource.Current == null)
                 return null;
             DataRowView row = bindingNavigator.BindingSource.Current as DataRowView;
@@ -64,13 +76,20 @@ namespace CuahangNongduoc
         frmBanLe BanLe = null;
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
+            string maPhieu = MaPhieuDangChon();
             if (BanLe == null || BanLe.IsDisposed)
             {
-                BanLe = new frmBanLe(ctrl);
+                BanLe = new frmBanLe(maPhieu);
                 BanLe.Show();
             }
             else
+            {
                 BanLe.Activate();
+                if (!string.IsNullOrEmpty(maPhieu))
+                {
+                    BanLe.ChuyenDenPhieu(maPhieu);
+                }
+            }
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)

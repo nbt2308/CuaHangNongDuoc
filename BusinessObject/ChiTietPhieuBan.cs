@@ -50,5 +50,24 @@ namespace CuahangNongduoc.BusinessObject
             set { m_GiaVon = value; }
         }
 
+        public string TenSanPham
+        {
+            get
+            {
+                if (m_MaSP != null && m_MaSP.SanPham != null)
+                    return m_MaSP.SanPham.TenSanPham;
+                return "";
+            }
+        }
+
+        public string MaLo
+        {
+            get { return m_MaSP != null ? m_MaSP.Id : ""; }
+        }
+
+        public DateTime NgayHetHan
+        {
+            get { return m_MaSP != null ? m_MaSP.NgayHetHan : DateTime.MinValue; }
+        }
     }
 }

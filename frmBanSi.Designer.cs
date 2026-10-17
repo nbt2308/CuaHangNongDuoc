@@ -1,4 +1,4 @@
-﻿namespace CuahangNongduoc
+namespace CuahangNongduoc
 {
     partial class frmBanSi
     {
@@ -53,10 +53,16 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDanhsachSP = new System.Windows.Forms.DataGridView();
             this.colMaPhieuBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaSanPham = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colMaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGiaVon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbCachChonLo = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbCachTinhGiaVon = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -331,12 +337,14 @@
             this.colMaSanPham,
             this.colDonGia,
             this.colSoLuong,
-            this.colThanhTien});
+            this.colThanhTien,
+            this.colNgayHetHan,
+            this.colGiaVon});
             this.dgvDanhsachSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhsachSP.Location = new System.Drawing.Point(0, 0);
             this.dgvDanhsachSP.Name = "dgvDanhsachSP";
             this.dgvDanhsachSP.ReadOnly = true;
-            this.dgvDanhsachSP.Size = new System.Drawing.Size(744, 126);
+            this.dgvDanhsachSP.Size = new System.Drawing.Size(744, 150);
             this.dgvDanhsachSP.TabIndex = 6;
             this.dgvDanhsachSP.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhsachSP_UserDeletingRow);
             this.dgvDanhsachSP.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDanhsachSP_DataError);
@@ -379,6 +387,20 @@
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.ReadOnly = true;
             // 
+            // colNgayHetHan
+            // 
+            this.colNgayHetHan.DataPropertyName = "NGAY_HET_HAN";
+            this.colNgayHetHan.HeaderText = "Hạn dùng";
+            this.colNgayHetHan.Name = "colNgayHetHan";
+            this.colNgayHetHan.ReadOnly = true;
+            // 
+            // colGiaVon
+            // 
+            this.colGiaVon.DataPropertyName = "GIA_VON";
+            this.colGiaVon.HeaderText = "Giá vốn";
+            this.colGiaVon.Name = "colGiaVon";
+            this.colGiaVon.ReadOnly = true;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox2);
@@ -386,11 +408,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 46);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 188);
+            this.panel1.Size = new System.Drawing.Size(750, 220);
             this.panel1.TabIndex = 61;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbCachTinhGiaVon);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.cmbCachChonLo);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.btnThemSanPham);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.btnAdd);
@@ -408,10 +434,52 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(242, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(508, 188);
+            this.groupBox2.Size = new System.Drawing.Size(508, 220);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chọn sản phẩm";
+            // 
+            // cmbCachTinhGiaVon
+            // 
+            this.cmbCachTinhGiaVon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCachTinhGiaVon.FormattingEnabled = true;
+            this.cmbCachTinhGiaVon.Items.AddRange(new object[] {
+            "Bình quân gia quyền",
+            "Nhập trước xuất trước"});
+            this.cmbCachTinhGiaVon.Location = new System.Drawing.Point(280, 185);
+            this.cmbCachTinhGiaVon.Name = "cmbCachTinhGiaVon";
+            this.cmbCachTinhGiaVon.Size = new System.Drawing.Size(180, 21);
+            this.cmbCachTinhGiaVon.TabIndex = 67;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(245, 188);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 13);
+            this.label17.TabIndex = 66;
+            this.label17.Text = "Vốn:";
+            // 
+            // cmbCachChonLo
+            // 
+            this.cmbCachChonLo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCachChonLo.FormattingEnabled = true;
+            this.cmbCachChonLo.Items.AddRange(new object[] {
+            "Tự động - hạn gần trước",
+            "Chỉ định lô"});
+            this.cmbCachChonLo.Location = new System.Drawing.Point(280, 155);
+            this.cmbCachChonLo.Name = "cmbCachChonLo";
+            this.cmbCachChonLo.Size = new System.Drawing.Size(180, 21);
+            this.cmbCachChonLo.TabIndex = 65;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(245, 158);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 13);
+            this.label16.TabIndex = 64;
+            this.label16.Text = "Lô:";
             // 
             // groupBox3
             // 
@@ -837,7 +905,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 385);
+            this.ClientSize = new System.Drawing.Size(850, 480);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bindingNavigator);
@@ -915,10 +983,12 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieuBan;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colMaSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colThanhTien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgayHetHan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGiaVon;
         private System.Windows.Forms.ToolStripButton toolIn;
         private System.Windows.Forms.ToolStripButton toolChinhSua;
         private System.Windows.Forms.ToolStripButton toolXemLai;
@@ -936,8 +1006,9 @@
         private System.Windows.Forms.TextBox txtGiaNhap;
         private System.Windows.Forms.Button btnThemSanPham;
         private System.Windows.Forms.Button btnThemDaiLy;
-
-
-
+        private System.Windows.Forms.ComboBox cmbCachChonLo;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbCachTinhGiaVon;
+        private System.Windows.Forms.Label label17;
     }
 }

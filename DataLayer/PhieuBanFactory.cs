@@ -39,19 +39,21 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable LayPhieuBan(String id)
         {
+            DataService ds = new DataService();
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM PHIEU_BAN WHERE ID = @id");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = id;
-            m_Ds.Load(cmd);
-            return m_Ds;
+            ds.Load(cmd);
+            return ds;
         }
 
 
         public DataTable LayChiTietPhieuBan(String idPhieuBan)
         {
+            DataService ds = new DataService();
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM CHI_TIET_PHIEU_BAN WHERE ID_PHIEU_BAN = @id");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = idPhieuBan;
-            m_Ds.Load(cmd);
-            return m_Ds;
+            ds.Load(cmd);
+            return ds;
         }
 
         public static long LayConNo(String kh, int thang, int nam)

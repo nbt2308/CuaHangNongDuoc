@@ -59,6 +59,19 @@ namespace CuahangNongduoc.BusinessObject
             set { m_ChiTiet = value; }
         }
 
-	
+        public string TenKhachHang
+        {
+            get { return m_KH != null ? m_KH.HoTen : "Khách bán lẻ"; }
+        }
+
+        public string DiaChiKhachHang
+        {
+            get { return m_KH != null ? m_KH.DiaChi : "-"; }
+        }
+
+        public string DienThoaiKhachHang
+        {
+            get { return m_KH != null ? m_KH.DienThoai : "-"; }
+        }
     }
 }

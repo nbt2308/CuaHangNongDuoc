@@ -45,18 +45,20 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable LaySanPham(String idMaSanPham)
         {
+            DataService ds = new DataService();
             OleDbCommand cmd = new OleDbCommand("SELECT SP.* FROM SAN_PHAM SP INNER JOIN MA_SAN_PHAM MSP ON SP.ID = MSP.ID_SAN_PHAM WHERE MSP.ID = @id");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = idMaSanPham;
-            m_Ds.Load(cmd);
-            return m_Ds;
+            ds.Load(cmd);
+            return ds;
         }
 
         public DataTable LayMaSanPham(String idMaSanPham)
         {
+            DataService ds = new DataService();
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM MA_SAN_PHAM MSP WHERE MSP.ID = @id");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = idMaSanPham;
-            m_Ds.Load(cmd);
-            return m_Ds;
+            ds.Load(cmd);
+            return ds;
         }
 
         public DataTable DanhsachMaSanPhamHetHan(DateTime dt)

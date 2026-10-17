@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using CuahangNongduoc.BusinessObject;
 using CuahangNongduoc.Controller;
+using CuahangNongduoc.DataLayer;
 
 namespace CuahangNongduoc
 {
@@ -19,82 +20,113 @@ namespace CuahangNongduoc
 
         PhieuBanController ctrl = new PhieuBanController();
         KhachHangController ctrlKH = new KhachHangController();
+
         private void frmDanhsachPhieuNhap_Load(object sender, EventArgs e)
         {
+            dataGridView.DataError += dataGridView_DataError;
             ctrlKH.HienthiDaiLyDataGridviewComboBox(colKhachhang);
             ctrl.HienthiPhieuBanSi(bindingNavigator, dataGridView);
         }
-        frmBanSi BanLe = null;
+
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void MoLaiDanhSach()
+        {
+            ctrl = new PhieuBanController();
+            ctrl.HienthiPhieuBanSi(bindingNavigator, dataGridView);
+        }
+
+        private void ToolXemLai_Click(object sender, EventArgs e)
+        {
+            MoLaiDanhSach();
+        }
+
+        private string MaPhieuDangChon()
+        {
+            if (dataGridView.CurrentRow != null && dataGridView.CurrentRow.DataBoundItem != null)
+            {
+                DataRowView drv = dataGridView.CurrentRow.DataBoundItem as DataRowView;
+                if (drv != null && drv.Row.Table.Columns.Contains("ID") && drv["ID"] != DBNull.Value)
+                    return Convert.ToString(drv["ID"]);
+            }
+            if (bindingNavigator.BindingSource == null || bindingNavigator.BindingSource.Current == null)
+                return null;
+            DataRowView row = bindingNavigator.BindingSource.Current as DataRowView;
+            return row == null ? null : Convert.ToString(row["ID"]);
+        }
+
+        private void XoaPhieuDangChon(bool hoanTon)
+        {
+            string maPhieu = MaPhieuDangChon();
+            if (maPhieu == null) return;
+            if (MessageBox.Show("Bạn có chắc chắn xóa phiếu bán sỉ này?", "Phiếu bán sỉ",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+            try
+            {
+                new BanLeRepository().XoaPhieu(maPhieu, hoanTon);
+                MoLaiDanhSach();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Phiếu bán sỉ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        frmBanSi BanSi = null;
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
-            if (BanLe == null || BanLe.IsDisposed)
+            string maPhieu = MaPhieuDangChon();
+            if (BanSi == null || BanSi.IsDisposed)
             {
-                BanLe = new frmBanSi(ctrl);
-                BanLe.Show();
+                BanSi = new frmBanSi(maPhieu);
+                BanSi.Show();
             }
             else
-                BanLe.Activate();
+            {
+                BanSi.Activate();
+                if (!string.IsNullOrEmpty(maPhieu))
+                {
+                    BanSi.ChuyenDenPhieu(maPhieu);
+                }
+            }
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            if (BanLe == null || BanLe.IsDisposed)
+            if (BanSi == null || BanSi.IsDisposed)
             {
-                BanLe = new frmBanSi();
-                BanLe.Show();
+                BanSi = new frmBanSi();
+                BanSi.Show();
             }
             else
-                BanLe.Activate();
+                BanSi.Activate();
         }
 
         private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Phieu Ban Le", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                DataRowView view = (DataRowView)bindingNavigator.BindingSource.Current;
-                ChiTietPhieuBanController ctrl = new ChiTietPhieuBanController();
-                IList<ChiTietPhieuBan> ds = ctrl.ChiTietPhieuBan(view["ID"].ToString());
-                foreach (ChiTietPhieuBan ct in ds)
-                {
-                    CuahangNongduoc.DataLayer.MaSanPhanFactory.CapNhatSoLuong(ct.MaSanPham.Id, ct.SoLuong);
-                }
-                ctrl.Save();
-            }
+            e.Cancel = true;
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-             DataRowView view =  (DataRowView)bindingNavigator.BindingSource.Current;
-             if (view != null)
-             {
-                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Phieu Ban Le", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                 {
-                     ChiTietPhieuBanController ctrl = new ChiTietPhieuBanController();
-                     IList<ChiTietPhieuBan> ds = ctrl.ChiTietPhieuBan(view["ID"].ToString());
-                     foreach (ChiTietPhieuBan ct in ds)
-                     {
-                         CuahangNongduoc.DataLayer.MaSanPhanFactory.CapNhatSoLuong(ct.MaSanPham.Id, ct.SoLuong);
-                     }
-                     bindingNavigator.BindingSource.RemoveCurrent();
-                     ctrl.Save();
-                 }
-             }
+            XoaPhieuDangChon(true);
         }
 
         private void toolIn_Click(object sender, EventArgs e)
         {
-            DataRowView row = (DataRowView)bindingNavigator.BindingSource.Current;
-            if (row != null)
+            string maPhieu = MaPhieuDangChon();
+            if (!string.IsNullOrEmpty(maPhieu))
             {
                 PhieuBanController ctrlPB = new PhieuBanController();
-                String ma_phieu = row["ID"].ToString();
-                CuahangNongduoc.BusinessObject.PhieuBan ph = ctrlPB.LayPhieuBan(ma_phieu);
-                frmInPhieuBan PhieuBan = new frmInPhieuBan(ph);
-                PhieuBan.Show();
+                CuahangNongduoc.BusinessObject.PhieuBan ph = ctrlPB.LayPhieuBan(maPhieu);
+                if (ph != null)
+                {
+                    frmInPhieuBan PhieuBan = new frmInPhieuBan(ph);
+                    PhieuBan.Show();
+                }
             }
         }
 

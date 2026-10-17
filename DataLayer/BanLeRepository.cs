@@ -276,7 +276,7 @@ namespace CuahangNongduoc.DataLayer
             string sql = "SELECT MSP.ID, MSP.SO_LUONG, MSP.DON_GIA_NHAP, MSP.NGAY_NHAP, MSP.NGAY_HET_HAN, " +
                 "SP.TEN_SAN_PHAM, SP.GIA_BAN_LE " +
                 "FROM MA_SAN_PHAM MSP INNER JOIN SAN_PHAM SP ON MSP.ID_SAN_PHAM=SP.ID " +
-                "WHERE MSP.ID_SAN_PHAM=@sp AND MSP.SO_LUONG>0";
+                "WHERE MSP.ID_SAN_PHAM=@sp";
             if (!baoGomHetHan) sql += " AND MSP.NGAY_HET_HAN>=@ngay";
             sql += cachChon == CachChonLo.HetHanTruoc
                 ? " ORDER BY MSP.NGAY_HET_HAN, MSP.NGAY_NHAP, MSP.ID"
