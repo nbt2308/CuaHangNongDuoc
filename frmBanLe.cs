@@ -86,7 +86,7 @@ namespace CuahangNongduoc
             dgvDanhsachSP.DataSource = dsChiTiet;
             ctrlPhieuBan.HienthiPhieuBanLe(bindingNavigator, cmbKhachHang, txtMaPhieu,
                 dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
-            dtNgayLapPhieu.MaxDate = DateTime.Now;
+            dtNgayLapPhieu.MaxDate = DateTime.Now.Date.AddDays(1).AddSeconds(-1);
             GanSuKienCurrentChanged();
             isBindingData = false;
             daNapForm = true;
@@ -94,6 +94,12 @@ namespace CuahangNongduoc
             if (status == Controll.AddNew)
             {
                 txtMaPhieu.Text = ThamSo.LayMaPhieuBan().ToString();
+                isBindingData = true;
+                dtNgayLapPhieu.Value = DateTime.Now;
+                numTongTien.Value = 0;
+                numDaTra.Value = 0;
+                numConNo.Value = 0;
+                isBindingData = false;
                 ResetChiTiet();
                 Allow(true);
             }
@@ -389,7 +395,7 @@ namespace CuahangNongduoc
         {
             if (isBindingData) return;
             if (numDaTra.Value > numTongTien.Value) numDaTra.Value = numTongTien.Value;
-            numConNo.Value = numTongTien.Value - numDaTra.Value;
+            numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value);
         }
 
         // Refactoring: Extract Method TinhLaiTongTien
@@ -520,7 +526,8 @@ namespace CuahangNongduoc
             Allow(true);
             isBindingData = true;
             txtMaPhieu.Text = ThamSo.LayMaPhieuBan().ToString();
-            dtNgayLapPhieu.Value = DateTime.Today;
+            dtNgayLapPhieu.MaxDate = DateTime.Now.Date.AddDays(1).AddSeconds(-1);
+            dtNgayLapPhieu.Value = DateTime.Now;
             numTongTien.Value = 0;
             numDaTra.Value = 0;
             numConNo.Value = 0;
@@ -575,9 +582,10 @@ namespace CuahangNongduoc
         {
             txtMaPhieu.Enabled = false;
             cmbKhachHang.Enabled = value && status == Controll.AddNew;
-            dtNgayLapPhieu.Enabled = value;
+            dtNgayLapPhieu.Enabled = false; // Đóng (khóa) ô Ngày lập: dtNgayLapPhieu.Enabled = false
             numDaTra.Enabled = value;
             numTongTien.Enabled = false; // Cố định tổng tiền, tự động tính theo danh sách hàng
+            numConNo.Enabled = false; // Đóng (khóa) ô Còn nợ: numConNo.Enabled = false (tiền còn nợ tự động tính toán)
             cmbSanPham.Enabled = value;
             cmbMaSanPham.Enabled = value && cmbCachChonLo.SelectedIndex == 1;
             cmbCachChonLo.Enabled = value;
