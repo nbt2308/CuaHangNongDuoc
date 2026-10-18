@@ -16,7 +16,6 @@ namespace CuahangNongduoc
             InitializeComponent();
             m_PhieuBan = ph;
             ChuanHoaDuLieu();
-            reportViewer.LocalReport.ExecuteReportInCurrentAppDomain(System.Reflection.Assembly.GetExecutingAssembly().Evidence);
             try
             {
                 using (System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("CuahangNongduoc.Report.rptChiTietPhieuBan.rdlc"))

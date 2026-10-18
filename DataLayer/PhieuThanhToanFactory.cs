@@ -17,25 +17,29 @@ namespace CuahangNongduoc.DataLayer
 
             return m_Ds;
         }
+
+        // So sánh theo khoảng trong ngày, tránh lỗi cột ngày có kèm giờ
         public DataTable TimPhieuThanhToan(String kh, DateTime ngay)
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM PHIEU_THANH_TOAN WHERE ID_KHACH_HANG=@kh AND NGAY_THANH_TOAN = @ngay");
-            cmd.Parameters.Add("kh", OleDbType.VarChar).Value = kh;
-            cmd.Parameters.Add("ngay", OleDbType.Date).Value = ngay;
+            OleDbCommand cmd = new OleDbCommand(
+                "SELECT * FROM PHIEU_THANH_TOAN WHERE ID_KHACH_HANG=@kh " +
+                "AND NGAY_THANH_TOAN >= @ngay1 AND NGAY_THANH_TOAN < @ngay2");
+            cmd.Parameters.Add("kh", OleDbType.VarChar, 50).Value = kh;
+            cmd.Parameters.Add("ngay1", OleDbType.Date).Value = ngay.Date;
+            cmd.Parameters.Add("ngay2", OleDbType.Date).Value = ngay.Date.AddDays(1);
 
             m_Ds.Load(cmd);
 
             return m_Ds;
         }
-      
+
         public DataTable LayPhieuThanhToan(String id)
         {
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM PHIEU_THANH_TOAN WHERE ID = @id");
-            cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = id;
+            cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = id;
             m_Ds.Load(cmd);
             return m_Ds;
         }
-
 
         public static long LayTongTien(String kh, int thang, int nam)
         {
@@ -46,13 +50,13 @@ namespace CuahangNongduoc.DataLayer
             cmd.Parameters.Add("nam", OleDbType.Integer).Value = nam;
 
             object obj = ds.ExecuteScalar(cmd);
-            
+
             if (obj == null)
                 return 0;
             else
                 return Convert.ToInt64(obj);
         }
-        
+
         public DataRow NewRow()
         {
             return m_Ds.NewRow();
@@ -61,9 +65,8 @@ namespace CuahangNongduoc.DataLayer
         {
             m_Ds.Rows.Add(row);
         }
-       public bool Save()
+        public bool Save()
         {
-           
             return m_Ds.ExecuteNoneQuery() > 0;
         }
     }

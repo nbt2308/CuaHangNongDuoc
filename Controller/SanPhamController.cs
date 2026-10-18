@@ -74,7 +74,7 @@ namespace CuahangNongduoc.Controller
             DataTable tbl = factory.LaySanPham(id);
             if (tbl.Rows.Count > 0)
             {
-                long tong_so = Convert.ToInt32(tbl.Rows[0]["SO_LUONG"]);
+                long tong_so = Convert.ToInt64(tbl.Rows[0]["SO_LUONG"]);
                 long tong_gia = Convert.ToInt64(tbl.Rows[0]["DON_GIA_NHAP"]);
                 if (tong_gia != gia_moi)
                 {
@@ -146,6 +146,15 @@ namespace CuahangNongduoc.Controller
         public bool Save()
         {
             return factory.Save();
+        }
+
+        /// <summary>
+        /// Hoan nguyen toan bo thay doi chua commit (undo AddNew/Delete chua luu).
+        /// Goi sau khi Save() that bai de khoi phuc trang thai nhat quan.
+        /// </summary>
+        public void RejectChanges()
+        {
+            factory.RejectChanges();
         }
     }
 }

@@ -45,11 +45,10 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable LayKhachHang(String id)
         {
-            DataService ds = new DataService();
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM KHACH_HANG WHERE ID = @id");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = id;
-            ds.Load(cmd);
-            return ds;
+            m_Ds.Load(cmd);
+            return m_Ds;
         }
 
         public DataRow NewRow()

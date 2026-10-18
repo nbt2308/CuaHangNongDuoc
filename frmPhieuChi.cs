@@ -95,10 +95,17 @@ namespace CuahangNongduoc
             p.Y += toolTimKiem.Height;
             Tim.Location = p;
             Tim.ShowDialog();
+
+            // If user confirmed search, perform it; otherwise reset grid to initial state.
             if (Tim.DialogResult == DialogResult.OK)
             {
+                // Perform search using selected criteria from Tim
                 ctrl.TimPhieuChi(bindingNavigator, dataGridView, cmbLyDoChi, txtMaPhieu, dtNgayChi, numTongTien, txtGhiChu, Convert.ToInt32(Tim.cmbLyDo.SelectedValue), dtNgayChi.Value.Date);
-                
+            }
+            else
+            {
+                // Reset datagrid to initial/full dataset
+                ctrl.HienthiPhieuChi(bindingNavigator, dataGridView, cmbLyDoChi, txtMaPhieu, dtNgayChi, numTongTien, txtGhiChu);
             }
         }
     }

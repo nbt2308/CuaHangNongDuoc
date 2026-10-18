@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 using System.Data.OleDb;
-
+using System.Collections.Generic;
 namespace CuahangNongduoc
 {
     public delegate void DataServiceTransactionAction(OleDbConnection connection, OleDbTransaction transaction);
@@ -200,6 +200,200 @@ namespace CuahangNongduoc
                 throw;
             }
             return result;
+        }
+        
+
+        /// <summary>
+        /// Lưu nhiều DataTable và tính lại tồn kho/giá nhập bình quân trong cùng transaction.
+        /// Dữ liệu trong bộ nhớ chỉ AcceptChanges sau khi database Commit thành công.
+        /// </summary>
+        public static int ExecuteDataTableTransaction(IList<string> affectedProductIds, params DataService[] dataTables)
+        {
+            if (!OpenConnection())
+                throw new InvalidOperationException("Không thể kết nối cơ sở dữ liệu Access.");
+
+            OleDbTransaction transaction = null;
+            List<DataService> changedTables = new List<DataService>();
+            int result = 0;
+            try
+            {
+                transaction = m_Connection.BeginTransaction();
+                if (dataTables != null)
+                {
+                    foreach (DataService dataTable in dataTables)
+                    {
+                        if (dataTable == null || dataTable.GetChanges() == null)
+                            continue;
+                        if (dataTable.m_Command == null)
+                            throw new InvalidOperationException("Không có câu lệnh SELECT để lưu một bảng dữ liệu.");
+
+                        KiemTraLoDaBanTrongTransaction(dataTable, transaction);
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter())
+                        {
+                            dataTable.m_Command.Connection = m_Connection;
+                            dataTable.m_Command.Transaction = transaction;
+                            adapter.SelectCommand = dataTable.m_Command;
+                            adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+                            using (OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter))
+                            {
+                                builder.QuotePrefix = "[";
+                                builder.QuoteSuffix = "]";
+                                adapter.InsertCommand = builder.GetInsertCommand();
+                                adapter.UpdateCommand = builder.GetUpdateCommand();
+                                adapter.DeleteCommand = builder.GetDeleteCommand();
+                                GanTransaction(adapter.InsertCommand, transaction);
+                                GanTransaction(adapter.UpdateCommand, transaction);
+                                GanTransaction(adapter.DeleteCommand, transaction);
+                                adapter.AcceptChangesDuringUpdate = false;
+                                result += adapter.Update(dataTable);
+                            }
+                        }
+                        changedTables.Add(dataTable);
+                    }
+                }
+
+                TinhLaiTonKhoTrongTransaction(affectedProductIds, transaction);
+                transaction.Commit();
+                foreach (DataService table in changedTables)
+                    table.AcceptChanges();
+                return result;
+            }
+            catch
+            {
+                RollbackSafe(transaction);
+                throw;
+            }
+            finally
+            {
+                DisposeSafe(transaction);
+            }
+        }
+
+        // Dispose transaction an toàn, không ném ngoại lệ.
+        private static void DisposeSafe(OleDbTransaction transaction)
+        {
+            if (transaction == null)
+                return;
+            // Không để lỗi dọn dẹp transaction che mất ngoại lệ gốc của thao tác lưu.
+            try { transaction.Dispose(); }
+            catch { }
+        }
+
+
+        // Dispose transaction an toàn, không ném ngoại lệ.
+        private static void RollbackSafe(OleDbTransaction transaction)
+        {
+            if (transaction == null)
+                return;
+            try { transaction.Rollback(); }
+            catch { }
+        }
+
+        // Rollback transaction an toàn, không ném ngoại lệ.
+        private static void GanTransaction(OleDbCommand command, OleDbTransaction transaction)
+        {
+            if (command == null)
+                return;
+            command.Connection = m_Connection;
+            command.Transaction = transaction;
+        }
+
+        //Kiểm tra lô đã bán trong transaction, nếu có thì ném ngoại lệ.
+        private static void KiemTraLoDaBanTrongTransaction(DataService dataTable, OleDbTransaction transaction)
+        {
+            if (dataTable == null || dataTable.m_Command == null ||
+                dataTable.m_Command.CommandText.IndexOf("MA_SAN_PHAM", StringComparison.OrdinalIgnoreCase) < 0 ||
+                !dataTable.Columns.Contains("ID"))
+                return;
+
+            DataRow[] rowsDeleted = dataTable.Select(String.Empty, String.Empty, DataViewRowState.Deleted);
+            foreach (DataRow deletedRow in rowsDeleted)
+            {
+                string idLo = Convert.ToString(deletedRow["ID", DataRowVersion.Original]);
+                if (String.IsNullOrEmpty(idLo))
+                    continue;
+                using (OleDbCommand checkLot = new OleDbCommand(
+                    "SELECT COUNT(*) FROM CHI_TIET_PHIEU_BAN WHERE ID_MA_SAN_PHAM=?", m_Connection, transaction))
+                {
+                    checkLot.Parameters.Add("idLo", OleDbType.VarChar, 50).Value = idLo;
+                    object value = checkLot.ExecuteScalar();
+                    if (value != null && value != DBNull.Value && Convert.ToInt64(value) > 0)
+                        throw new InvalidOperationException("Không thể xóa lô " + idLo + " vì lô đã được sử dụng trong hóa đơn bán.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gán transaction cho command, nếu command không null.
+        /// </summary>
+        /// <param name="affectedProductIds"></param>
+        /// <param name="transaction"></param>
+        /// <exception cref="InvalidOperationException"></exception>
+         private static void TinhLaiTonKhoTrongTransaction(IList<string> affectedProductIds, OleDbTransaction transaction)
+        {
+            if (affectedProductIds == null)
+                return;
+
+            List<string> processed = new List<string>();
+            foreach (string idSanPham in affectedProductIds)
+            {
+                if (String.IsNullOrEmpty(idSanPham) || processed.Contains(idSanPham))
+                    continue;
+                processed.Add(idSanPham);
+
+                long tongSoLuong = 0;
+                decimal tongGiaTri = 0M;
+                using (OleDbCommand selectLots = new OleDbCommand(
+                    "SELECT SO_LUONG, DON_GIA_NHAP FROM MA_SAN_PHAM WHERE ID_SAN_PHAM=?", m_Connection, transaction))
+                {
+                    selectLots.Parameters.Add("id", OleDbType.VarChar, 50).Value = idSanPham;
+                    using (OleDbDataReader reader = selectLots.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            long soLuong = reader.IsDBNull(0) ? 0 : Convert.ToInt64(reader.GetValue(0));
+                            long donGia = reader.IsDBNull(1) ? 0 : Convert.ToInt64(reader.GetValue(1));
+                            // Lô bị bán vượt tồn (số lượng âm - dữ liệu cũ) không được làm hỏng việc tính lại tồn kho của cả sản phẩm:
+                            // coi như 0 khi cộng tồn thay vì chặn mọi thao tác nhập/xóa của sản phẩm đó.
+                            if (soLuong < 0)
+                                soLuong = 0;
+                            if (donGia < 0)
+                                throw new InvalidOperationException("Đơn giá nhập của lô không được âm (sản phẩm " + idSanPham + ").");
+                            tongSoLuong += soLuong;
+                            tongGiaTri += (decimal)soLuong * donGia;
+                            if (tongSoLuong > Int32.MaxValue)
+                                throw new InvalidOperationException("Tổng tồn kho vượt giới hạn dữ liệu của sản phẩm " + idSanPham + ".");
+                        }
+                    }
+                }
+
+                int rowsUpdated;
+                if (tongSoLuong > 0)
+                {
+                    using (OleDbCommand updateProduct = new OleDbCommand(
+                        "UPDATE SAN_PHAM SET SO_LUONG=?, DON_GIA_NHAP=? WHERE ID=?", m_Connection, transaction))
+                    {
+                        updateProduct.Parameters.Add("soLuong", OleDbType.Integer).Value = Convert.ToInt32(tongSoLuong);
+                        // Giá nhập bình quân lưu theo đơn vị tiền nguyên như các lớp nghiệp vụ hiện có.
+                        updateProduct.Parameters.Add("giaNhap", OleDbType.Currency).Value = Convert.ToDecimal((long)(tongGiaTri / tongSoLuong));
+                        updateProduct.Parameters.Add("id", OleDbType.VarChar, 50).Value = idSanPham;
+                        rowsUpdated = updateProduct.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    // Khi tồn kho bằng 0, giữ nguyên giá nhập gần nhất để không xóa thông tin tham khảo.
+                    using (OleDbCommand updateProduct = new OleDbCommand(
+                        "UPDATE SAN_PHAM SET SO_LUONG=? WHERE ID=?", m_Connection, transaction))
+                    {
+                        updateProduct.Parameters.Add("soLuong", OleDbType.Integer).Value = 0;
+                        updateProduct.Parameters.Add("id", OleDbType.VarChar, 50).Value = idSanPham;
+                        rowsUpdated = updateProduct.ExecuteNonQuery();
+                    }
+                }
+                if (rowsUpdated <= 0)
+                    throw new InvalidOperationException("Không tìm thấy sản phẩm " + idSanPham + " để đồng bộ tồn kho.");
+            }
         }
 	}
 }

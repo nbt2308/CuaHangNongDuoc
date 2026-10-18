@@ -30,5 +30,13 @@ namespace CuahangNongduoc.DataLayer
         {
             return m_Ds.ExecuteNoneQuery() > 0;
         }
+
+        /// <summary>
+        /// Hoan nguyen toan bo thay doi chua commit trong DataTable ve trang thai ban dau.
+        /// </summary>
+        public void RejectChanges()
+        {
+            m_Ds.RejectChanges();
+        }
     }
 }

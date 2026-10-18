@@ -99,5 +99,69 @@ namespace CuahangNongduoc.DataLayer
         {
             return m_Ds.ExecuteNoneQuery() > 0;
         }
+
+
+        //Các hàm hỗ trợ Nhập hàng
+
+         public DataService GetDataService()
+        {
+            return m_Ds;
+        }
+
+         public DataTable DanhSachSanPhamTheoPhieuNhap(String idPhieuNhap)
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand("SELECT DISTINCT ID_SAN_PHAM FROM MA_SAN_PHAM WHERE ID_PHIEU_NHAP=?");
+            cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = idPhieuNhap;
+            ds.Load(cmd);
+            return ds;
+        }
+
+        public DataTable LayCacLoDaXoa()
+        {
+            DataTable snapshot = new DataTable();
+            snapshot.Columns.Add("ID_SAN_PHAM", typeof(String));
+            snapshot.Columns.Add("SO_LUONG", typeof(Int64));
+            snapshot.Columns.Add("DON_GIA_NHAP", typeof(Int64));
+            DataRow[] rows = m_Ds.Select(String.Empty, String.Empty, DataViewRowState.Deleted);
+            foreach (DataRow row in rows)
+            {
+                DataRow newRow = snapshot.NewRow();
+                newRow["ID_SAN_PHAM"] = Convert.ToString(row["ID_SAN_PHAM", DataRowVersion.Original]);
+                newRow["SO_LUONG"] = Convert.ToInt64(row["SO_LUONG", DataRowVersion.Original]);
+                newRow["DON_GIA_NHAP"] = Convert.ToInt64(row["DON_GIA_NHAP", DataRowVersion.Original]);
+                snapshot.Rows.Add(newRow);
+            }
+            return snapshot;
+        }
+
+
+        public bool CoLoDaBanTrongPhieuNhap(String idPhieuNhap)
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand("SELECT COUNT(*) FROM CHI_TIET_PHIEU_BAN CT INNER JOIN MA_SAN_PHAM MSP ON CT.ID_MA_SAN_PHAM=MSP.ID WHERE MSP.ID_PHIEU_NHAP=?");
+            cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = idPhieuNhap;
+            object result = ds.ExecuteScalar(cmd);
+            return result != null && result != DBNull.Value && Convert.ToInt64(result) > 0;
+        }
+
+         public bool CoLoDaBan(String idMaLo)
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand("SELECT COUNT(*) FROM CHI_TIET_PHIEU_BAN WHERE ID_MA_SAN_PHAM=?");
+            cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = idMaLo;
+            object result = ds.ExecuteScalar(cmd);
+            return result != null && result != DBNull.Value && Convert.ToInt64(result) > 0;
+        }
+
+        // Sao chup cac lo moi them truoc khi Save() AcceptChanges lam mat RowState.Added.
+        public DataTable LayCacLoMoi()
+        {
+            DataTable snapshot = m_Ds.Clone();
+            DataRow[] rows = m_Ds.Select(String.Empty, String.Empty, DataViewRowState.Added);
+            foreach (DataRow row in rows)
+                snapshot.Rows.Add((object[])row.ItemArray.Clone());
+            return snapshot;
+        }
     }
 }

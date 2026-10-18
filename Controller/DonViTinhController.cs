@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -53,6 +53,14 @@ namespace CuahangNongduoc.Controller
         public bool Save()
         {
             return factory.Save();
+        }
+
+        /// <summary>
+        /// Hoan nguyen toan bo thay doi chua commit (undo AddNew/Delete chua luu).
+        /// </summary>
+        public void RejectChanges()
+        {
+            factory.RejectChanges();
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -18,7 +18,7 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable LayChiTietPhieuNhap(String id)
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM CHI_TIET_PHIEU_NHAP WHERE ID_PHIEU_NHAP = @id");
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM CHI_TIET_PHIEU_NHAP WHERE ID_PHIEU_NHAP = ?");
             cmd.Parameters.Add("id", OleDbType.VarChar,50).Value = id;
             m_Ds.Load(cmd);
             return m_Ds;
@@ -26,7 +26,7 @@ namespace CuahangNongduoc.DataLayer
 
         public int XoaChiTietPhieuNhap(String id)
         {
-            OleDbCommand cmd = new OleDbCommand("DELETE FROM CHI_TIET_PHIEU_NHAP WHERE ID_PHIEU_NHAP = @id");
+            OleDbCommand cmd = new OleDbCommand("DELETE FROM CHI_TIET_PHIEU_NHAP WHERE ID_PHIEU_NHAP = ?");
             cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = id;
             return m_Ds.ExecuteNoneQuery(cmd);
         }

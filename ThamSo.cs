@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data.OleDb;
@@ -41,13 +41,20 @@ namespace CuahangNongduoc
         {
             DataService ds = new DataService();
             object obj = ds.ExecuteScalar(new OleDbCommand("SELECT PHIEU_NHAP FROM THAM_SO"));
+            if (obj == null || obj == DBNull.Value)
+                return 1;
             return Convert.ToInt64(obj);
         }
         public static void GanMaPhieuNhap(long id)
         {
+            if (id < 1 || id > Int32.MaxValue)
+                throw new ArgumentOutOfRangeException("id", "Mã phiếu nhập phải nằm trong giới hạn số nguyên của Access.");
             DataService ds = new DataService();
-            ds.ExecuteNoneQuery(new OleDbCommand("UPDATE THAM_SO SET PHIEU_NHAP = " + id));
-            
+            OleDbCommand command = new OleDbCommand("UPDATE THAM_SO SET PHIEU_NHAP=?");
+            command.Parameters.Add("id", OleDbType.Integer).Value = Convert.ToInt32(id);
+            int affected = ds.ExecuteNoneQuery(command);
+            if (affected <= 0)
+                throw new InvalidOperationException("Không thể cập nhật tham số mã phiếu nhập.");
         }
 
         public static long LayMaPhieuBan()

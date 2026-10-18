@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -45,6 +45,35 @@ namespace CuahangNongduoc.Controller
             return sp;
 
         }
+
+        //Nhập hàng 
+         public DataTable LayCacLoMoi()
+        {
+            return factory.LayCacLoMoi();
+        }
+        public DataService GetDataService()
+        {
+            return factory.GetDataService();
+        }
+        public bool CoLoDaBan(String idMaLo)
+        {
+            return factory.CoLoDaBan(idMaLo);
+        }
+        public bool CoLoDaBanTrongPhieuNhap(String idPhieuNhap)
+        {
+            return factory.CoLoDaBanTrongPhieuNhap(idPhieuNhap);
+        }
+         public DataTable DanhSachSanPhamTheoPhieuNhap(String idPhieuNhap)
+        {
+            return factory.DanhSachSanPhamTheoPhieuNhap(idPhieuNhap);
+        }
+        public DataTable LayCacLoDaXoa()
+        {
+            return factory.LayCacLoDaXoa();
+        }
+
+
+
 
 
         public MaSanPham LayMaSanPham(String idMaSanPham)
@@ -93,7 +122,7 @@ namespace CuahangNongduoc.Controller
 
         }
 
-        public void HienThiAutoComboBox(String sp, ComboBox cmb)
+        public void HienThiAutoComboBox2ThamSo(String sp, ComboBox cmb)
         {
             HienThiAutoComboBox(sp, cmb, false);
         }

@@ -8,11 +8,9 @@ using System.Data;
 
 namespace CuahangNongduoc.Controller
 {
-    
     public class PhieuThanhToanController
     {
         PhieuThanhToanFactory factory = new PhieuThanhToanFactory();
-
 
         public DataRow NewRow()
         {
@@ -31,27 +29,35 @@ namespace CuahangNongduoc.Controller
         {
             PhieuThanhToan ph = null;
             DataTable tbl = factory.LayPhieuThanhToan(id);
-            if (tbl.Rows.Count > 0 )
+            if (tbl.Rows.Count > 0)
             {
+                DataRow r = tbl.Rows[0];
                 ph = new PhieuThanhToan();
-                ph.Id = Convert.ToString(tbl.Rows[0]["ID"]);
+                ph.Id = Convert.ToString(r["ID"]);
+
                 KhachHangController ctrlKH = new KhachHangController();
-                ph.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(tbl.Rows[0]["ID_KHACH_HANG"]));
-                ph.NgayThanhToan = Convert.ToDateTime(tbl.Rows[0]["NGAY_THANH_TOAN"]);
-                ph.TongTien = Convert.ToInt64(tbl.Rows[0]["TONG_TIEN"]);
-                ph.GhiChu = Convert.ToString(tbl.Rows[0]["GHI_CHU"]);
+                ph.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(r["ID_KHACH_HANG"]));
+
+                ph.NgayThanhToan = r["NGAY_THANH_TOAN"] == DBNull.Value
+                    ? DateTime.Now.Date
+                    : Convert.ToDateTime(r["NGAY_THANH_TOAN"]);
+
+                ph.TongTien = r["TONG_TIEN"] == DBNull.Value
+                    ? 0
+                    : Convert.ToInt64(r["TONG_TIEN"]);
+
+                ph.GhiChu = Convert.ToString(r["GHI_CHU"]);
             }
             return ph;
         }
-        
-        public void HienthiPhieuThanhToan(BindingNavigator bn, DataGridView dg,ComboBox cmb, TextBox txt, DateTimePicker dt, NumericUpDown numTongTien, TextBox txtGhichu)
+
+        public void HienthiPhieuThanhToan(BindingNavigator bn, DataGridView dg, ComboBox cmb, TextBox txt, DateTimePicker dt, NumericUpDown numTongTien, TextBox txtGhichu)
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = factory.DanhsachPhieuThanhToan();
             bn.BindingSource = bs;
             dg.DataSource = bs;
 
-            
             txt.DataBindings.Clear();
             txt.DataBindings.Add("Text", bs, "ID");
 
@@ -66,19 +72,16 @@ namespace CuahangNongduoc.Controller
 
             txtGhichu.DataBindings.Clear();
             txtGhichu.DataBindings.Add("Text", bs, "GHI_CHU");
-
-
         }
+
         public void TimPhieuThanhToan(BindingNavigator bn, DataGridView dg, ComboBox cmb, TextBox txt, DateTimePicker dt, NumericUpDown numTongTien, TextBox txtGhichu,
             String idKH, DateTime dtNgayThu)
         {
-            
             BindingSource bs = new BindingSource();
             bs.DataSource = factory.TimPhieuThanhToan(idKH, dtNgayThu);
             bn.BindingSource = bs;
             dg.DataSource = bs;
 
-
             txt.DataBindings.Clear();
             txt.DataBindings.Add("Text", bs, "ID");
 
@@ -94,7 +97,5 @@ namespace CuahangNongduoc.Controller
             txtGhichu.DataBindings.Clear();
             txtGhichu.DataBindings.Add("Text", bs, "GHI_CHU");
         }
-
-        
     }
 }

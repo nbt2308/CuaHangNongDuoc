@@ -82,9 +82,21 @@ namespace CuahangNongduoc.Controller
         {
             factory.TimHoTen(hoten, loai);
         }
+        public void TimHoTen(String hoten, bool loai, System.Windows.Forms.BindingSource bindingSource)
+        {
+            bindingSource.DataSource = factory.TimHoTen(hoten, loai);
+        }
         public void TimDiaChi(String diachi, bool loai)
         {
             factory.TimDiaChi(diachi, loai);
+        }
+        public void TimDiaChi(String diachi, bool loai, System.Windows.Forms.BindingSource bindingSource)
+        {
+            bindingSource.DataSource = factory.TimDiaChi(diachi, loai);
+        }
+        public void TaiLaiKhachHang(bool loai, System.Windows.Forms.BindingSource bindingSource)
+        {
+            bindingSource.DataSource = factory.DanhsachKhachHang(loai);
         }
         
         public KhachHang LayKhachHang(String id)

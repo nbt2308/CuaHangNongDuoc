@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace CuahangNongduoc
 {
@@ -14,6 +15,9 @@ namespace CuahangNongduoc
         public frmNhaCungCap()
         {
             InitializeComponent();
+            bindingNavigator.AddNewItem = null;
+            dataGridView.EditingControlShowing += dataGridView_EditingControlShowing;
+            dataGridView.CellValidating += dataGridView_CellValidating;
         }
 
         private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -35,17 +39,82 @@ namespace CuahangNongduoc
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
             ctrl.HienthiDataGridview(dataGridView, bindingNavigator);
+            long maxId = 0;
+            DataTable tbl = bindingNavigator.BindingSource.DataSource as DataTable;
+
+            if (tbl != null)
+            {
+                foreach (DataRow row in tbl.Rows)
+                {
+                    if (row.RowState == DataRowState.Deleted)
+                        continue;
+
+                    long id;
+                    if (long.TryParse(Convert.ToString(row["ID"]), out id))
+                    {
+                        if (id > maxId)
+                            maxId = id;
+                    }
+                }
+            }
+
+            ThamSo.NhaCungCap = maxId + 1;
         }
+
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            long maso = ThamSo.NhaCungCap;
-            ThamSo.NhaCungCap = maso + 1;
+            BindingSource bs = bindingNavigator.BindingSource;
+            DataTable tbl = bs.DataSource as DataTable;
 
-            DataRowView row = (DataRowView)bindingNavigator.BindingSource.AddNew();
-            row["ID"] = maso;
-            
+            if (tbl == null)
+                return;
+
+            long maxId = 0;
+
+            foreach (DataRow r in tbl.Rows)
+            {
+                if (r.RowState == DataRowState.Deleted)
+                    continue;
+
+                long id;
+
+                if (long.TryParse(Convert.ToString(r["ID"]), out id))
+                {
+                    if (id > maxId)
+                        maxId = id;
+                }
+            }
+
+            long newId = maxId + 1;
+
+            bool trungMa;
+
+            do
+            {
+                trungMa = false;
+
+                foreach (DataRow r in tbl.Rows)
+                {
+                    if (r.RowState == DataRowState.Deleted)
+                        continue;
+
+                    if (Convert.ToString(r["ID"]) == newId.ToString())
+                    {
+                        trungMa = true;
+                        newId++;
+                        break;
+                    }
+                }
+            }
+            while (trungMa);
+
+            DataRowView newRow = (DataRowView)bs.AddNew();
+            newRow["ID"] = newId;
+
+            ThamSo.NhaCungCap = newId + 1;
         }
+
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
@@ -103,6 +172,66 @@ namespace CuahangNongduoc
             toolTimDiaChi.Checked = !toolTimHoTen.Checked;
             toolTimNhaCungCap.Text = "Tìm theo Địa chỉ";
             bindingNavigator.Focus();
+        }
+        private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is TextBox tb)
+            {
+                tb.KeyPress -= DienThoai_KeyPress;
+
+                if (dataGridView.CurrentCell != null)
+                {
+                    string columnName =
+                        dataGridView.Columns[
+                            dataGridView.CurrentCell.ColumnIndex
+                        ].DataPropertyName;
+
+                    if (columnName == "DIEN_THOAI")
+                    {
+                        tb.KeyPress += DienThoai_KeyPress;
+                    }
+                }
+            }
+        }
+
+        private void DienThoai_KeyPress(
+            object sender,
+            KeyPressEventArgs e)
+        {
+            // Cho phép phím điều khiển và các chữ số 0-9
+            if (!char.IsControl(e.KeyChar) &&
+                (e.KeyChar < '0' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string columnName =
+                dataGridView.Columns[e.ColumnIndex].DataPropertyName;
+
+            if (columnName != "DIEN_THOAI")
+                return;
+
+            string phone = Convert.ToString(e.FormattedValue);
+
+            // Cho phép để trống; nếu có nhập thì chỉ được chứa 0-9
+            if (!string.IsNullOrEmpty(phone) &&
+                !Regex.IsMatch(phone, @"^[0-9]+$"))
+            {
+                MessageBox.Show(
+                    "Số điện thoại chỉ được nhập các chữ số từ 0 đến 9!",
+                    "Dữ liệu không hợp lệ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                e.Cancel = true;
+            }
+        }
+
+        private void btnDS_Click(object sender, EventArgs e)
+        {
+            ctrl.HienthiDataGridview(dataGridView, bindingNavigator);
         }
     }
 }

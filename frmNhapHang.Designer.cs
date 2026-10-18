@@ -53,6 +53,7 @@
             this.colMaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSanPham = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colMaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoLo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDonGiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +81,7 @@
             this.cmbSanPham = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnThemNCC = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.numConNo = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
@@ -90,7 +92,8 @@
             this.numTongTien = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.txtMaPhieu = new System.Windows.Forms.TextBox();
-            this.btnThemNCC = new System.Windows.Forms.Button();
+            this.txtSoLo = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -174,6 +177,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -262,7 +266,7 @@
             this.toolSavePrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolSavePrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolSavePrint.Name = "toolSavePrint";
-            this.toolSavePrint.Size = new System.Drawing.Size(55, 43);
+            this.toolSavePrint.Size = new System.Drawing.Size(54, 43);
             this.toolSavePrint.Text = "Trang in";
             this.toolSavePrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolSavePrint.Click += new System.EventHandler(this.toolSavePrint_Click);
@@ -302,12 +306,17 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaPhieu,
             this.colSanPham,
             this.colMaSanPham,
+            this.colSoLo,
             this.colDonGiaNhap,
             this.colSoLuong,
             this.colNgayNhap,
@@ -319,8 +328,8 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(731, 238);
             this.dataGridView.TabIndex = 12;
-            this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
             this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
+            this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
             // 
             // colMaPhieu
             // 
@@ -343,6 +352,14 @@
             this.colMaSanPham.HeaderText = "Mã số";
             this.colMaSanPham.Name = "colMaSanPham";
             this.colMaSanPham.ReadOnly = true;
+            // 
+            // colSoLo
+            // 
+            this.colSoLo.DataPropertyName = "SO_LO";
+            this.colSoLo.HeaderText = "Số lô";
+            this.colSoLo.Name = "colSoLo";
+            this.colSoLo.ReadOnly = true;
+            this.colSoLo.Width = 90;
             // 
             // colDonGiaNhap
             // 
@@ -562,6 +579,8 @@
             // 
             // grpThongtin
             // 
+            this.grpThongtin.Controls.Add(this.label14);
+            this.grpThongtin.Controls.Add(this.txtSoLo);
             this.grpThongtin.Controls.Add(this.btnThemSanPham);
             this.grpThongtin.Controls.Add(this.btnAdd);
             this.grpThongtin.Controls.Add(this.btnRemove);
@@ -626,6 +645,16 @@
             this.groupBox1.Size = new System.Drawing.Size(239, 184);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
+            // 
+            // btnThemNCC
+            // 
+            this.btnThemNCC.Image = global::CuahangNongduoc.Properties.Resources.add_16;
+            this.btnThemNCC.Location = new System.Drawing.Point(213, 50);
+            this.btnThemNCC.Name = "btnThemNCC";
+            this.btnThemNCC.Size = new System.Drawing.Size(24, 23);
+            this.btnThemNCC.TabIndex = 32;
+            this.btnThemNCC.UseVisualStyleBackColor = true;
+            this.btnThemNCC.Click += new System.EventHandler(this.button1_Click);
             // 
             // label13
             // 
@@ -713,7 +742,6 @@
             this.numTongTien.TabIndex = 24;
             this.numTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numTongTien.ThousandsSeparator = true;
-            this.numTongTien.ValueChanged += new System.EventHandler(this.numDaTra_ValueChanged);
             // 
             // label10
             // 
@@ -731,15 +759,21 @@
             this.txtMaPhieu.Size = new System.Drawing.Size(155, 20);
             this.txtMaPhieu.TabIndex = 22;
             // 
-            // btnThemNCC
+            // txtSoLo
             // 
-            this.btnThemNCC.Image = global::CuahangNongduoc.Properties.Resources.add_16;
-            this.btnThemNCC.Location = new System.Drawing.Point(213, 50);
-            this.btnThemNCC.Name = "btnThemNCC";
-            this.btnThemNCC.Size = new System.Drawing.Size(24, 23);
-            this.btnThemNCC.TabIndex = 32;
-            this.btnThemNCC.UseVisualStyleBackColor = true;
-            this.btnThemNCC.Click += new System.EventHandler(this.button1_Click);
+            this.txtSoLo.Location = new System.Drawing.Point(313, 103);
+            this.txtSoLo.Name = "txtSoLo";
+            this.txtSoLo.Size = new System.Drawing.Size(100, 20);
+            this.txtSoLo.TabIndex = 17;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(257, 106);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Số lô";
             // 
             // frmNhapHang
             // 
@@ -821,6 +855,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieu;
         private System.Windows.Forms.DataGridViewComboBoxColumn colSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoLo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDonGiaNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayNhap;
@@ -837,7 +872,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbNhaCungCap;
         private System.Windows.Forms.Button btnThemNCC;
-
-
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtSoLo;
     }
 }
