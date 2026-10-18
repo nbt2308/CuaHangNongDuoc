@@ -122,6 +122,7 @@
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(153, 20);
             this.txtMaPhieu.TabIndex = 14;
+            this.txtMaPhieu.ReadOnly = true;
             // 
             // label4
             // 
@@ -169,14 +170,14 @@
             // 
             // numTongTien
             // 
-            this.numTongTien.Increment = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.numTongTien.Location = new System.Drawing.Point(115, 82);
             this.numTongTien.Maximum = new decimal(new int[] {
             1000000000,
+            0,
+            0,
+            0});
+            this.numTongTien.Increment = new decimal(new int[] {
+            10000,
             0,
             0,
             0});
@@ -206,6 +207,7 @@
             // 
             // cmbLyDoChi
             // 
+            this.cmbLyDoChi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLyDoChi.FormattingEnabled = true;
             this.cmbLyDoChi.Location = new System.Drawing.Point(115, 55);
             this.cmbLyDoChi.Name = "cmbLyDoChi";

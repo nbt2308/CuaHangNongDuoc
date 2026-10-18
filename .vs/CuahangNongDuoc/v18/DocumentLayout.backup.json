@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|d:\\nbt\\agu\\hk7\\tkptbtpm\\doan\\cuahang_nongduoc\\cuahang_nongduoc\\cuahang nongduoc\\controller\\ctpncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:controller\\ctpncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|d:\\nbt\\agu\\hk7\\tkptbtpm\\doan\\cuahang_nongduoc\\cuahang_nongduoc\\cuahang nongduoc\\frmkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|d:\\nbt\\agu\\hk7\\tkptbtpm\\doan\\cuahang_nongduoc\\cuahang_nongduoc\\cuahang nongduoc\\businessobject\\ctpn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:businessobject\\ctpn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|d:\\nbt\\agu\\hk7\\tkptbtpm\\doan\\cuahang_nongduoc\\cuahang_nongduoc\\cuahang nongduoc\\frmkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CTPN.cs",
-              "DocumentMoniker": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\BusinessObject\\CTPN.cs",
-              "RelativeDocumentMoniker": "BusinessObject\\CTPN.cs",
-              "ToolTip": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\BusinessObject\\CTPN.cs",
-              "RelativeToolTip": "BusinessObject\\CTPN.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "frmKhachHang.cs",
+              "DocumentMoniker": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\frmKhachHang.cs",
+              "RelativeDocumentMoniker": "frmKhachHang.cs",
+              "ToolTip": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\frmKhachHang.cs",
+              "RelativeToolTip": "frmKhachHang.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwEsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-18T14:57:00.093Z",
+              "WhenOpened": "2026-10-18T15:23:52.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CTPNController.cs",
-              "DocumentMoniker": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\Controller\\CTPNController.cs",
-              "RelativeDocumentMoniker": "Controller\\CTPNController.cs",
-              "ToolTip": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\Controller\\CTPNController.cs*",
-              "RelativeToolTip": "Controller\\CTPNController.cs*",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowC8AAABLAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "frmKhachHang.cs [Design]",
+              "DocumentMoniker": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\frmKhachHang.cs",
+              "RelativeDocumentMoniker": "frmKhachHang.cs",
+              "ToolTip": "D:\\nbt\\AGU\\HK7\\TKPTBTPM\\Doan\\Cuahang_Nongduoc\\Cuahang_Nongduoc\\Cuahang Nongduoc\\frmKhachHang.cs [Design]",
+              "RelativeToolTip": "frmKhachHang.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-18T14:39:59.922Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-18T15:23:50.591Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

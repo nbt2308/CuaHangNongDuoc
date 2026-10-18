@@ -57,6 +57,12 @@ namespace CuahangNongduoc
 
         private void toolSave_Click(object sender, EventArgs e)
         {
+            if (cmbLyDoChi.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn lý do chi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             txtMaPhieu.Focus();
             bindingNavigator.BindingSource.MoveNext();
             ctrl.Save();
