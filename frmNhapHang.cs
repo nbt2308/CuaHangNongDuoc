@@ -218,7 +218,9 @@ namespace CuahangNongduoc
             if (!String.IsNullOrEmpty(maPhieuCanChon))
                 ctrl.ChonPhieuNhap(maPhieuCanChon);
 
-            ctrlMaSP.HienThiChiTietPhieuNhap(txtMaPhieu.Text, dataGridView);
+            // Lấy mã từ dòng hiện tại của BindingSource, không phụ thuộc txtMaPhieu đã kịp cập nhật hay chưa.
+            string maHienTai = ctrl.LayMaPhieuHienTai();
+            ctrlMaSP.HienThiChiTietPhieuNhap(String.IsNullOrEmpty(maHienTai) ? txtMaPhieu.Text : maHienTai, dataGridView);
             Allow(false);
         }
 
@@ -660,8 +662,10 @@ namespace CuahangNongduoc
 
         private void CapNhat()
         {
-            //DataService.ExecuteDataTableTransaction(LayDanhSachSanPhamCanTinhLai(),
-            //    ctrl.GetDataService(), ctrlMaSP.GetDataService());
+            // Lưu phiếu + lô thêm/xóa và tính lại tồn kho trong một transaction.
+            // Không có thay đổi nào thì hàm trả về 0 và không báo lỗi.
+            DataService.ExecuteDataTableTransaction(LayDanhSachSanPhamCanTinhLai(),
+                ctrl.GetDataService(), ctrlMaSP.GetDataService());
         }
 
         private void ThemMoi()
@@ -719,6 +723,8 @@ namespace CuahangNongduoc
 
         private void toolLuuThem_Click(object sender, EventArgs e)
         {
+            if (status == Controll.Edit)
+                return;
             try
             {
                 Luu();
@@ -795,7 +801,8 @@ namespace CuahangNongduoc
             txtMaPhieu.ReadOnly = true;
             txtMaPhieu.Enabled = true;
             cmbNhaCungCap.Enabled = val;
-            dtNgayNhap.Enabled = val;
+            // Chỉ cho nhập ngày nhập khi lập phiếu mới; đang chỉnh sửa phiếu đã lưu thì khóa, không cho đổi.
+            dtNgayNhap.Enabled = val && status != Controll.Edit;
             numTongTien.ReadOnly = true;
             numTongTien.Enabled = false;
             numConNo.ReadOnly = true;
@@ -815,6 +822,8 @@ namespace CuahangNongduoc
             dataGridView.Enabled = true;
             toolChinhsua.Enabled = status == Controll.Normal;
             toolXoa.Enabled = status == Controll.Normal;
+            // Đang chỉnh sửa phiếu có sẵn thì khóa nút Thêm (tránh lưu dở rồi nhảy sang phiếu mới).
+            toolLuuThem.Enabled = status != Controll.Edit;
         }
 
         private void DatTrangThaiNutDieuHuong(bool enabled)

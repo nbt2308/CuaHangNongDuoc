@@ -114,5 +114,10 @@ namespace CuahangNongduoc
                 ctrl.HienthiPhieuChi(bindingNavigator, dataGridView, cmbLyDoChi, txtMaPhieu, dtNgayChi, numTongTien, txtGhiChu);
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            frmThanhToan_Load(sender, e);
+        }
     }
 }

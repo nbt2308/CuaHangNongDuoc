@@ -145,6 +145,16 @@ namespace CuahangNongduoc.DataLayer
             return result != null && result != DBNull.Value && Convert.ToInt64(result) > 0;
         }
 
+        // Tổng số lượng của lô đã bán (để suy ra số lượng nhập gốc = tồn còn lại + đã bán).
+        public long LaySoLuongDaBan(String idMaLo)
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand("SELECT SUM(SO_LUONG) FROM CHI_TIET_PHIEU_BAN WHERE ID_MA_SAN_PHAM=?");
+            cmd.Parameters.Add("id", OleDbType.VarChar, 50).Value = idMaLo;
+            object result = ds.ExecuteScalar(cmd);
+            return (result == null || result == DBNull.Value) ? 0 : Convert.ToInt64(result);
+        }
+
          public bool CoLoDaBan(String idMaLo)
         {
             DataService ds = new DataService();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -36,7 +36,41 @@ namespace CuahangNongduoc.Controller
             bs.DataSource = tbl;
             bn.BindingSource = bs;
             dg.DataSource = bs;
-            
+        }
+
+        public void HienthiDataGridview(System.Windows.Forms.DataGridView dg, System.Windows.Forms.BindingNavigator bn,
+            System.Windows.Forms.TextBox txtMa, System.Windows.Forms.TextBox txtTen,
+            System.Windows.Forms.TextBox txtDiaChi, System.Windows.Forms.TextBox txtSDT)
+        {
+            System.Windows.Forms.BindingSource bs = new System.Windows.Forms.BindingSource();
+            DataTable tbl = factory.DanhsachNCC();
+            bs.DataSource = tbl;
+            bn.BindingSource = bs;
+            dg.DataSource = bs;
+
+            if (txtMa != null)
+            {
+                txtMa.DataBindings.Clear();
+                txtMa.DataBindings.Add("Text", bs, "ID", false, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged);
+            }
+
+            if (txtTen != null)
+            {
+                txtTen.DataBindings.Clear();
+                txtTen.DataBindings.Add("Text", bs, "HO_TEN", false, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged);
+            }
+
+            if (txtDiaChi != null)
+            {
+                txtDiaChi.DataBindings.Clear();
+                txtDiaChi.DataBindings.Add("Text", bs, "DIA_CHI", false, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged);
+            }
+
+            if (txtSDT != null)
+            {
+                txtSDT.DataBindings.Clear();
+                txtSDT.DataBindings.Add("Text", bs, "DIEN_THOAI", false, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged);
+            }
         }
 
         public void HienthiDataGridviewComboBox(System.Windows.Forms.DataGridViewComboBoxColumn cmb)
@@ -85,9 +119,40 @@ namespace CuahangNongduoc.Controller
         {
             factory.TimDiaChi(diachi);
         }
+        public void TimDiaChi(String diachi, System.Windows.Forms.BindingSource bindingSource)
+        {
+            if (bindingSource != null)
+            {
+                bindingSource.DataSource = factory.TimDiaChi(diachi);
+            }
+            else
+            {
+                factory.TimDiaChi(diachi);
+            }
+        }
+
         public void TimHoTen(String hoten)
         {
             factory.TimHoTen(hoten);
+        }
+        public void TimHoTen(String hoten, System.Windows.Forms.BindingSource bindingSource)
+        {
+            if (bindingSource != null)
+            {
+                bindingSource.DataSource = factory.TimHoTen(hoten);
+            }
+            else
+            {
+                factory.TimHoTen(hoten);
+            }
+        }
+
+        public void TaiLaiNhaCungCap(System.Windows.Forms.BindingSource bindingSource)
+        {
+            if (bindingSource != null)
+            {
+                bindingSource.DataSource = factory.DanhsachNCC();
+            }
         }
 
         public DataRow NewRow()

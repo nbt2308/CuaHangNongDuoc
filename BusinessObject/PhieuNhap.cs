@@ -55,6 +55,12 @@ namespace CuahangNongduoc.BusinessObject
             set { m_NCC = value; }
         }
 
+        // Tên nhà cung cấp dạng chuỗi phẳng cho báo cáo RDLC (truy cập thuộc tính của đối tượng lồng nhau trong RDLC bị #Error).
+        public String TenNhaCungCap
+        {
+            get { return (m_NCC == null || m_NCC.HoTen == null) ? String.Empty : m_NCC.HoTen; }
+        }
+
         private IList<MaSanPham> m_ChiTiet;
         public IList<MaSanPham> ChiTiet
         {

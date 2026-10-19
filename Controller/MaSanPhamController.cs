@@ -158,9 +158,11 @@ namespace CuahangNongduoc.Controller
                 MaSanPham sp = new MaSanPham();
                 sp = new MaSanPham();
                 sp.Id = Convert.ToString(row["ID"]);
-                sp.SoLuong = Convert.ToInt32(row["SO_LUONG"]);
+                // SO_LUONG của lô là số CÒN LẠI sau khi bán. Phiếu nhập phải in số lượng đã nhập
+                // (còn lại + đã bán), nếu không Thành tiền các dòng không cộng ra Tổng tiền phiếu.
+                sp.SoLuong = checked(Convert.ToInt32(row["SO_LUONG"]) + Convert.ToInt32(factory.LaySoLuongDaBan(sp.Id)));
                 sp.GiaNhap = Convert.ToInt64(row["DON_GIA_NHAP"]);
-                sp.ThanhTien = sp.SoLuong * sp.GiaNhap;
+                sp.ThanhTien = (long)sp.SoLuong * sp.GiaNhap;
                 sp.NgayNhap = Convert.ToDateTime(row["NGAY_NHAP"]);
                 sp.NgaySanXuat = Convert.ToDateTime(row["NGAY_SAN_XUAT"]);
                 sp.NgayHetHan = Convert.ToDateTime(row["NGAY_HET_HAN"]);

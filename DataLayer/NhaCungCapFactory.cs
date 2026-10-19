@@ -52,7 +52,8 @@ namespace CuahangNongduoc.DataLayer
         }
         public bool Save()
         {
-            return m_Ds.ExecuteNoneQuery() > 0;
+            DataService.OpenConnection();
+            return m_Ds.ExecuteNoneQuery() >= 0;
         }
     }
 }

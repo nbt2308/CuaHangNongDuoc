@@ -8,7 +8,7 @@ namespace CuahangNongduoc
 {
     public partial class frmDaiLy : Form
     {
-        private readonly CuahangNongduoc.Controller.KhachHangController ctrl = new CuahangNongduoc.Controller.KhachHangController();
+        private readonly CuahangNongduoc.Controller.DaiLyController ctrl = new CuahangNongduoc.Controller.DaiLyController();
 
         public frmDaiLy()
         {
@@ -29,11 +29,15 @@ namespace CuahangNongduoc
                 // Hiển thị dữ liệu lên DataGridView và BindingNavigator
                 ctrl.HienthiDaiLyDataGridview(dataGridView, bindingNavigator);
 
-                // Binding dữ liệu cho các TextBox nhập liệu
+                // Binding dữ liệu cho các TextBox nhập liệu (cột DAI_LY thay vì HO_TEN)
                 BindControl(txtMa, "ID");
-                BindControl(txtHoTen, "HO_TEN");
+                BindControl(txtHoTen, "DAI_LY");
                 BindControl(txtDiaChi, "DIA_CHI");
                 BindControl(txtDienThoai, "DIEN_THOAI");
+
+                txtHoTen.MaxLength = 255;
+                txtDiaChi.MaxLength = 255;
+                txtDienThoai.MaxLength = 50;
             }
             catch (Exception ex)
             {
@@ -41,6 +45,9 @@ namespace CuahangNongduoc
             }
         }
 
+        /// <summary>
+        /// Gắn DataBindings cho 1 TextBox vào BindingSource thông qua BindingNavigator.
+        /// </summary>
         private void BindControl(Control control, string propertyName)
         {
             if (control != null && bindingNavigator.BindingSource != null)
@@ -50,45 +57,145 @@ namespace CuahangNongduoc
             }
         }
 
+        // ============================================================
+        // 1. NÚT THÊM
+        // ============================================================
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            if (bindingNavigator.BindingSource != null)
+            {
+                long maso = ThamSo.KhachHang;
+                DataRowView row = (DataRowView)bindingNavigator.BindingSource.AddNew();
+                row["ID"] = maso;
+                row["DAI_LY"] = "";
+                row["DIA_CHI"] = "";
+                row["DIEN_THOAI"] = "";
+
+                // Tăng tham số tự động sau khi cấp mã thành công
+                ThamSo.KhachHang = maso + 1;
+            }
+            txtHoTen.Focus();
+        }
+
+        // ============================================================
+        // 2. NÚT XÓA
+        // ============================================================
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            if (bindingNavigator.BindingSource?.Current != null)
+            {
+                try
+                {
+                    DataRowView view = (DataRowView)bindingNavigator.BindingSource.Current;
+
+                    // Kiểm tra ràng buộc – bỏ qua nếu dòng mới chưa lưu
+                    if (view.Row.RowState != DataRowState.Added)
+                    {
+                        string idDaiLy = Convert.ToString(view["ID"]);
+                        if (!ctrl.KiemTraRangBuocXoa(idDaiLy))
+                        {
+                            MessageBox.Show("Không thể xóa đại lý này vì đã có phát sinh Phiếu bán hàng hoặc Dư nợ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    if (MessageBox.Show("Bạn có chắc chắn muốn xóa đại lý này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        bindingNavigator.BindingSource.RemoveCurrent();
+                        // Lưu ngay xuống DB để xóa khỏi cơ sở dữ liệu
+                        ctrl.Save();
+                        MessageBox.Show("Đã xóa đại lý thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // Bấm phím Delete trên bàn phím (DataGridView)
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                // Kiểm tra ràng buộc trước khi xóa
+                if (e.Row.Cells["colID"].Value != null)
+                {
+                    string idDaiLy = e.Row.Cells["colID"].Value.ToString();
+                    DataRowView drv = e.Row.DataBoundItem as DataRowView;
+
+                    // Chỉ kiểm tra ràng buộc nếu dòng đã tồn tại trong DB
+                    if (drv != null && drv.Row.RowState != DataRowState.Added)
+                    {
+                        if (!ctrl.KiemTraRangBuocXoa(idDaiLy))
+                        {
+                            MessageBox.Show("Không thể xóa đại lý này vì đã có phát sinh Phiếu bán hàng hoặc Dư nợ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            return;
+                        }
+                    }
+                }
+
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đại lý này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // Sau khi xóa xong sẽ tự động lưu xuống DB
+                    this.BeginInvoke((Action)(() => {
+                        try { ctrl.Save(); } catch { }
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
+
+        // ============================================================
+        // 3. NÚT LƯU
+        // ============================================================
         private void toolLuu_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Kiểm tra trường Tên đại lý không được để trống hoặc chỉ có khoảng trắng
-                string hoTen = txtHoTen.Text.Trim();
-                if (string.IsNullOrWhiteSpace(hoTen))
+                // 1. Kiểm tra trường Tên đại lý không được để trống
+                string tenDaiLy = txtHoTen.Text.Trim();
+                if (string.IsNullOrWhiteSpace(tenDaiLy))
                 {
                     MessageBox.Show("Tên đại lý không được để trống!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtHoTen.Focus();
                     return;
                 }
 
-                // 2. Kiểm tra định dạng số điện thoại (Bắt buộc đủ 10 số và bắt đầu bằng số 0 nếu có nhập)
+                // 2. Kiểm tra số điện thoại di động Việt Nam (10 số, đầu số hợp lệ)
                 string sdt = txtDienThoai.Text.Trim();
                 if (!string.IsNullOrEmpty(sdt))
                 {
-                    if (!sdt.StartsWith("0") || sdt.Length != 10 || !long.TryParse(sdt, out _))
+                    bool sdtHopLe = Regex.IsMatch(sdt, @"^(03[2-9]|05[2-9]|07[0-9]|08[1-9]|09[0-9])[0-9]{7}$");
+                    if (!sdtHopLe)
                     {
-                        MessageBox.Show("Số điện thoại không hợp lệ! Số điện thoại phải có đúng 10 chữ số và bắt đầu bằng số 0.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Số điện thoại không hợp lệ! Vui lòng nhập số di động Việt Nam gồm 10 chữ số, bắt đầu bằng đầu số hợp lệ (03, 05, 07, 08 hoặc 09).", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtDienThoai.Focus();
                         return;
                     }
 
-                    // 3. Kiểm tra trùng lặp số điện thoại với các dòng khác trong BindingSource / DataTable
+                    // 3. Kiểm tra trùng lặp số điện thoại với các dòng khác trong DataTable
                     if (bindingNavigator.BindingSource != null && bindingNavigator.BindingSource.DataSource is DataTable dt)
                     {
                         var currentRow = ((DataRowView)bindingNavigator.BindingSource.Current)?.Row;
                         foreach (DataRow row in dt.Rows)
                         {
-                            // Bỏ qua dòng hiện tại đang sửa
                             if (row == currentRow) continue;
-
-                            // Nếu trạng thái dòng bị xóa thì bỏ qua
                             if (row.RowState == DataRowState.Deleted) continue;
 
                             if (row["DIEN_THOAI"] != DBNull.Value && row["DIEN_THOAI"].ToString().Trim() == sdt)
                             {
-                                MessageBox.Show($"Số điện thoại '{sdt}' đã tồn tại cho đại lý khác ({row["HO_TEN"]}). Vui lòng nhập số khác!", "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show($"Số điện thoại '{sdt}' đã tồn tại cho đại lý khác ({row["DAI_LY"]}). Vui lòng nhập số khác!", "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 txtDienThoai.Focus();
                                 return;
                             }
@@ -96,14 +203,14 @@ namespace CuahangNongduoc
                     }
                 }
 
-                // 4. Tự động chuẩn hóa khoảng trắng (Trim & loại bỏ khoảng trắng thừa giữa các từ)
-                txtHoTen.Text = Regex.Replace(hoTen, @"\s+", " ");
+                // 4. Tự động chuẩn hóa khoảng trắng
+                txtHoTen.Text = Regex.Replace(tenDaiLy, @"\s+", " ");
                 if (!string.IsNullOrEmpty(txtDiaChi.Text))
                 {
                     txtDiaChi.Text = Regex.Replace(txtDiaChi.Text.Trim(), @"\s+", " ");
                 }
 
-                // 5. Buộc BindingSource kết thúc quá trình chỉnh sửa để cập nhật vào DataTable
+                // 5. Buộc BindingSource kết thúc quá trình chỉnh sửa
                 if (bindingNavigator.BindingSource != null)
                 {
                     bindingNavigator.BindingSource.EndEdit();
@@ -111,7 +218,7 @@ namespace CuahangNongduoc
 
                 bindingNavigatorPositionItem.Focus();
 
-                // 6. Gọi lệnh lưu xuống CSDL thông qua Controller
+                // 6. Gọi lệnh lưu xuống CSDL bảng DAI_LY
                 ctrl.Save();
 
                 MessageBox.Show("Đã lưu dữ liệu đại lý thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -122,43 +229,73 @@ namespace CuahangNongduoc
             }
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        // ============================================================
+        // 4. NÚT HỦY THAO TÁC
+        // ============================================================
+        private void toolHuy_Click(object sender, EventArgs e)
         {
-            if (bindingNavigator.BindingSource != null)
+            try
             {
-                long maso = ThamSo.KhachHang;
-                DataRowView row = (DataRowView)bindingNavigator.BindingSource.AddNew();
-                row["ID"] = maso;
-                row["LOAI_KH"] = true;
-                row["HO_TEN"] = "";
-                row["DIA_CHI"] = "";
-                row["DIEN_THOAI"] = "";
+                if (bindingNavigator.BindingSource != null)
+                {
+                    BindingSource source = bindingNavigator.BindingSource;
+                    source.CancelEdit();
 
-                // Tăng tham số tự động sau khi cấp mã thành công
-                ThamSo.KhachHang = maso + 1;
+                    // Nạp lại toàn bộ danh sách đại lý (hủy bỏ mọi thay đổi chưa lưu)
+                    ctrl.TaiLaiDaiLy(source);
+                    source.MoveFirst();
+                }
+
+                MessageBox.Show("Đã hủy bỏ thao tác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            txtHoTen.Focus();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi hủy thao tác: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        // ============================================================
+        // NÚT THOÁT
+        // ============================================================
+        private void toolThoat_Click(object sender, EventArgs e)
         {
-            if (bindingNavigator.BindingSource?.Current != null)
+            try
             {
-                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đại lý này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (bindingNavigator.BindingSource?.DataSource is DataTable dt)
                 {
-                    bindingNavigator.BindingSource.RemoveCurrent();
+                    dt.RejectChanges();
                 }
             }
+            catch { }
+
+            this.Close();
         }
 
-        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        // ============================================================
+        // CHẶN NHẬP CHỮ VÀO Ô ĐIỆN THOẠI
+        // ============================================================
+        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa đại lý này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (char.IsControl(e.KeyChar))
             {
-                e.Cancel = true;
+                return;
+            }
+
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (txtDienThoai.Text.Length >= 10 && txtDienThoai.SelectionLength == 0)
+            {
+                e.Handled = true;
             }
         }
 
+        // ============================================================
+        // TÌM KIẾM
+        // ============================================================
         private void toolTimHoTen_Click(object sender, EventArgs e)
         {
             toolTimDiaChi.Checked = false;
@@ -177,6 +314,29 @@ namespace CuahangNongduoc
             bindingNavigator.Focus();
         }
 
+        private void toolTimKhachHang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                string keyword = toolTimKhachHang.Text.Trim();
+                if (!string.IsNullOrEmpty(keyword) && !keyword.StartsWith("Tìm theo"))
+                {
+                    try
+                    {
+                        if (toolTimHoTen.Checked)
+                            ctrl.TimHoTen(keyword, bindingNavigator.BindingSource);
+                        else
+                            ctrl.TimDiaChi(keyword, bindingNavigator.BindingSource);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private void toolTimKhachHang_Enter(object sender, EventArgs e)
         {
             if (toolTimKhachHang.Text.StartsWith("Tìm theo"))
@@ -192,100 +352,6 @@ namespace CuahangNongduoc
             {
                 toolTimKhachHang.Text = toolTimHoTen.Checked ? "Tìm theo Tên đại lý" : "Tìm theo Địa chỉ";
                 toolTimKhachHang.ForeColor = Color.Gray;
-            }
-        }
-
-        private void toolTimKhachHang_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                string keyword = toolTimKhachHang.Text.Trim();
-                if (!string.IsNullOrEmpty(keyword) && !keyword.StartsWith("Tìm theo"))
-                {
-                    try
-                    {
-                        if (toolTimHoTen.Checked)
-                            ctrl.TimHoTen(keyword, true);
-                        else
-                            ctrl.TimDiaChi(keyword, true);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        private void toolThoat_Click(object sender, EventArgs e)
-        {
-            // Xử lý hoàn tác (RejectChanges) nếu có dữ liệu chưa lưu trước khi thoát
-            try
-            {
-                if (bindingNavigator.BindingSource?.DataSource is DataTable dt)
-                {
-                    dt.RejectChanges();
-                }
-            }
-            catch { }
-
-            this.Close();
-        }
-
-        private void txtDienThoai_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Cho phép các phím điều khiển hệ thống (Backspace, Delete, v.v.)
-            if (char.IsControl(e.KeyChar))
-            {
-                return;
-            }
-
-            // Chặn tuyệt đối không cho nhập chữ cái hoặc ký tự đặc biệt, chỉ nhận số (0-9)
-            if (!char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-                return;
-            }
-
-            // Khống chế nghiêm ngặt tối đa không quá 10 ký tự số
-            if (txtDienThoai.Text.Length >= 10 && txtDienThoai.SelectionLength == 0)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void toolHuy_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (bindingNavigator.BindingSource != null)
-                {
-                    // 1. Hủy bỏ tiến trình chỉnh sửa hiện tại trên BindingSource
-                    bindingNavigator.BindingSource.CancelEdit();
-
-                    // 2. Nếu nguồn dữ liệu là DataTable, xử lý hủy thay đổi
-                    if (bindingNavigator.BindingSource.DataSource is DataTable dt)
-                    {
-                        // Kiểm tra xem dòng hiện tại có phải là dòng mới thêm (Added) hay không
-                        if (bindingNavigator.BindingSource.Current is DataRowView rowView)
-                        {
-                            if (rowView.Row.RowState == DataRowState.Added)
-                            {
-                                // Nếu đang thêm mới mà bấm hủy thì xóa luôn dòng trống đó đi
-                                rowView.Row.Delete();
-                            }
-                        }
-
-                        // Hoàn tác tất cả các thay đổi sửa chữa khác trên bảng
-                        dt.RejectChanges();
-                    }
-                }
-
-                MessageBox.Show("Đã hủy bỏ thao tác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi hủy thao tác: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

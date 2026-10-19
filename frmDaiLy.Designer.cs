@@ -284,8 +284,7 @@ namespace CuahangNongduoc
             this.colID,
             this.colHoTen,
             this.colDiaChi,
-            this.colDienThoai,
-            this.colLoaiKH});
+            this.colDienThoai});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 88);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
@@ -307,7 +306,7 @@ namespace CuahangNongduoc
             // 
             // colHoTen
             // 
-            this.colHoTen.DataPropertyName = "HO_TEN";
+            this.colHoTen.DataPropertyName = "DAI_LY";
             this.colHoTen.HeaderText = "Tên đại lý";
             this.colHoTen.MinimumWidth = 6;
             this.colHoTen.Name = "colHoTen";

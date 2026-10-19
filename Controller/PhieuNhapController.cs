@@ -87,6 +87,9 @@ namespace CuahangNongduoc.Controller
 
         public void HienthiPhieuNhap(BindingNavigator bn, TextBox txt, ComboBox cmb, DateTimePicker dt, NumericUpDown numTongTien, NumericUpDown numDaTra, NumericUpDown numConNo)
         {
+            // Constructor chỉ nạp bảng rỗng (ID='-1'). Phải nạp danh sách phiếu trước khi bind,
+            // nếu không form nhập hàng thấy danh sách rỗng và luôn mở ra một phiếu mới.
+            bs.DataSource = factory.DanhsachPhieuNhap();
             bn.BindingSource = bs;
 
             txt.DataBindings.Clear();
@@ -123,11 +126,17 @@ namespace CuahangNongduoc.Controller
         {
             if (bs == null || bs.Count == 0 || String.IsNullOrEmpty(id))
                 return false;
-            int index = bs.Find("ID", id);
-            if (index < 0)
-                return false;
-            bs.Position = index;
-            return true;
+            // Duyệt trực tiếp thay vì bs.Find: cột ID là số nguyên nên so khớp với chuỗi qua Find không đáng tin cậy.
+            for (int i = 0; i < bs.Count; i++)
+            {
+                DataRowView drv = bs[i] as DataRowView;
+                if (drv != null && String.Equals(Convert.ToString(drv["ID"]), id, StringComparison.OrdinalIgnoreCase))
+                {
+                    bs.Position = i;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void TimPhieuNhap(String maNCC, DateTime dt)

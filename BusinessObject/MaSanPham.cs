@@ -28,6 +28,12 @@ namespace CuahangNongduoc.BusinessObject
             get { return m_SanPham; }
             set { m_SanPham = value; }
         }
+
+        // Tên sản phẩm dạng chuỗi phẳng cho báo cáo RDLC (tránh #Error khi truy cập SanPham.TenSanPham).
+        public String TenSanPham
+        {
+            get { return (m_SanPham == null || m_SanPham.TenSanPham == null) ? String.Empty : m_SanPham.TenSanPham; }
+        }
         private long m_GiaNhap;
 
         public long GiaNhap
