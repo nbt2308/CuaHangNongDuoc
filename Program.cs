@@ -14,7 +14,7 @@ namespace CuahangNongduoc
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
+
             while (true)
             {
                 Auth.UserSession.Logout();
@@ -60,9 +60,9 @@ namespace CuahangNongduoc
                 Auth.UserSession.Logout();
                 return;
             }
-=======
+
             Application.Run(new frmMain());
->>>>>>> origin/main
+
         }
     }
 }
