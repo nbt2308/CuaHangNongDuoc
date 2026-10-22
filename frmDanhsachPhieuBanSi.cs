@@ -61,7 +61,7 @@ namespace CuahangNongduoc
         private void XoaPhieuDangChon(bool hoanTon)
         {
             string maPhieu = MaPhieuDangChon();
-            if (maPhieu == null) return;
+            if (maPhieu == null || !XacNhanDongFormBanSi()) return;
             if (MessageBox.Show("Bạn có chắc chắn xóa phiếu bán sỉ này?", "Phiếu bán sỉ",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             try
@@ -73,6 +73,11 @@ namespace CuahangNongduoc
             {
                 MessageBox.Show(ex.Message, "Phiếu bán sỉ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private bool XacNhanDongFormBanSi()
+        {
+            return BanSi == null || BanSi.IsDisposed || BanSi.XacNhanDongFormBanSi();
         }
 
         frmBanSi BanSi = null;
@@ -96,6 +101,7 @@ namespace CuahangNongduoc
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!XacNhanDongFormBanSi()) return;
             if (BanSi == null || BanSi.IsDisposed)
             {
                 BanSi = new frmBanSi();

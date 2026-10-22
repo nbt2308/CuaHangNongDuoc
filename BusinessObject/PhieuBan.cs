@@ -51,6 +51,16 @@ namespace CuahangNongduoc.BusinessObject
             set { m_ConNo = value; }
         }
 
+        public long TienHang { get; set; }
+        public long TongDichVu { get; set; }
+        public bool GiaoHang { get; set; }
+        public decimal KhoangCachKm { get; set; }
+        public long PhiVanChuyen { get; set; }
+        public string LoaiGiamGia { get; set; }
+        public decimal TyLeGiamGia { get; set; }
+        public long TienGiamGia { get; set; }
+        public IList<DichVuPhieuBan> DichVu { get; set; }
+
         private IList<ChiTietPhieuBan> m_ChiTiet;
 
         public IList<ChiTietPhieuBan> ChiTiet

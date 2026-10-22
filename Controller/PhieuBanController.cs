@@ -113,9 +113,20 @@ namespace CuahangNongduoc.Controller
                 ph.Id = Convert.ToString(tbl.Rows[0]["ID"]);
                 
                 ph.NgayBan = Convert.ToDateTime(tbl.Rows[0]["NGAY_BAN"]);
-                ph.TongTien = Convert.ToInt64(tbl.Rows[0]["TONG_TIEN"]);
-                ph.DaTra = Convert.ToInt64(tbl.Rows[0]["DA_TRA"]);
-                ph.ConNo = Convert.ToInt64(tbl.Rows[0]["CON_NO"]);
+                ph.TongTien = LayLong(tbl.Rows[0], "TONG_TIEN", 0);
+                ph.DaTra = LayLong(tbl.Rows[0], "DA_TRA", 0);
+                ph.ConNo = LayLong(tbl.Rows[0], "CON_NO", ph.TongTien - ph.DaTra);
+                BanLeRepository repository = new BanLeRepository();
+                ThongTinChiPhiPhieuBan chiPhi = repository.LayChiPhiPhieu(ph.Id);
+                ph.TienHang = chiPhi.TienHang;
+                ph.TongDichVu = chiPhi.TongDichVu;
+                ph.GiaoHang = chiPhi.GiaoHang;
+                ph.KhoangCachKm = chiPhi.KhoangCachKm;
+                ph.PhiVanChuyen = chiPhi.PhiVanChuyen;
+                ph.LoaiGiamGia = chiPhi.LoaiGiamGia;
+                ph.TyLeGiamGia = chiPhi.TyLeGiamGia;
+                ph.TienGiamGia = chiPhi.TienGiamGia;
+                ph.DichVu = chiPhi.DichVu;
                 KhachHangController ctrlKH = new KhachHangController();
                 ph.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(tbl.Rows[0]["ID_KHACH_HANG"]));
                 if (ph.KhachHang == null)
@@ -129,6 +140,30 @@ namespace CuahangNongduoc.Controller
                 ph.ChiTiet = ctrl.ChiTietPhieuBan(ph.Id);
             }
             return ph;
+        }
+
+        private long LayLong(DataRow row, string column, long defaultValue)
+        {
+            return row.Table.Columns.Contains(column) && row[column] != DBNull.Value
+                ? Convert.ToInt64(row[column]) : defaultValue;
+        }
+
+        private decimal LayDecimal(DataRow row, string column, decimal defaultValue)
+        {
+            return row.Table.Columns.Contains(column) && row[column] != DBNull.Value
+                ? Convert.ToDecimal(row[column]) : defaultValue;
+        }
+
+        private bool LayBool(DataRow row, string column, bool defaultValue)
+        {
+            return row.Table.Columns.Contains(column) && row[column] != DBNull.Value
+                ? Convert.ToBoolean(row[column]) : defaultValue;
+        }
+
+        private string LayString(DataRow row, string column, string defaultValue)
+        {
+            return row.Table.Columns.Contains(column) && row[column] != DBNull.Value
+                ? Convert.ToString(row[column]) : defaultValue;
         }
 
         public void TimPhieuBan(String maKH, DateTime dt)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -32,7 +32,7 @@
         </Field>
         <Field Name="Id">
           <DataField>Id</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="KhachHang">
           <DataField>KhachHang</DataField>
@@ -45,6 +45,42 @@
         <Field Name="TongTien">
           <DataField>TongTien</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TienHang">
+          <DataField>TienHang</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TongDichVu">
+          <DataField>TongDichVu</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PhiVanChuyen">
+          <DataField>PhiVanChuyen</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TienGiamGia">
+          <DataField>TienGiamGia</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GiaoHang">
+          <DataField>GiaoHang</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="KhoangCachKm">
+          <DataField>KhoangCachKm</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="LoaiGiamGia">
+          <DataField>LoaiGiamGia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TyLeGiamGia">
+          <DataField>TyLeGiamGia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DichVu">
+          <DataField>DichVu</DataField>
+          <rd:TypeName>System.Collections.Generic.IList`1[[CuahangNongduoc.BusinessObject.DichVuPhieuBan, CuahangNongduoc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
         </Field>
         <Field Name="TenKhachHang">
           <DataField>TenKhachHang</DataField>
@@ -63,6 +99,32 @@
         <rd:DataSetName>CuahangNongduoc.BusinessObject</rd:DataSetName>
         <rd:TableName>PhieuBan</rd:TableName>
         <rd:ObjectDataSourceType>CuahangNongduoc.BusinessObject.PhieuBan, CuahangNongduoc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DichVuDataSet">
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="IdPhieuBan">
+          <DataField>IdPhieuBan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TenDichVu">
+          <DataField>TenDichVu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SoTien">
+          <DataField>SoTien</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CuahangNongduoc.BusinessObject</rd:DataSetName>
+        <rd:TableName>DichVuPhieuBan</rd:TableName>
+        <rd:ObjectDataSourceType>CuahangNongduoc.BusinessObject.DichVuPhieuBan, CuahangNongduoc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -117,7 +179,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.28528cm</Top>
-            <Left>10.27646cm</Left>
+            <Left>11.44063cm</Left>
             <Height>0.63492cm</Height>
             <Width>1.97354cm</Width>
             <ZIndex>1</ZIndex>
@@ -145,7 +207,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>3.92946cm</Top>
+            <Top>4.09659cm</Top>
             <Left>1cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.5cm</Width>
@@ -164,7 +226,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!Id.Value</Value>
+                    <Value>=First(Fields!Id.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -177,9 +239,9 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.28528cm</Top>
-            <Left>3.5cm</Left>
+            <Left>4.7875cm</Left>
             <Height>0.63492cm</Height>
-            <Width>6.5cm</Width>
+            <Width>6.1015cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -195,7 +257,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!NgayBan.Value</Value>
+                    <Value>=First(Fields!NgayBan.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -204,12 +266,12 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Right</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <Top>3.28528cm</Top>
-            <Left>12.25cm</Left>
+            <Left>13.41417cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.35cm</Width>
             <ZIndex>4</ZIndex>
@@ -227,7 +289,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!TenKhachHang.Value</Value>
+                    <Value>=First(Fields!TenKhachHang.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -240,10 +302,10 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>3.92946cm</Top>
-            <Left>3.5cm</Left>
+            <Top>4.09659cm</Top>
+            <Left>4.7875cm</Left>
             <Height>0.63492cm</Height>
-            <Width>6.5cm</Width>
+            <Width>6.1015cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -270,7 +332,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.91756cm</Top>
-            <Left>10.27646cm</Left>
+            <Left>11.44063cm</Left>
             <Height>0.63492cm</Height>
             <Width>1.97354cm</Width>
             <ZIndex>6</ZIndex>
@@ -299,7 +361,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>4.56174cm</Top>
-            <Left>10.27646cm</Left>
+            <Left>11.44063cm</Left>
             <Height>0.63492cm</Height>
             <Width>1.97354cm</Width>
             <ZIndex>7</ZIndex>
@@ -328,7 +390,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>5.23194cm</Top>
-            <Left>10.27646cm</Left>
+            <Left>11.44063cm</Left>
             <Height>0.63492cm</Height>
             <Width>1.97354cm</Width>
             <ZIndex>8</ZIndex>
@@ -346,7 +408,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!TongTien.Value</Value>
+                    <Value>=First(Fields!TongTien.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -360,7 +422,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.91756cm</Top>
-            <Left>12.25cm</Left>
+            <Left>13.41417cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.35cm</Width>
             <ZIndex>9</ZIndex>
@@ -378,7 +440,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!DaTra.Value</Value>
+                    <Value>=First(Fields!DaTra.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -392,7 +454,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>4.56174cm</Top>
-            <Left>12.25cm</Left>
+            <Left>13.41417cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.35cm</Width>
             <ZIndex>10</ZIndex>
@@ -410,7 +472,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!ConNo.Value</Value>
+                    <Value>=First(Fields!ConNo.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -424,7 +486,7 @@
               </Paragraph>
             </Paragraphs>
             <Top>5.17946cm</Top>
-            <Left>12.25cm</Left>
+            <Left>13.41417cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.35cm</Width>
             <ZIndex>11</ZIndex>
@@ -553,7 +615,7 @@
           <Subreport Name="subreport">
             <ReportName>rptChiTietPhieuBan</ReportName>
             <KeepTogether>true</KeepTogether>
-            <Top>6.4586cm</Top>
+            <Top>11.21931cm</Top>
             <Left>1cm</Left>
             <Height>1.74603cm</Height>
             <Width>13.6cm</Width>
@@ -577,7 +639,7 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>8.5909cm</Top>
+            <Top>13.2899cm</Top>
             <Left>1cm</Left>
             <Height>0.63228cm</Height>
             <Width>13.6cm</Width>
@@ -606,10 +668,10 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>4.54718cm</Top>
+            <Top>4.9079cm</Top>
             <Left>1cm</Left>
             <Height>0.63492cm</Height>
-            <Width>2.5cm</Width>
+            <Width>3.61111cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -625,7 +687,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!DiaChiKhachHang.Value</Value>
+                    <Value>=First(Fields!DiaChiKhachHang.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -638,10 +700,10 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>4.54718cm</Top>
-            <Left>3.5cm</Left>
+            <Top>4.9079cm</Top>
+            <Left>4.7875cm</Left>
             <Height>0.63492cm</Height>
-            <Width>6.5cm</Width>
+            <Width>6.1015cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
@@ -667,11 +729,40 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <Top>5.19136cm</Top>
+            <Top>5.71921cm</Top>
             <Left>1cm</Left>
             <Height>0.63492cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>20</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblTienHang">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tiền hàng:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.53053cm</Top>
+            <Left>1cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.2cm</Width>
+            <ZIndex>21</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -686,7 +777,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!DienThoaiKhachHang.Value</Value>
+                    <Value>=First(Fields!DienThoaiKhachHang.Value, "CuahangNongduoc_BusinessObject_PhieuBan")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -699,11 +790,286 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>5.19136cm</Top>
-            <Left>3.5cm</Left>
+            <Top>5.71921cm</Top>
+            <Left>4.7875cm</Left>
             <Height>0.63492cm</Height>
-            <Width>6.5cm</Width>
-            <ZIndex>21</ZIndex>
+            <Width>6.1015cm</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="valTienHang">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!tien_hang.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.53053cm</Top>
+            <Left>4.7875cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.33867cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblDichVu">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Dịch vụ:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.25691cm</Top>
+            <Left>1cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.2cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="valDichVu">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!tong_dich_vu.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.25691cm</Top>
+            <Left>4.7875cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.91017cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblShip">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIF(First(Fields!GiaoHang.Value, "CuahangNongduoc_BusinessObject_PhieuBan"), "Giao hàng (" &amp; CStr(First(Fields!KhoangCachKm.Value, "CuahangNongduoc_BusinessObject_PhieuBan")) &amp; " km):", "Lấy trực tiếp:")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.9833cm</Top>
+            <Left>1cm</Left>
+            <Height>0.55cm</Height>
+            <Width>3.61111cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="valShip">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!phi_van_chuyen.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.9833cm</Top>
+            <Left>4.7875cm</Left>
+            <Height>0.55cm</Height>
+            <Width>3.22767cm</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblDiscount">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIF(First(Fields!LoaiGiamGia.Value, "CuahangNongduoc_BusinessObject_PhieuBan") = Nothing OR First(Fields!LoaiGiamGia.Value, "CuahangNongduoc_BusinessObject_PhieuBan") = "", "Giảm giá:", First(Fields!LoaiGiamGia.Value, "CuahangNongduoc_BusinessObject_PhieuBan") &amp; " (" &amp; CStr(First(Fields!TyLeGiamGia.Value, "CuahangNongduoc_BusinessObject_PhieuBan")) &amp; "%):")</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.70968cm</Top>
+            <Left>1cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.2cm</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="valDiscount">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!tien_giam.Value</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.70968cm</Top>
+            <Left>4.7875cm</Left>
+            <Height>0.55cm</Height>
+            <Width>2.33867cm</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblDichVuChiTiet">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Chi tiết dịch vụ:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>9.43607cm</Top>
+            <Left>1cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.79267cm</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="valDichVuChiTiet">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIF(CountRows("DichVuDataSet") = 0, "Không có", Join(LookupSet(CStr(First(Fields!Id.Value, "CuahangNongduoc_BusinessObject_PhieuBan")), Fields!IdPhieuBan.Value, Fields!TenDichVu.Value &amp; ": " &amp; Format(Fields!SoTien.Value, "#,##0"), "DichVuDataSet"), ", "))</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>9.43607cm</Top>
+            <Left>4.7875cm</Left>
+            <Height>1.2cm</Height>
+            <Width>6.1015cm</Width>
+            <ZIndex>31</ZIndex>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -712,10 +1078,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>9.53186cm</Height>
+        <Height>17.18133cm</Height>
         <Style />
       </Body>
-      <Width>16.69021cm</Width>
+      <Width>16.43621cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -749,11 +1115,31 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>bang_chu</Prompt>
     </ReportParameter>
+    <ReportParameter Name="tien_hang">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>tien_hang</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="tong_dich_vu">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>tong_dich_vu</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="phi_van_chuyen">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>phi_van_chuyen</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="tien_giam">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>tien_giam</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>4</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -774,6 +1160,26 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>bang_chu</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>tien_hang</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>tong_dich_vu</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>phi_van_chuyen</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>tien_giam</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -21,10 +21,56 @@ namespace CuahangNongduoc
         private bool isBindingData;
         private bool daNapForm;
         private string maPhieuKhoiTao = null;
+        private long daTraBanDau;
+        private bool dangSuaThanhToanPhieuCu;
+        private readonly IList<DichVuPhieuBan> dichVuDraft = new List<DichVuPhieuBan>();
+        private ComboBox cmbLoaiGiamGia;
+        private NumericUpDown numTyLeGiamGia;
+        private NumericUpDown numKhoangCach;
+        private NumericUpDown numPhiShipThuCong;
+        private CheckBox chkGiaoHang;
+        private TextBox txtDichVu;
+        private NumericUpDown numTienDichVu;
+        private NumericUpDown numTienBocXep;
+        private NumericUpDown numTienDongGoi;
+        private Button btnThemDichVu;
+        private Button btnXoaDichVu;
+        private Button btnThemBocXep;
+        private Button btnThemDongGoi;
+        private DataGridView dgvDichVu;
+        private Label lblThanhToanChiTiet;
+        private Label lblTienGiam;
+        private Label lblKhoangCachKm;
+        private Label lblLoaiGiamGia;
+        private Label lblTyLeGiamGia;
+        private Label lblPhiVanChuyen;
+        private Label lblBocXep;
+        private Label lblDongGoi;
+        private Label lblDichVuKhac;
+        private readonly InvoiceChangeSubject thayDoiHoaDon = new InvoiceChangeSubject();
+        private readonly HoaDonBanFacade tinhHoaDonFacade = new HoaDonBanFacade();
+        private HoaDonBanMediator dieuPhoiTinhHoaDon;
 
         public frmBanSi()
         {
             InitializeComponent();
+            panel1.Resize += panel1_Resize;
+            CanGiuaKhuVucNhap();
+        }
+
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+            CanGiuaKhuVucNhap();
+        }
+
+        private void CanGiuaKhuVucNhap()
+        {
+            if (panel1 == null || groupBox2 == null || grpPhieuBanLe == null) return;
+
+            int tongChieuRong = grpPhieuBanLe.Width + groupBox2.Width;
+            int leTrai = Math.Max(0, (panel1.ClientSize.Width - tongChieuRong) / 2);
+            grpPhieuBanLe.Location = new System.Drawing.Point(leTrai, 4);
+            groupBox2.Location = new System.Drawing.Point(leTrai + grpPhieuBanLe.Width, 4);
         }
 
         public frmBanSi(string maPhieu) : this()
@@ -42,11 +88,37 @@ namespace CuahangNongduoc
         public void ChuyenDenPhieu(string maPhieu)
         {
             if (string.IsNullOrEmpty(maPhieu)) return;
-            maPhieuKhoiTao = maPhieu;
             if (status == Controll.AddNew || status == Controll.Edit)
             {
-                status = Controll.Normal;
-                Allow(false);
+                if (status == Controll.AddNew && ((DataTable)dsChiTiet.DataSource).Rows.Count == 0 && dichVuDraft.Count == 0)
+                {
+                    status = Controll.Normal;
+                    dangSuaThanhToanPhieuCu = false;
+                    Allow(false);
+                    bindingNavigator.BindingSource?.CancelEdit();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Lưu thay đổi hiện tại trước khi chuyển phiếu? Chọn No để bỏ thay đổi.", "Bán sỉ",
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.Cancel) return;
+                    if (result == DialogResult.Yes)
+                    {
+                        if (!Luu()) return;
+                        dangSuaThanhToanPhieuCu = false;
+                        status = Controll.Normal;
+                        soLuongGocTheoLo.Clear();
+                        Allow(false);
+                        RicarregarPhieu();
+                    }
+                    if (result == DialogResult.No)
+                    {
+                        dangSuaThanhToanPhieuCu = false;
+                        status = Controll.Normal;
+                        if (bindingNavigator.BindingSource != null && bindingNavigator.BindingSource.Current != null)
+                            DoDuLieuTuLoiLenForm();
+                    }
+                }
             }
             if (bindingNavigator.BindingSource != null)
             {
@@ -84,10 +156,17 @@ namespace CuahangNongduoc
             cmbCachTinhGiaVon.SelectedIndex = 0;
             dsChiTiet.DataSource = TaoBangChiTiet();
             dgvDanhsachSP.DataSource = dsChiTiet;
+            TaoDieuKhienChiPhi();
+            numTongTien.ValueChanged += numTongTien_ValueChanged;
+            numDaTra.ValueChanged += numTongTien_ValueChanged;
+            dieuPhoiTinhHoaDon = new HoaDonBanMediator(TaoYeuCauTinhHoaDon, CapNhatKetQuaTinhHoaDon);
+            thayDoiHoaDon.Subscribe(dieuPhoiTinhHoaDon);
             ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                 dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
             dtNgayLapPhieu.MaxDate = DateTime.Now.Date.AddDays(1).AddSeconds(-1);
             GanSuKienCurrentChanged();
+            dsChiTiet.ListChanged -= DsChiTiet_ListChanged;
+            dsChiTiet.ListChanged += DsChiTiet_ListChanged;
             isBindingData = false;
             daNapForm = true;
 
@@ -148,6 +227,167 @@ namespace CuahangNongduoc
             return table;
         }
 
+        private void TaoDieuKhienChiPhi()
+        {
+            btnThemBocXep.Click += delegate { ThemDichVuCoTen(new DichVuBocXepCreator(), numTienBocXep); };
+            btnThemDongGoi.Click += delegate { ThemDichVuCoTen(new DichVuDongGoiCreator(), numTienDongGoi); };
+            chkGiaoHang.CheckedChanged += ChiPhi_ValueChanged; numKhoangCach.ValueChanged += ChiPhi_ValueChanged;
+            numPhiShipThuCong.ValueChanged += ChiPhi_ValueChanged;
+            cmbLoaiGiamGia.SelectedIndexChanged += ChiPhi_ValueChanged;
+            numTyLeGiamGia.ValueChanged += ChiPhi_ValueChanged; btnThemDichVu.Click += btnThemDichVu_Click; btnXoaDichVu.Click += btnXoaDichVu_Click;
+        }
+
+        private void ChiPhi_ValueChanged(object sender, EventArgs e)
+        {
+            if (isBindingData) return;
+            if (numPhiShipThuCong != null) numPhiShipThuCong.Visible = chkGiaoHang.Checked;
+            CapNhatTrangThaiTyLeGiamGia();
+            CapNhatTongHoaDon();
+        }
+
+        private void CapNhatTrangThaiTyLeGiamGia()
+        {
+            if (cmbLoaiGiamGia.SelectedIndex == 0 && numTyLeGiamGia.Value != 0)
+            {
+                bool dangGanDuLieu = isBindingData;
+                isBindingData = true;
+                numTyLeGiamGia.Value = 0;
+                isBindingData = dangGanDuLieu;
+            }
+            numTyLeGiamGia.Enabled = status != Controll.Normal && !dangSuaThanhToanPhieuCu && cmbLoaiGiamGia.SelectedIndex > 0;
+        }
+
+        private void btnThemDichVu_Click(object sender, EventArgs e)
+        {
+            if (status == Controll.Normal || dangSuaThanhToanPhieuCu) return;
+            string ten = txtDichVu.Text.Trim();
+            if (ten.Length == 0 || numTienDichVu.Value <= 0) { BaoLoi("Nhập tên dịch vụ và số tiền lớn hơn 0."); return; }
+            dichVuDraft.Add(new DichVuPhieuBanFactory().TaoDichVu(ten, Decimal.ToInt64(numTienDichVu.Value)));
+            HienThiDichVu(); txtDichVu.Clear(); numTienDichVu.Value = 0; CapNhatTongHoaDon();
+        }
+
+        private void ThemDichVuCoTen(DichVuPhieuBanCreator creator, NumericUpDown controlTien)
+        {
+            if (status == Controll.Normal || dangSuaThanhToanPhieuCu) return;
+            try
+            {
+                dichVuDraft.Add(creator.TaoDichVu(Decimal.ToInt64(controlTien.Value)));
+                HienThiDichVu();
+                controlTien.Value = 0;
+                CapNhatTongHoaDon();
+            }
+            catch (Exception ex) { BaoLoi(ex.Message); }
+        }
+
+        private void btnXoaDichVu_Click(object sender, EventArgs e)
+        {
+            if (status == Controll.Normal || dangSuaThanhToanPhieuCu || dgvDichVu.CurrentRow == null) return;
+            int index = dgvDichVu.CurrentRow.Index;
+            if (index >= 0 && index < dichVuDraft.Count) dichVuDraft.RemoveAt(index);
+            HienThiDichVu(); CapNhatTongHoaDon();
+        }
+
+        private void HienThiDichVu()
+        {
+            if (dgvDichVu == null) return;
+            dgvDichVu.Rows.Clear();
+            foreach (DichVuPhieuBan dong in dichVuDraft) dgvDichVu.Rows.Add(dong.TenDichVu, dong.SoTien.ToString("#,##0"));
+        }
+
+        private void NapChiPhi(PhieuBan phieu)
+        {
+            isBindingData = true; dichVuDraft.Clear();
+            if (phieu != null && phieu.DichVu != null)
+                foreach (DichVuPhieuBan dichVu in phieu.DichVu) dichVuDraft.Add(new DichVuPhieuBan { Id = dichVu.Id, IdPhieuBan = dichVu.IdPhieuBan, TenDichVu = dichVu.TenDichVu, SoTien = dichVu.SoTien });
+            if (phieu != null)
+            {
+                chkGiaoHang.Checked = phieu.GiaoHang;
+                numKhoangCach.Value = Math.Min(numKhoangCach.Maximum, Math.Max(numKhoangCach.Minimum, phieu.KhoangCachKm));
+                cmbLoaiGiamGia.SelectedIndex = phieu.LoaiGiamGia == "Giảm giá" ? 1 : phieu.LoaiGiamGia == "Chiết khấu" ? 2 : 0;
+                numTyLeGiamGia.Value = Math.Min(numTyLeGiamGia.Maximum, Math.Max(numTyLeGiamGia.Minimum, phieu.TyLeGiamGia));
+                numPhiShipThuCong.Value = Math.Min(numPhiShipThuCong.Maximum, phieu.PhiVanChuyen);
+            }
+            HienThiDichVu(); isBindingData = false;
+            numPhiShipThuCong.Visible = phieu != null && phieu.GiaoHang;
+            HienThiTongChiPhi(phieu);
+        }
+
+        private void HienThiTongChiPhi(PhieuBan phieu)
+        {
+            if (phieu == null || lblThanhToanChiTiet == null) return;
+            lblTienGiam.Text = (String.IsNullOrEmpty(phieu.LoaiGiamGia) ? "Giảm giá" : phieu.LoaiGiamGia) +
+                (phieu.TyLeGiamGia > 0 ? " " + phieu.TyLeGiamGia.ToString("0.##") + "%" : "") +
+                ": -" + phieu.TienGiamGia.ToString("#,##0") + " đ";
+            lblThanhToanChiTiet.Text = "Tiền hàng: " + phieu.TienHang.ToString("#,##0") + " đ\r\n" +
+                "Dịch vụ: " + phieu.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + phieu.PhiVanChuyen.ToString("#,##0") + " đ\r\n" +
+                "Tổng thanh toán: " + phieu.TongTien.ToString("#,##0") + " đ\r\n" +
+                "Đã trả: " + phieu.DaTra.ToString("#,##0") + " đ   |   Còn nợ: " + phieu.ConNo.ToString("#,##0") + " đ";
+        }
+
+        private ThongTinTinhHoaDon TaoYeuCauTinhHoaDon()
+        {
+            long tienHang = 0;
+            foreach (DataRow row in ((DataTable)dsChiTiet.DataSource).Rows)
+                tienHang = checked(tienHang + Convert.ToInt64(row["THANH_TIEN"]));
+            long tongDichVu = 0;
+            foreach (DichVuPhieuBan dong in dichVuDraft) tongDichVu = checked(tongDichVu + dong.SoTien);
+            string loaiGiam = cmbLoaiGiamGia.SelectedIndex == 1 ? "Giảm giá" : cmbLoaiGiamGia.SelectedIndex == 2 ? "Chiết khấu" : null;
+            ThongTinTinhHoaDon request = new HoaDonBanBuilder().ChoLoai(LoaiHoaDonBan.BanSi).TienHang(tienHang).DichVu(tongDichVu)
+                .GiaoHang(chkGiaoHang.Checked, numKhoangCach.Value).GiamGia(loaiGiam, numTyLeGiamGia.Value).DaTra(0).Build();
+            return request;
+        }
+
+        private ThongTinChiPhiPhieuBan TinhChiPhi(long tienHang)
+        {
+            ThongTinTinhHoaDon request = TaoYeuCauTinhHoaDon();
+            request.TienHang = tienHang;
+            return TaoChiPhiTuKetQua(tinhHoaDonFacade.Tinh(request));
+        }
+
+        private ThongTinChiPhiPhieuBan TaoChiPhiTuKetQua(KetQuaTinhHoaDon result)
+        {
+            ThongTinChiPhiPhieuBan chiPhi = new ThongTinChiPhiPhieuBan();
+            chiPhi.TienHang = result.TienHang; chiPhi.TongDichVu = result.TongDichVu; chiPhi.GiaoHang = result.GiaoHang;
+            chiPhi.KhoangCachKm = result.KhoangCachKm; chiPhi.PhiVanChuyen = result.PhiVanChuyen; chiPhi.LoaiGiamGia = result.LoaiGiamGia;
+            chiPhi.TyLeGiamGia = result.TyLeGiamGia; chiPhi.TienGiamGia = result.TienGiamGia; chiPhi.TongThanhToan = result.TongThanhToan;
+            chiPhi.DichVu = new List<DichVuPhieuBan>(dichVuDraft);
+            bool dangGanDuLieu = isBindingData;
+            isBindingData = true;
+            numPhiShipThuCong.Value = Math.Min(numPhiShipThuCong.Maximum, result.PhiVanChuyen);
+            isBindingData = dangGanDuLieu;
+            lblTienGiam.Text = (String.IsNullOrEmpty(result.LoaiGiamGia) ? "Giảm giá" : result.LoaiGiamGia) +
+                (result.TyLeGiamGia > 0 ? " " + result.TyLeGiamGia.ToString("0.##") + "%" : "") +
+                ": -" + result.TienGiamGia.ToString("#,##0") + " đ";
+            lblThanhToanChiTiet.Text = "Tiền hàng: " + result.TienHang.ToString("#,##0") + " đ\r\n" +
+                "Dịch vụ: " + result.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + result.PhiVanChuyen.ToString("#,##0") + " đ\r\n" +
+                "Tổng thanh toán: " + result.TongThanhToan.ToString("#,##0") + " đ\r\n" +
+                "Đã trả: " + Decimal.ToInt64(numDaTra.Value).ToString("#,##0") + " đ   |   Còn nợ: " + (result.TongThanhToan - Decimal.ToInt64(numDaTra.Value)).ToString("#,##0") + " đ";
+            return chiPhi;
+        }
+
+        private void CapNhatKetQuaTinhHoaDon(KetQuaTinhHoaDon result)
+        {
+            ThongTinChiPhiPhieuBan chiPhi = TaoChiPhiTuKetQua(result);
+            isBindingData = true;
+            try { numTongTien.Value = chiPhi.TongThanhToan; numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value); }
+            finally { isBindingData = false; }
+        }
+
+        private void CapNhatTongHoaDon()
+        {
+            if (isBindingData || (status == Controll.Normal && !dangSuaThanhToanPhieuCu) || numTongTien == null) return;
+            try { thayDoiHoaDon.Notify(); }
+            catch { isBindingData = false; lblTienGiam.Text = "Kiểm tra thông tin giảm giá/giao hàng"; }
+        }
+
+        private void numConNo_ValueChanged(object sender, EventArgs e)
+        {
+            if (isBindingData || numTongTien == null) return;
+            isBindingData = true;
+            try { numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value); }
+            finally { isBindingData = false; }
+        }
+
         private string LayMaPhieuHienTai()
         {
             if (bindingNavigator.BindingSource != null && bindingNavigator.BindingSource.Current != null)
@@ -170,6 +410,8 @@ namespace CuahangNongduoc
                 if (txtMaPhieu.Text != maPhieu)
                     txtMaPhieu.Text = maPhieu;
 
+                PhieuBan phieu = ctrlPhieuBan.LayPhieuBan(maPhieu);
+                NapChiPhi(phieu);
                 DataTable chiTiet = repository.LayChiTiet(maPhieu);
                 DataTable draft = (DataTable)dsChiTiet.DataSource;
                 draft.Clear();
@@ -185,6 +427,11 @@ namespace CuahangNongduoc
                     newRow["GIA_VON"] = row["GIA_VON"];
                     draft.Rows.Add(newRow);
                 }
+                if (phieu != null)
+                {
+                    daTraBanDau = phieu.DaTra;
+                    numConNo.Value = phieu.ConNo;
+                }
             }
             finally
             {
@@ -199,6 +446,11 @@ namespace CuahangNongduoc
                 bindingNavigator.BindingSource.CurrentChanged -= BindingSource_CurrentChanged;
                 bindingNavigator.BindingSource.CurrentChanged += BindingSource_CurrentChanged;
             }
+        }
+
+        private void DsChiTiet_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            if (!isBindingData) CapNhatTongHoaDon();
         }
 
         private void BindingSource_CurrentChanged(object sender, EventArgs e)
@@ -273,9 +525,9 @@ namespace CuahangNongduoc
         private void btnAdd_Click(object sender, EventArgs e)
         {
             // Guard Clauses: Kiểm tra điều kiện và thoát sớm
-            if (status == Controll.Normal)
+            if (status == Controll.Normal || dangSuaThanhToanPhieuCu)
             {
-                MessageBox.Show("Chọn Chỉnh sửa hoặc Thêm mới trước khi thay đổi chi tiết.");
+                MessageBox.Show("Chọn Thêm mới trước khi thay đổi chi tiết.");
                 return;
             }
             if (cmbSanPham.SelectedValue == null || cmbSanPham.SelectedValue is DataRowView)
@@ -394,31 +646,43 @@ namespace CuahangNongduoc
         private void numTongTien_ValueChanged(object sender, EventArgs e)
         {
             if (isBindingData) return;
-            if (numDaTra.Value > numTongTien.Value) numDaTra.Value = numTongTien.Value;
+            if (!dangSuaThanhToanPhieuCu && numDaTra.Value > numTongTien.Value) numDaTra.Value = numTongTien.Value;
+            isBindingData = true;
             numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value);
+            isBindingData = false;
+            CapNhatDongThanhToanTomTat();
+        }
+
+        private void CapNhatDongThanhToanTomTat()
+        {
+            if (lblThanhToanChiTiet == null) return;
+            string[] dong = lblThanhToanChiTiet.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
+            string thanhToan = "Đã trả: " + Decimal.ToInt64(numDaTra.Value).ToString("#,##0") + " đ   |   Còn nợ: " +
+                Math.Max(0, Decimal.ToInt64(numTongTien.Value) - Decimal.ToInt64(numDaTra.Value)).ToString("#,##0") + " đ";
+            lblThanhToanChiTiet.Text = dong.Length >= 4
+                ? dong[0] + "\r\n" + dong[1] + "\r\n" + dong[2] + "\r\n" + thanhToan
+                : thanhToan;
         }
 
         // Refactoring: Extract Method TinhLaiTongTien
         private void TinhLaiTongTien()
         {
-            long tong = 0;
+            long tienHang = 0;
             foreach (DataRow row in ((DataTable)dsChiTiet.DataSource).Rows)
-                tong = checked(tong + Convert.ToInt64(row["THANH_TIEN"]));
-            if (tong > decimal.ToInt64(numTongTien.Maximum))
+                tienHang = checked(tienHang + Convert.ToInt64(row["THANH_TIEN"]));
+            if (tienHang > decimal.ToInt64(numTongTien.Maximum))
             {
                 BaoLoi("Tổng tiền vượt quá giới hạn của phiếu.");
                 return;
             }
-            isBindingData = true;
-            numTongTien.Value = tong;
-            numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value);
-            isBindingData = false;
+            CapNhatTongHoaDon();
         }
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
             if (Luu())
             {
+                dangSuaThanhToanPhieuCu = false;
                 status = Controll.Normal;
                 soLuongGocTheoLo.Clear();
                 Allow(false);
@@ -432,6 +696,23 @@ namespace CuahangNongduoc
 
         private bool Luu()
         {
+            if (dangSuaThanhToanPhieuCu)
+            {
+                try
+                {
+                    if (numDaTra.Value > numTongTien.Value)
+                    {
+                        BaoLoi("Số tiền đã trả không được lớn hơn tổng tiền.");
+                        return false;
+                    }
+                    long daTraMoi = Decimal.ToInt64(numDaTra.Value);
+                    if (daTraMoi < daTraBanDau) { BaoLoi("Số tiền đã trả không được thấp hơn số đã ghi nhận trước đó."); return false; }
+                    repository.CapNhatDaTra(new ThanhToanPhieuBan { MaPhieu = LayMaPhieuHienTai(), DaTraBanDau = daTraBanDau, DaTraMoi = daTraMoi });
+                    daTraBanDau = daTraMoi;
+                    return true;
+                }
+                catch (Exception ex) { BaoLoi(ex.Message); return false; }
+            }
             // Guard Clauses: Chống lưu Hóa đơn rỗng và kiểm tra hợp lệ
             if (cmbKhachHang.SelectedValue == null || cmbKhachHang.SelectedValue is DataRowView)
             {
@@ -462,22 +743,23 @@ namespace CuahangNongduoc
                     chiTiet.Add(dong);
                 }
                 bool laPhieuMoi = status == Controll.AddNew;
-                long tongChiTiet = 0;
+                long tienHang = 0;
                 foreach (PhanBoLoXuat dong in chiTiet)
-                    tongChiTiet = checked(tongChiTiet + dong.ThanhTien);
-                if (tongChiTiet > decimal.ToInt64(numTongTien.Maximum))
+                    tienHang = checked(tienHang + dong.ThanhTien);
+                ThongTinChiPhiPhieuBan chiPhi = TinhChiPhi(tienHang);
+                if (chiPhi.TongThanhToan > decimal.ToInt64(numTongTien.Maximum))
                 {
                     BaoLoi("Tổng tiền vượt quá giới hạn của phiếu.");
                     return false;
                 }
-                if (numDaTra.Value > tongChiTiet)
+                long daTra = Decimal.ToInt64(numDaTra.Value);
+                if (daTra > chiPhi.TongThanhToan)
                 {
                     BaoLoi("Số tiền đã trả không được lớn hơn tổng tiền.");
                     return false;
                 }
                 repository.LuuPhieu(txtMaPhieu.Text, Convert.ToString(cmbKhachHang.SelectedValue),
-                    dtNgayLapPhieu.Value.Date, tongChiTiet,
-                    Decimal.ToInt64(numDaTra.Value), chiTiet, laPhieuMoi);
+                    dtNgayLapPhieu.Value.Date, chiPhi, daTra, chiTiet, laPhieuMoi, LoaiHoaDonBan.BanSi);
                 if (laPhieuMoi && ThamSo.LaSoNguyen(txtMaPhieu.Text))
                 {
                     long soPhieu = Convert.ToInt64(txtMaPhieu.Text);
@@ -490,6 +772,11 @@ namespace CuahangNongduoc
 
         private void toolLuu_Them_Click(object sender, EventArgs e)
         {
+            if (status == Controll.Normal && !dangSuaThanhToanPhieuCu)
+            {
+                TaoPhieuMoi();
+                return;
+            }
             if (status == Controll.AddNew || status == Controll.Edit)
             {
                 DialogResult ketQua = MessageBox.Show("Lưu phiếu hiện tại và tạo phiếu mới? Chọn No để bỏ thay đổi.", "Bán sỉ",
@@ -498,12 +785,28 @@ namespace CuahangNongduoc
                 if (ketQua == DialogResult.Yes)
                 {
                     if (!Luu()) return;
+                    if (dangSuaThanhToanPhieuCu)
+                    {
+                        dangSuaThanhToanPhieuCu = false;
+                        status = Controll.Normal;
+                        soLuongGocTheoLo.Clear();
+                        Allow(false);
+                        ctrlPhieuBan = new PhieuBanController();
+                        ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                            dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
+                        GanSuKienCurrentChanged();
+                        DoDuLieuTuLoiLenForm();
+                        return;
+                    }
                     status = Controll.Normal;
                 }
                 else
                 {
                     if (status == Controll.Edit)
                     {
+                        dangSuaThanhToanPhieuCu = false;
+                        status = Controll.Normal;
+                        Allow(false);
                         ctrlPhieuBan = new PhieuBanController();
                         ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                             dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
@@ -512,15 +815,34 @@ namespace CuahangNongduoc
                     }
                     else
                     {
+                        if (((DataTable)dsChiTiet.DataSource).Rows.Count == 0 && dichVuDraft.Count == 0)
+                        {
+                            TaoPhieuMoi();
+                            return;
+                        }
                         ResetChiTiet();
+                        dichVuDraft.Clear();
                         isBindingData = true;
+                        chkGiaoHang.Checked = false;
+                        numKhoangCach.Value = 0;
+                        cmbLoaiGiamGia.SelectedIndex = 0;
+                        numTyLeGiamGia.Value = 0;
+                        HienThiDichVu();
                         numDaTra.Value = 0;
                         isBindingData = false;
+                        status = Controll.Normal;
+                        CapNhatTongHoaDon();
                     }
-                    status = Controll.Normal;
                 }
             }
+            TaoPhieuMoi();
+        }
+
+        private void TaoPhieuMoi()
+        {
             ctrlPhieuBan = new PhieuBanController();
+            dangSuaThanhToanPhieuCu = false;
+            daTraBanDau = 0;
             status = Controll.AddNew;
             soLuongGocTheoLo.Clear();
             Allow(true);
@@ -533,6 +855,13 @@ namespace CuahangNongduoc
             numConNo.Value = 0;
             isBindingData = false;
             ResetChiTiet();
+            dichVuDraft.Clear();
+            chkGiaoHang.Checked = false;
+            numKhoangCach.Value = 0;
+            cmbLoaiGiamGia.SelectedIndex = 0;
+            numTyLeGiamGia.Value = 0;
+            HienThiDichVu();
+            CapNhatTongHoaDon();
         }
 
         private void ResetChiTiet()
@@ -544,7 +873,7 @@ namespace CuahangNongduoc
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (dsChiTiet.Current == null) return;
+            if (status == Controll.Normal || dangSuaThanhToanPhieuCu || dsChiTiet.Current == null) return;
             if (MessageBox.Show("Xóa dòng chi tiết đang chọn?", "Bán sỉ", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes) return;
             dsChiTiet.RemoveCurrent();
@@ -574,39 +903,87 @@ namespace CuahangNongduoc
         {
             if (status != Controll.Normal) return;
             status = Controll.Edit;
-            CapNhatSoLuongGoc();
+            dangSuaThanhToanPhieuCu = true;
+            daTraBanDau = Decimal.ToInt64(numDaTra.Value);
             Allow(true);
         }
 
         private void Allow(bool value)
         {
+            bool suaGiaoDien = value && (status == Controll.AddNew || status == Controll.Edit && !dangSuaThanhToanPhieuCu);
             txtMaPhieu.Enabled = false;
+            bindingNavigator.Enabled = true;
+            bindingNavigatorMoveFirstItem.Enabled = !dangSuaThanhToanPhieuCu;
+            bindingNavigatorMovePreviousItem.Enabled = !dangSuaThanhToanPhieuCu;
+            bindingNavigatorMoveNextItem.Enabled = !dangSuaThanhToanPhieuCu;
+            bindingNavigatorMoveLastItem.Enabled = !dangSuaThanhToanPhieuCu;
+            bindingNavigatorPositionItem.Enabled = !dangSuaThanhToanPhieuCu;
+            toolThem.Enabled = !dangSuaThanhToanPhieuCu;
+            toolChinhSua.Enabled = !dangSuaThanhToanPhieuCu;
+            toolXoa.Enabled = !dangSuaThanhToanPhieuCu;
+            toolLuu.Enabled = value || dangSuaThanhToanPhieuCu;
             cmbKhachHang.Enabled = value && status == Controll.AddNew;
-            dtNgayLapPhieu.Enabled = false; // Đóng (khóa) ô Ngày lập: dtNgayLapPhieu.Enabled = false
+            dtNgayLapPhieu.Enabled = false;
             numDaTra.Enabled = value;
-            numTongTien.Enabled = false; // Cố định tổng tiền, tính tự động theo danh sách thực tế
-            numConNo.Enabled = false; // Đóng (khóa) ô Còn nợ: numConNo.Enabled = false (tiền còn nợ tự động tính toán)
-            cmbSanPham.Enabled = value;
-            cmbMaSanPham.Enabled = value && cmbCachChonLo.SelectedIndex == 1;
-            cmbCachChonLo.Enabled = value;
-            cmbCachTinhGiaVon.Enabled = value;
-            numDonGia.Enabled = false; // Khóa giá niêm yết, bán đúng giá hệ thống không cho sửa tay
-            numSoLuong.Enabled = value;
-            btnAdd.Enabled = value;
-            btnRemove.Enabled = value;
-            dgvDanhsachSP.Enabled = value;
+            numTongTien.Enabled = false;
+            numConNo.Enabled = false;
+            cmbSanPham.Enabled = suaGiaoDien;
+            cmbMaSanPham.Enabled = (suaGiaoDien) && cmbCachChonLo.SelectedIndex == 1;
+            cmbCachChonLo.Enabled = suaGiaoDien;
+            cmbCachTinhGiaVon.Enabled = suaGiaoDien;
+            numDonGia.Enabled = false;
+            numSoLuong.Enabled = suaGiaoDien;
+            btnAdd.Enabled = suaGiaoDien;
+            btnRemove.Enabled = suaGiaoDien;
+            dgvDanhsachSP.Enabled = suaGiaoDien;
+            chkGiaoHang.Enabled = suaGiaoDien;
+            numKhoangCach.Enabled = suaGiaoDien;
+            numPhiShipThuCong.Enabled = suaGiaoDien;
+            numTienBocXep.Enabled = suaGiaoDien;
+            numTienDongGoi.Enabled = suaGiaoDien;
+            btnThemBocXep.Enabled = suaGiaoDien;
+            btnThemDongGoi.Enabled = suaGiaoDien;
+            cmbLoaiGiamGia.Enabled = suaGiaoDien;
+            numTyLeGiamGia.Enabled = suaGiaoDien;
+            CapNhatTrangThaiTyLeGiamGia();
+            txtDichVu.Enabled = suaGiaoDien;
+            numTienDichVu.Enabled = suaGiaoDien;
+            btnThemDichVu.Enabled = suaGiaoDien;
+            btnXoaDichVu.Enabled = suaGiaoDien;
+            dgvDichVu.Enabled = suaGiaoDien;
         }
 
-        private void toolThoat_Click(object sender, EventArgs e)
+        public bool XacNhanDongFormBanSi()
         {
             if (status == Controll.AddNew || status == Controll.Edit)
             {
                 DialogResult result = MessageBox.Show("Lưu thay đổi trước khi thoát? Chọn No để bỏ thay đổi.",
                     "Bán sỉ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.Cancel) return;
-                if (result == DialogResult.Yes && !Luu()) return;
+                if (result == DialogResult.Cancel) return false;
+                if (result == DialogResult.Yes && !Luu()) return false;
+                if (result == DialogResult.No && dangSuaThanhToanPhieuCu)
+                {
+                    dangSuaThanhToanPhieuCu = false;
+                    status = Controll.Normal;
+                    Allow(false);
+                    ctrlPhieuBan = new PhieuBanController();
+                    ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                        dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
+                    GanSuKienCurrentChanged();
+                    DoDuLieuTuLoiLenForm();
+                }
+                else if (result == DialogResult.No && status == Controll.Edit)
+                {
+                    RicarregarPhieu();
+                }
             }
             Close();
+            return true;
+        }
+
+        private void toolThoat_Click(object sender, EventArgs e)
+        {
+            XacNhanDongFormBanSi();
         }
 
         private void toolXoa_Click(object sender, EventArgs e)
