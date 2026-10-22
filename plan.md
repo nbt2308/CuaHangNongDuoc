@@ -1,100 +1,138 @@
 # Kế hoạch triển khai hai chức năng hóa đơn bán hàng
 
-Đã xem luồng lập hóa đơn bán lẻ và bán sỉ, cách lưu phiếu bán cùng chi tiết, và cấu hình dự án WinForms .NET Framework 4.8. Phần lập hóa đơn hiện được chia giữa hai form gần giống nhau: [frmBanLe.cs](http://frmBanLe.cs) và [frmBanSi.cs](http://frmBanSi.cs). Hóa đơn và tổng tiền được lưu qua [BanLeRepository.cs](http://DataLayer/BanLeRepository.cs); thông tin phiếu bán được ánh xạ trong [PhieuBan.cs](http://BusinessObject/PhieuBan.cs).
+## Phạm vi đã xác nhận
 
-## Giả định nghiệp vụ để lập kế hoạch
+Ứng dụng là WinForms .NET Framework 4.8. Luồng lập hóa đơn bán lẻ/bán sỉ hiện nằm ở [frmBanLe.cs](http://frmBanLe.cs) và [frmBanSi.cs](http://frmBanSi.cs), với phần lưu tồn kho/phiếu bán tập trung đáng kể trong [BanLeRepository.cs](http://DataLayer/BanLeRepository.cs). Hóa đơn bán hàng dùng chung bảng `PHIEU_BAN` và chi tiết hàng hóa dùng `CHI_TIET_PHIEU_BAN`.
 
-- Dịch vụ phát sinh và vận chuyển là các khoản cộng vào hóa đơn, có thể có nhiều khoản dịch vụ.  
-- Chiết khấu/giảm giá được áp dụng ở cấp hóa đơn, theo **phần trăm.**  
-- Tổng thanh toán \= tiền hàng \+ dịch vụ \+ vận chuyển − giảm giá; tiền còn nợ \= tổng thanh toán − đã trả.  
-- Hai chức năng cần hoạt động cho cả hóa đơn bán lẻ và bán sỉ, đồng thời hiển thị lại khi mở/in hóa đơn cũ.  
-- Chưa có quy tắc cụ thể về thời điểm tính chiết khấu (trước hay sau phí) hoặc giới hạn phần trăm. Cần chốt các quy tắc này trước khi triển khai để tránh sai lệch nghiệp vụ.
+### Nghiệp vụ đã chốt
+
+- Áp dụng cho cả bán lẻ và bán sỉ; hóa đơn đã lập chỉ được xem/in, **cho sửa hóa đơn cũ (nhưng chỉ cho sửa phần đã trả và không được sửa số tiền đã trả nhỏ hơn lần chỉnh sửa trước đó)**.  
+    
+- Giao hàng là lựa chọn không bắt buộc; mặc định **lấy trực tiếp**. Nếu chọn giao hàng, nhân viên nhập khoảng cách (km) và hệ thống tính phí vận chuyển theo bảng giá bên dưới.  
+    
+- Dịch vụ phát sinh:  
+    
+  - Bán sỉ: phí bốc xếp, phí đóng gói.  
+  - Có thể tự nhập dịch vụ khác nếu phát sinh.  
+  - Cho phép tối đa một dòng vận chuyển (ship) trên mỗi hóa đơn.
+
+
+- Chiết khấu/giảm giá: combobox chọn một trong hai loại **Giảm giá** hoặc **Chiết khấu**, sau đó nhập tỷ lệ phần trăm. Tỷ lệ phải **nhỏ hơn 20%**.  
+    
+  Phí vận chuyển bán lẻ:  
+  - Dưới 3 km: 10.000 VND.  
+  - Từ 3 đến dưới 5 km: 15.000 VND.  
+  - Từ 5 đến dưới 10 km: 25.000 VND.  
+  - Từ 10 đến 15 km: 35.000 VND.  
+  - Trên 15 km: nhân viên nhập phí.
+
+
+  
+
+
+- Phí vận chuyển bán sỉ, căn cứ giá trị đơn hàng và khoảng cách:
+
+
+| Giá trị đơn hàng | Dưới 10 km | Từ 10 km trở lên |
+| :---- | ----: | ----: |
+| Dưới 5.000.000 VND | 100.000 VND | 200.000 VND |
+| Từ 5.000.000 đến dưới 10.000.000 VND | 50.000 VND | 150.000 VND |
+| Từ 10.000.000 đến dưới 20.000.000 VND | Miễn phí | 100.000 VND |
+| Từ 20.000.000 VND trở lên | Miễn phí | Miễn phí |
+
+### Điểm cần ghi nhận trước khi code
+
+Các quyết định chính đã được chốt ở trên. Những quy tắc sau chưa được nêu rõ trong phần chốt, vì vậy khi triển khai cần dùng giả định thống nhất và ghi rõ trong giao diện/kiểm thử:
+
+- Công thức phí bán lẻ hiện chưa định nghĩa khoảng cách âm/0; đề xuất chỉ cho phép khoảng cách dương khi chọn giao hàng.  
+- Với bán lẻ, mốc 15 km được hiểu là thuộc bậc 10–15 km (35.000 VND), lớn hơn 15 km thì nhập phí.  
+- Với bán sỉ, mốc 10 km thuộc nhóm từ 10 km trở lên; các mốc giá trị đơn hàng 5/10/20 triệu thuộc bậc bắt đầu tại mốc đó.  
+- Chưa chốt cơ sở tính giá trị đơn hàng để tra phí sỉ (đề xuất tiền hàng trước phí và trước giảm giá), thứ tự áp dụng chiết khấu so với dịch vụ/vận chuyển và quy tắc làm tròn số tiền giảm. Cần thống nhất các điểm này để không phát sinh kết quả tính khác nhau. **Chốt:** Phí ship sỉ tra theo tiền hàng trước các khoản phí và giảm giá; giảm giá tính trên tiền hàng; làm tròn đến đồng gần nhất   
+- Tỷ lệ dưới 20% được hiểu là `0 <= tỷ lệ < 20`; không cho nhập số âm.  
+- Cần xác nhận loại “Giảm giá” và “Chiết khấu” hiện chỉ khác tên/ý nghĩa trên chứng từ hay có quy tắc tính khác nhau. Tạm thời dùng cùng công thức phần trăm, lưu lại lựa chọn để hiển thị/in.
 
 ## Hướng áp dụng design pattern
 
-Không nên ép cả mười mẫu vào một lớp. Kế hoạch sử dụng chúng tại nơi phù hợp, theo định nghĩa trong [Refactoring.Guru Design Patterns Catalog](https://refactoring.guru/design-patterns/catalog).
+Áp dụng theo đúng ý nghĩa các mẫu trong [Refactoring.Guru Design Patterns Catalog](https://refactoring.guru/design-patterns/catalog), không tạo lớp chỉ để gắn tên pattern:
 
 ### 1\. Dịch vụ phát sinh và chi phí vận chuyển
 
-| Mẫu | Dự kiến áp dụng |
+| Mẫu | Vị trí áp dụng dự kiến |
 | :---- | :---- |
-| **Factory Method** | Tạo loại dòng phụ phí phù hợp, chẳng hạn dòng dịch vụ hoặc dòng vận chuyển, qua giao diện chung. |
-| **Composite** | Xem tập hợp dòng hàng, dịch vụ và vận chuyển như một cấu phần hóa đơn để tính tổng nhất quán. |
-| **Decorator** | Bọc/tăng cường một dòng hoặc cấu phần tính tiền để gắn phụ phí hoặc thông tin tính toán mà không sửa luồng tính hàng tồn kho. |
-| **Observer** | Khi danh sách dòng hoặc số tiền thay đổi, cập nhật thành tiền, tổng thanh toán và còn nợ. |
-| **Mediator** | Điều phối tương tác giữa form, danh sách dòng, bộ tính tổng và bộ lưu, tránh để các thành phần gọi trực tiếp lẫn nhau. |
+| **Factory Method** | Tạo loại dòng phụ phí (bốc xếp, đóng gói, dịch vụ tự nhập, vận chuyển) thông qua giao diện chung. |
+| **Composite** | Tính tổng hóa đơn trên cấu trúc gồm nhóm tiền hàng và các dòng phụ phí, trong khi dòng hàng vẫn giữ riêng phần xử lý tồn kho/giá vốn. |
+| **Decorator** | Bổ sung cách tính/diễn giải phụ phí cho phần tính hóa đơn mà không làm thay đổi xử lý phân bổ lô hàng. |
+| **Observer** | Khi dữ liệu dòng hàng, dịch vụ, khoảng cách hoặc giảm giá thay đổi, phát thông báo để tính lại phí/tổng/còn nợ. |
+| **Mediator** | Điều phối giao tiếp giữa form, danh sách dòng, bộ tính hóa đơn và lưu trữ để giảm phụ thuộc trực tiếp. |
 
 ### 2\. Chiết khấu và giảm giá cấp hóa đơn
 
-| Mẫu | Dự kiến áp dụng |
+| Mẫu | Vị trí áp dụng dự kiến |
 | :---- | :---- |
-| **Builder** | Dựng kết quả tính hóa đơn từ các thành phần: tiền hàng, dịch vụ, vận chuyển, loại/giá trị giảm và số đã trả. |
-| **Facade** | Cung cấp một điểm gọi đơn giản cho form để tính và kiểm tra hóa đơn, thay vì gọi nhiều lớp nghiệp vụ. |
-| **Strategy** | Thay đổi thuật toán giảm giá giữa giảm theo phần trăm và giảm số tiền cố định. |
-| **Chain of Responsibility** | Chạy lần lượt các kiểm tra như giá trị giảm hợp lệ, không vượt mức cho phép, tổng hóa đơn không âm, số đã trả hợp lệ. |
-| **Template Method** | Chuẩn hóa các bước tính hóa đơn, cho phép thay đổi các bước phù hợp nếu bán lẻ và bán sỉ có quy tắc riêng. |
+| **Builder** | Dựng dữ liệu đầu vào/kết quả hóa đơn từ tiền hàng, dịch vụ, giao hàng, tỷ lệ giảm và tiền đã trả. |
+| **Facade** | Cung cấp một điểm gọi đơn giản để form yêu cầu tính và kiểm tra hóa đơn. |
+| **Strategy** | Đóng gói quy tắc áp dụng theo lựa chọn Giảm giá/Chiết khấu; nếu sau này nghiệp vụ có thuật toán riêng thì có thể thay thế độc lập. |
+| **Chain of Responsibility** | Kiểm tra tuần tự tỷ lệ giảm, khoảng cách, phí nhập tay, tổng tiền không âm và số đã trả hợp lệ. |
+| **Template Method** | Chuẩn hóa chuỗi bước tính; cho phép khác biệt hợp lệ giữa bán lẻ và bán sỉ, đặc biệt ở chính sách phí vận chuyển. |
 
 ## Các giai đoạn thực hiện
 
-1. **Chốt quy tắc nghiệp vụ và dữ liệu**  
-   Trường hợp : Công ty có sẵn container,xe máy,...  
-   - Chốt loại và tên khoản dịch vụ, cách nhập phí vận chuyển, cho phép một dòng vận chuyển ( ship)  
-   - Chốt cách áp dụng chiết khấu (\<20%),  
-   - Giảm giá , giới hạn giá trị, **quy tắc làm tròn và thứ tự tính so với phí.**  
-   - Không cho sửa hóa đơn cũ và cách xử lý các hóa đơn đã tồn tại**( tự AI xử lý)**.
-
-	\-\>Chốt những nghiệp vụ ở trên:  
-	\-Loại dịch vụ: phí bốc xếp(bán sỉ) , phí đóng gói (bán sỉ) , tự nhập dịch vụ khác nếu có  
-            \* Giao hàng (Đây là lựa chọn phụ : Chọn giữa Giao hàng và Lấy trực tiếp (Mặc định) → Nếu chọn giao thì tính theo phí dưới đây :  
-	\- Phí vận chuyển (quy định chung: cho nhân viên nhập khoảng cách (KM)  
-	\+ Bán lẻ: dưới 3km là 10k vnd, từ 3-5km là 15k vnd, từ 5-10km thì 25k vnd, từ 10-15km 35k vnd, trên 15km thì cho nhập tiền phí vận chuyển  
-\+Bán sỉ (tính theo giá trị đơn hàng \+ khoảng cách): Dưới 5 triệu dưới 10km là 100k vnd, trên 10km là 200k vnd; 5-10 triệu dưới 10km là 50k vnd, trên 10km là 150k vnd; 10-20 triệu dưới 10km là miễn phí, trên 10km là 100k vnd; trên 20 triệu duới 10km là miễn phí, trên 10km là miễn phí.  
-           \- Phần chiết khấu và giảm giá: sẽ có 1 combobox cho chọn 1 trong 2 là giảm giá/chiết khấu, sau đó nhân viên nhập % giảm giá/chiết khẩu
-
-2. **Thiết kế mô hình tính hóa đơn**  
+1. **Chốt quy tắc tính còn mở**  
      
-   - Tách việc tính tổng khỏi logic WinForms hiện tại.  
-   - Định nghĩa dòng tiền hàng và dòng phụ phí sao cho phụ phí không làm thay đổi tồn kho, giá vốn hoặc phân bổ lô.  
-   - Xây dựng lớp/contract cho chiến lược giảm giá và các bước kiểm tra.  
-   - Thêm bộ điều phối sự kiện tính lại khi thay đổi dòng, phí, giảm giá hoặc số đã trả.
+   - Xác nhận cơ sở tính giá trị đơn hàng để chọn bậc phí vận chuyển sỉ.  
+   - Xác nhận thứ tự chiết khấu so với dịch vụ/vận chuyển, cách làm tròn và ý nghĩa riêng của hai lựa chọn Giảm giá/Chiết khấu.  
+   - Chốt xử lý khoảng cách 0/âm và xác nhận cách hiểu các ranh giới đã nêu ở trên.
+
+   
+
+2. **Thiết kế mô hình nghiệp vụ và tính tiền**  
+     
+   - Tách phép tính khỏi form WinForms.  
+   - Dòng dịch vụ/vận chuyển không tham gia thay đổi tồn kho, giá vốn hoặc phân bổ lô.  
+   - Tính tiền hàng từ `CHI_TIET_PHIEU_BAN`; tính dịch vụ/vận chuyển và giảm giá riêng; tổng phải trả và còn nợ được tạo từ các thành phần đó.  
+   - Xây dựng Factory Method, Composite, Decorator, Observer, Mediator cho các dòng phụ phí; Builder, Facade, Strategy, Chain of Responsibility, Template Method cho tính/kiểm tra hóa đơn.
 
    
 
 3. **Cập nhật giao diện lập hóa đơn**  
      
-   - Bổ sung vùng nhập dịch vụ/vận chuyển và vùng chọn loại/giá trị giảm giá.  
-   - Hiển thị riêng tiền hàng, phụ phí, giảm giá, tổng thanh toán và còn nợ.  
-   - Khóa/mở trường theo trạng thái thêm mới, chỉnh sửa, xem như các trường hiện tại.  
-   - Đồng bộ trải nghiệm giữa form bán lẻ và bán sỉ; cân nhắc trích phần dùng chung để tránh nhân đôi logic.
-
-   
-
-4. **Cập nhật lưu và đọc hóa đơn**  
+   - Bổ sung lựa chọn lấy trực tiếp/giao hàng, nhập khoảng cách và phí vận chuyển nhập tay khi vượt ngưỡng bán lẻ.  
+   - Bổ sung nhập phí bốc xếp, đóng gói (bán sỉ) và dòng dịch vụ tự nhập.  
+   - Bổ sung combobox loại giảm giá/chiết khấu, tỷ lệ phần trăm; kiểm tra tỷ lệ nhỏ hơn 20%.  
+   - Hiển thị riêng tiền hàng, tổng dịch vụ, phí vận chuyển, số tiền giảm, tổng thanh toán, đã trả và còn nợ.  
+   - Vì hóa đơn cũ không cho sửa, các điều khiển nhập liệu chỉ hoạt động khi lập hóa đơn mới; hóa đơn cũ chỉ hiển thị/in.  
+   - Giữ hành vi nhất quán ở bán lẻ và bán sỉ, đồng thời tránh nhân đôi phần tính toán.   
      
-   - Lưu và tải lại các khoản phụ phí, giảm giá cùng phiếu.  
-   - Bảo đảm lưu phiếu, chi tiết hàng và khoản phụ phí trong cùng transaction.  
-   - Cập nhật mô hình [PhieuBan.cs](http://BusinessObject/PhieuBan.cs), controller và lớp truy cập dữ liệu tương ứng.  
-   - Rà soát xóa/sửa phiếu, nợ khách hàng, danh sách phiếu và báo cáo để dùng đúng tổng thanh toán.
+
+     
+4. **Cập nhật lưu/đọc hóa đơn**  
+     
+   - Lưu thông tin giao hàng, khoảng cách, phí vận chuyển, loại/tỷ lệ/số tiền giảm và danh sách dịch vụ cùng phiếu.  
+   - Lưu phiếu, chi tiết hàng và dịch vụ trong một transaction.  
+   - Cập nhật [BusinessObject/PhieuBan.cs](http://BusinessObject/PhieuBan.cs), [Controller/PhieuBanController.cs](http://Controller/PhieuBanController.cs) và [DataLayer/BanLeRepository.cs](http://DataLayer/BanLeRepository.cs).  
+   - Cập nhật truy vấn danh sách, nợ khách hàng và báo cáo theo đúng tổng phải trả; bảo đảm dữ liệu hóa đơn cũ được quy đổi/đọc tương thích.  
+   - Không mở chức năng cập nhật hóa đơn cũ; thao tác xóa hiện hữu cần được rà soát riêng để không phá tính nhất quán dữ liệu.
 
    
 
 5. **Cập nhật mẫu in**  
      
-   - Điều chỉnh [frmInPhieuBan.cs](http://frmInPhieuBan.cs) và report [rptPhieuBan.rdlc](http://Report/rptPhieuBan.rdlc) để thể hiện phụ phí, chiết khấu và tổng sau giảm.  
-   - Kiểm tra dữ liệu hóa đơn cũ không có các trường mới vẫn đọc/in được.
+   - Điều chỉnh [frmInPhieuBan.cs](http://frmInPhieuBan.cs) và [Report/rptPhieuBan.rdlc](http://Report/rptPhieuBan.rdlc) để in dịch vụ, giao hàng, khoảng cách, phí vận chuyển, loại/tỷ lệ/số tiền giảm và tổng thanh toán.  
+   - Kiểm tra hóa đơn cũ chưa có dữ liệu phụ phí vẫn mở/in được.
 
    
 
 6. **Kiểm thử**  
      
-   - Kiểm thử không có phụ phí/giảm giá, nhiều dịch vụ, phí vận chuyển bằng 0\.  
-   - Kiểm thử giảm giá phần trăm và số tiền, giá trị biên và dữ liệu không hợp lệ.  
-   - Kiểm thử chỉnh sửa, tải lại, xóa, in hóa đơn, tính tiền đã trả/còn nợ và lưu transaction.  
-   - Kiểm thử cả bán lẻ và bán sỉ, đảm bảo không ảnh hưởng tồn kho và giá vốn.
+   - Kiểm thử lấy trực tiếp, giao hàng theo mọi bậc bán lẻ/bán sỉ, mốc biên, phí nhập tay và giá trị đơn hàng xác định bậc phí.  
+   - Kiểm thử dịch vụ bốc xếp/đóng gói/tự nhập, không dịch vụ và không vận chuyển.  
+   - Kiểm thử tỷ lệ 0%, gần 20%, bằng 20%, âm; kiểm tra làm tròn theo quy tắc đã thống nhất.  
+   - Kiểm thử tổng tiền, đã trả/còn nợ, lưu transaction, đọc/in hóa đơn mới và cũ.  
+   - Xác nhận phí/giảm không ảnh hưởng tồn kho, giá vốn và phân bổ lô; xác nhận hóa đơn đã lưu không sửa được.
 
-## Các file dự kiến liên quan
+## File dự kiến liên quan
 
-**Sẽ sửa:**
+### Sẽ sửa
 
 - [frmBanLe.cs](http://frmBanLe.cs), [frmBanLe.Designer.cs](http://frmBanLe.Designer.cs)  
 - [frmBanSi.cs](http://frmBanSi.cs), [frmBanSi.Designer.cs](http://frmBanSi.Designer.cs)  
@@ -103,17 +141,47 @@ Không nên ép cả mười mẫu vào một lớp. Kế hoạch sử dụng ch
 - [DataLayer/BanLeRepository.cs](http://DataLayer/BanLeRepository.cs)  
 - [frmInPhieuBan.cs](http://frmInPhieuBan.cs)  
 - [Report/rptPhieuBan.rdlc](http://Report/rptPhieuBan.rdlc)  
-- [CuahangNongDuoc.csproj](http://CuahangNongDuoc.csproj) để khai báo các lớp mới trong project kiểu cũ.
+- [CuahangNongDuoc.csproj](http://CuahangNongDuoc.csproj) để khai báo các lớp mới (dự án .NET Framework kiểu cũ).  
+- Các form/dữ liệu báo cáo danh sách hoặc công nợ khác nếu truy vấn hiện tại đang dựa trên `PHIEU_BAN.TONG_TIEN` như tiền hàng thuần.
 
-**Dự kiến tạo mới** (tên có thể điều chỉnh khi bắt đầu triển khai):
+### Có thể tạo mới
 
-- Các lớp mô hình dòng phụ phí/dịch vụ và thành phần tính hóa đơn.  
-- Các lớp Factory Method, Composite, Decorator, Observer/Mediator cho luồng phụ phí.  
-- Các lớp Builder, Facade, Strategy, Chain of Responsibility và Template Method cho luồng chiết khấu/tính tổng.  
-- Có thể cần lớp repository/factory riêng cho các khoản phụ phí nếu tách dữ liệu khỏi phiếu bán.
+- Các lớp dòng phụ phí/dịch vụ và mô hình tính hóa đơn.  
+- Các lớp áp dụng pattern cho dòng phụ phí và quy trình giảm giá/tính tổng.  
+- Lớp truy cập dữ liệu dịch vụ hóa đơn, nếu lưu dịch vụ trong bảng chi tiết riêng.
 
-## Cơ sở dữ liệu
+## Cơ sở dữ liệu — Tôi đã sửa db theo phần dưới đây rồi cứ sử dụng các field này khi code 
 
-Khả năng cao cần sửa cơ sở dữ liệu để lưu chi tiết dịch vụ/vận chuyển và giá trị/loại chiết khấu. Phương án dự kiến là thêm bảng chi tiết phụ phí liên kết với `PHIEU_BAN`, đồng thời thêm các cột chiết khấu vào `PHIEU_BAN` (hoặc lưu như dòng phụ phí âm nếu quy tắc và báo cáo cho phép). Cần kiểm tra schema thực tế trước khi quyết định cấu trúc cuối cùng. **Tôi sẽ chỉ ghi chú câu lệnh/cột/bảng cần thêm để bạn tự cập nhật cơ sở dữ liệu, không tự sửa database.**
+Theo schema hiện tại, **không cần sửa `SAN_PHAM` hoặc `MA_SAN_PHAM`**: phí dịch vụ/vận chuyển và giảm giá thuộc hóa đơn, không thuộc sản phẩm hay lô hàng. Dự kiến sửa `PHIEU_BAN` và tạo một bảng chi tiết dịch vụ/phụ phí mới.
 
-Đây là kế hoạch, chưa thay đổi mã nguồn hay cơ sở dữ liệu.
+### 1\. Bảng `PHIEU_BAN` — thêm các cột
+
+| Cột đề xuất | Mục đích |
+| :---- | :---- |
+| `TIEN_HANG` | Tổng tiền các dòng hàng; giúp phân biệt tiền hàng với tổng phải trả. |
+| `TONG_DICH_VU` | Tổng phí bốc xếp, đóng gói và dịch vụ tự nhập. |
+| `GIAO_HANG` | Cờ có giao hàng hay lấy trực tiếp. |
+| `KHOANG_CACH_KM` | Khoảng cách nhân viên nhập khi chọn giao hàng. |
+| `PHI_VAN_CHUYEN` | Phí vận chuyển đã tính/nhập tại thời điểm lập hóa đơn. |
+| `LOAI_GIAM_GIA` | Giá trị lựa chọn “Giảm giá” hoặc “Chiết khấu”. |
+| `TY_LE_GIAM_GIA` | Tỷ lệ phần trăm đã áp dụng (nhỏ hơn 20%). |
+| `TIEN_GIAM_GIA` | Số tiền giảm thực tế sau quy tắc làm tròn. |
+
+Giữ các cột hiện tại `TONG_TIEN`, `DA_TRA`, `CON_NO`; đề xuất quy ước `TONG_TIEN` là **tổng phải trả cuối cùng sau phụ phí và giảm giá**, `CON_NO = TONG_TIEN - DA_TRA`. Công thức dự kiến: `TONG_TIEN = TIEN_HANG + TONG_DICH_VU + PHI_VAN_CHUYEN - TIEN_GIAM_GIA` (thứ tự/cơ sở giảm cần chốt ở giai đoạn 1). Không lưu lại đơn giá phí vận chuyển theo bảng giá; lưu số phí thực tế trên phiếu để hóa đơn cũ không bị thay đổi khi chính sách giá đổi.
+
+### 2\. Tạo bảng mới `CHI_TIET_DICH_VU_PHIEU_BAN`
+
+Các cột đề xuất:
+
+- `ID` — khóa chính của dòng (tự tăng hoặc mã duy nhất theo quy ước database hiện tại).  
+- `ID_PHIEU_BAN` — khóa ngoại tới `PHIEU_BAN.ID`.  
+- `TEN_DICH_VU` — tên hiển thị, ví dụ “Phí bốc xếp”, “Phí đóng gói” hoặc tên do nhân viên nhập.  
+- `SO_TIEN` — số tiền dịch vụ.
+
+Bảng này chỉ chứa dịch vụ phát sinh; phí vận chuyển lưu tại `PHIEU_BAN` vì đã chốt tối đa một dòng vận chuyển mỗi hóa đơn. Khi xóa phiếu, xóa các dòng dịch vụ cùng transaction hoặc thiết lập cascade phù hợp với cơ chế hiện có.
+
+### Quy đổi dữ liệu hiện có
+
+Sau khi thêm cột, cần gán cho hóa đơn cũ: `TIEN_HANG = TONG_TIEN` cũ, `TONG_DICH_VU = 0`, `GIAO_HANG = False`, `KHOANG_CACH_KM = 0`, `PHI_VAN_CHUYEN = 0`, `TY_LE_GIAM_GIA = 0`, `TIEN_GIAM_GIA = 0`; `LOAI_GIAM_GIA` để rỗng/giá trị mặc định. Trước khi cập nhật cần sao lưu DB và kiểm tra kiểu dữ liệu/giá trị mặc định tương ứng (Access/OleDb hay SQL Server) trong database thực tế.
+
+**Chưa thực hiện thay đổi database.** Khi bắt đầu triển khai sẽ cung cấp câu lệnh/migration hoặc danh sách thay đổi cụ thể để bạn tự áp dụng.  

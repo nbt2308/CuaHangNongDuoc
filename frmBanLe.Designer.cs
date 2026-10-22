@@ -49,6 +49,9 @@
             this.toolXemlai = new System.Windows.Forms.ToolStripButton();
             this.toolThoat = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.grpChiPhi = new System.Windows.Forms.GroupBox();
+            this.grpTomTat = new System.Windows.Forms.GroupBox();
+            this.flowChiPhi = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbCachTinhGiaVon = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -104,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.grpChiPhi.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numThanhTien)).BeginInit();
@@ -122,6 +126,9 @@
             // bindingNavigator
             // 
             this.bindingNavigator.AddNewItem = null;
+            this.bindingNavigator.BackColor = System.Drawing.Color.White;
+            this.bindingNavigator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.bindingNavigator.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.bindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator.DeleteItem = null;
             this.bindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -150,7 +157,7 @@
             this.bindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator.Name = "bindingNavigator";
             this.bindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator.Size = new System.Drawing.Size(922, 51);
+            this.bindingNavigator.Size = new System.Drawing.Size(1142, 51);
             this.bindingNavigator.TabIndex = 0;
             this.bindingNavigator.Text = "bindingNavigator1";
             // 
@@ -308,13 +315,152 @@
             // 
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.grpPhieuBanLe);
+            this.panel1.AutoScroll = true;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Height = 280;
             this.panel1.Location = new System.Drawing.Point(0, 51);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(922, 241);
+            this.panel1.Size = new System.Drawing.Size(1142, 241);
             this.panel1.TabIndex = 61;
-            // 
+            //
+            // grpChiPhi
+            //
+            this.grpChiPhi.Controls.Add(this.flowChiPhi);
+            this.grpChiPhi.Controls.Add(this.grpTomTat);
+            this.grpChiPhi.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grpChiPhi.Name = "grpChiPhi";
+            this.grpChiPhi.Padding = new System.Windows.Forms.Padding(8);
+            this.grpChiPhi.Size = new System.Drawing.Size(320, 700);
+            this.grpChiPhi.TabStop = false;
+            this.grpChiPhi.Text = "Chi phí và thanh toán";
+            //
+            // grpTomTat
+            this.grpTomTat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpTomTat.Height = 150;
+            this.grpTomTat.Name = "grpTomTat";
+            this.grpTomTat.Padding = new System.Windows.Forms.Padding(8);
+            this.grpTomTat.TabStop = false;
+            this.grpTomTat.Text = "T\u00F3m t\u1EAFt h\u00F3a \u0111\u01A1n";
+            // flowChiPhi
+            //
+            this.flowChiPhi.AutoScroll = true;
+            this.flowChiPhi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowChiPhi.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowChiPhi.Name = "flowChiPhi";
+            this.flowChiPhi.WrapContents = false;
+            this.chkGiaoHang = new System.Windows.Forms.CheckBox();
+            this.chkGiaoHang.AutoSize = true;
+            this.chkGiaoHang.Text = "Giao hàng (bỏ chọn = lấy trực tiếp)";
+            this.numKhoangCach = new System.Windows.Forms.NumericUpDown();
+            this.numKhoangCach.DecimalPlaces = 1;
+            this.numKhoangCach.Increment = 1;
+            this.numKhoangCach.Maximum = 100000;
+            this.numKhoangCach.Width = 270;
+            this.numPhiShipThuCong = new System.Windows.Forms.NumericUpDown();
+            this.numPhiShipThuCong.Maximum = 9999999999m;
+            this.numPhiShipThuCong.Increment = 1000;
+            this.numPhiShipThuCong.ThousandsSeparator = true;
+            this.numPhiShipThuCong.Width = 270;
+            this.numPhiShipThuCong.Visible = false;
+            this.lblPhiShipThuCong = new System.Windows.Forms.Label();
+            this.lblPhiShipThuCong.AutoSize = true;
+            this.lblPhiShipThuCong.Text = "Phí ship thủ công (trên 15 km)";
+            this.lblPhiShipThuCong.Visible = false;
+            this.cmbLoaiGiamGia = new System.Windows.Forms.ComboBox();
+            this.cmbLoaiGiamGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLoaiGiamGia.Items.AddRange(new object[] { "Không giảm", "Giảm giá", "Chiết khấu" });
+            this.cmbLoaiGiamGia.SelectedIndex = 0;
+            this.cmbLoaiGiamGia.Width = 270;
+            this.numTyLeGiamGia = new System.Windows.Forms.NumericUpDown();
+            this.numTyLeGiamGia.Minimum = 0;
+            this.numTyLeGiamGia.Maximum = 19.99m;
+            this.numTyLeGiamGia.DecimalPlaces = 2;
+            this.numTyLeGiamGia.Increment = 0.5m;
+            this.numTyLeGiamGia.Width = 270;
+            this.numTyLeGiamGia.Enabled = false;
+            this.lblKhoangCachKm = new System.Windows.Forms.Label();
+            this.lblKhoangCachKm.AutoSize = true;
+            this.lblKhoangCachKm.Text = "Khoảng cách (km)";
+            this.lblLoaiGiamGia = new System.Windows.Forms.Label();
+            this.lblLoaiGiamGia.AutoSize = true;
+            this.lblLoaiGiamGia.Text = "Loại giảm giá / chiết khấu";
+            this.lblTyLeGiamGia = new System.Windows.Forms.Label();
+            this.lblTyLeGiamGia.AutoSize = true;
+            this.lblTyLeGiamGia.Text = "Tỷ lệ (0 đến dưới 20%)";
+            this.lblTenDichVu = new System.Windows.Forms.Label();
+            this.lblTenDichVu.AutoSize = true;
+            this.lblTenDichVu.Text = "Tên dịch vụ phát sinh";
+            this.txtDichVu = new System.Windows.Forms.TextBox();
+            this.txtDichVu.MaxLength = 100;
+            this.txtDichVu.Text = "Dịch vụ khác";
+            this.txtDichVu.Width = 270;
+            this.numTienDichVu = new System.Windows.Forms.NumericUpDown();
+            this.numTienDichVu.Maximum = 9999999999m;
+            this.numTienDichVu.Increment = 1000;
+            this.numTienDichVu.ThousandsSeparator = true;
+            this.numTienDichVu.Width = 270;
+            this.btnThemDichVu = new System.Windows.Forms.Button();
+            this.btnThemDichVu.Text = "Thêm dịch vụ";
+            this.btnThemDichVu.AutoSize = true;
+            this.btnThemDichVu.BackColor = System.Drawing.Color.FromArgb(31, 78, 121);
+            this.btnThemDichVu.ForeColor = System.Drawing.Color.White;
+            this.btnThemDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoaDichVu = new System.Windows.Forms.Button();
+            this.btnXoaDichVu.Text = "Xóa dịch vụ đã chọn";
+            this.btnXoaDichVu.AutoSize = true;
+            this.btnXoaDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dgvDichVu = new System.Windows.Forms.DataGridView();
+            this.dgvDichVu.AllowUserToAddRows = false;
+            this.dgvDichVu.ReadOnly = true;
+            this.dgvDichVu.RowHeadersVisible = false;
+            this.dgvDichVu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDichVu.MultiSelect = false;
+            this.dgvDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDichVu.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDichVu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDichVu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvDichVu.EnableHeadersVisualStyles = false;
+            this.dgvDichVu.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(31, 78, 121);
+            this.dgvDichVu.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvDichVu.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.dgvDichVu.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(219, 234, 254);
+            this.dgvDichVu.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(17, 24, 39);
+            this.dgvDichVu.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.dgvDichVu.Height = 100;
+            this.dgvDichVu.Width = 285;
+            this.dgvDichVu.Columns.Add("Ten", "Dịch vụ");
+            this.dgvDichVu.Columns.Add("Tien", "Số tiền");
+            this.lblTienGiam = new System.Windows.Forms.Label();
+            this.lblTienGiam.AutoSize = true;
+            this.lblTienGiam.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTienGiam.Location = new System.Drawing.Point(12, 25);
+            this.lblTienGiam.MaximumSize = new System.Drawing.Size(280, 0);
+            this.lblTienGiam.Text = "Giảm giá: -0 đ";
+            this.lblThanhToanChiTiet = new System.Windows.Forms.Label();
+            this.lblThanhToanChiTiet.AutoSize = true;
+            this.lblThanhToanChiTiet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblThanhToanChiTiet.Location = new System.Drawing.Point(12, 48);
+            this.lblThanhToanChiTiet.MaximumSize = new System.Drawing.Size(280, 0);
+            this.lblThanhToanChiTiet.Text = "Tiền hàng: 0 đ";
+            this.flowChiPhi.Controls.Add(this.chkGiaoHang);
+            this.flowChiPhi.Controls.Add(this.lblKhoangCachKm);
+            this.flowChiPhi.Controls.Add(this.numKhoangCach);
+            this.flowChiPhi.Controls.Add(this.lblPhiShipThuCong);
+            this.flowChiPhi.Controls.Add(this.numPhiShipThuCong);
+            this.flowChiPhi.Controls.Add(this.lblLoaiGiamGia);
+            this.flowChiPhi.Controls.Add(this.cmbLoaiGiamGia);
+            this.flowChiPhi.Controls.Add(this.lblTyLeGiamGia);
+            this.flowChiPhi.Controls.Add(this.numTyLeGiamGia);
+            this.flowChiPhi.Controls.Add(this.lblTenDichVu);
+            this.flowChiPhi.Controls.Add(this.txtDichVu);
+            this.flowChiPhi.Controls.Add(this.numTienDichVu);
+            this.flowChiPhi.Controls.Add(this.btnThemDichVu);
+            this.flowChiPhi.Controls.Add(this.btnXoaDichVu);
+            this.flowChiPhi.Controls.Add(this.dgvDichVu);
+            this.grpTomTat.Controls.Add(this.lblThanhToanChiTiet);
+            this.grpTomTat.Controls.Add(this.lblTienGiam);
+            //
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbCachTinhGiaVon);
@@ -335,12 +481,12 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cmbSanPham);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(348, 0);
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 4);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(574, 241);
+            this.groupBox2.Size = new System.Drawing.Size(610, 241);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chọn sản phẩm";
@@ -659,8 +805,8 @@
             this.grpPhieuBanLe.Controls.Add(this.numDaTra);
             this.grpPhieuBanLe.Controls.Add(this.label6);
             this.grpPhieuBanLe.Controls.Add(this.label8);
-            this.grpPhieuBanLe.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grpPhieuBanLe.Location = new System.Drawing.Point(0, 0);
+            this.grpPhieuBanLe.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grpPhieuBanLe.Location = new System.Drawing.Point(0, 4);
             this.grpPhieuBanLe.Margin = new System.Windows.Forms.Padding(4);
             this.grpPhieuBanLe.Name = "grpPhieuBanLe";
             this.grpPhieuBanLe.Padding = new System.Windows.Forms.Padding(4);
@@ -743,7 +889,7 @@
             this.numConNo.TabIndex = 52;
             this.numConNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numConNo.ThousandsSeparator = true;
-            this.numConNo.ValueChanged += new System.EventHandler(this.numTongTien_ValueChanged);
+            this.numConNo.ValueChanged += new System.EventHandler(this.numConNo_ValueChanged);
             // 
             // label10
             // 
@@ -833,7 +979,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 292);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(922, 261);
+            this.panel3.Size = new System.Drawing.Size(1142, 335);
             this.panel3.TabIndex = 62;
             // 
             // groupBox1
@@ -844,10 +990,10 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(922, 261);
+            this.groupBox1.Size = new System.Drawing.Size(1142, 335);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh sách Sản phẩm";
+            this.groupBox1.Text = "Sản phẩm trong phiếu";
             // 
             // panel2
             // 
@@ -856,7 +1002,7 @@
             this.panel2.Location = new System.Drawing.Point(4, 19);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(914, 238);
+            this.panel2.Size = new System.Drawing.Size(1134, 312);
             this.panel2.TabIndex = 1;
             // 
             // dgvDanhsachSP
@@ -873,7 +1019,22 @@
             this.colThanhTien,
             this.colNgayHetHan,
             this.colGiaVon});
+            this.dgvDanhsachSP.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDanhsachSP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDanhsachSP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDanhsachSP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDanhsachSP.EnableHeadersVisualStyles = false;
+            this.dgvDanhsachSP.GridColor = System.Drawing.Color.FromArgb(229, 231, 235);
+            this.dgvDanhsachSP.RowHeadersVisible = false;
+            this.dgvDanhsachSP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDanhsachSP.MultiSelect = false;
+            this.dgvDanhsachSP.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(31, 78, 121);
+            this.dgvDanhsachSP.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvDanhsachSP.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.dgvDanhsachSP.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(219, 234, 254);
+            this.dgvDanhsachSP.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(17, 24, 39);
+            this.dgvDanhsachSP.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.dgvDanhsachSP.RowTemplate.Height = 28;
             this.dgvDanhsachSP.Location = new System.Drawing.Point(0, 0);
             this.dgvDanhsachSP.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDanhsachSP.MultiSelect = false;
@@ -881,7 +1042,7 @@
             this.dgvDanhsachSP.ReadOnly = true;
             this.dgvDanhsachSP.RowHeadersWidth = 51;
             this.dgvDanhsachSP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhsachSP.Size = new System.Drawing.Size(914, 238);
+            this.dgvDanhsachSP.Size = new System.Drawing.Size(1134, 312);
             this.dgvDanhsachSP.TabIndex = 6;
             // 
             // colMaPhieuBan
@@ -946,20 +1107,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 553);
+            this.ClientSize = new System.Drawing.Size(1280, 760);
+            this.MinimumSize = new System.Drawing.Size(1120, 680);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.grpChiPhi);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bindingNavigator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBanLe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BAN LE";
+            this.Text = "Lập phiếu bán lẻ";
             this.Load += new System.EventHandler(this.frmNhapHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.grpChiPhi.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -997,6 +1162,9 @@
         private System.Windows.Forms.ToolStripButton toolLuu;
         private System.Windows.Forms.ToolStripButton toolThem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox grpChiPhi;
+        private System.Windows.Forms.GroupBox grpTomTat;
+        private System.Windows.Forms.FlowLayoutPanel flowChiPhi;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox grpPhieuBanLe;
         private System.Windows.Forms.Label label2;

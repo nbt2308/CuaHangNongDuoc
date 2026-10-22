@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,22 +15,18 @@ namespace CuahangNongduoc
         {
             InitializeComponent();
             m_PhieuBan = ph;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Size = new Size(700, 700);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             ChuanHoaDuLieu();
-            try
+            using (System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("CuahangNongduoc.Report.rptChiTietPhieuBan.rdlc"))
             {
-                using (System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("CuahangNongduoc.Report.rptChiTietPhieuBan.rdlc"))
-                {
-                    if (stream != null)
-                    {
-                        byte[] data = new byte[stream.Length];
-                        stream.Read(data, 0, data.Length);
-                        this.reportViewer.LocalReport.LoadSubreportDefinition("rptChiTietPhieuBan", new System.IO.MemoryStream(data));
-                        this.reportViewer.LocalReport.LoadSubreportDefinition("CuahangNongduoc.Report.rptChiTietPhieuBan", new System.IO.MemoryStream(data));
-                        this.reportViewer.LocalReport.LoadSubreportDefinition("CuahangNongduoc.Report.rptChiTietPhieuBan.rdlc", new System.IO.MemoryStream(data));
-                    }
-                }
+                if (stream == null)
+                    throw new InvalidOperationException("Không tìm thấy mẫu chi tiết phiếu bán.");
+
+                this.reportViewer.LocalReport.LoadSubreportDefinition("rptChiTietPhieuBan", stream);
             }
-            catch { }
             this.reportViewer.LocalReport.SubreportProcessing += new Microsoft.Reporting.WinForms.SubreportProcessingEventHandler(LocalReport_SubreportProcessing);
         }
 
@@ -70,19 +66,35 @@ namespace CuahangNongduoc
             e.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("CuahangNongduoc_BusinessObject_ChiTietPhieuBan", dsChiTiet));
         }
 
+        private string GiaTriThamSo(string giaTri)
+        {
+            return giaTri ?? string.Empty;
+        }
+
         private void frmInPhieuBan_Load(object sender, EventArgs e)
         {
             ChuanHoaDuLieu();
             Num2Str num = new Num2Str();
             IList<Microsoft.Reporting.WinForms.ReportParameter> param = new List<Microsoft.Reporting.WinForms.ReportParameter>();
             CuahangNongduoc.BusinessObject.CuaHang ch = ThamSo.LayCuaHang();
-            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("ten_cua_hang", ch.TenCuaHang));
-            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("dia_chi", ch.DiaChi));
-            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("dien_thoai", ch.DienThoai));
-            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("bang_chu", num.NumberToString(m_PhieuBan != null ? m_PhieuBan.TongTien.ToString() : "0")));
+            if (ch == null)
+                ch = new CuahangNongduoc.BusinessObject.CuaHang();
+
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("ten_cua_hang", GiaTriThamSo(ch.TenCuaHang)));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("dia_chi", GiaTriThamSo(ch.DiaChi)));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("dien_thoai", GiaTriThamSo(ch.DienThoai)));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("bang_chu", GiaTriThamSo(num.NumberToString(m_PhieuBan != null ? m_PhieuBan.TongTien.ToString() : "0"))));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("tien_hang", m_PhieuBan != null ? m_PhieuBan.TienHang.ToString("#,##0") : "0"));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("tong_dich_vu", m_PhieuBan != null ? m_PhieuBan.TongDichVu.ToString("#,##0") : "0"));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("phi_van_chuyen", m_PhieuBan != null ? m_PhieuBan.PhiVanChuyen.ToString("#,##0") : "0"));
+            param.Add(new Microsoft.Reporting.WinForms.ReportParameter("tien_giam", m_PhieuBan != null ? m_PhieuBan.TienGiamGia.ToString("#,##0") : "0"));
 
             this.reportViewer.LocalReport.SetParameters(param);
             this.PhieuBanBindingSource.DataSource = m_PhieuBan;
+            this.reportViewer.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource(
+                "DichVuDataSet", m_PhieuBan != null && m_PhieuBan.DichVu != null
+                    ? m_PhieuBan.DichVu
+                    : new List<CuahangNongduoc.BusinessObject.DichVuPhieuBan>()));
             this.reportViewer.RefreshReport();
         }
     }

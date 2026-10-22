@@ -36,73 +36,73 @@ namespace CuahangNongduoc
             this.mnuDangNhap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDoiMK = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangXua = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHienThi = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThanhCongCu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThanhChucNang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuanLy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLyDoChi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDonViTinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSanPham = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDaiLy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNhaCungCap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNghiepVu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNhapHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBanHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBanHangKH = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBanHangDL = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPhieuChi = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuThanhtoan = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuTonghopDuno = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocao = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaocaoSoluongton = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSoLuongBan = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuSanphamHethan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTuychinh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTuychinhThongtin = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTrogiup = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTrogiupHuongdan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTrogiupLienhe = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.taskPane = new XPExplorerBar.TaskPane();
-            this.expando1 = new XPExplorerBar.Expando();
-            this.expando2 = new XPExplorerBar.Expando();
-            this.expando3 = new XPExplorerBar.Expando();
-            this.expando4 = new XPExplorerBar.Expando();
-            this.itemDoiMatKhau = new XPExplorerBar.TaskItem();
-            this.itemDangXuat = new XPExplorerBar.TaskItem();
-            this.itemDaiLy = new XPExplorerBar.TaskItem();
-            this.itemKhachHang = new XPExplorerBar.TaskItem();
-            this.itemSanPham = new XPExplorerBar.TaskItem();
-            this.itemNhaCungCap = new XPExplorerBar.TaskItem();
-            this.itemNguoiDung = new XPExplorerBar.TaskItem();
-            this.itemNhapHang = new XPExplorerBar.TaskItem();
-            this.itemBanSi = new XPExplorerBar.TaskItem();
-            this.itemBanLe = new XPExplorerBar.TaskItem();
-            this.itemThanhToan = new XPExplorerBar.TaskItem();
-            this.itemPhieuChi = new XPExplorerBar.TaskItem();
-            this.itemTonghopDoanhthu = new XPExplorerBar.TaskItem();
-            this.itemTonKho = new XPExplorerBar.TaskItem();
-            this.taskItem1 = new XPExplorerBar.TaskItem();
             this.toolSanPham = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolNguoiDung = new System.Windows.Forms.ToolStripButton();
             this.toolNhaCungCap = new System.Windows.Forms.ToolStripButton();
             this.toolKhachHang = new System.Windows.Forms.ToolStripButton();
             this.toolDaiLy = new System.Windows.Forms.ToolStripButton();
             this.toolNhapHang = new System.Windows.Forms.ToolStripButton();
             this.toolBanSi = new System.Windows.Forms.ToolStripButton();
             this.toolBanLe = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPhieuChi = new System.Windows.Forms.ToolStripButton();
             this.toolThanhtoan = new System.Windows.Forms.ToolStripButton();
             this.toolTonKho = new System.Windows.Forms.ToolStripButton();
-            this.mnuThoat = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuLyDoChi = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDonViTinh = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSanPham = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDaiLy = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNhaCungCap = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNhapHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBanHangKH = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBanHangDL = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPhieuChi = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuThanhtoan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTonghopDuno = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBaocaoSoluongton = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSoLuongBan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSanphamHethan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTuychinhThongtin = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTrogiupHuongdan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTrogiupLienhe = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolNguoiDung = new System.Windows.Forms.ToolStripButton();
+            this.taskPane = new XPExplorerBar.TaskPane();
+            this.expando1 = new XPExplorerBar.Expando();
+            this.itemDaiLy = new XPExplorerBar.TaskItem();
+            this.itemKhachHang = new XPExplorerBar.TaskItem();
+            this.itemSanPham = new XPExplorerBar.TaskItem();
+            this.itemNhaCungCap = new XPExplorerBar.TaskItem();
+            this.itemNguoiDung = new XPExplorerBar.TaskItem();
+            this.expando2 = new XPExplorerBar.Expando();
+            this.itemNhapHang = new XPExplorerBar.TaskItem();
+            this.itemBanSi = new XPExplorerBar.TaskItem();
+            this.itemBanLe = new XPExplorerBar.TaskItem();
+            this.itemThanhToan = new XPExplorerBar.TaskItem();
+            this.itemPhieuChi = new XPExplorerBar.TaskItem();
+            this.expando3 = new XPExplorerBar.Expando();
+            this.itemTonghopDoanhthu = new XPExplorerBar.TaskItem();
+            this.itemTonKho = new XPExplorerBar.TaskItem();
+            this.taskItem1 = new XPExplorerBar.TaskItem();
+            this.expando4 = new XPExplorerBar.Expando();
+            this.itemDoiMatKhau = new XPExplorerBar.TaskItem();
+            this.itemDangXuat = new XPExplorerBar.TaskItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.taskPane)).BeginInit();
@@ -130,8 +130,8 @@ namespace CuahangNongduoc
             this.mnuTrogiup});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(796, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1061, 28);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -144,36 +144,44 @@ namespace CuahangNongduoc
             this.mnuDangXua,
             this.mnuThoat});
             this.mnuHeThong.Name = "mnuHeThong";
-            this.mnuHeThong.Size = new System.Drawing.Size(69, 20);
+            this.mnuHeThong.Size = new System.Drawing.Size(85, 24);
             this.mnuHeThong.Text = "Hệ thống";
             // 
             // mnuTaiKhoan
             // 
             this.mnuTaiKhoan.Name = "mnuTaiKhoan";
-            this.mnuTaiKhoan.Size = new System.Drawing.Size(184, 26);
+            this.mnuTaiKhoan.Size = new System.Drawing.Size(207, 26);
             this.mnuTaiKhoan.Text = "Quản lý tài khoản";
             this.mnuTaiKhoan.Click += new System.EventHandler(this.mnuTaiKhoan_Click);
             // 
             // mnuDangNhap
             // 
             this.mnuDangNhap.Name = "mnuDangNhap";
-            this.mnuDangNhap.Size = new System.Drawing.Size(184, 26);
+            this.mnuDangNhap.Size = new System.Drawing.Size(207, 26);
             this.mnuDangNhap.Text = "Đăng nhập";
             this.mnuDangNhap.Click += new System.EventHandler(this.mnuDangNhap_Click);
             // 
             // mnuDoiMK
             // 
             this.mnuDoiMK.Name = "mnuDoiMK";
-            this.mnuDoiMK.Size = new System.Drawing.Size(184, 26);
+            this.mnuDoiMK.Size = new System.Drawing.Size(207, 26);
             this.mnuDoiMK.Text = "Đổi mật khẩu";
             this.mnuDoiMK.Click += new System.EventHandler(this.mnuDoiMK_Click);
             // 
             // mnuDangXua
             // 
             this.mnuDangXua.Name = "mnuDangXua";
-            this.mnuDangXua.Size = new System.Drawing.Size(184, 26);
+            this.mnuDangXua.Size = new System.Drawing.Size(207, 26);
             this.mnuDangXua.Text = "Đăng Xuất";
             this.mnuDangXua.Click += new System.EventHandler(this.mnuDangXua_Click);
+            // 
+            // mnuThoat
+            // 
+            this.mnuThoat.Image = global::CuahangNongduoc.Properties.Resources.Thoat;
+            this.mnuThoat.Name = "mnuThoat";
+            this.mnuThoat.Size = new System.Drawing.Size(207, 26);
+            this.mnuThoat.Text = "Thoát";
+            this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 
             // mnuHienThi
             // 
@@ -181,7 +189,7 @@ namespace CuahangNongduoc
             this.mnuThanhCongCu,
             this.mnuThanhChucNang});
             this.mnuHienThi.Name = "mnuHienThi";
-            this.mnuHienThi.Size = new System.Drawing.Size(61, 20);
+            this.mnuHienThi.Size = new System.Drawing.Size(75, 24);
             this.mnuHienThi.Text = "Hiển thị";
             // 
             // mnuThanhCongCu
@@ -189,14 +197,14 @@ namespace CuahangNongduoc
             this.mnuThanhCongCu.Checked = true;
             this.mnuThanhCongCu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnuThanhCongCu.Name = "mnuThanhCongCu";
-            this.mnuThanhCongCu.Size = new System.Drawing.Size(167, 22);
+            this.mnuThanhCongCu.Size = new System.Drawing.Size(204, 26);
             this.mnuThanhCongCu.Text = "Thanh công cụ";
             this.mnuThanhCongCu.Click += new System.EventHandler(this.mnuThanhCongCu_Click);
             // 
             // mnuThanhChucNang
             // 
             this.mnuThanhChucNang.Name = "mnuThanhChucNang";
-            this.mnuThanhChucNang.Size = new System.Drawing.Size(167, 22);
+            this.mnuThanhChucNang.Size = new System.Drawing.Size(204, 26);
             this.mnuThanhChucNang.Text = "Thanh chức năng";
             this.mnuThanhChucNang.Click += new System.EventHandler(this.mnuThanhChucNang_Click);
             // 
@@ -211,13 +219,61 @@ namespace CuahangNongduoc
             this.mnuDaiLy,
             this.mnuNhaCungCap});
             this.mnuQuanLy.Name = "mnuQuanLy";
-            this.mnuQuanLy.Size = new System.Drawing.Size(60, 20);
+            this.mnuQuanLy.Size = new System.Drawing.Size(73, 24);
             this.mnuQuanLy.Text = "Quản lý";
+            // 
+            // mnuLyDoChi
+            // 
+            this.mnuLyDoChi.Image = global::CuahangNongduoc.Properties.Resources.LyDoChi;
+            this.mnuLyDoChi.Name = "mnuLyDoChi";
+            this.mnuLyDoChi.Size = new System.Drawing.Size(183, 26);
+            this.mnuLyDoChi.Text = "Lý do chi";
+            this.mnuLyDoChi.Click += new System.EventHandler(this.mnuLyDoChi_Click);
+            // 
+            // mnuDonViTinh
+            // 
+            this.mnuDonViTinh.Image = global::CuahangNongduoc.Properties.Resources.DonViTinh;
+            this.mnuDonViTinh.Name = "mnuDonViTinh";
+            this.mnuDonViTinh.Size = new System.Drawing.Size(183, 26);
+            this.mnuDonViTinh.Text = "Đơn vị tính";
+            this.mnuDonViTinh.Click += new System.EventHandler(this.mnuDonViTinh_Click);
+            // 
+            // mnuSanPham
+            // 
+            this.mnuSanPham.Image = global::CuahangNongduoc.Properties.Resources.SanPham;
+            this.mnuSanPham.Name = "mnuSanPham";
+            this.mnuSanPham.Size = new System.Drawing.Size(183, 26);
+            this.mnuSanPham.Text = "Sản phẩm";
+            this.mnuSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
+            // 
+            // mnuKhachHang
+            // 
+            this.mnuKhachHang.Image = global::CuahangNongduoc.Properties.Resources.KhachHang;
+            this.mnuKhachHang.Name = "mnuKhachHang";
+            this.mnuKhachHang.Size = new System.Drawing.Size(183, 26);
+            this.mnuKhachHang.Text = "Khách hàng";
+            this.mnuKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
+            // 
+            // mnuDaiLy
+            // 
+            this.mnuDaiLy.Image = global::CuahangNongduoc.Properties.Resources.DaiLy;
+            this.mnuDaiLy.Name = "mnuDaiLy";
+            this.mnuDaiLy.Size = new System.Drawing.Size(183, 26);
+            this.mnuDaiLy.Text = " Đại lý";
+            this.mnuDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
+            // 
+            // mnuNhaCungCap
+            // 
+            this.mnuNhaCungCap.Image = global::CuahangNongduoc.Properties.Resources.NhaCungCap;
+            this.mnuNhaCungCap.Name = "mnuNhaCungCap";
+            this.mnuNhaCungCap.Size = new System.Drawing.Size(183, 26);
+            this.mnuNhaCungCap.Text = "Nhà cung cấp";
+            this.mnuNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
             // 
             // mnuNghiepVu
             // 
@@ -229,8 +285,16 @@ namespace CuahangNongduoc
             this.toolStripSeparator1,
             this.mnuTonghopDuno});
             this.mnuNghiepVu.Name = "mnuNghiepVu";
-            this.mnuNghiepVu.Size = new System.Drawing.Size(74, 20);
+            this.mnuNghiepVu.Size = new System.Drawing.Size(91, 24);
             this.mnuNghiepVu.Text = "Nghiệp vụ";
+            // 
+            // mnuNhapHang
+            // 
+            this.mnuNhapHang.Image = global::CuahangNongduoc.Properties.Resources.Phieunhap;
+            this.mnuNhapHang.Name = "mnuNhapHang";
+            this.mnuNhapHang.Size = new System.Drawing.Size(199, 26);
+            this.mnuNhapHang.Text = "Nhập hàng";
+            this.mnuNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
             // 
             // mnuBanHang
             // 
@@ -238,13 +302,53 @@ namespace CuahangNongduoc
             this.mnuBanHangKH,
             this.mnuBanHangDL});
             this.mnuBanHang.Name = "mnuBanHang";
-            this.mnuBanHang.Size = new System.Drawing.Size(160, 22);
+            this.mnuBanHang.Size = new System.Drawing.Size(199, 26);
             this.mnuBanHang.Text = "Bán hàng";
+            // 
+            // mnuBanHangKH
+            // 
+            this.mnuBanHangKH.Image = global::CuahangNongduoc.Properties.Resources.Banle;
+            this.mnuBanHangKH.Name = "mnuBanHangKH";
+            this.mnuBanHangKH.Size = new System.Drawing.Size(242, 26);
+            this.mnuBanHangKH.Text = "Bán lẻ cho Khách hàng";
+            this.mnuBanHangKH.Click += new System.EventHandler(this.mnuBanHangKH_Click);
+            // 
+            // mnuBanHangDL
+            // 
+            this.mnuBanHangDL.Image = global::CuahangNongduoc.Properties.Resources.Bansi;
+            this.mnuBanHangDL.Name = "mnuBanHangDL";
+            this.mnuBanHangDL.Size = new System.Drawing.Size(242, 26);
+            this.mnuBanHangDL.Text = "Bán sỉ cho Đại lý";
+            this.mnuBanHangDL.Click += new System.EventHandler(this.mnuBanHangDL_Click);
+            // 
+            // mnuPhieuChi
+            // 
+            this.mnuPhieuChi.Image = global::CuahangNongduoc.Properties.Resources.PhieuChi;
+            this.mnuPhieuChi.Name = "mnuPhieuChi";
+            this.mnuPhieuChi.Size = new System.Drawing.Size(199, 26);
+            this.mnuPhieuChi.Text = "Phiếu chi";
+            this.mnuPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
+            // 
+            // mnuThanhtoan
+            // 
+            this.mnuThanhtoan.Image = global::CuahangNongduoc.Properties.Resources.Thanhtoan;
+            this.mnuThanhtoan.Name = "mnuThanhtoan";
+            this.mnuThanhtoan.Size = new System.Drawing.Size(199, 26);
+            this.mnuThanhtoan.Text = "Phiếu thu";
+            this.mnuThanhtoan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(196, 6);
+            // 
+            // mnuTonghopDuno
+            // 
+            this.mnuTonghopDuno.Image = global::CuahangNongduoc.Properties.Resources.DunoKhachhang;
+            this.mnuTonghopDuno.Name = "mnuTonghopDuno";
+            this.mnuTonghopDuno.Size = new System.Drawing.Size(199, 26);
+            this.mnuTonghopDuno.Text = "Tổng hợp dư nợ";
+            this.mnuTonghopDuno.Click += new System.EventHandler(this.mnuTonghopDuno_Click);
             // 
             // mnuBaocao
             // 
@@ -254,21 +358,53 @@ namespace CuahangNongduoc
             this.toolStripSeparator5,
             this.mnuSanphamHethan});
             this.mnuBaocao.Name = "mnuBaocao";
-            this.mnuBaocao.Size = new System.Drawing.Size(61, 20);
+            this.mnuBaocao.Size = new System.Drawing.Size(77, 24);
             this.mnuBaocao.Text = "Báo cáo";
+            // 
+            // mnuBaocaoSoluongton
+            // 
+            this.mnuBaocaoSoluongton.Image = global::CuahangNongduoc.Properties.Resources.TonKho;
+            this.mnuBaocaoSoluongton.Name = "mnuBaocaoSoluongton";
+            this.mnuBaocaoSoluongton.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaocaoSoluongton.Text = "Số lượng tồn";
+            this.mnuBaocaoSoluongton.Click += new System.EventHandler(this.mnuBaocaoSoluongton_Click);
+            // 
+            // mnuSoLuongBan
+            // 
+            this.mnuSoLuongBan.Image = global::CuahangNongduoc.Properties.Resources.Soluongban;
+            this.mnuSoLuongBan.Name = "mnuSoLuongBan";
+            this.mnuSoLuongBan.Size = new System.Drawing.Size(211, 26);
+            this.mnuSoLuongBan.Text = "Số lượng bán";
+            this.mnuSoLuongBan.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(208, 6);
+            // 
+            // mnuSanphamHethan
+            // 
+            this.mnuSanphamHethan.Image = global::CuahangNongduoc.Properties.Resources.SanPhamHethan;
+            this.mnuSanphamHethan.Name = "mnuSanphamHethan";
+            this.mnuSanphamHethan.Size = new System.Drawing.Size(211, 26);
+            this.mnuSanphamHethan.Text = "Sản phẩm hết hạn";
+            this.mnuSanphamHethan.Click += new System.EventHandler(this.mnuSanphamHethan_Click);
             // 
             // mnuTuychinh
             // 
             this.mnuTuychinh.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTuychinhThongtin});
             this.mnuTuychinh.Name = "mnuTuychinh";
-            this.mnuTuychinh.Size = new System.Drawing.Size(72, 20);
+            this.mnuTuychinh.Size = new System.Drawing.Size(85, 24);
             this.mnuTuychinh.Text = "Tùy chỉnh";
+            // 
+            // mnuTuychinhThongtin
+            // 
+            this.mnuTuychinhThongtin.Image = global::CuahangNongduoc.Properties.Resources.info;
+            this.mnuTuychinhThongtin.Name = "mnuTuychinhThongtin";
+            this.mnuTuychinhThongtin.Size = new System.Drawing.Size(222, 26);
+            this.mnuTuychinhThongtin.Text = "Thông tin Cửa hàng";
+            this.mnuTuychinhThongtin.Click += new System.EventHandler(this.mnuTuychinhThongtin_Click);
             // 
             // mnuTrogiup
             // 
@@ -276,18 +412,35 @@ namespace CuahangNongduoc
             this.mnuTrogiupHuongdan,
             this.mnuTrogiupLienhe});
             this.mnuTrogiup.Name = "mnuTrogiup";
-            this.mnuTrogiup.Size = new System.Drawing.Size(63, 20);
+            this.mnuTrogiup.Size = new System.Drawing.Size(78, 24);
             this.mnuTrogiup.Text = "Trợ giúp";
+            // 
+            // mnuTrogiupHuongdan
+            // 
+            this.mnuTrogiupHuongdan.Image = global::CuahangNongduoc.Properties.Resources.help;
+            this.mnuTrogiupHuongdan.Name = "mnuTrogiupHuongdan";
+            this.mnuTrogiupHuongdan.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.mnuTrogiupHuongdan.Size = new System.Drawing.Size(248, 26);
+            this.mnuTrogiupHuongdan.Text = "Hướng dẫn sử dụng";
+            this.mnuTrogiupHuongdan.Click += new System.EventHandler(this.mnuTrogiupHuongdan_Click);
+            // 
+            // mnuTrogiupLienhe
+            // 
+            this.mnuTrogiupLienhe.Image = global::CuahangNongduoc.Properties.Resources.info;
+            this.mnuTrogiupLienhe.Name = "mnuTrogiupLienhe";
+            this.mnuTrogiupLienhe.Size = new System.Drawing.Size(248, 26);
+            this.mnuTrogiupLienhe.Text = "Thông tin liên hệ";
+            this.mnuTrogiupLienhe.Click += new System.EventHandler(this.mnuTrogiupLienhe_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 46);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 51);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 46);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 51);
             // 
             // toolStrip
             // 
@@ -308,21 +461,141 @@ namespace CuahangNongduoc
             this.toolThanhtoan,
             this.toolStripSeparator4,
             this.toolTonKho});
-            this.toolStrip.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip.Location = new System.Drawing.Point(0, 28);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(796, 46);
+            this.toolStrip.Size = new System.Drawing.Size(1061, 51);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // toolSanPham
+            // 
+            this.toolSanPham.Image = global::CuahangNongduoc.Properties.Resources.SanPham;
+            this.toolSanPham.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolSanPham.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSanPham.Name = "toolSanPham";
+            this.toolSanPham.Size = new System.Drawing.Size(79, 48);
+            this.toolSanPham.Text = "Sản phẩm";
+            this.toolSanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 46);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 51);
+            // 
+            // toolNguoiDung
+            // 
+            this.toolNguoiDung.Image = global::CuahangNongduoc.Properties.Resources.user;
+            this.toolNguoiDung.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNguoiDung.Name = "toolNguoiDung";
+            this.toolNguoiDung.Size = new System.Drawing.Size(93, 48);
+            this.toolNguoiDung.Text = "Người dùng";
+            this.toolNguoiDung.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolNguoiDung.Click += new System.EventHandler(this.toolNguoiDung_Click);
+            // 
+            // toolNhaCungCap
+            // 
+            this.toolNhaCungCap.Image = global::CuahangNongduoc.Properties.Resources.NhaCungCap;
+            this.toolNhaCungCap.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolNhaCungCap.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNhaCungCap.Name = "toolNhaCungCap";
+            this.toolNhaCungCap.Size = new System.Drawing.Size(104, 48);
+            this.toolNhaCungCap.Text = "Nhà cung cấp";
+            this.toolNhaCungCap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
+            // 
+            // toolKhachHang
+            // 
+            this.toolKhachHang.Image = global::CuahangNongduoc.Properties.Resources.KhachHang;
+            this.toolKhachHang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolKhachHang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolKhachHang.Name = "toolKhachHang";
+            this.toolKhachHang.Size = new System.Drawing.Size(90, 48);
+            this.toolKhachHang.Text = "Khách hàng";
+            this.toolKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
+            // 
+            // toolDaiLy
+            // 
+            this.toolDaiLy.Image = global::CuahangNongduoc.Properties.Resources.DaiLy;
+            this.toolDaiLy.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolDaiLy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolDaiLy.Name = "toolDaiLy";
+            this.toolDaiLy.Size = new System.Drawing.Size(51, 48);
+            this.toolDaiLy.Text = "Đại lý";
+            this.toolDaiLy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
+            // 
+            // toolNhapHang
+            // 
+            this.toolNhapHang.Image = global::CuahangNongduoc.Properties.Resources.Phieunhap;
+            this.toolNhapHang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolNhapHang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolNhapHang.Name = "toolNhapHang";
+            this.toolNhapHang.Size = new System.Drawing.Size(86, 48);
+            this.toolNhapHang.Text = "Nhập hàng";
+            this.toolNhapHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
+            // 
+            // toolBanSi
+            // 
+            this.toolBanSi.Image = global::CuahangNongduoc.Properties.Resources.Bansi;
+            this.toolBanSi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolBanSi.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBanSi.Name = "toolBanSi";
+            this.toolBanSi.Size = new System.Drawing.Size(52, 48);
+            this.toolBanSi.Text = "Bán sỉ";
+            this.toolBanSi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolBanSi.Click += new System.EventHandler(this.mnuBanHangDL_Click);
+            // 
+            // toolBanLe
+            // 
+            this.toolBanLe.Image = global::CuahangNongduoc.Properties.Resources.Banle;
+            this.toolBanLe.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolBanLe.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBanLe.Name = "toolBanLe";
+            this.toolBanLe.Size = new System.Drawing.Size(54, 48);
+            this.toolBanLe.Text = "Bán lẻ";
+            this.toolBanLe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolBanLe.Click += new System.EventHandler(this.mnuBanHangKH_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 46);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 51);
+            // 
+            // toolPhieuChi
+            // 
+            this.toolPhieuChi.Image = global::CuahangNongduoc.Properties.Resources.PhieuChi;
+            this.toolPhieuChi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolPhieuChi.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPhieuChi.Name = "toolPhieuChi";
+            this.toolPhieuChi.Size = new System.Drawing.Size(72, 48);
+            this.toolPhieuChi.Text = "Phiếu chi";
+            this.toolPhieuChi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
+            // 
+            // toolThanhtoan
+            // 
+            this.toolThanhtoan.Image = global::CuahangNongduoc.Properties.Resources.Thanhtoan;
+            this.toolThanhtoan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolThanhtoan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolThanhtoan.Name = "toolThanhtoan";
+            this.toolThanhtoan.Size = new System.Drawing.Size(74, 48);
+            this.toolThanhtoan.Text = "Phiếu thu";
+            this.toolThanhtoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolThanhtoan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
+            // 
+            // toolTonKho
+            // 
+            this.toolTonKho.Image = global::CuahangNongduoc.Properties.Resources.TonKho;
+            this.toolTonKho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolTonKho.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolTonKho.Name = "toolTonKho";
+            this.toolTonKho.Size = new System.Drawing.Size(66, 48);
+            this.toolTonKho.Text = "Tồn kho";
+            this.toolTonKho.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTonKho.Click += new System.EventHandler(this.mnuBaocaoSoluongton_Click);
             // 
             // taskPane
             // 
@@ -335,16 +608,17 @@ namespace CuahangNongduoc
             this.expando2,
             this.expando3,
             this.expando4});
-            this.taskPane.Location = new System.Drawing.Point(0, 70);
+            this.taskPane.Location = new System.Drawing.Point(0, 79);
+            this.taskPane.Margin = new System.Windows.Forms.Padding(4);
             this.taskPane.Name = "taskPane";
-            this.taskPane.Size = new System.Drawing.Size(193, 769);
+            this.taskPane.Size = new System.Drawing.Size(257, 954);
             this.taskPane.TabIndex = 11;
             this.taskPane.Text = "taskPane1";
             this.taskPane.Visible = false;
             // 
             // expando1
             // 
-            this.expando1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando1.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando1.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -362,14 +636,106 @@ namespace CuahangNongduoc
             this.itemNhaCungCap,
             this.itemNguoiDung});
             this.expando1.Location = new System.Drawing.Point(12, 12);
+            this.expando1.Margin = new System.Windows.Forms.Padding(4);
             this.expando1.Name = "expando1";
-            this.expando1.Size = new System.Drawing.Size(169, 170);
+            this.expando1.Size = new System.Drawing.Size(233, 170);
             this.expando1.TabIndex = 0;
             this.expando1.Text = "Quản Lý";
             // 
+            // itemDaiLy
+            // 
+            this.itemDaiLy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemDaiLy.BackColor = System.Drawing.Color.Transparent;
+            this.itemDaiLy.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemDaiLy.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemDaiLy.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemDaiLy.Image = ((System.Drawing.Image)(resources.GetObject("itemDaiLy.Image")));
+            this.itemDaiLy.Location = new System.Drawing.Point(5, 98);
+            this.itemDaiLy.Name = "itemDaiLy";
+            this.itemDaiLy.Size = new System.Drawing.Size(101, 20);
+            this.itemDaiLy.TabIndex = 12;
+            this.itemDaiLy.Text = "Đại lý";
+            this.itemDaiLy.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemDaiLy.UseVisualStyleBackColor = false;
+            this.itemDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
+            // 
+            // itemKhachHang
+            // 
+            this.itemKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemKhachHang.BackColor = System.Drawing.Color.Transparent;
+            this.itemKhachHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemKhachHang.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemKhachHang.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemKhachHang.Image = ((System.Drawing.Image)(resources.GetObject("itemKhachHang.Image")));
+            this.itemKhachHang.Location = new System.Drawing.Point(5, 65);
+            this.itemKhachHang.Name = "itemKhachHang";
+            this.itemKhachHang.Size = new System.Drawing.Size(101, 20);
+            this.itemKhachHang.TabIndex = 9;
+            this.itemKhachHang.Text = "Khách hàng";
+            this.itemKhachHang.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemKhachHang.UseVisualStyleBackColor = false;
+            this.itemKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
+            // 
+            // itemSanPham
+            // 
+            this.itemSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemSanPham.BackColor = System.Drawing.Color.Transparent;
+            this.itemSanPham.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemSanPham.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemSanPham.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemSanPham.Image = ((System.Drawing.Image)(resources.GetObject("itemSanPham.Image")));
+            this.itemSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.itemSanPham.Location = new System.Drawing.Point(5, 32);
+            this.itemSanPham.Name = "itemSanPham";
+            this.itemSanPham.Size = new System.Drawing.Size(101, 20);
+            this.itemSanPham.TabIndex = 8;
+            this.itemSanPham.Text = "Sản phẩm";
+            this.itemSanPham.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemSanPham.UseVisualStyleBackColor = false;
+            this.itemSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
+            // 
+            // itemNhaCungCap
+            // 
+            this.itemNhaCungCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemNhaCungCap.BackColor = System.Drawing.Color.Transparent;
+            this.itemNhaCungCap.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemNhaCungCap.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemNhaCungCap.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("itemNhaCungCap.Image")));
+            this.itemNhaCungCap.Location = new System.Drawing.Point(5, 132);
+            this.itemNhaCungCap.Name = "itemNhaCungCap";
+            this.itemNhaCungCap.Size = new System.Drawing.Size(101, 20);
+            this.itemNhaCungCap.TabIndex = 13;
+            this.itemNhaCungCap.Text = "Nhà cung cấp";
+            this.itemNhaCungCap.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemNhaCungCap.UseVisualStyleBackColor = false;
+            this.itemNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
+            // 
+            // itemNguoiDung
+            // 
+            this.itemNguoiDung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemNguoiDung.BackColor = System.Drawing.Color.Transparent;
+            this.itemNguoiDung.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemNguoiDung.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemNguoiDung.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemNguoiDung.Image = ((System.Drawing.Image)(resources.GetObject("itemNguoiDung.Image")));
+            this.itemNguoiDung.Location = new System.Drawing.Point(5, 159);
+            this.itemNguoiDung.Name = "itemNguoiDung";
+            this.itemNguoiDung.Size = new System.Drawing.Size(101, 20);
+            this.itemNguoiDung.TabIndex = 14;
+            this.itemNguoiDung.Text = "Người dùng";
+            this.itemNguoiDung.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemNguoiDung.UseVisualStyleBackColor = false;
+            this.itemNguoiDung.Click += new System.EventHandler(this.itemNguoiDung_Click);
+            // 
             // expando2
             // 
-            this.expando2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando2.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando2.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -387,14 +753,105 @@ namespace CuahangNongduoc
             this.itemThanhToan,
             this.itemPhieuChi});
             this.expando2.Location = new System.Drawing.Point(12, 194);
+            this.expando2.Margin = new System.Windows.Forms.Padding(4);
             this.expando2.Name = "expando2";
-            this.expando2.Size = new System.Drawing.Size(169, 190);
+            this.expando2.Size = new System.Drawing.Size(233, 190);
             this.expando2.TabIndex = 1;
             this.expando2.Text = "Nghiệp vụ";
             // 
+            // itemNhapHang
+            // 
+            this.itemNhapHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemNhapHang.BackColor = System.Drawing.Color.Transparent;
+            this.itemNhapHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemNhapHang.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemNhapHang.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemNhapHang.Image = ((System.Drawing.Image)(resources.GetObject("itemNhapHang.Image")));
+            this.itemNhapHang.Location = new System.Drawing.Point(9, 32);
+            this.itemNhapHang.Name = "itemNhapHang";
+            this.itemNhapHang.Size = new System.Drawing.Size(117, 20);
+            this.itemNhapHang.TabIndex = 5;
+            this.itemNhapHang.Text = "Nhập hàng";
+            this.itemNhapHang.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemNhapHang.UseVisualStyleBackColor = false;
+            this.itemNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
+            // 
+            // itemBanSi
+            // 
+            this.itemBanSi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemBanSi.BackColor = System.Drawing.Color.Transparent;
+            this.itemBanSi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemBanSi.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemBanSi.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemBanSi.Image = ((System.Drawing.Image)(resources.GetObject("itemBanSi.Image")));
+            this.itemBanSi.Location = new System.Drawing.Point(8, 65);
+            this.itemBanSi.Name = "itemBanSi";
+            this.itemBanSi.Size = new System.Drawing.Size(117, 20);
+            this.itemBanSi.TabIndex = 6;
+            this.itemBanSi.Text = "Bán sỉ";
+            this.itemBanSi.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemBanSi.UseVisualStyleBackColor = false;
+            this.itemBanSi.Click += new System.EventHandler(this.mnuBanHangDL_Click);
+            // 
+            // itemBanLe
+            // 
+            this.itemBanLe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemBanLe.BackColor = System.Drawing.Color.Transparent;
+            this.itemBanLe.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemBanLe.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemBanLe.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemBanLe.Image = ((System.Drawing.Image)(resources.GetObject("itemBanLe.Image")));
+            this.itemBanLe.Location = new System.Drawing.Point(8, 100);
+            this.itemBanLe.Name = "itemBanLe";
+            this.itemBanLe.Size = new System.Drawing.Size(117, 20);
+            this.itemBanLe.TabIndex = 7;
+            this.itemBanLe.Text = "Bán lẻ";
+            this.itemBanLe.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemBanLe.UseVisualStyleBackColor = false;
+            this.itemBanLe.Click += new System.EventHandler(this.mnuBanHangKH_Click);
+            // 
+            // itemThanhToan
+            // 
+            this.itemThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemThanhToan.BackColor = System.Drawing.Color.Transparent;
+            this.itemThanhToan.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemThanhToan.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemThanhToan.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("itemThanhToan.Image")));
+            this.itemThanhToan.Location = new System.Drawing.Point(8, 133);
+            this.itemThanhToan.Name = "itemThanhToan";
+            this.itemThanhToan.Size = new System.Drawing.Size(117, 20);
+            this.itemThanhToan.TabIndex = 8;
+            this.itemThanhToan.Text = "Phiếu thu";
+            this.itemThanhToan.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemThanhToan.UseVisualStyleBackColor = false;
+            this.itemThanhToan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
+            // 
+            // itemPhieuChi
+            // 
+            this.itemPhieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemPhieuChi.BackColor = System.Drawing.Color.Transparent;
+            this.itemPhieuChi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemPhieuChi.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemPhieuChi.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemPhieuChi.Image = ((System.Drawing.Image)(resources.GetObject("itemPhieuChi.Image")));
+            this.itemPhieuChi.Location = new System.Drawing.Point(8, 166);
+            this.itemPhieuChi.Name = "itemPhieuChi";
+            this.itemPhieuChi.Size = new System.Drawing.Size(117, 20);
+            this.itemPhieuChi.TabIndex = 9;
+            this.itemPhieuChi.Text = "Phiếu chi";
+            this.itemPhieuChi.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemPhieuChi.UseVisualStyleBackColor = false;
+            this.itemPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
+            // 
             // expando3
             // 
-            this.expando3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando3.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando3.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -410,14 +867,68 @@ namespace CuahangNongduoc
             this.itemTonKho,
             this.taskItem1});
             this.expando3.Location = new System.Drawing.Point(12, 396);
+            this.expando3.Margin = new System.Windows.Forms.Padding(4);
             this.expando3.Name = "expando3";
-            this.expando3.Size = new System.Drawing.Size(169, 170);
+            this.expando3.Size = new System.Drawing.Size(233, 170);
             this.expando3.TabIndex = 2;
             this.expando3.Text = "Báo cáo";
             // 
+            // itemTonghopDoanhthu
+            // 
+            this.itemTonghopDoanhthu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemTonghopDoanhthu.BackColor = System.Drawing.Color.Transparent;
+            this.itemTonghopDoanhthu.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemTonghopDoanhthu.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemTonghopDoanhthu.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemTonghopDoanhthu.Image = ((System.Drawing.Image)(resources.GetObject("itemTonghopDoanhthu.Image")));
+            this.itemTonghopDoanhthu.Location = new System.Drawing.Point(9, 32);
+            this.itemTonghopDoanhthu.Name = "itemTonghopDoanhthu";
+            this.itemTonghopDoanhthu.Size = new System.Drawing.Size(117, 20);
+            this.itemTonghopDoanhthu.TabIndex = 7;
+            this.itemTonghopDoanhthu.Text = "Số lượng bán";
+            this.itemTonghopDoanhthu.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemTonghopDoanhthu.UseVisualStyleBackColor = false;
+            this.itemTonghopDoanhthu.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
+            // 
+            // itemTonKho
+            // 
+            this.itemTonKho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemTonKho.BackColor = System.Drawing.Color.Transparent;
+            this.itemTonKho.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.itemTonKho.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.itemTonKho.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.itemTonKho.Image = ((System.Drawing.Image)(resources.GetObject("itemTonKho.Image")));
+            this.itemTonKho.Location = new System.Drawing.Point(9, 65);
+            this.itemTonKho.Name = "itemTonKho";
+            this.itemTonKho.Size = new System.Drawing.Size(117, 20);
+            this.itemTonKho.TabIndex = 8;
+            this.itemTonKho.Text = "Số lượng tồn";
+            this.itemTonKho.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.itemTonKho.UseVisualStyleBackColor = false;
+            // 
+            // taskItem1
+            // 
+            this.taskItem1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.taskItem1.BackColor = System.Drawing.Color.Transparent;
+            this.taskItem1.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
+            this.taskItem1.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
+            this.taskItem1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.taskItem1.Image = ((System.Drawing.Image)(resources.GetObject("taskItem1.Image")));
+            this.taskItem1.Location = new System.Drawing.Point(8, 98);
+            this.taskItem1.Name = "taskItem1";
+            this.taskItem1.Size = new System.Drawing.Size(117, 20);
+            this.taskItem1.TabIndex = 9;
+            this.taskItem1.Text = "Sản phẩm hết hạn";
+            this.taskItem1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.taskItem1.UseVisualStyleBackColor = false;
+            this.taskItem1.Click += new System.EventHandler(this.mnuSanphamHethan_Click);
+            // 
             // expando4
             // 
-            this.expando4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando4.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando4.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -432,557 +943,53 @@ namespace CuahangNongduoc
             this.itemDoiMatKhau,
             this.itemDangXuat});
             this.expando4.Location = new System.Drawing.Point(12, 578);
+            this.expando4.Margin = new System.Windows.Forms.Padding(4);
             this.expando4.Name = "expando4";
-            this.expando4.Size = new System.Drawing.Size(169, 170);
+            this.expando4.Size = new System.Drawing.Size(233, 170);
             this.expando4.TabIndex = 10;
             this.expando4.Text = "Hệ thống";
             // 
             // itemDoiMatKhau
             // 
-            this.itemDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemDoiMatKhau.BackColor = System.Drawing.Color.Transparent;
             this.itemDoiMatKhau.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
             this.itemDoiMatKhau.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
             this.itemDoiMatKhau.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.itemDoiMatKhau.Image = null;
-            this.itemDoiMatKhau.Location = new System.Drawing.Point(7, 26);
+            this.itemDoiMatKhau.Location = new System.Drawing.Point(9, 32);
             this.itemDoiMatKhau.Name = "itemDoiMatKhau";
-            this.itemDoiMatKhau.Size = new System.Drawing.Size(146, 16);
+            this.itemDoiMatKhau.Size = new System.Drawing.Size(117, 20);
             this.itemDoiMatKhau.TabIndex = 7;
             this.itemDoiMatKhau.Text = "Đổi mật khẩu";
+            this.itemDoiMatKhau.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.itemDoiMatKhau.UseVisualStyleBackColor = false;
             this.itemDoiMatKhau.Click += new System.EventHandler(this.itemDoiMatKhau_Click);
             // 
             // itemDangXuat
             // 
-            this.itemDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemDangXuat.BackColor = System.Drawing.Color.Transparent;
             this.itemDangXuat.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
             this.itemDangXuat.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
             this.itemDangXuat.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.itemDangXuat.Image = null;
-            this.itemDangXuat.Location = new System.Drawing.Point(7, 53);
+            this.itemDangXuat.Location = new System.Drawing.Point(9, 65);
             this.itemDangXuat.Name = "itemDangXuat";
-            this.itemDangXuat.Size = new System.Drawing.Size(146, 16);
+            this.itemDangXuat.Size = new System.Drawing.Size(117, 20);
             this.itemDangXuat.TabIndex = 8;
             this.itemDangXuat.Text = "Đăng xuất";
+            this.itemDangXuat.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.itemDangXuat.UseVisualStyleBackColor = false;
             this.itemDangXuat.Click += new System.EventHandler(this.itemDangXuat_Click);
             // 
-            // itemDaiLy
-            // 
-            this.itemDaiLy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemDaiLy.BackColor = System.Drawing.Color.Transparent;
-            this.itemDaiLy.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemDaiLy.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemDaiLy.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemDaiLy.Image = ((System.Drawing.Image)(resources.GetObject("itemDaiLy.Image")));
-            this.itemDaiLy.Location = new System.Drawing.Point(4, 80);
-            this.itemDaiLy.Name = "itemDaiLy";
-            this.itemDaiLy.Size = new System.Drawing.Size(134, 16);
-            this.itemDaiLy.TabIndex = 12;
-            this.itemDaiLy.Text = "Đại lý";
-            this.itemDaiLy.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemDaiLy.UseVisualStyleBackColor = false;
-            this.itemDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
-            // 
-            // itemKhachHang
-            // 
-            this.itemKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemKhachHang.BackColor = System.Drawing.Color.Transparent;
-            this.itemKhachHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemKhachHang.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemKhachHang.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemKhachHang.Image = ((System.Drawing.Image)(resources.GetObject("itemKhachHang.Image")));
-            this.itemKhachHang.Location = new System.Drawing.Point(4, 53);
-            this.itemKhachHang.Name = "itemKhachHang";
-            this.itemKhachHang.Size = new System.Drawing.Size(134, 16);
-            this.itemKhachHang.TabIndex = 9;
-            this.itemKhachHang.Text = "Khách hàng";
-            this.itemKhachHang.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemKhachHang.UseVisualStyleBackColor = false;
-            this.itemKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
-            // 
-            // itemSanPham
-            // 
-            this.itemSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemSanPham.BackColor = System.Drawing.Color.Transparent;
-            this.itemSanPham.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemSanPham.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemSanPham.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemSanPham.Image = ((System.Drawing.Image)(resources.GetObject("itemSanPham.Image")));
-            this.itemSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.itemSanPham.Location = new System.Drawing.Point(4, 26);
-            this.itemSanPham.Name = "itemSanPham";
-            this.itemSanPham.Size = new System.Drawing.Size(134, 16);
-            this.itemSanPham.TabIndex = 8;
-            this.itemSanPham.Text = "Sản phẩm";
-            this.itemSanPham.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemSanPham.UseVisualStyleBackColor = false;
-            this.itemSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
-            // 
-            // itemNhaCungCap
-            // 
-            this.itemNhaCungCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemNhaCungCap.BackColor = System.Drawing.Color.Transparent;
-            this.itemNhaCungCap.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemNhaCungCap.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemNhaCungCap.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("itemNhaCungCap.Image")));
-            this.itemNhaCungCap.Location = new System.Drawing.Point(4, 107);
-            this.itemNhaCungCap.Name = "itemNhaCungCap";
-            this.itemNhaCungCap.Size = new System.Drawing.Size(134, 16);
-            this.itemNhaCungCap.TabIndex = 13;
-            this.itemNhaCungCap.Text = "Nhà cung cấp";
-            this.itemNhaCungCap.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemNhaCungCap.UseVisualStyleBackColor = false;
-            this.itemNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
-            // 
-            // itemNguoiDung
-            // 
-            this.itemNguoiDung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemNguoiDung.BackColor = System.Drawing.Color.Transparent;
-            this.itemNguoiDung.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemNguoiDung.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemNguoiDung.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemNguoiDung.Image = ((System.Drawing.Image)(resources.GetObject("itemNguoiDung.Image")));
-            this.itemNguoiDung.Location = new System.Drawing.Point(4, 129);
-            this.itemNguoiDung.Name = "itemNguoiDung";
-            this.itemNguoiDung.Size = new System.Drawing.Size(134, 16);
-            this.itemNguoiDung.TabIndex = 14;
-            this.itemNguoiDung.Text = "Người dùng";
-            this.itemNguoiDung.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemNguoiDung.UseVisualStyleBackColor = false;
-            this.itemNguoiDung.Click += new System.EventHandler(this.itemNguoiDung_Click);
-            // 
-            // itemNhapHang
-            // 
-            this.itemNhapHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemNhapHang.BackColor = System.Drawing.Color.Transparent;
-            this.itemNhapHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemNhapHang.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemNhapHang.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemNhapHang.Image = ((System.Drawing.Image)(resources.GetObject("itemNhapHang.Image")));
-            this.itemNhapHang.Location = new System.Drawing.Point(7, 26);
-            this.itemNhapHang.Name = "itemNhapHang";
-            this.itemNhapHang.Size = new System.Drawing.Size(146, 16);
-            this.itemNhapHang.TabIndex = 5;
-            this.itemNhapHang.Text = "Nhập hàng";
-            this.itemNhapHang.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemNhapHang.UseVisualStyleBackColor = false;
-            this.itemNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
-            // 
-            // itemBanSi
-            // 
-            this.itemBanSi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemBanSi.BackColor = System.Drawing.Color.Transparent;
-            this.itemBanSi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemBanSi.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemBanSi.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemBanSi.Image = ((System.Drawing.Image)(resources.GetObject("itemBanSi.Image")));
-            this.itemBanSi.Location = new System.Drawing.Point(6, 53);
-            this.itemBanSi.Name = "itemBanSi";
-            this.itemBanSi.Size = new System.Drawing.Size(146, 16);
-            this.itemBanSi.TabIndex = 6;
-            this.itemBanSi.Text = "Bán sỉ";
-            this.itemBanSi.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemBanSi.UseVisualStyleBackColor = false;
-            this.itemBanSi.Click += new System.EventHandler(this.mnuBanHangDL_Click);
-            // 
-            // itemBanLe
-            // 
-            this.itemBanLe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemBanLe.BackColor = System.Drawing.Color.Transparent;
-            this.itemBanLe.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemBanLe.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemBanLe.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemBanLe.Image = ((System.Drawing.Image)(resources.GetObject("itemBanLe.Image")));
-            this.itemBanLe.Location = new System.Drawing.Point(6, 81);
-            this.itemBanLe.Name = "itemBanLe";
-            this.itemBanLe.Size = new System.Drawing.Size(146, 16);
-            this.itemBanLe.TabIndex = 7;
-            this.itemBanLe.Text = "Bán lẻ";
-            this.itemBanLe.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemBanLe.UseVisualStyleBackColor = false;
-            this.itemBanLe.Click += new System.EventHandler(this.mnuBanHangKH_Click);
-            // 
-            // itemThanhToan
-            // 
-            this.itemThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemThanhToan.BackColor = System.Drawing.Color.Transparent;
-            this.itemThanhToan.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemThanhToan.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemThanhToan.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("itemThanhToan.Image")));
-            this.itemThanhToan.Location = new System.Drawing.Point(6, 108);
-            this.itemThanhToan.Name = "itemThanhToan";
-            this.itemThanhToan.Size = new System.Drawing.Size(146, 16);
-            this.itemThanhToan.TabIndex = 8;
-            this.itemThanhToan.Text = "Phiếu thu";
-            this.itemThanhToan.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemThanhToan.UseVisualStyleBackColor = false;
-            this.itemThanhToan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
-            // 
-            // itemPhieuChi
-            // 
-            this.itemPhieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemPhieuChi.BackColor = System.Drawing.Color.Transparent;
-            this.itemPhieuChi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemPhieuChi.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemPhieuChi.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemPhieuChi.Image = ((System.Drawing.Image)(resources.GetObject("itemPhieuChi.Image")));
-            this.itemPhieuChi.Location = new System.Drawing.Point(6, 135);
-            this.itemPhieuChi.Name = "itemPhieuChi";
-            this.itemPhieuChi.Size = new System.Drawing.Size(146, 16);
-            this.itemPhieuChi.TabIndex = 9;
-            this.itemPhieuChi.Text = "Phiếu chi";
-            this.itemPhieuChi.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemPhieuChi.UseVisualStyleBackColor = false;
-            this.itemPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
-            // 
-            // itemTonghopDoanhthu
-            // 
-            this.itemTonghopDoanhthu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemTonghopDoanhthu.BackColor = System.Drawing.Color.Transparent;
-            this.itemTonghopDoanhthu.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemTonghopDoanhthu.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemTonghopDoanhthu.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemTonghopDoanhthu.Image = ((System.Drawing.Image)(resources.GetObject("itemTonghopDoanhthu.Image")));
-            this.itemTonghopDoanhthu.Location = new System.Drawing.Point(7, 26);
-            this.itemTonghopDoanhthu.Name = "itemTonghopDoanhthu";
-            this.itemTonghopDoanhthu.Size = new System.Drawing.Size(146, 16);
-            this.itemTonghopDoanhthu.TabIndex = 7;
-            this.itemTonghopDoanhthu.Text = "Số lượng bán";
-            this.itemTonghopDoanhthu.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemTonghopDoanhthu.UseVisualStyleBackColor = false;
-            this.itemTonghopDoanhthu.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
-            // 
-            // itemTonKho
-            // 
-            this.itemTonKho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemTonKho.BackColor = System.Drawing.Color.Transparent;
-            this.itemTonKho.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.itemTonKho.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.itemTonKho.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.itemTonKho.Image = ((System.Drawing.Image)(resources.GetObject("itemTonKho.Image")));
-            this.itemTonKho.Location = new System.Drawing.Point(7, 53);
-            this.itemTonKho.Name = "itemTonKho";
-            this.itemTonKho.Size = new System.Drawing.Size(146, 16);
-            this.itemTonKho.TabIndex = 8;
-            this.itemTonKho.Text = "Số lượng tồn";
-            this.itemTonKho.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.itemTonKho.UseVisualStyleBackColor = false;
-            // 
-            // taskItem1
-            // 
-            this.taskItem1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.taskItem1.BackColor = System.Drawing.Color.Transparent;
-            this.taskItem1.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
-            this.taskItem1.CustomSettings.LinkColor = System.Drawing.Color.Maroon;
-            this.taskItem1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.taskItem1.Image = ((System.Drawing.Image)(resources.GetObject("taskItem1.Image")));
-            this.taskItem1.Location = new System.Drawing.Point(6, 80);
-            this.taskItem1.Name = "taskItem1";
-            this.taskItem1.Size = new System.Drawing.Size(146, 16);
-            this.taskItem1.TabIndex = 9;
-            this.taskItem1.Text = "Sản phẩm hết hạn";
-            this.taskItem1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.taskItem1.UseVisualStyleBackColor = false;
-            this.taskItem1.Click += new System.EventHandler(this.mnuSanphamHethan_Click);
-            // 
-            // toolSanPham
-            // 
-            this.toolSanPham.Image = global::CuahangNongduoc.Properties.Resources.SanPham;
-            this.toolSanPham.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolSanPham.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSanPham.Name = "toolSanPham";
-            this.toolSanPham.Size = new System.Drawing.Size(64, 43);
-            this.toolSanPham.Text = "Sản phẩm";
-            this.toolSanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
-            // 
-            // toolNhaCungCap
-            // 
-            this.toolNhaCungCap.Image = global::CuahangNongduoc.Properties.Resources.NhaCungCap;
-            this.toolNhaCungCap.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolNhaCungCap.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolNhaCungCap.Name = "toolNhaCungCap";
-            this.toolNhaCungCap.Size = new System.Drawing.Size(85, 43);
-            this.toolNhaCungCap.Text = "Nhà cung cấp";
-            this.toolNhaCungCap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
-            // 
-            // toolKhachHang
-            // 
-            this.toolKhachHang.Image = global::CuahangNongduoc.Properties.Resources.KhachHang;
-            this.toolKhachHang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolKhachHang.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolKhachHang.Name = "toolKhachHang";
-            this.toolKhachHang.Size = new System.Drawing.Size(74, 43);
-            this.toolKhachHang.Text = "Khách hàng";
-            this.toolKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
-            // 
-            // toolDaiLy
-            // 
-            this.toolDaiLy.Image = global::CuahangNongduoc.Properties.Resources.DaiLy;
-            this.toolDaiLy.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolDaiLy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolDaiLy.Name = "toolDaiLy";
-            this.toolDaiLy.Size = new System.Drawing.Size(40, 43);
-            this.toolDaiLy.Text = "Đại lý";
-            this.toolDaiLy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
-            // 
-            // toolNhapHang
-            // 
-            this.toolNhapHang.Image = global::CuahangNongduoc.Properties.Resources.Phieunhap;
-            this.toolNhapHang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolNhapHang.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolNhapHang.Name = "toolNhapHang";
-            this.toolNhapHang.Size = new System.Drawing.Size(70, 43);
-            this.toolNhapHang.Text = "Nhập hàng";
-            this.toolNhapHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
-            // 
-            // toolBanSi
-            // 
-            this.toolBanSi.Image = global::CuahangNongduoc.Properties.Resources.Bansi;
-            this.toolBanSi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolBanSi.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBanSi.Name = "toolBanSi";
-            this.toolBanSi.Size = new System.Drawing.Size(42, 43);
-            this.toolBanSi.Text = "Bán sĩ";
-            this.toolBanSi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolBanSi.Click += new System.EventHandler(this.mnuBanHangDL_Click);
-            // 
-            // toolBanLe
-            // 
-            this.toolBanLe.Image = global::CuahangNongduoc.Properties.Resources.Banle;
-            this.toolBanLe.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolBanLe.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBanLe.Name = "toolBanLe";
-            this.toolBanLe.Size = new System.Drawing.Size(43, 43);
-            this.toolBanLe.Text = "Bán lẻ";
-            this.toolBanLe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolBanLe.Click += new System.EventHandler(this.mnuBanHangKH_Click);
-            // 
-            // toolPhieuChi
-            // 
-            this.toolPhieuChi.Image = global::CuahangNongduoc.Properties.Resources.PhieuChi;
-            this.toolPhieuChi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolPhieuChi.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPhieuChi.Name = "toolPhieuChi";
-            this.toolPhieuChi.Size = new System.Drawing.Size(60, 43);
-            this.toolPhieuChi.Text = "Phiếu chi";
-            this.toolPhieuChi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
-            // 
-            // toolThanhtoan
-            // 
-            this.toolThanhtoan.Image = global::CuahangNongduoc.Properties.Resources.Thanhtoan;
-            this.toolThanhtoan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolThanhtoan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolThanhtoan.Name = "toolThanhtoan";
-            this.toolThanhtoan.Size = new System.Drawing.Size(62, 43);
-            this.toolThanhtoan.Text = "Phiếu thu";
-            this.toolThanhtoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolThanhtoan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
-            // 
-            // toolTonKho
-            // 
-            this.toolTonKho.Image = global::CuahangNongduoc.Properties.Resources.TonKho;
-            this.toolTonKho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolTonKho.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolTonKho.Name = "toolTonKho";
-            this.toolTonKho.Size = new System.Drawing.Size(55, 43);
-            this.toolTonKho.Text = "Tồn kho";
-            this.toolTonKho.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTonKho.Click += new System.EventHandler(this.mnuBaocaoSoluongton_Click);
-            // 
-            // mnuThoat
-            // 
-            this.mnuThoat.Image = global::CuahangNongduoc.Properties.Resources.Thoat;
-            this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(184, 26);
-            this.mnuThoat.Text = "Thoát";
-            this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
-            // 
-            // mnuLyDoChi
-            // 
-            this.mnuLyDoChi.Image = global::CuahangNongduoc.Properties.Resources.LyDoChi;
-            this.mnuLyDoChi.Name = "mnuLyDoChi";
-            this.mnuLyDoChi.Size = new System.Drawing.Size(148, 22);
-            this.mnuLyDoChi.Text = "Lý do chi";
-            this.mnuLyDoChi.Click += new System.EventHandler(this.mnuLyDoChi_Click);
-            // 
-            // mnuDonViTinh
-            // 
-            this.mnuDonViTinh.Image = global::CuahangNongduoc.Properties.Resources.DonViTinh;
-            this.mnuDonViTinh.Name = "mnuDonViTinh";
-            this.mnuDonViTinh.Size = new System.Drawing.Size(148, 22);
-            this.mnuDonViTinh.Text = "Đơn vị tính";
-            this.mnuDonViTinh.Click += new System.EventHandler(this.mnuDonViTinh_Click);
-            // 
-            // mnuSanPham
-            // 
-            this.mnuSanPham.Image = global::CuahangNongduoc.Properties.Resources.SanPham;
-            this.mnuSanPham.Name = "mnuSanPham";
-            this.mnuSanPham.Size = new System.Drawing.Size(148, 22);
-            this.mnuSanPham.Text = "Sản phẩm";
-            this.mnuSanPham.Click += new System.EventHandler(this.mnuSanPham_Click);
-            // 
-            // mnuKhachHang
-            // 
-            this.mnuKhachHang.Image = global::CuahangNongduoc.Properties.Resources.KhachHang;
-            this.mnuKhachHang.Name = "mnuKhachHang";
-            this.mnuKhachHang.Size = new System.Drawing.Size(148, 22);
-            this.mnuKhachHang.Text = "Khách hàng";
-            this.mnuKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
-            // 
-            // mnuDaiLy
-            // 
-            this.mnuDaiLy.Image = global::CuahangNongduoc.Properties.Resources.DaiLy;
-            this.mnuDaiLy.Name = "mnuDaiLy";
-            this.mnuDaiLy.Size = new System.Drawing.Size(148, 22);
-            this.mnuDaiLy.Text = " Đại lý";
-            this.mnuDaiLy.Click += new System.EventHandler(this.mnuDaiLy_Click);
-            // 
-            // mnuNhaCungCap
-            // 
-            this.mnuNhaCungCap.Image = global::CuahangNongduoc.Properties.Resources.NhaCungCap;
-            this.mnuNhaCungCap.Name = "mnuNhaCungCap";
-            this.mnuNhaCungCap.Size = new System.Drawing.Size(148, 22);
-            this.mnuNhaCungCap.Text = "Nhà cung cấp";
-            this.mnuNhaCungCap.Click += new System.EventHandler(this.mnuNhaCungCap_Click);
-            // 
-            // mnuNhapHang
-            // 
-            this.mnuNhapHang.Image = global::CuahangNongduoc.Properties.Resources.Phieunhap;
-            this.mnuNhapHang.Name = "mnuNhapHang";
-            this.mnuNhapHang.Size = new System.Drawing.Size(160, 22);
-            this.mnuNhapHang.Text = "Nhập hàng";
-            this.mnuNhapHang.Click += new System.EventHandler(this.mnuNhapHang_Click);
-            // 
-            // mnuBanHangKH
-            // 
-            this.mnuBanHangKH.Image = global::CuahangNongduoc.Properties.Resources.Banle;
-            this.mnuBanHangKH.Name = "mnuBanHangKH";
-            this.mnuBanHangKH.Size = new System.Drawing.Size(195, 22);
-            this.mnuBanHangKH.Text = "Bán lẻ cho Khách hàng";
-            this.mnuBanHangKH.Click += new System.EventHandler(this.mnuBanHangKH_Click);
-            // 
-            // mnuBanHangDL
-            // 
-            this.mnuBanHangDL.Image = global::CuahangNongduoc.Properties.Resources.Bansi;
-            this.mnuBanHangDL.Name = "mnuBanHangDL";
-            this.mnuBanHangDL.Size = new System.Drawing.Size(195, 22);
-            this.mnuBanHangDL.Text = "Bán sỉ cho Đại lý";
-            this.mnuBanHangDL.Click += new System.EventHandler(this.mnuBanHangDL_Click);
-            // 
-            // mnuPhieuChi
-            // 
-            this.mnuPhieuChi.Image = global::CuahangNongduoc.Properties.Resources.PhieuChi;
-            this.mnuPhieuChi.Name = "mnuPhieuChi";
-            this.mnuPhieuChi.Size = new System.Drawing.Size(160, 22);
-            this.mnuPhieuChi.Text = "Phiếu chi";
-            this.mnuPhieuChi.Click += new System.EventHandler(this.mnuPhieuChi_Click);
-            // 
-            // mnuThanhtoan
-            // 
-            this.mnuThanhtoan.Image = global::CuahangNongduoc.Properties.Resources.Thanhtoan;
-            this.mnuThanhtoan.Name = "mnuThanhtoan";
-            this.mnuThanhtoan.Size = new System.Drawing.Size(160, 22);
-            this.mnuThanhtoan.Text = "Phiếu thu";
-            this.mnuThanhtoan.Click += new System.EventHandler(this.mnuThanhtoan_Click);
-            // 
-            // mnuTonghopDuno
-            // 
-            this.mnuTonghopDuno.Image = global::CuahangNongduoc.Properties.Resources.DunoKhachhang;
-            this.mnuTonghopDuno.Name = "mnuTonghopDuno";
-            this.mnuTonghopDuno.Size = new System.Drawing.Size(160, 22);
-            this.mnuTonghopDuno.Text = "Tổng hợp dư nợ";
-            this.mnuTonghopDuno.Click += new System.EventHandler(this.mnuTonghopDuno_Click);
-            // 
-            // mnuBaocaoSoluongton
-            // 
-            this.mnuBaocaoSoluongton.Image = global::CuahangNongduoc.Properties.Resources.TonKho;
-            this.mnuBaocaoSoluongton.Name = "mnuBaocaoSoluongton";
-            this.mnuBaocaoSoluongton.Size = new System.Drawing.Size(170, 22);
-            this.mnuBaocaoSoluongton.Text = "Số lượng tồn";
-            this.mnuBaocaoSoluongton.Click += new System.EventHandler(this.mnuBaocaoSoluongton_Click);
-            // 
-            // mnuSoLuongBan
-            // 
-            this.mnuSoLuongBan.Image = global::CuahangNongduoc.Properties.Resources.Soluongban;
-            this.mnuSoLuongBan.Name = "mnuSoLuongBan";
-            this.mnuSoLuongBan.Size = new System.Drawing.Size(170, 22);
-            this.mnuSoLuongBan.Text = "Số lượng bán";
-            this.mnuSoLuongBan.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
-            // 
-            // mnuSanphamHethan
-            // 
-            this.mnuSanphamHethan.Image = global::CuahangNongduoc.Properties.Resources.SanPhamHethan;
-            this.mnuSanphamHethan.Name = "mnuSanphamHethan";
-            this.mnuSanphamHethan.Size = new System.Drawing.Size(170, 22);
-            this.mnuSanphamHethan.Text = "Sản phẩm hết hạn";
-            this.mnuSanphamHethan.Click += new System.EventHandler(this.mnuSanphamHethan_Click);
-            // 
-            // mnuTuychinhThongtin
-            // 
-            this.mnuTuychinhThongtin.Image = global::CuahangNongduoc.Properties.Resources.info;
-            this.mnuTuychinhThongtin.Name = "mnuTuychinhThongtin";
-            this.mnuTuychinhThongtin.Size = new System.Drawing.Size(180, 22);
-            this.mnuTuychinhThongtin.Text = "Thông tin Cửa hàng";
-            this.mnuTuychinhThongtin.Click += new System.EventHandler(this.mnuTuychinhThongtin_Click);
-            // 
-            // mnuTrogiupHuongdan
-            // 
-            this.mnuTrogiupHuongdan.Image = global::CuahangNongduoc.Properties.Resources.help;
-            this.mnuTrogiupHuongdan.Name = "mnuTrogiupHuongdan";
-            this.mnuTrogiupHuongdan.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mnuTrogiupHuongdan.Size = new System.Drawing.Size(199, 22);
-            this.mnuTrogiupHuongdan.Text = "Hướng dẫn sử dụng";
-            this.mnuTrogiupHuongdan.Click += new System.EventHandler(this.mnuTrogiupHuongdan_Click);
-            // 
-            // mnuTrogiupLienhe
-            // 
-            this.mnuTrogiupLienhe.Image = global::CuahangNongduoc.Properties.Resources.info;
-            this.mnuTrogiupLienhe.Name = "mnuTrogiupLienhe";
-            this.mnuTrogiupLienhe.Size = new System.Drawing.Size(199, 22);
-            this.mnuTrogiupLienhe.Text = "Thông tin liên hệ";
-            this.mnuTrogiupLienhe.Click += new System.EventHandler(this.mnuTrogiupLienhe_Click);
-            // 
-            // toolNguoiDung
-            // 
-            this.toolNguoiDung.Image = global::CuahangNongduoc.Properties.Resources.user;
-            this.toolNguoiDung.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolNguoiDung.Name = "toolNguoiDung";
-            this.toolNguoiDung.Size = new System.Drawing.Size(75, 43);
-            this.toolNguoiDung.Text = "Người dùng";
-            this.toolNguoiDung.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolNguoiDung.Click += new System.EventHandler(this.toolNguoiDung_Click);
-            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 839);
+            this.ClientSize = new System.Drawing.Size(1061, 1033);
             this.Controls.Add(this.taskPane);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -990,6 +997,7 @@ namespace CuahangNongduoc
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "QUAN LY CUA HANG NONG DUOC";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

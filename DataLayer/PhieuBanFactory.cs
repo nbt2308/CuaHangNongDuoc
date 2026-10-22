@@ -65,7 +65,7 @@ namespace CuahangNongduoc.DataLayer
             cmd.Parameters.Add("nam", OleDbType.Integer).Value = nam;
 
             object obj = ds.ExecuteScalar(cmd);
-            if (obj == null)
+            if (obj == null || obj == DBNull.Value)
                 return 0;
             else
                 return Convert.ToInt64(obj);

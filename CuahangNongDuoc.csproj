@@ -86,6 +86,10 @@
   <ItemGroup>
     <Compile Include="Auth\refactoring_patterns.cs" />
     <Compile Include="BusinessObject\ChiTietPhieuBan.cs" />
+    <Compile Include="BusinessObject\DichVuPhieuBan.cs" />
+    <Compile Include="BusinessObject\ThongTinChiPhiPhieuBan.cs" />
+    <Compile Include="BusinessObject\ThanhToanPhieuBan.cs" />
+    <Compile Include="BusinessObject\TinhToanHoaDonBan.cs" />
     <Compile Include="BusinessObject\CTPN.cs" />
     <Compile Include="BusinessObject\DaiLy.cs" />
     <Compile Include="BusinessObject\PhieuChi.cs" />
