@@ -60,6 +60,7 @@ namespace CuahangNongduoc
             this.mnuBaocao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoSoluongton = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoLuongBan = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaoCaoGiamGia = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSanphamHethan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTuychinh = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,6 +356,7 @@ namespace CuahangNongduoc
             this.mnuBaocao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBaocaoSoluongton,
             this.mnuSoLuongBan,
+            this.mnuBaoCaoGiamGia,
             this.toolStripSeparator5,
             this.mnuSanphamHethan});
             this.mnuBaocao.Name = "mnuBaocao";
@@ -376,6 +378,13 @@ namespace CuahangNongduoc
             this.mnuSoLuongBan.Size = new System.Drawing.Size(211, 26);
             this.mnuSoLuongBan.Text = "Số lượng bán";
             this.mnuSoLuongBan.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
+            // 
+            // mnuBaoCaoGiamGia
+            // 
+            this.mnuBaoCaoGiamGia.Name = "mnuBaoCaoGiamGia";
+            this.mnuBaoCaoGiamGia.Size = new System.Drawing.Size(260, 26);
+            this.mnuBaoCaoGiamGia.Text = "Hóa đơn giảm giá / khuyến mãi";
+            this.mnuBaoCaoGiamGia.Click += new System.EventHandler(this.mnuBaoCaoGiamGia_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1076,6 +1085,7 @@ namespace CuahangNongduoc
         private System.Windows.Forms.ToolStripButton toolThanhtoan;
         private XPExplorerBar.TaskItem itemThanhToan;
         private System.Windows.Forms.ToolStripMenuItem mnuSoLuongBan;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoGiamGia;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem mnuSanphamHethan;
         private System.Windows.Forms.ToolStripButton toolNhaCungCap;

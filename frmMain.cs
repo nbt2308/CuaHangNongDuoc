@@ -244,6 +244,16 @@ namespace CuahangNongduoc
                 DunoKhachhang.Activate();
         }
         frmDoanhThu DoanhThu = null;
+        private frmBaoCaoGiamGia BaoCaoGiamGia = null;
+        private void mnuBaoCaoGiamGia_Click(object sender, EventArgs e)
+        {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.BaoCaoDoanhThu)) return;
+            if (BaoCaoGiamGia == null || BaoCaoGiamGia.IsDisposed)
+            {
+                BaoCaoGiamGia = new frmBaoCaoGiamGia(); BaoCaoGiamGia.MdiParent = this; BaoCaoGiamGia.Show();
+            }
+            else BaoCaoGiamGia.Activate();
+        }
         private void mnuBaocaoDoanhThu_Click(object sender, EventArgs e)
         {
             if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.BaoCaoDoanhThu)) return;

@@ -166,6 +166,25 @@ namespace CuahangNongduoc
             }
         }
 
+        public static void EnsureColumn(string tableName, string columnName, string columnType)
+        {
+            if (!OpenConnection()) throw new InvalidOperationException("Không thể kết nối cơ sở dữ liệu Access.");
+            using (OleDbCommand check = m_Connection.CreateCommand())
+            {
+                check.CommandText = "SELECT * FROM [" + tableName + "] WHERE 1=0";
+                using (OleDbDataReader reader = check.ExecuteReader())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                        if (String.Equals(reader.GetName(i), columnName, StringComparison.OrdinalIgnoreCase)) return;
+                }
+            }
+            using (OleDbCommand alter = m_Connection.CreateCommand())
+            {
+                alter.CommandText = "ALTER TABLE [" + tableName + "] ADD COLUMN [" + columnName + "] " + columnType;
+                alter.ExecuteNonQuery();
+            }
+        }
+
         public object ExecuteScalar(OleDbCommand cmd)
         {
             object result = null;

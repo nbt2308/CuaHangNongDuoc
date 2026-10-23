@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using CuahangNongduoc.BusinessObject;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc.DataLayer
 {
@@ -613,8 +614,10 @@ namespace CuahangNongduoc.DataLayer
 
         private void ThemPhieu(OleDbConnection c, OleDbTransaction t, string id, string kh, DateTime ngay, ThongTinChiPhiPhieuBan chiPhi, long daTra)
         {
-            OleDbCommand cmd = new OleDbCommand("INSERT INTO PHIEU_BAN (ID, ID_KHACH_HANG, NGAY_BAN, TONG_TIEN, DA_TRA, CON_NO, TIEN_HANG, TONG_DICH_VU, GIAO_HANG, KHOANG_CACH_KM, PHI_VAN_CHUYEN, LOAI_GIAM_GIA, TY_LE_GIAM_GIA, TIEN_GIAM_GIA) VALUES (@id,@kh,@ngay,@tong,@tra,@no,@hang,@dichvu,@giaohang,@km,@ship,@loaigiam,@tyle,@tiengiam)", c, t);
+            if (!UserSession.IsLoggedIn) throw new InvalidOperationException("Vui lòng đăng nhập trước khi lập hóa đơn.");
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO PHIEU_BAN (ID, ID_KHACH_HANG, NGAY_BAN, TONG_TIEN, DA_TRA, CON_NO, TIEN_HANG, TONG_DICH_VU, GIAO_HANG, KHOANG_CACH_KM, PHI_VAN_CHUYEN, LOAI_GIAM_GIA, TY_LE_GIAM_GIA, TIEN_GIAM_GIA, ID_NGUOI_DUNG) VALUES (@id,@kh,@ngay,@tong,@tra,@no,@hang,@dichvu,@giaohang,@km,@ship,@loaigiam,@tyle,@tiengiam,@nguoidung)", c, t);
             ThemThamSoChiPhi(cmd, id, kh, ngay, chiPhi, daTra);
+            cmd.Parameters.Add("nguoidung", OleDbType.Integer).Value = UserSession.UserId;
             cmd.ExecuteNonQuery();
         }
 
