@@ -222,6 +222,7 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -233,10 +234,11 @@
             this.colConNo});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 51);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(848, 465);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
@@ -249,7 +251,6 @@
             this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
-            this.colId.Width = 125;
             // 
             // colKhachhang
             // 
@@ -258,7 +259,6 @@
             this.colKhachhang.MinimumWidth = 6;
             this.colKhachhang.Name = "colKhachhang";
             this.colKhachhang.ReadOnly = true;
-            this.colKhachhang.Width = 125;
             // 
             // colNgayNhap
             // 
@@ -267,7 +267,6 @@
             this.colNgayNhap.MinimumWidth = 6;
             this.colNgayNhap.Name = "colNgayNhap";
             this.colNgayNhap.ReadOnly = true;
-            this.colNgayNhap.Width = 125;
             // 
             // colTongTien
             // 
@@ -276,7 +275,6 @@
             this.colTongTien.MinimumWidth = 6;
             this.colTongTien.Name = "colTongTien";
             this.colTongTien.ReadOnly = true;
-            this.colTongTien.Width = 125;
             // 
             // colDaTra
             // 
@@ -285,7 +283,6 @@
             this.colDaTra.MinimumWidth = 6;
             this.colDaTra.Name = "colDaTra";
             this.colDaTra.ReadOnly = true;
-            this.colDaTra.Width = 125;
             // 
             // colConNo
             // 
@@ -294,7 +291,6 @@
             this.colConNo.MinimumWidth = 6;
             this.colConNo.Name = "colConNo";
             this.colConNo.ReadOnly = true;
-            this.colConNo.Width = 125;
             // 
             // frmDanhsachPhieuBanSi
             // 
@@ -304,7 +300,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.bindingNavigator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDanhsachPhieuBanSi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DANH SACH PHIEU BAN SI";

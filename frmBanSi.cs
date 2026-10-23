@@ -39,7 +39,11 @@ namespace CuahangNongduoc
         private Button btnThemDongGoi;
         private DataGridView dgvDichVu;
         private Label lblThanhToanChiTiet;
+        private Label lblDichVuShipTomTat;
         private Label lblTienGiam;
+        private Label lblTongThanhToanTomTat;
+        private Label lblDaTraTomTat;
+        private Label lblConNoTomTat;
         private Label lblKhoangCachKm;
         private Label lblLoaiGiamGia;
         private Label lblTyLeGiamGia;
@@ -235,6 +239,7 @@ namespace CuahangNongduoc
             numPhiShipThuCong.ValueChanged += ChiPhi_ValueChanged;
             cmbLoaiGiamGia.SelectedIndexChanged += ChiPhi_ValueChanged;
             numTyLeGiamGia.ValueChanged += ChiPhi_ValueChanged; btnThemDichVu.Click += btnThemDichVu_Click; btnXoaDichVu.Click += btnXoaDichVu_Click;
+            CapNhatTrangThaiKhoangCach();
         }
 
         private void ChiPhi_ValueChanged(object sender, EventArgs e)
@@ -318,10 +323,9 @@ namespace CuahangNongduoc
             lblTienGiam.Text = (String.IsNullOrEmpty(phieu.LoaiGiamGia) ? "Giảm giá" : phieu.LoaiGiamGia) +
                 (phieu.TyLeGiamGia > 0 ? " " + phieu.TyLeGiamGia.ToString("0.##") + "%" : "") +
                 ": -" + phieu.TienGiamGia.ToString("#,##0") + " đ";
-            lblThanhToanChiTiet.Text = "Tiền hàng: " + phieu.TienHang.ToString("#,##0") + " đ\r\n" +
-                "Dịch vụ: " + phieu.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + phieu.PhiVanChuyen.ToString("#,##0") + " đ\r\n" +
-                "Tổng thanh toán: " + phieu.TongTien.ToString("#,##0") + " đ\r\n" +
-                "Đã trả: " + phieu.DaTra.ToString("#,##0") + " đ   |   Còn nợ: " + phieu.ConNo.ToString("#,##0") + " đ";
+            lblThanhToanChiTiet.Text = "Tiền hàng: " + phieu.TienHang.ToString("#,##0") + " đ";
+            lblDichVuShipTomTat.Text = "Dịch vụ: " + phieu.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + phieu.PhiVanChuyen.ToString("#,##0") + " đ";
+            CapNhatTomTatThanhToan(phieu.TongTien, phieu.DaTra);
         }
 
         private ThongTinTinhHoaDon TaoYeuCauTinhHoaDon()
@@ -358,11 +362,18 @@ namespace CuahangNongduoc
             lblTienGiam.Text = (String.IsNullOrEmpty(result.LoaiGiamGia) ? "Giảm giá" : result.LoaiGiamGia) +
                 (result.TyLeGiamGia > 0 ? " " + result.TyLeGiamGia.ToString("0.##") + "%" : "") +
                 ": -" + result.TienGiamGia.ToString("#,##0") + " đ";
-            lblThanhToanChiTiet.Text = "Tiền hàng: " + result.TienHang.ToString("#,##0") + " đ\r\n" +
-                "Dịch vụ: " + result.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + result.PhiVanChuyen.ToString("#,##0") + " đ\r\n" +
-                "Tổng thanh toán: " + result.TongThanhToan.ToString("#,##0") + " đ\r\n" +
-                "Đã trả: " + Decimal.ToInt64(numDaTra.Value).ToString("#,##0") + " đ   |   Còn nợ: " + (result.TongThanhToan - Decimal.ToInt64(numDaTra.Value)).ToString("#,##0") + " đ";
+            lblThanhToanChiTiet.Text = "Tiền hàng: " + result.TienHang.ToString("#,##0") + " đ";
+            lblDichVuShipTomTat.Text = "Dịch vụ: " + result.TongDichVu.ToString("#,##0") + " đ   |   Ship: " + result.PhiVanChuyen.ToString("#,##0") + " đ";
+            CapNhatTomTatThanhToan(result.TongThanhToan, Decimal.ToInt64(numDaTra.Value));
             return chiPhi;
+        }
+
+        private void CapNhatTomTatThanhToan(decimal tongThanhToan, decimal daTra)
+        {
+            if (lblTongThanhToanTomTat == null) return;
+            lblTongThanhToanTomTat.Text = "Tổng thanh toán: " + tongThanhToan.ToString("#,##0") + " đ";
+            lblDaTraTomTat.Text = "Đã trả: " + daTra.ToString("#,##0") + " đ";
+            lblConNoTomTat.Text = "Còn nợ: " + Math.Max(0, tongThanhToan - daTra).ToString("#,##0") + " đ";
         }
 
         private void CapNhatKetQuaTinhHoaDon(KetQuaTinhHoaDon result)
@@ -655,13 +666,7 @@ namespace CuahangNongduoc
 
         private void CapNhatDongThanhToanTomTat()
         {
-            if (lblThanhToanChiTiet == null) return;
-            string[] dong = lblThanhToanChiTiet.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
-            string thanhToan = "Đã trả: " + Decimal.ToInt64(numDaTra.Value).ToString("#,##0") + " đ   |   Còn nợ: " +
-                Math.Max(0, Decimal.ToInt64(numTongTien.Value) - Decimal.ToInt64(numDaTra.Value)).ToString("#,##0") + " đ";
-            lblThanhToanChiTiet.Text = dong.Length >= 4
-                ? dong[0] + "\r\n" + dong[1] + "\r\n" + dong[2] + "\r\n" + thanhToan
-                : thanhToan;
+            CapNhatTomTatThanhToan(numTongTien.Value, numDaTra.Value);
         }
 
         // Refactoring: Extract Method TinhLaiTongTien
@@ -937,7 +942,7 @@ namespace CuahangNongduoc
             btnRemove.Enabled = suaGiaoDien;
             dgvDanhsachSP.Enabled = suaGiaoDien;
             chkGiaoHang.Enabled = suaGiaoDien;
-            numKhoangCach.Enabled = suaGiaoDien;
+            CapNhatTrangThaiKhoangCach();
             numPhiShipThuCong.Enabled = suaGiaoDien;
             numTienBocXep.Enabled = suaGiaoDien;
             numTienDongGoi.Enabled = suaGiaoDien;
@@ -1025,6 +1030,16 @@ namespace CuahangNongduoc
         private void dgvDanhsachSP_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             e.Cancel = true;
+        }
+
+        private void chkGiaoHang_CheckedChanged(object sender, EventArgs e)
+        {
+            CapNhatTrangThaiKhoangCach();
+        }
+
+        private void CapNhatTrangThaiKhoangCach()
+        {
+            numKhoangCach.Enabled = chkGiaoHang.Checked && chkGiaoHang.Enabled;
         }
     }
 }
