@@ -87,6 +87,7 @@
     <Compile Include="Auth\refactoring_patterns.cs" />
     <Compile Include="BusinessObject\ChiTietPhieuBan.cs" />
     <Compile Include="BusinessObject\DichVuPhieuBan.cs" />
+    <Compile Include="BusinessObject\ThongKeChiPhiTonKho.cs" />
     <Compile Include="BusinessObject\ThongTinChiPhiPhieuBan.cs" />
     <Compile Include="BusinessObject\ThanhToanPhieuBan.cs" />
     <Compile Include="BusinessObject\TinhToanHoaDonBan.cs" />

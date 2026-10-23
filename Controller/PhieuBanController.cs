@@ -15,6 +15,7 @@ namespace CuahangNongduoc.Controller
 
         BindingSource bs = new BindingSource();
 
+        private readonly PhieuBanFactory _factory = new PhieuBanFactory();
 
         public PhieuBanController()
         {
@@ -171,6 +172,54 @@ namespace CuahangNongduoc.Controller
             factory.TimPhieuBan(maKH, dt);
 
         }
+        public ThongKeChiPhiTonKho LayThongKeChiPhiTonKho(DateTime tuNgay, DateTime denNgay)
+        {
+            DateTime tu = tuNgay.Date;
+            DateTime den = denNgay.Date.AddDays(1).AddSeconds(-1);
 
+            // Lấy dữ liệu tổng hợp chi phí bán hàng
+            DataTable dtTongHop = _factory.ThongKeTongHopChiPhiBanHang(tu, den);
+
+            // Lấy dữ liệu chi tiết dịch vụ phụ
+            DataTable dtDichVu = _factory.ThongKeChiTietDichVuPhu(tu, den);
+
+            // Lấy danh sách tồn kho hiện tại
+            IList<SoLuongTon> danhSachTonKho = SanPhamController.LaySoLuongTon();
+
+            // Khởi tạo đối tượng kết quả
+            var thongKe = new ThongKeChiPhiTonKho
+            {
+                TuNgay = tuNgay,
+                DenNgay = denNgay,
+                ChiTietDichVu = new List<DichVuThongKeItem>(),
+                DanhSachTonKho = danhSachTonKho,
+            };
+
+            // Nạp dữ liệu tổng hợp (nếu có)
+            if (dtTongHop.Rows.Count > 0)
+            {
+                DataRow row = dtTongHop.Rows[0];
+                thongKe.SoHoaDon = row["SO_HOA_DON"] != DBNull.Value ? Convert.ToInt32(row["SO_HOA_DON"]) : 0;
+                thongKe.TongTienHang = row["TONG_TIEN_HANG"] != DBNull.Value ? Convert.ToInt64(row["TONG_TIEN_HANG"]) : 0;
+                thongKe.TongPhiVanChuyen = row["TONG_PHI_VAN_CHUYEN"] != DBNull.Value ? Convert.ToInt64(row["TONG_PHI_VAN_CHUYEN"]) : 0;
+                thongKe.TongPhiDichVu = row["TONG_DICH_VU"] != DBNull.Value ? Convert.ToInt64(row["TONG_DICH_VU"]) : 0;
+                thongKe.TongTienGiamGia = row["TONG_TIEN_GIAM"] != DBNull.Value ? Convert.ToInt64(row["TONG_TIEN_GIAM"]) : 0;
+                thongKe.TongDoanhThu = row["TONG_DOANH_THU"] != DBNull.Value ? Convert.ToInt64(row["TONG_DOANH_THU"]) : 0;
+            }
+
+            // Nạp chi tiết dịch vụ phụ
+            foreach (DataRow row in dtDichVu.Rows)
+            {
+                var item = new DichVuThongKeItem
+                {
+                    TenDichVu = row["TEN_DICH_VU"].ToString(),
+                    SoLan = row["SO_LAN"] != DBNull.Value ? Convert.ToInt32(row["SO_LAN"]) : 0,
+                    TongTien = row["TONG_TIEN"] != DBNull.Value ? Convert.ToInt64(row["TONG_TIEN"]) : 0
+                };
+                thongKe.ChiTietDichVu.Add(item);
+            }
+
+            return thongKe;
+        }
     }
 }

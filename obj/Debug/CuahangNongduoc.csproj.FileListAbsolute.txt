@@ -1,625 +1,97 @@
-<<<<<<< HEAD
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.csprojResolveAssemblyReference.cache
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.csproj.GenerateResource.Cache
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.exe
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.pdb
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\CuahangNongduoc.exe
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\CuahangNongduoc.pdb
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\TeachingAGU\BaoTriPhanMem\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.WinForms.xml
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe.config
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.pdb
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Design.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\EnvDTE.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\stdole.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe.config
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangN.B1970924.Up2Date
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe
-D:\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.pdb
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe.config
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.pdb
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe.config
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.pdb
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Design.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\EnvDTE.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\stdole.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\Microsoft.MSXML.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc-main\obj\Debug\CuahangN.B1970924.Up2Date
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe.config
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.pdb
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe.config
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.pdb
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Design.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\EnvDTE.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\stdole.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangN.B1970924.Up2Date
-D:\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmQuanLyTaiKhoan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe.config
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.exe
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\CuahangNongduoc.pdb
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.Design.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\EnvDTE.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\stdole.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\Microsoft.MSXML.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe.config
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmQuanLyTaiKhoan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangN.B1970924.Up2Date
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.exe
-D:\Downloads\CuaHangNongDuoc-main\CuaHangNongDuoc\CuaHangNongDuoc-main\obj\Debug\CuahangNongduoc.pdb
-=======
->>>>>>> origin/main
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\CuahangNongduoc.exe.config
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\CuahangNongduoc.exe
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\CuahangNongduoc.pdb
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.Design.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\Microsoft.SqlServer.Types.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\EnvDTE.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\stdole.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmBanSi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmBanLe.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmMain.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmQuanLyTaiKhoan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSanPham.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangN.B1970924.Up2Date
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.exe
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\obj\Debug\CuahangNongduoc.pdb
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-D:\nbt\AGU\HK7\TKPTBTPM\Doan\Cuahang_Nongduoc\Cuahang_Nongduoc\Cuahang Nongduoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.exe.config
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.exe
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.pdb
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.Common.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.Design.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\Microsoft.SqlServer.Types.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\EnvDTE.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\stdole.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.exe.config
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDangNhap.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmBanSi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmBanLe.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDaiLy.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmKhachHang.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmMain.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmNhapHang.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmQuanLyTaiKhoan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSanPham.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThanhToan.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.Properties.Resources.resources
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangN.B1970924.Up2Date
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.exe
-E:\BTPM\Clone\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.pdb
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.exe.config
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.exe
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\CuahangNongduoc.pdb
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.Common.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.Design.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\Microsoft.SqlServer.Types.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\EnvDTE.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\stdole.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.AssemblyReference.cache
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDangNhap.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDoiMatKhau.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuChi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmPhieuChi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmLyDoChi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmBanSi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanSi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuBanLe.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmBanLe.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDaiLy.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDanhsachPhieuNhap.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDoanhThu.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDonViTinh.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmDunoKhachhang.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInDunoKhachHang.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuBan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuNhap.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmKhachHang.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmMain.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmNhaCungCap.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmNhapHang.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmInPhieuThanhToan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmQuanLyTaiKhoan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSanPham.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSanphamHethan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSoLuongBan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmSoLuongTon.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThanhToan.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThongtinCuahang.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmThongtinLienhe.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuBanLe.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuChi.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuNhap.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.frmTimPhieuThu.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.Properties.Resources.resources
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.GenerateResource.cache
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.csproj.CoreCompileInputs.cache
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangN.B1970924.Up2Date
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.exe
+z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.pdb
+Z:\Bao_tri_PM\CuaHangNongDuoc\obj\Debug\CuahangNongduoc.exe.config

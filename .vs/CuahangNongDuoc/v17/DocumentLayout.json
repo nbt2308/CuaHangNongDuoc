@@ -1,29 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\",
+  "WorkspaceRootPath": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmdanhsachphieubanle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmdanhsachphieubanle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|z:\\bao_tri_pm\\cuahangnongduoc\\controller\\phieubancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:controller\\phieubancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmbanle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmbanle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|z:\\bao_tri_pm\\cuahangnongduoc\\businessobject\\thongkechiphitonkho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:businessobject\\thongkechiphitonkho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmbanle.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmbanle.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmsoluongton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmsoluongton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmbanle.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmbanle.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmbanle.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmbanle.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|e:\\btpm\\clone\\cuahangnongduoc\\frmquanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmquanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E7305AF2-08AC-442F-97CE-9326B33046AA}|CuahangNongduoc.csproj|solutionrelative:frmquanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -34,133 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmDanhsachPhieuBanLe.cs [Design]",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmDanhsachPhieuBanLe.cs",
-              "RelativeDocumentMoniker": "frmDanhsachPhieuBanLe.cs",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmDanhsachPhieuBanLe.cs [Design]",
-              "RelativeToolTip": "frmDanhsachPhieuBanLe.cs [Design]",
+              "Title": "PhieuBanController.cs",
+              "DocumentMoniker": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\Controller\\PhieuBanController.cs",
+              "RelativeDocumentMoniker": "Controller\\PhieuBanController.cs",
+              "ToolTip": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\Controller\\PhieuBanController.cs",
+              "RelativeToolTip": "Controller\\PhieuBanController.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-23T05:55:58.263Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmBanLe.resx",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.resx",
-              "RelativeDocumentMoniker": "frmBanLe.resx",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.resx",
-              "RelativeToolTip": "frmBanLe.resx",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAqwOUAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2026-10-23T05:53:11.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmBanLe.resx",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.resx",
-              "RelativeDocumentMoniker": "frmBanLe.resx",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.resx",
-              "RelativeToolTip": "frmBanLe.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2026-10-23T05:53:06.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmBanLe.Designer.cs",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.Designer.cs",
-              "RelativeDocumentMoniker": "frmBanLe.Designer.cs",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.Designer.cs",
-              "RelativeToolTip": "frmBanLe.Designer.cs",
-              "ViewState": "AgIAAJoFAAAAAAAAAAAiwM8FAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-23T05:48:57.765Z",
+              "WhenOpened": "2026-10-23T09:21:23.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmBanLe.cs [Design]",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.cs",
-              "RelativeDocumentMoniker": "frmBanLe.cs",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmBanLe.cs [Design]",
-              "RelativeToolTip": "frmBanLe.cs [Design]",
+              "Title": "ThongKeChiPhiTonKho.cs",
+              "DocumentMoniker": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\BusinessObject\\ThongKeChiPhiTonKho.cs",
+              "RelativeDocumentMoniker": "BusinessObject\\ThongKeChiPhiTonKho.cs",
+              "ToolTip": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\BusinessObject\\ThongKeChiPhiTonKho.cs",
+              "RelativeToolTip": "BusinessObject\\ThongKeChiPhiTonKho.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-23T05:48:31.993Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-23T08:31:46.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "frmSoLuongTon.cs [Design]",
+              "DocumentMoniker": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmSoLuongTon.cs",
+              "RelativeDocumentMoniker": "frmSoLuongTon.cs",
+              "ToolTip": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmSoLuongTon.cs [Design]",
+              "RelativeToolTip": "frmSoLuongTon.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-23T05:22:18.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "frmQuanLyTaiKhoan.cs [Design]",
-              "DocumentMoniker": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmQuanLyTaiKhoan.cs",
+              "DocumentMoniker": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmQuanLyTaiKhoan.cs",
               "RelativeDocumentMoniker": "frmQuanLyTaiKhoan.cs",
-              "ToolTip": "E:\\BTPM\\Clone\\CuaHangNongDuoc\\frmQuanLyTaiKhoan.cs [Design]",
+              "ToolTip": "Z:\\Bao_tri_PM\\CuaHangNongDuoc\\frmQuanLyTaiKhoan.cs [Design]",
               "RelativeToolTip": "frmQuanLyTaiKhoan.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-21T01:56:48.45Z",
-              "EditorCaption": " [Design]"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 96,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 96,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+              "WhenOpened": "2026-10-21T01:56:48.45Z"
             }
           ]
         }
