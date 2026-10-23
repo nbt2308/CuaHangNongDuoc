@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -161,6 +161,8 @@ namespace CuahangNongduoc
             dsChiTiet.DataSource = TaoBangChiTiet();
             dgvDanhsachSP.DataSource = dsChiTiet;
             TaoDieuKhienChiPhi();
+            numSoLuong.Minimum = 0;
+            numDaTra.Minimum = 0;
             numTongTien.ValueChanged += numTongTien_ValueChanged;
             numDaTra.ValueChanged += numTongTien_ValueChanged;
             dieuPhoiTinhHoaDon = new HoaDonBanMediator(TaoYeuCauTinhHoaDon, CapNhatKetQuaTinhHoaDon);
@@ -650,6 +652,7 @@ namespace CuahangNongduoc
 
         private void numDonGia_ValueChanged(object sender, EventArgs e)
         {
+            if (numSoLuong.Value < 0) numSoLuong.Value = 0;
             decimal total = numDonGia.Value * numSoLuong.Value;
             numThanhTien.Value = Math.Min(numThanhTien.Maximum, total);
         }
@@ -657,6 +660,7 @@ namespace CuahangNongduoc
         private void numTongTien_ValueChanged(object sender, EventArgs e)
         {
             if (isBindingData) return;
+            if (numDaTra.Value < 0) numDaTra.Value = 0;
             if (!dangSuaThanhToanPhieuCu && numDaTra.Value > numTongTien.Value) numDaTra.Value = numTongTien.Value;
             isBindingData = true;
             numConNo.Value = Math.Max(0, numTongTien.Value - numDaTra.Value);
@@ -705,6 +709,11 @@ namespace CuahangNongduoc
             {
                 try
                 {
+                    if (numDaTra.Value < 0)
+                    {
+                        BaoLoi("Số tiền đã trả không được âm.");
+                        return false;
+                    }
                     if (numDaTra.Value > numTongTien.Value)
                     {
                         BaoLoi("Số tiền đã trả không được lớn hơn tổng tiền.");
@@ -755,6 +764,11 @@ namespace CuahangNongduoc
                 if (chiPhi.TongThanhToan > decimal.ToInt64(numTongTien.Maximum))
                 {
                     BaoLoi("Tổng tiền vượt quá giới hạn của phiếu.");
+                    return false;
+                }
+                if (numDaTra.Value < 0)
+                {
+                    BaoLoi("Số tiền đã trả không được âm.");
                     return false;
                 }
                 long daTra = Decimal.ToInt64(numDaTra.Value);
