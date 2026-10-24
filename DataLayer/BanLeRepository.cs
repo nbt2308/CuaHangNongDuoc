@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using CuahangNongduoc.BusinessObject;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc.DataLayer
 {
@@ -216,7 +217,7 @@ namespace CuahangNongduoc.DataLayer
             if (loaiHoaDon == LoaiHoaDonBan.BanLe && chiPhi.GiaoHang && chiPhi.KhoangCachKm > 15 && chiPhi.PhiVanChuyen <= 0)
                 throw new InvalidOperationException("Phí vận chuyển trên 15 km phải lớn hơn 0.");
             //đưa tất cả các thao tác lưu phiếu bán vào một transaction để đảm bảo tính toàn vẹn dữ liệu (Lỗi thì rollback tất cả các thao tác)
-            DataService.ExecuteTransaction(delegate(OleDbConnection connection, OleDbTransaction transaction)
+            DataService.ExecuteTransaction(delegate (OleDbConnection connection, OleDbTransaction transaction)
             {
                 if (laPhieuMoi && PhieuDaTonTai(connection, transaction, maPhieu))
                     throw new InvalidOperationException("Mã phiếu bán đã tồn tại.");
@@ -380,7 +381,7 @@ namespace CuahangNongduoc.DataLayer
             if (thanhToan.DaTraMoi < thanhToan.DaTraBanDau || thanhToan.DaTraMoi < 0)
                 throw new InvalidOperationException("Số tiền đã trả không được thấp hơn số đã ghi nhận trước đó.");
 
-            DataService.ExecuteTransaction(delegate(OleDbConnection connection, OleDbTransaction transaction)
+            DataService.ExecuteTransaction(delegate (OleDbConnection connection, OleDbTransaction transaction)
             {
                 OleDbCommand select = new OleDbCommand("SELECT DA_TRA, TONG_TIEN FROM PHIEU_BAN WHERE ID=@id", connection, transaction);
                 select.Parameters.Add("id", OleDbType.VarChar, 50).Value = thanhToan.MaPhieu;
@@ -418,7 +419,7 @@ namespace CuahangNongduoc.DataLayer
 
         public void XoaPhieu(string maPhieu)
         {
-            DataService.ExecuteTransaction(delegate(OleDbConnection connection, OleDbTransaction transaction)
+            DataService.ExecuteTransaction(delegate (OleDbConnection connection, OleDbTransaction transaction)
             {
                 HoanTonChiTietCu(connection, transaction, maPhieu);
                 XoaChiTiet(connection, transaction, maPhieu);
@@ -500,13 +501,13 @@ namespace CuahangNongduoc.DataLayer
             {
                 for (int j = i + 1; j < ketQua.Count; j++)
                 {
-                        bool doiCho = cachChon == CachChonLo.HetHanTruoc
-                        ? ketQua[j].NgayHetHan < ketQua[i].NgayHetHan ||
-                          (ketQua[j].NgayHetHan == ketQua[i].NgayHetHan &&
-                           (ketQua[j].NgayNhap < ketQua[i].NgayNhap ||
-                            (ketQua[j].NgayNhap == ketQua[i].NgayNhap && String.CompareOrdinal(ketQua[j].Id, ketQua[i].Id) < 0)))
-                        : ketQua[j].NgayNhap < ketQua[i].NgayNhap ||
-                          (ketQua[j].NgayNhap == ketQua[i].NgayNhap && String.CompareOrdinal(ketQua[j].Id, ketQua[i].Id) < 0);
+                    bool doiCho = cachChon == CachChonLo.HetHanTruoc
+                    ? ketQua[j].NgayHetHan < ketQua[i].NgayHetHan ||
+                      (ketQua[j].NgayHetHan == ketQua[i].NgayHetHan &&
+                       (ketQua[j].NgayNhap < ketQua[i].NgayNhap ||
+                        (ketQua[j].NgayNhap == ketQua[i].NgayNhap && String.CompareOrdinal(ketQua[j].Id, ketQua[i].Id) < 0)))
+                    : ketQua[j].NgayNhap < ketQua[i].NgayNhap ||
+                      (ketQua[j].NgayNhap == ketQua[i].NgayNhap && String.CompareOrdinal(ketQua[j].Id, ketQua[i].Id) < 0);
                     if (doiCho)
                     {
                         MaSanPham tam = ketQua[i];
@@ -593,7 +594,7 @@ namespace CuahangNongduoc.DataLayer
                 return;
             }
 
-            DataService.ExecuteTransaction(delegate(OleDbConnection connection, OleDbTransaction transaction)
+            DataService.ExecuteTransaction(delegate (OleDbConnection connection, OleDbTransaction transaction)
             {
                 XoaChiTiet(connection, transaction, maPhieu);
                 XoaDichVu(connection, transaction, maPhieu);
@@ -613,8 +614,10 @@ namespace CuahangNongduoc.DataLayer
 
         private void ThemPhieu(OleDbConnection c, OleDbTransaction t, string id, string kh, DateTime ngay, ThongTinChiPhiPhieuBan chiPhi, long daTra)
         {
-            OleDbCommand cmd = new OleDbCommand("INSERT INTO PHIEU_BAN (ID, ID_KHACH_HANG, NGAY_BAN, TONG_TIEN, DA_TRA, CON_NO, TIEN_HANG, TONG_DICH_VU, GIAO_HANG, KHOANG_CACH_KM, PHI_VAN_CHUYEN, LOAI_GIAM_GIA, TY_LE_GIAM_GIA, TIEN_GIAM_GIA) VALUES (@id,@kh,@ngay,@tong,@tra,@no,@hang,@dichvu,@giaohang,@km,@ship,@loaigiam,@tyle,@tiengiam)", c, t);
+            if (!UserSession.IsLoggedIn) throw new InvalidOperationException("Vui lòng đăng nhập trước khi lập hóa đơn.");
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO PHIEU_BAN (ID, ID_KHACH_HANG, NGAY_BAN, TONG_TIEN, DA_TRA, CON_NO, TIEN_HANG, TONG_DICH_VU, GIAO_HANG, KHOANG_CACH_KM, PHI_VAN_CHUYEN, LOAI_GIAM_GIA, TY_LE_GIAM_GIA, TIEN_GIAM_GIA, ID_NGUOI_DUNG) VALUES (@id,@kh,@ngay,@tong,@tra,@no,@hang,@dichvu,@giaohang,@km,@ship,@loaigiam,@tyle,@tiengiam,@nguoidung)", c, t);
             ThemThamSoChiPhi(cmd, id, kh, ngay, chiPhi, daTra);
+            cmd.Parameters.Add("nguoidung", OleDbType.Integer).Value = UserSession.UserId;
             cmd.ExecuteNonQuery();
         }
 
@@ -691,4 +694,5 @@ namespace CuahangNongduoc.DataLayer
             cmd.ExecuteNonQuery();
         }
     }
+
 }

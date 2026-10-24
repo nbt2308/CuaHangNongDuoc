@@ -106,6 +106,7 @@
     <Compile Include="BusinessObject\PhieuNhap.cs" />
     <Compile Include="BusinessObject\SanPham.cs" />
     <Compile Include="BusinessObject\SoLuongTon.cs" />
+    <Compile Include="BusinessObject\BaoCaoGiamGiaNhanVien.cs" />
     <Compile Include="Controller\ChiTietPhieuBanController.cs" />
     <Compile Include="Controller\CTPNController.cs" />
     <Compile Include="Controller\DaiLyController.cs" />
@@ -118,9 +119,11 @@
     <Compile Include="Controller\KhachHangController.cs" />
     <Compile Include="Controller\MaSanPhamController.cs" />
     <Compile Include="Controller\PhieuBanController.cs" />
+    <Compile Include="Controller\BaoCaoGiamGiaController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
     <Compile Include="Controller\DonViTinhController.cs" />
     <Compile Include="DataLayer\DaiLyFactory.cs" />
+    <Compile Include="DataLayer\BaoCaoGiamGiaRepository.cs" />
     <Compile Include="DataLayer\PhieuChiFactory.cs" />
     <Compile Include="frmInPhieuChi.cs">
       <SubType>Form</SubType>
@@ -194,6 +197,14 @@
     </Compile>
     <Compile Include="frmDoanhThu.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoCaoGiamGia.cs">
+      <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="frmBaoCaoGiamGia.Designer.cs">
+      <DependentUpon>frmBaoCaoGiamGia.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="frmDoanhThu.Designer.cs">
       <DependentUpon>frmDoanhThu.cs</DependentUpon>
@@ -334,6 +345,9 @@
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="frmBaoCaoGiamGia.resx">
+      <DependentUpon>frmBaoCaoGiamGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,8 +10,22 @@ namespace CuahangNongduoc
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            if (args != null && Array.Exists(args, x => String.Equals(x, "--migrate-discount-report", StringComparison.OrdinalIgnoreCase)))
+            {
+                try
+                {
+                    DataService.EnsureColumn("PHIEU_BAN", "ID_NGUOI_DUNG", "LONG");
+                    MessageBox.Show("Đã cập nhật database: PHIEU_BAN.ID_NGUOI_DUNG.", "Migration hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không cập nhật được database: " + ex.Message, "Migration thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -62,7 +76,6 @@ namespace CuahangNongduoc
             }
 
             Application.Run(new frmMain());
-
         }
     }
 }

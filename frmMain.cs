@@ -1,5 +1,5 @@
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +17,6 @@ namespace CuahangNongduoc
         {
             InitializeComponent();
         }
-
         private void mnuTaiKhoan_Click(object sender, EventArgs e)
         {
             /* Proxy Pattern: chặn thao tác mở form nếu tài khoản không có quyền. */
@@ -81,7 +80,7 @@ namespace CuahangNongduoc
                 DonViTinh = new frmDonViTinh();
                 DonViTinh.MdiParent = this;
                 DonViTinh.Show();
-                
+
             }
             else
                 DonViTinh.Activate();
@@ -124,7 +123,7 @@ namespace CuahangNongduoc
             }
             Text += " — " + UserSession.HoTen + " (" + UserSession.RoleDisplayName + ")";
             ApDungPhanQuyen();
-            
+
         }
         frmSanPham SanPham = null;
         private void mnuSanPham_Click(object sender, EventArgs e)
@@ -244,6 +243,16 @@ namespace CuahangNongduoc
                 DunoKhachhang.Activate();
         }
         frmDoanhThu DoanhThu = null;
+        private frmBaoCaoGiamGia BaoCaoGiamGia = null;
+        private void mnuBaoCaoGiamGia_Click(object sender, EventArgs e)
+        {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.BaoCaoDoanhThu)) return;
+            if (BaoCaoGiamGia == null || BaoCaoGiamGia.IsDisposed)
+            {
+                BaoCaoGiamGia = new frmBaoCaoGiamGia(); BaoCaoGiamGia.MdiParent = this; BaoCaoGiamGia.Show();
+            }
+            else BaoCaoGiamGia.Activate();
+        }
         private void mnuBaocaoDoanhThu_Click(object sender, EventArgs e)
         {
             if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.BaoCaoDoanhThu)) return;
@@ -426,7 +435,7 @@ namespace CuahangNongduoc
 
         private void mnuTrogiupHuongdan_Click(object sender, EventArgs e)
         {
-           // Help.ShowHelp(this, "CPP.CHM");
+            // Help.ShowHelp(this, "CPP.CHM");
         }
 
         private void itemDoiMatKhau_Click(object sender, EventArgs e)
@@ -458,7 +467,7 @@ namespace CuahangNongduoc
         }
 
         private void itemNguoiDung_Click(object sender, EventArgs e)
-        {            
+        {
             if (!AuthorizationService.KiemTraVaThongBao(
                AuthorizationService.Permission.QuanLyTaiKhoan,
                "Quản lý tài khoản"))
