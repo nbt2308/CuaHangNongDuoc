@@ -389,4 +389,5 @@ namespace CuahangNongduoc
         private System.Windows.Forms.DataGridViewTextBoxColumn colHdTienGiam;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHdTongTien;
     }
+
 }

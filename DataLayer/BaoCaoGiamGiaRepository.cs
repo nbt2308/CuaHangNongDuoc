@@ -18,14 +18,18 @@ namespace CuahangNongduoc.DataLayer
             var ds = new DataService(); LoadBaoCao(ds, cmd);
             foreach (System.Data.DataRow row in ds.Rows)
             {
-                result.Add(new ChiTietBaoCaoGiamGia {
-                    IdPhieuBan = Convert.ToString(row["ID"]), NgayBan = Convert.ToDateTime(row["NGAY_BAN"]),
+                result.Add(new ChiTietBaoCaoGiamGia
+                {
+                    IdPhieuBan = Convert.ToString(row["ID"]),
+                    NgayBan = Convert.ToDateTime(row["NGAY_BAN"]),
                     IdNguoiDung = row["ID_NGUOI_DUNG"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["ID_NGUOI_DUNG"]),
                     TenDangNhap = row["TEN_DANG_NHAP"] == DBNull.Value ? null : Convert.ToString(row["TEN_DANG_NHAP"]),
                     HoTen = row["HOTEN"] == DBNull.Value || String.IsNullOrWhiteSpace(Convert.ToString(row["HOTEN"])) ? "Nhân viên chưa xác định" : Convert.ToString(row["HOTEN"]),
                     LoaiGiamGia = row["LOAI_GIAM_GIA"] == DBNull.Value ? "Giảm giá" : Convert.ToString(row["LOAI_GIAM_GIA"]),
                     TyLeGiamGia = row["TY_LE_GIAM_GIA"] == DBNull.Value ? 0m : Convert.ToDecimal(row["TY_LE_GIAM_GIA"]),
-                    TienHang = ToLong(row["TIEN_HANG"]), TienGiamGia = ToLong(row["TIEN_GIAM_GIA"]), TongTien = ToLong(row["TONG_TIEN"])
+                    TienHang = ToLong(row["TIEN_HANG"]),
+                    TienGiamGia = ToLong(row["TIEN_GIAM_GIA"]),
+                    TongTien = ToLong(row["TONG_TIEN"])
                 });
             }
             return result;
@@ -39,12 +43,15 @@ namespace CuahangNongduoc.DataLayer
             GanNgay(cmd, tuNgay, denNgay);
             var ds = new DataService(); LoadBaoCao(ds, cmd);
             foreach (System.Data.DataRow row in ds.Rows)
-                result.Add(new BaoCaoGiamGiaNhanVien {
+                result.Add(new BaoCaoGiamGiaNhanVien
+                {
                     IdNguoiDung = row["ID_NGUOI_DUNG"] == DBNull.Value ? (int?)null : Convert.ToInt32(row["ID_NGUOI_DUNG"]),
                     TenDangNhap = row["TEN_DANG_NHAP"] == DBNull.Value ? null : Convert.ToString(row["TEN_DANG_NHAP"]),
                     HoTen = row["HOTEN"] == DBNull.Value || String.IsNullOrWhiteSpace(Convert.ToString(row["HOTEN"])) ? "Nhân viên chưa xác định" : Convert.ToString(row["HOTEN"]),
-                    SoHoaDon = Convert.ToInt32(row["SO_HOA_DON"]), TongTienHang = ToLong(row["TONG_TIEN_HANG"]),
-                    TongTienGiam = ToLong(row["TONG_TIEN_GIAM"]), TongThanhToan = ToLong(row["TONG_THANH_TOAN"])
+                    SoHoaDon = Convert.ToInt32(row["SO_HOA_DON"]),
+                    TongTienHang = ToLong(row["TONG_TIEN_HANG"]),
+                    TongTienGiam = ToLong(row["TONG_TIEN_GIAM"]),
+                    TongThanhToan = ToLong(row["TONG_THANH_TOAN"])
                 });
             return result;
         }
@@ -70,4 +77,5 @@ namespace CuahangNongduoc.DataLayer
         private static void KiemTraNgay(DateTime tuNgay, DateTime denNgay)
         { if (tuNgay.Date > denNgay.Date) throw new ArgumentException("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc."); }
     }
+
 }

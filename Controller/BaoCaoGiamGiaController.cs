@@ -11,4 +11,5 @@ namespace CuahangNongduoc.Controller
         public IList<ChiTietBaoCaoGiamGia> LayChiTiet(DateTime tuNgay, DateTime denNgay) { return repository.LayChiTiet(tuNgay, denNgay); }
         public IList<BaoCaoGiamGiaNhanVien> LayTongHop(DateTime tuNgay, DateTime denNgay) { return repository.LayTongHop(tuNgay, denNgay); }
     }
+
 }

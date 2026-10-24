@@ -3,3 +3,4 @@
 ALTER TABLE PHIEU_BAN ADD COLUMN ID_NGUOI_DUNG LONG;
 
 -- Không gán ngược người lập cho hóa đơn cũ vì không có dữ liệu đáng tin cậy.
+

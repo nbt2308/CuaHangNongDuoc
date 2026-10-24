@@ -26,4 +26,5 @@ namespace CuahangNongduoc.BusinessObject
         public long TienGiamGia { get; set; }
         public long TongTien { get; set; }
     }
+
 }

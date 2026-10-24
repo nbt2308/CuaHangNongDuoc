@@ -76,7 +76,6 @@ namespace CuahangNongduoc
             }
 
             Application.Run(new frmMain());
-
         }
     }
 }
