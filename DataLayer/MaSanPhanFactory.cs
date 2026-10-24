@@ -63,8 +63,13 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable DanhsachMaSanPhamHetHan(DateTime dt)
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM MA_SAN_PHAM WHERE SO_LUONG > 0 AND NGAY_HET_HAN <= @ngay");
-            cmd.Parameters.Add("ngay", OleDbType.Date).Value = dt;
+            // Chỉ liệt kê các lô vẫn còn tồn và đã hết hạn tính đến ngày chọn.
+            OleDbCommand cmd = new OleDbCommand(
+                "SELECT MSP.*, SP.TEN_SAN_PHAM " +
+                "FROM MA_SAN_PHAM MSP INNER JOIN SAN_PHAM SP ON MSP.ID_SAN_PHAM=SP.ID " +
+                "WHERE MSP.SO_LUONG > 0 AND MSP.NGAY_HET_HAN <= @ngay " +
+                "ORDER BY SP.TEN_SAN_PHAM, MSP.NGAY_HET_HAN, MSP.ID");
+            cmd.Parameters.Add("ngay", OleDbType.Date).Value = dt.Date;
             m_Ds.Load(cmd);
 
             return m_Ds;

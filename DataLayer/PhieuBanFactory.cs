@@ -30,7 +30,11 @@ namespace CuahangNongduoc.DataLayer
         }
         public DataTable DanhsachPhieuBanSi()
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT PB.* FROM PHIEU_BAN PB INNER JOIN KHACH_HANG KH ON PB.ID_KHACH_HANG=KH.ID WHERE KH.LOAI_KH=TRUE");
+            // Tương thích dữ liệu cũ (KHACH_HANG.LOAI_KH=TRUE) và dữ liệu mới (DAI_LY).
+            OleDbCommand cmd = new OleDbCommand(
+                "SELECT PB.* FROM PHIEU_BAN PB INNER JOIN DAI_LY DL ON PB.ID_KHACH_HANG=DL.ID " +
+                "UNION ALL " +
+                "SELECT PB.* FROM PHIEU_BAN PB INNER JOIN KHACH_HANG KH ON PB.ID_KHACH_HANG=KH.ID WHERE KH.LOAI_KH=TRUE");
             m_Ds.Load(cmd);
 
             return m_Ds;

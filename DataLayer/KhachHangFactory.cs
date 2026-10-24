@@ -43,6 +43,36 @@ namespace CuahangNongduoc.DataLayer
             return m_Ds;
         }
 
+        // Danh sách chọn đối tượng chung cho Phiếu thu/Dư nợ.
+        // Không gộp hay ghi dữ liệu: chỉ đọc KHACH_HANG và DAI_LY để hiển thị.
+        public DataTable DanhSachKhachHangVaDaiLy()
+        {
+            DataTable ketQua = new DataTable();
+            ketQua.Columns.Add("ID", typeof(string));
+            ketQua.Columns.Add("HO_TEN", typeof(string));
+            ketQua.Columns.Add("DIA_CHI", typeof(string));
+            ketQua.Columns.Add("DIEN_THOAI", typeof(string));
+            ketQua.Columns.Add("LOAI_KH", typeof(bool));
+
+            DataService dsKhachHang = new DataService();
+            dsKhachHang.Load(new OleDbCommand("SELECT * FROM KHACH_HANG"));
+            foreach (DataRow row in dsKhachHang.Rows)
+            {
+                ketQua.Rows.Add(Convert.ToString(row["ID"]), Convert.ToString(row["HO_TEN"]),
+                    Convert.ToString(row["DIA_CHI"]), Convert.ToString(row["DIEN_THOAI"]),
+                    Convert.ToBoolean(row["LOAI_KH"]));
+            }
+
+            DataService dsDaiLy = new DataService();
+            dsDaiLy.Load(new OleDbCommand("SELECT * FROM DAI_LY"));
+            foreach (DataRow row in dsDaiLy.Rows)
+            {
+                ketQua.Rows.Add(Convert.ToString(row["ID"]), Convert.ToString(row["DAI_LY"]),
+                    Convert.ToString(row["DIA_CHI"]), Convert.ToString(row["DIEN_THOAI"]), true);
+            }
+            return ketQua;
+        }
+
         public DataTable LayKhachHang(String id)
         {
             OleDbCommand cmd = new OleDbCommand("SELECT * FROM KHACH_HANG WHERE ID = @id");

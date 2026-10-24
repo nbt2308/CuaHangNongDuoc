@@ -25,6 +25,15 @@ namespace CuahangNongduoc.Controller
             cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
+        public void HienthiAutoComboBoxBanSi(ComboBox cmb)
+        {
+            cmb.DataSource = factory.DanhsachDaiLyBanSi();
+            cmb.DisplayMember = "DAI_LY";
+            cmb.ValueMember = "ID";
+            cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
         /// <summary>
         /// Hiển thị dữ liệu đại lý lên DataGridView + BindingNavigator.
         /// </summary>
@@ -43,6 +52,15 @@ namespace CuahangNongduoc.Controller
         public void HienthiDaiLyDataGridviewComboBox(DataGridViewComboBoxColumn cmb)
         {
             cmb.DataSource = factory.DanhsachDaiLy();
+            cmb.DisplayMember = "DAI_LY";
+            cmb.ValueMember = "ID";
+            cmb.DataPropertyName = "ID_KHACH_HANG";
+            cmb.HeaderText = "Đại lý";
+        }
+
+        public void HienthiDaiLyBanSiDataGridviewComboBox(DataGridViewComboBoxColumn cmb)
+        {
+            cmb.DataSource = factory.DanhsachDaiLyBanSi();
             cmb.DisplayMember = "DAI_LY";
             cmb.ValueMember = "ID";
             cmb.DataPropertyName = "ID_KHACH_HANG";

@@ -25,6 +25,13 @@ namespace CuahangNongduoc.Controller
             cmb.ValueMember = "ID";
         }
 
+        public void HienthiKhachHangVaDaiLyAutoComboBox(System.Windows.Forms.ComboBox cmb)
+        {
+            cmb.DataSource = factory.DanhSachKhachHangVaDaiLy();
+            cmb.DisplayMember = "HO_TEN";
+            cmb.ValueMember = "ID";
+        }
+
         public void HienthiKhachHangDataGridview(System.Windows.Forms.DataGridView dg, System.Windows.Forms.BindingNavigator bn)
         {
             System.Windows.Forms.BindingSource bs = new System.Windows.Forms.BindingSource();
@@ -45,6 +52,15 @@ namespace CuahangNongduoc.Controller
             cmb.DataPropertyName = "ID_KHACH_HANG";
             cmb.HeaderText = "Khách hàng";
 
+        }
+
+        public void HienthiKhachHangVaDaiLyDataGridviewComboBox(System.Windows.Forms.DataGridViewComboBoxColumn cmb)
+        {
+            cmb.DataSource = factory.DanhSachKhachHangVaDaiLy();
+            cmb.DisplayMember = "HO_TEN";
+            cmb.ValueMember = "ID";
+            cmb.DataPropertyName = "ID_KHACH_HANG";
+            cmb.HeaderText = "Khách hàng / Đại lý";
         }
 
         public void HienthiKhachHangDataGridviewComboBox(System.Windows.Forms.DataGridViewComboBoxColumn cmb)
@@ -110,6 +126,18 @@ namespace CuahangNongduoc.Controller
                 kh.DienThoai = Convert.ToString(tbl.Rows[0]["DIEN_THOAI"]);
                 kh.DiaChi = Convert.ToString(tbl.Rows[0]["DIA_CHI"]);
                 kh.LoaiKH = Convert.ToBoolean(tbl.Rows[0]["LOAI_KH"]);
+            }
+            else
+            {
+                DaiLy daiLy = new DaiLyController().LayDaiLy(id);
+                if (!String.IsNullOrEmpty(daiLy.Id))
+                {
+                    kh.Id = daiLy.Id;
+                    kh.HoTen = daiLy.TenDaiLy;
+                    kh.DienThoai = daiLy.DienThoai;
+                    kh.DiaChi = daiLy.DiaChi;
+                    kh.LoaiKH = true;
+                }
             }
             return kh;
         }

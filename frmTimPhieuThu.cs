@@ -21,7 +21,7 @@ namespace CuahangNongduoc
         private void frmTimPhieuThu_Load(object sender, EventArgs e)
         {
             Controller.KhachHangController ctrl = new CuahangNongduoc.Controller.KhachHangController();
-            ctrl.HienthiChungAutoComboBox(cmbKhachHang);
+            ctrl.HienthiKhachHangVaDaiLyAutoComboBox(cmbKhachHang);
 
             GanSuKienNutDongY(this);
         }
