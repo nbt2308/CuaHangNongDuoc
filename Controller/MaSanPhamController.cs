@@ -105,6 +105,7 @@ namespace CuahangNongduoc.Controller
             DataTable tbl = f.DanhsachMaSanPhamHetHan(dt);
 
             MaSanPham sp = null;
+            string tenSanPhamTruoc = null;
             foreach  ( DataRow row in tbl.Rows)
             {
                 sp = new MaSanPham();
@@ -117,7 +118,16 @@ namespace CuahangNongduoc.Controller
                 sp.SanPham = new SanPham();
                 sp.SanPham.Id = Convert.ToString(row["ID_SAN_PHAM"]);
                 sp.SanPham.TenSanPham = Convert.ToString(row["TEN_SAN_PHAM"]);
+                sp.TenSanPhamHienThi = String.Equals(tenSanPhamTruoc, sp.TenSanPham,
+                    StringComparison.Ordinal) ? String.Empty : sp.TenSanPham;
+                tenSanPhamTruoc = sp.TenSanPham;
                 ds.Add(sp);
+            }
+
+            for (int i = 0; i < ds.Count; i++)
+            {
+                ds[i].LaDongCuoiNhom = i == ds.Count - 1 ||
+                    !String.Equals(ds[i].TenSanPham, ds[i + 1].TenSanPham, StringComparison.Ordinal);
             }
             return ds;
 
