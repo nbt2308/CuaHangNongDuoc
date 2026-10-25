@@ -513,6 +513,7 @@
     <EmbeddedResource Include="Report\rptSoLuongBan.rdlc" />
     <EmbeddedResource Include="Report\rptSoLuongTon.rdlc" />
     <EmbeddedResource Include="Report\rptThanhToan.rdlc" />
+    <EmbeddedResource Include="Report\rptThongKeChiPhiTonKho.rdlc" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
