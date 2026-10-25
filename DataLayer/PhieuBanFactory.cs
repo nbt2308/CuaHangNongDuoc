@@ -95,10 +95,50 @@ namespace CuahangNongduoc.DataLayer
         {
             m_Ds.Rows.Add(row);
         }
-       public bool Save()
+        public bool Save()
         {
            
             return m_Ds.ExecuteNoneQuery() > 0;
+        }
+        public DataTable ThongKeTongHopChiPhiBanHang(DateTime tuNgay, DateTime denNgay)
+        {
+            OleDbCommand cmd = new OleDbCommand(@"
+            SELECT 
+                COUNT(ID) AS SO_HOA_DON,
+                SUM(TIEN_HANG) AS TONG_TIEN_HANG,
+                SUM(PHI_VAN_CHUYEN) AS TONG_PHI_VAN_CHUYEN,
+                SUM(TONG_DICH_VU) AS TONG_DICH_VU,
+                SUM(TIEN_GIAM_GIA) AS TONG_TIEN_GIAM,
+                SUM(TONG_TIEN) AS TONG_DOANH_THU
+            FROM PHIEU_BAN
+            WHERE NGAY_BAN >= @tuNgay AND NGAY_BAN <= @denNgay
+        ");
+            cmd.Parameters.Add("tuNgay", OleDbType.Date).Value = tuNgay;
+            cmd.Parameters.Add("denNgay", OleDbType.Date).Value = denNgay;
+
+            DataService ds = new DataService();
+            ds.Load(cmd);
+            return ds;
+        }
+
+        public DataTable ThongKeChiTietDichVuPhu(DateTime tuNgay, DateTime denNgay)
+        {
+            OleDbCommand cmd = new OleDbCommand(@"
+            SELECT 
+                DV.TEN_DICH_VU, 
+                COUNT(DV.ID) AS SO_LAN, 
+                SUM(DV.SO_TIEN) AS TONG_TIEN
+            FROM CHI_TIET_DICH_VU_PHIEU_BAN DV
+            INNER JOIN PHIEU_BAN PB ON DV.ID_PHIEU_BAN = PB.ID
+            WHERE PB.NGAY_BAN >= @tuNgay AND PB.NGAY_BAN <= @denNgay
+            GROUP BY DV.TEN_DICH_VU
+        ");
+            cmd.Parameters.Add("tuNgay", OleDbType.Date).Value = tuNgay;
+            cmd.Parameters.Add("denNgay", OleDbType.Date).Value = denNgay;
+
+            DataService ds = new DataService();
+            ds.Load(cmd);
+            return ds;
         }
     }
 }

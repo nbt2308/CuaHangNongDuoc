@@ -90,6 +90,7 @@
     <Compile Include="Auth\refactoring_patterns.cs" />
     <Compile Include="BusinessObject\ChiTietPhieuBan.cs" />
     <Compile Include="BusinessObject\DichVuPhieuBan.cs" />
+    <Compile Include="BusinessObject\ThongKeChiPhiTonKho.cs" />
     <Compile Include="BusinessObject\ThongTinChiPhiPhieuBan.cs" />
     <Compile Include="BusinessObject\ThanhToanPhieuBan.cs" />
     <Compile Include="BusinessObject\TinhToanHoaDonBan.cs" />
@@ -529,6 +530,7 @@
     <EmbeddedResource Include="Report\rptSoLuongBan.rdlc" />
     <EmbeddedResource Include="Report\rptSoLuongTon.rdlc" />
     <EmbeddedResource Include="Report\rptThanhToan.rdlc" />
+    <EmbeddedResource Include="Report\rptThongKeChiPhiTonKho.rdlc" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
