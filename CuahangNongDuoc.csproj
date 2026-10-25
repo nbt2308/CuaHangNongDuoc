@@ -81,10 +81,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="XPExplorerBar, Version=3.3.0.0, Culture=neutral, PublicKeyToken=26272737b5f33015">
-      <HintPath>Lib\XPExplorerBar.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="XPExplorerBar, Version=3.3.0.0, Culture=neutral, PublicKeyToken=26272737b5f33015" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\refactoring_patterns.cs" />
@@ -110,7 +107,6 @@
     <Compile Include="BusinessObject\PhieuNhap.cs" />
     <Compile Include="BusinessObject\SanPham.cs" />
     <Compile Include="BusinessObject\SoLuongTon.cs" />
-    <Compile Include="BusinessObject\BaoCaoGiamGiaNhanVien.cs" />
     <Compile Include="Controller\ChiTietPhieuBanController.cs" />
     <Compile Include="Controller\CTPNController.cs" />
     <Compile Include="Controller\DaiLyController.cs" />
@@ -123,11 +119,9 @@
     <Compile Include="Controller\KhachHangController.cs" />
     <Compile Include="Controller\MaSanPhamController.cs" />
     <Compile Include="Controller\PhieuBanController.cs" />
-    <Compile Include="Controller\BaoCaoGiamGiaController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
     <Compile Include="Controller\DonViTinhController.cs" />
     <Compile Include="DataLayer\DaiLyFactory.cs" />
-    <Compile Include="DataLayer\BaoCaoGiamGiaRepository.cs" />
     <Compile Include="DataLayer\PhieuChiFactory.cs" />
     <Compile Include="frmInPhieuChi.cs">
       <SubType>Form</SubType>
@@ -201,14 +195,6 @@
     </Compile>
     <Compile Include="frmDoanhThu.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBaoCaoGiamGia.cs">
-      <SubType>Form</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="frmBaoCaoGiamGia.Designer.cs">
-      <DependentUpon>frmBaoCaoGiamGia.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="frmDoanhThu.Designer.cs">
       <DependentUpon>frmDoanhThu.cs</DependentUpon>
@@ -349,9 +335,6 @@
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="frmBaoCaoGiamGia.resx">
-      <DependentUpon>frmBaoCaoGiamGia.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,10 +587,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CuahangNongduoc.ico" />
-    <Content Include="Database\cuahang.dll">
-      <Link>cuahang.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\user.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

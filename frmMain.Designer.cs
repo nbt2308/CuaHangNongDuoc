@@ -7,6 +7,7 @@ namespace CuahangNongduoc
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -59,7 +60,7 @@ namespace CuahangNongduoc
             this.mnuBaocao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoSoluongton = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoLuongBan = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBaoCaoGiamGia = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaocaoDoanhThu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSanphamHethan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTuychinh = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,7 +356,7 @@ namespace CuahangNongduoc
             this.mnuBaocao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBaocaoSoluongton,
             this.mnuSoLuongBan,
-            this.mnuBaoCaoGiamGia,
+            this.mnuBaocaoDoanhThu,
             this.toolStripSeparator5,
             this.mnuSanphamHethan});
             this.mnuBaocao.Name = "mnuBaocao";
@@ -378,12 +379,13 @@ namespace CuahangNongduoc
             this.mnuSoLuongBan.Text = "Số lượng bán";
             this.mnuSoLuongBan.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
             // 
-            // mnuBaoCaoGiamGia
+            // mnuBaocaoDoanhThu
             // 
-            this.mnuBaoCaoGiamGia.Name = "mnuBaoCaoGiamGia";
-            this.mnuBaoCaoGiamGia.Size = new System.Drawing.Size(260, 26);
-            this.mnuBaoCaoGiamGia.Text = "Hóa đơn giảm giá / khuyến mãi";
-            this.mnuBaoCaoGiamGia.Click += new System.EventHandler(this.mnuBaoCaoGiamGia_Click);
+            this.mnuBaocaoDoanhThu.Image = global::CuahangNongduoc.Properties.Resources.DoanhThu;
+            this.mnuBaocaoDoanhThu.Name = "mnuBaocaoDoanhThu";
+            this.mnuBaocaoDoanhThu.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaocaoDoanhThu.Text = "Thống kê chi phí và tồn kho";
+            this.mnuBaocaoDoanhThu.Click += new System.EventHandler(this.mnuBaocaoDoanhThu_Click);
             // 
             // toolStripSeparator5
             // 
@@ -626,7 +628,7 @@ namespace CuahangNongduoc
             // 
             // expando1
             // 
-            this.expando1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando1.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando1.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -652,7 +654,7 @@ namespace CuahangNongduoc
             // 
             // itemDaiLy
             // 
-            this.itemDaiLy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemDaiLy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemDaiLy.BackColor = System.Drawing.Color.Transparent;
             this.itemDaiLy.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -670,7 +672,7 @@ namespace CuahangNongduoc
             // 
             // itemKhachHang
             // 
-            this.itemKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemKhachHang.BackColor = System.Drawing.Color.Transparent;
             this.itemKhachHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -688,7 +690,7 @@ namespace CuahangNongduoc
             // 
             // itemSanPham
             // 
-            this.itemSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemSanPham.BackColor = System.Drawing.Color.Transparent;
             this.itemSanPham.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -707,7 +709,7 @@ namespace CuahangNongduoc
             // 
             // itemNhaCungCap
             // 
-            this.itemNhaCungCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemNhaCungCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemNhaCungCap.BackColor = System.Drawing.Color.Transparent;
             this.itemNhaCungCap.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -725,7 +727,7 @@ namespace CuahangNongduoc
             // 
             // itemNguoiDung
             // 
-            this.itemNguoiDung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemNguoiDung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemNguoiDung.BackColor = System.Drawing.Color.Transparent;
             this.itemNguoiDung.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -743,7 +745,7 @@ namespace CuahangNongduoc
             // 
             // expando2
             // 
-            this.expando2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando2.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando2.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -769,7 +771,7 @@ namespace CuahangNongduoc
             // 
             // itemNhapHang
             // 
-            this.itemNhapHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemNhapHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemNhapHang.BackColor = System.Drawing.Color.Transparent;
             this.itemNhapHang.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -787,7 +789,7 @@ namespace CuahangNongduoc
             // 
             // itemBanSi
             // 
-            this.itemBanSi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemBanSi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemBanSi.BackColor = System.Drawing.Color.Transparent;
             this.itemBanSi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -805,7 +807,7 @@ namespace CuahangNongduoc
             // 
             // itemBanLe
             // 
-            this.itemBanLe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemBanLe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemBanLe.BackColor = System.Drawing.Color.Transparent;
             this.itemBanLe.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -823,7 +825,7 @@ namespace CuahangNongduoc
             // 
             // itemThanhToan
             // 
-            this.itemThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemThanhToan.BackColor = System.Drawing.Color.Transparent;
             this.itemThanhToan.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -841,7 +843,7 @@ namespace CuahangNongduoc
             // 
             // itemPhieuChi
             // 
-            this.itemPhieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemPhieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemPhieuChi.BackColor = System.Drawing.Color.Transparent;
             this.itemPhieuChi.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -859,7 +861,7 @@ namespace CuahangNongduoc
             // 
             // expando3
             // 
-            this.expando3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando3.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando3.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -883,7 +885,7 @@ namespace CuahangNongduoc
             // 
             // itemTonghopDoanhthu
             // 
-            this.itemTonghopDoanhthu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemTonghopDoanhthu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemTonghopDoanhthu.BackColor = System.Drawing.Color.Transparent;
             this.itemTonghopDoanhthu.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -901,7 +903,7 @@ namespace CuahangNongduoc
             // 
             // itemTonKho
             // 
-            this.itemTonKho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemTonKho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemTonKho.BackColor = System.Drawing.Color.Transparent;
             this.itemTonKho.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -918,7 +920,7 @@ namespace CuahangNongduoc
             // 
             // taskItem1
             // 
-            this.taskItem1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.taskItem1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.taskItem1.BackColor = System.Drawing.Color.Transparent;
             this.taskItem1.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -936,7 +938,7 @@ namespace CuahangNongduoc
             // 
             // expando4
             // 
-            this.expando4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expando4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expando4.CustomHeaderSettings.NormalGradientEndColor = System.Drawing.Color.SteelBlue;
             this.expando4.CustomHeaderSettings.NormalGradientStartColor = System.Drawing.Color.MediumSeaGreen;
@@ -959,7 +961,7 @@ namespace CuahangNongduoc
             // 
             // itemDoiMatKhau
             // 
-            this.itemDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemDoiMatKhau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemDoiMatKhau.BackColor = System.Drawing.Color.Transparent;
             this.itemDoiMatKhau.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -977,7 +979,7 @@ namespace CuahangNongduoc
             // 
             // itemDangXuat
             // 
-            this.itemDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.itemDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.itemDangXuat.BackColor = System.Drawing.Color.Transparent;
             this.itemDangXuat.CustomSettings.HotLinkColor = System.Drawing.Color.PaleGreen;
@@ -1084,7 +1086,7 @@ namespace CuahangNongduoc
         private System.Windows.Forms.ToolStripButton toolThanhtoan;
         private XPExplorerBar.TaskItem itemThanhToan;
         private System.Windows.Forms.ToolStripMenuItem mnuSoLuongBan;
-        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoGiamGia;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaocaoDoanhThu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem mnuSanphamHethan;
         private System.Windows.Forms.ToolStripButton toolNhaCungCap;

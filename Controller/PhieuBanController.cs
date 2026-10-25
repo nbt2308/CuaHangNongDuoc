@@ -76,12 +76,6 @@ namespace CuahangNongduoc.Controller
             HienthiPhieuBan(bn, cmb, txt, dt, numTongTien, numDatra, numConNo, true);
         }
 
-        public void HienthiPhieuBanSi(BindingNavigator bn, ComboBox cmb, TextBox txt, DateTimePicker dt,
-            NumericUpDown numTongTien, NumericUpDown numDatra, NumericUpDown numConNo)
-        {
-            HienthiPhieuBan(bn, cmb, txt, dt, numTongTien, numDatra, numConNo, false);
-        }
-
         private void HienthiPhieuBan(BindingNavigator bn, ComboBox cmb, TextBox txt, DateTimePicker dt,
             NumericUpDown numTongTien, NumericUpDown numDatra, NumericUpDown numConNo, bool banLe)
         {
@@ -111,11 +105,6 @@ namespace CuahangNongduoc.Controller
 
         public PhieuBan LayPhieuBan(String id)
         {
-            return LayPhieuBan(id, false);
-        }
-
-        public PhieuBan LayPhieuBan(String id, bool laPhieuBanSi)
-        {
             DataTable tbl = factory.LayPhieuBan(id);
             PhieuBan ph = null;
             if (tbl.Rows.Count > 0)
@@ -139,32 +128,8 @@ namespace CuahangNongduoc.Controller
                 ph.TyLeGiamGia = chiPhi.TyLeGiamGia;
                 ph.TienGiamGia = chiPhi.TienGiamGia;
                 ph.DichVu = chiPhi.DichVu;
-                string idDoiTuong = Convert.ToString(tbl.Rows[0]["ID_KHACH_HANG"]);
-                if (laPhieuBanSi)
-                {
-                    DaiLy daiLy = new DaiLyController().LayDaiLy(idDoiTuong);
-                    if (!String.IsNullOrEmpty(daiLy.Id))
-                    {
-                        ph.KhachHang = new KhachHang
-                        {
-                            Id = daiLy.Id,
-                            HoTen = daiLy.TenDaiLy,
-                            DiaChi = daiLy.DiaChi,
-                            DienThoai = daiLy.DienThoai,
-                            LoaiKH = true
-                        };
-                    }
-                    else
-                    {
-                        // Phiếu bán sỉ được tạo từ phiên bản cũ vẫn dùng KHACH_HANG.LOAI_KH.
-                        ph.KhachHang = new KhachHangController().LayKhachHang(idDoiTuong);
-                    }
-                }
-                else
-                {
-                    KhachHangController ctrlKH = new KhachHangController();
-                    ph.KhachHang = ctrlKH.LayKhachHang(idDoiTuong);
-                }
+                KhachHangController ctrlKH = new KhachHangController();
+                ph.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(tbl.Rows[0]["ID_KHACH_HANG"]));
                 if (ph.KhachHang == null)
                 {
                     ph.KhachHang = new KhachHang();
@@ -202,9 +167,10 @@ namespace CuahangNongduoc.Controller
                 ? Convert.ToString(row[column]) : defaultValue;
         }
 
-        public DataTable TimPhieuBan(String maKH, DateTime dt)
+        public void TimPhieuBan(String maKH, DateTime dt)
         {
-            return factory.TimPhieuBan(maKH, dt);
+            factory.TimPhieuBan(maKH, dt);
+
         }
         public ThongKeChiPhiTonKho LayThongKeChiPhiTonKho(DateTime tuNgay, DateTime denNgay)
         {
