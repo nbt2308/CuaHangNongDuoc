@@ -105,7 +105,6 @@ namespace CuahangNongduoc.Controller
             DataTable tbl = f.DanhsachMaSanPhamHetHan(dt);
 
             MaSanPham sp = null;
-            SanPhamController ctrlSanPham = new SanPhamController();
             foreach  ( DataRow row in tbl.Rows)
             {
                 sp = new MaSanPham();
@@ -115,7 +114,9 @@ namespace CuahangNongduoc.Controller
                 sp.NgayNhap = Convert.ToDateTime(row["NGAY_NHAP"]);
                 sp.NgaySanXuat = Convert.ToDateTime(row["NGAY_SAN_XUAT"]);
                 sp.NgayHetHan = Convert.ToDateTime(row["NGAY_HET_HAN"]);
-                sp.SanPham = ctrlSanPham.LaySanPham(row["ID_SAN_PHAM"].ToString());
+                sp.SanPham = new SanPham();
+                sp.SanPham.Id = Convert.ToString(row["ID_SAN_PHAM"]);
+                sp.SanPham.TenSanPham = Convert.ToString(row["TEN_SAN_PHAM"]);
                 ds.Add(sp);
             }
             return ds;

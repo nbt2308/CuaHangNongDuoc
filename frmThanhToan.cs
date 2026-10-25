@@ -29,8 +29,8 @@ namespace CuahangNongduoc
 
         private void frmThanhToan_Load(object sender, EventArgs e)
         {
-            ctrlKH.HienthiChungAutoComboBox(cmbKhachHang);
-            ctrlKH.HienthiKhachHangChungDataGridviewComboBox(colKhachHang);
+            ctrlKH.HienthiKhachHangVaDaiLyAutoComboBox(cmbKhachHang);
+            ctrlKH.HienthiKhachHangVaDaiLyDataGridviewComboBox(colKhachHang);
             ctrl.HienthiPhieuThanhToan(bindingNavigator, dataGridView, cmbKhachHang, txtMaPhieu, dtNgayThanhToan, numTongTien, txtGhiChu);
             bindingNavigator.BindingSource.AddingNew += new AddingNewEventHandler(BindingSource_AddingNew);
         }

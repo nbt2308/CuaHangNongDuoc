@@ -17,8 +17,16 @@ namespace CuahangNongduoc
         }
         public frmTimPhieuBanLe(bool loai):this()
         {
-            KhachHangController ctrlKH = new KhachHangController();
-            ctrlKH.HienthiAutoComboBox(cmbNCC, loai);
+            if (loai)
+            {
+                DaiLyController ctrlDaiLy = new DaiLyController();
+                ctrlDaiLy.HienthiAutoComboBoxBanSi(cmbNCC);
+            }
+            else
+            {
+                KhachHangController ctrlKH = new KhachHangController();
+                ctrlKH.HienthiAutoComboBox(cmbNCC, false);
+            }
         }
 
     }

@@ -500,7 +500,6 @@ namespace CuahangNongduoc
             try
             {
                 Luu();
-                Close();
             }
             catch (Exception ex)
             {

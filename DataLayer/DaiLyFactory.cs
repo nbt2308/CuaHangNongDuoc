@@ -20,6 +20,19 @@ namespace CuahangNongduoc.DataLayer
             return m_Ds;
         }
 
+        // Dùng riêng cho Bán sỉ: giữ được các đại lý cũ từng lưu trong
+        // KHACH_HANG, đồng thời thêm các đại lý mới của bảng DAI_LY.
+        public DataTable DanhsachDaiLyBanSi()
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand(
+                "SELECT ID, DAI_LY, DIA_CHI, DIEN_THOAI FROM DAI_LY " +
+                "UNION ALL " +
+                "SELECT ID, HO_TEN AS DAI_LY, DIA_CHI, DIEN_THOAI FROM KHACH_HANG WHERE LOAI_KH=TRUE");
+            ds.Load(cmd);
+            return ds;
+        }
+
         /// <summary>
         /// Tìm đại lý theo tên.
         /// </summary>

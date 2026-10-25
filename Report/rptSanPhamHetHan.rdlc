@@ -57,6 +57,10 @@
           <DataField>SanPham</DataField>
           <rd:TypeName>CuahangNongduoc.BusinessObject.SanPham</rd:TypeName>
         </Field>
+        <Field Name="TenSanPham">
+          <DataField>TenSanPham</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SoLuong">
           <DataField>SoLuong</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -88,7 +92,7 @@
           <TableGroup>
             <Grouping Name="sanpham">
               <GroupExpressions>
-                <GroupExpression>=Fields!SanPham.Value.TenSanPham</GroupExpression>
+                <GroupExpression>=Fields!TenSanPham.Value</GroupExpression>
               </GroupExpressions>
             </Grouping>
             <Header>
@@ -113,7 +117,7 @@
                           </Style>
                           <ZIndex>7</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!SanPham.Value.TenSanPham</Value>
+                          <Value>="Sản phẩm: " &amp; Fields!TenSanPham.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -570,7 +574,7 @@
                       </Style>
                       <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Mã sản phẩm</Value>
+                      <Value>Mã lô</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
