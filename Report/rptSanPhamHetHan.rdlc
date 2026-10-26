@@ -103,6 +103,78 @@
                 <GroupExpression>=Fields!TenSanPham.Value</GroupExpression>
               </GroupExpressions>
             </Grouping>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ColSpan>4</ColSpan>
+                      <ReportItems>
+                        <Textbox Name="TongSoLuongNhan">
+                          <rd:DefaultName>TongSoLuongNhan</rd:DefaultName>
+                          <Style>
+                            <BorderStyle><Default>Solid</Default></BorderStyle>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>Tá»•NG Sá» LÆ¯á»¢NG:</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TongSoLuong">
+                          <rd:DefaultName>TongSoLuong</rd:DefaultName>
+                          <Style>
+                            <BorderStyle><Default>Solid</Default></BorderStyle>
+                            <FontWeight>700</FontWeight>
+                            <Format>#,###0</Format>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SoLuong.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TongSoLuongNgayNhap">
+                          <rd:DefaultName>TongSoLuongNgayNhap</rd:DefaultName>
+                          <Style><BorderStyle><Default>Solid</Default></BorderStyle></Style>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TongSoLuongNgaySanXuat">
+                          <rd:DefaultName>TongSoLuongNgaySanXuat</rd:DefaultName>
+                          <Style><BorderStyle><Default>Solid</Default></BorderStyle></Style>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TongSoLuongNgayHetHan">
+                          <rd:DefaultName>TongSoLuongNgayHetHan</rd:DefaultName>
+                          <Style><BorderStyle><Default>Solid</Default></BorderStyle></Style>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.63492cm</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
           </TableGroup>
         </TableGroups>
         <Details>
