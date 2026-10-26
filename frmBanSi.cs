@@ -11,8 +11,7 @@ namespace CuahangNongduoc
     public partial class frmBanSi : Form
     {
         private readonly SanPhamController ctrlSanPham = new SanPhamController();
-        // Bán sỉ làm việc với bảng DAI_LY riêng, không dùng KHACH_HANG.LOAI_KH.
-        private readonly DaiLyController ctrlDaiLy = new DaiLyController();
+        private readonly KhachHangController ctrlKhachHang = new KhachHangController();
         private readonly MaSanPhamController ctrlMaSanPham = new MaSanPhamController();
         private PhieuBanController ctrlPhieuBan = new PhieuBanController();
         private readonly BanLeRepository repository = new BanLeRepository();
@@ -153,7 +152,7 @@ namespace CuahangNongduoc
             ctrlSanPham.HienthiAutoComboBox(cmbSanPham);
             cmbSanPham.AutoCompleteMode = AutoCompleteMode.None;
             cmbSanPham.AutoCompleteSource = AutoCompleteSource.None;
-            ctrlDaiLy.HienthiAutoComboBoxBanSi(cmbKhachHang);
+            ctrlKhachHang.HienthiAutoComboBox(cmbKhachHang, true);
             cmbSanPham.SelectedIndexChanged += cmbSanPham_SelectedIndexChanged;
             cmbMaSanPham.SelectedIndexChanged += cmbMaSanPham_SelectedIndexChanged;
             cmbCachChonLo.SelectedIndexChanged += cmbCachChonLo_SelectedIndexChanged;
@@ -168,7 +167,7 @@ namespace CuahangNongduoc
             numDaTra.ValueChanged += numTongTien_ValueChanged;
             dieuPhoiTinhHoaDon = new HoaDonBanMediator(TaoYeuCauTinhHoaDon, CapNhatKetQuaTinhHoaDon);
             thayDoiHoaDon.Subscribe(dieuPhoiTinhHoaDon);
-            ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+            ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                 dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
             dtNgayLapPhieu.MaxDate = DateTime.Now.Date.AddDays(1).AddSeconds(-1);
             GanSuKienCurrentChanged();
@@ -213,7 +212,7 @@ namespace CuahangNongduoc
 
             isBindingData = true;
             ctrlPhieuBan = new PhieuBanController();
-            ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+            ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                 dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
             GanSuKienCurrentChanged();
             isBindingData = false;
@@ -424,7 +423,7 @@ namespace CuahangNongduoc
                 if (txtMaPhieu.Text != maPhieu)
                     txtMaPhieu.Text = maPhieu;
 
-                PhieuBan phieu = ctrlPhieuBan.LayPhieuBan(maPhieu, true);
+                PhieuBan phieu = ctrlPhieuBan.LayPhieuBan(maPhieu);
                 NapChiPhi(phieu);
                 DataTable chiTiet = repository.LayChiTiet(maPhieu);
                 DataTable draft = (DataTable)dsChiTiet.DataSource;
@@ -697,7 +696,7 @@ namespace CuahangNongduoc
                 soLuongGocTheoLo.Clear();
                 Allow(false);
                 ctrlPhieuBan = new PhieuBanController();
-                ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                     dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
                 GanSuKienCurrentChanged();
                 DoDuLieuTuLoiLenForm();
@@ -812,7 +811,7 @@ namespace CuahangNongduoc
                         soLuongGocTheoLo.Clear();
                         Allow(false);
                         ctrlPhieuBan = new PhieuBanController();
-                        ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                        ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                             dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
                         GanSuKienCurrentChanged();
                         DoDuLieuTuLoiLenForm();
@@ -828,7 +827,7 @@ namespace CuahangNongduoc
                         status = Controll.Normal;
                         Allow(false);
                         ctrlPhieuBan = new PhieuBanController();
-                        ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                        ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                             dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
                         GanSuKienCurrentChanged();
                         DoDuLieuTuLoiLenForm();
@@ -908,7 +907,7 @@ namespace CuahangNongduoc
             }
             string maPhieu = LayMaPhieuHienTai();
             if (string.IsNullOrEmpty(maPhieu)) { BaoLoi("Không xác định được mã phiếu."); return; }
-            PhieuBan phieu = ctrlPhieuBan.LayPhieuBan(maPhieu, true);
+            PhieuBan phieu = ctrlPhieuBan.LayPhieuBan(maPhieu);
             if (phieu == null) { BaoLoi("Không tìm thấy phiếu bán."); return; }
             frmInPhieuBan formIn = new frmInPhieuBan(phieu);
             formIn.Show();
@@ -987,7 +986,7 @@ namespace CuahangNongduoc
                     status = Controll.Normal;
                     Allow(false);
                     ctrlPhieuBan = new PhieuBanController();
-                    ctrlPhieuBan.HienthiPhieuBanSi(bindingNavigator, cmbKhachHang, txtMaPhieu,
+                    ctrlPhieuBan.HienthiPhieuBan(bindingNavigator, cmbKhachHang, txtMaPhieu,
                         dtNgayLapPhieu, numTongTien, numDaTra, numConNo);
                     GanSuKienCurrentChanged();
                     DoDuLieuTuLoiLenForm();
@@ -1025,7 +1024,7 @@ namespace CuahangNongduoc
         {
             frmDaiLy form = new frmDaiLy();
             form.ShowDialog();
-            ctrlDaiLy.HienthiAutoComboBoxBanSi(cmbKhachHang);
+            ctrlKhachHang.HienthiAutoComboBox(cmbKhachHang, true);
         }
 
         private void btnThemSanPham_Click(object sender, EventArgs e)

@@ -19,12 +19,12 @@ namespace CuahangNongduoc
         }
 
         PhieuBanController ctrl = new PhieuBanController();
-        DaiLyController ctrlDaiLy = new DaiLyController();
+        KhachHangController ctrlKH = new KhachHangController();
 
         private void frmDanhsachPhieuNhap_Load(object sender, EventArgs e)
         {
             dataGridView.DataError += dataGridView_DataError;
-            ctrlDaiLy.HienthiDaiLyBanSiDataGridviewComboBox(colKhachhang);
+            ctrlKH.HienthiDaiLyDataGridviewComboBox(colKhachhang);
             ctrl.HienthiPhieuBanSi(bindingNavigator, dataGridView);
         }
 
@@ -127,7 +127,7 @@ namespace CuahangNongduoc
             if (!string.IsNullOrEmpty(maPhieu))
             {
                 PhieuBanController ctrlPB = new PhieuBanController();
-                CuahangNongduoc.BusinessObject.PhieuBan ph = ctrlPB.LayPhieuBan(maPhieu, true);
+                CuahangNongduoc.BusinessObject.PhieuBan ph = ctrlPB.LayPhieuBan(maPhieu);
                 if (ph != null)
                 {
                     frmInPhieuBan PhieuBan = new frmInPhieuBan(ph);
@@ -146,8 +146,7 @@ namespace CuahangNongduoc
             Tim.ShowDialog();
             if (Tim.DialogResult == DialogResult.OK)
             {
-                bindingNavigator.BindingSource.DataSource = ctrl.TimPhieuBan(
-                    Tim.cmbNCC.SelectedValue.ToString(), Tim.dtNgayNhap.Value.Date);
+                ctrl.TimPhieuBan(Tim.cmbNCC.SelectedValue.ToString(), Tim.dtNgayNhap.Value.Date);
             }
         }
     }
