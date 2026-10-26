@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 68);
+            this.panel1.Size = new System.Drawing.Size(983, 68);
             this.panel1.TabIndex = 1;
             // 
             // btnXem
@@ -60,7 +60,7 @@
             this.btnXem.Image = global::CuahangNongduoc.Properties.Resources.reload;
             this.btnXem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXem.Location = new System.Drawing.Point(579, 21);
-            this.btnXem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXem.Margin = new System.Windows.Forms.Padding(4);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(80, 30);
             this.btnXem.TabIndex = 4;
@@ -74,7 +74,7 @@
             this.dt.CustomFormat = "dd/MM/yyyy";
             this.dt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dt.Location = new System.Drawing.Point(428, 23);
-            this.dt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dt.Margin = new System.Windows.Forms.Padding(4);
             this.dt.Name = "dt";
             this.dt.Size = new System.Drawing.Size(141, 22);
             this.dt.TabIndex = 3;
@@ -94,9 +94,9 @@
             this.panel2.Controls.Add(this.reportViewer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 68);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(933, 599);
+            this.panel2.Size = new System.Drawing.Size(983, 599);
             this.panel2.TabIndex = 2;
             // 
             // reportViewer
@@ -107,10 +107,10 @@
             this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "CuahangNongduoc.Report.rptSanPhamHetHan.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reportViewer.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(933, 599);
+            this.reportViewer.Size = new System.Drawing.Size(983, 599);
             this.reportViewer.TabIndex = 0;
             // 
             // MaSanPhamBindingSource
@@ -122,12 +122,12 @@
             this.AcceptButton = this.btnXem;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 667);
+            this.ClientSize = new System.Drawing.Size(983, 667);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSanphamHethan";
             this.Text = "SAN PHAM HET HAN";
             this.Load += new System.EventHandler(this.frmSanphamHethan_Load);
