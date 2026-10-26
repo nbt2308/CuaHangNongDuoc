@@ -6,6 +6,8 @@ namespace CuahangNongduoc
         private System.Windows.Forms.DateTimePicker dtTuNgay;
         private System.Windows.Forms.DateTimePicker dtDenNgay;
         private System.Windows.Forms.Button btnXem;
+        private System.Windows.Forms.Label lblNhanVien;
+        private System.Windows.Forms.ComboBox cmbNhanVien;
         private System.Windows.Forms.DataGridView dgvNhanVien;
         private System.Windows.Forms.DataGridView dgvHoaDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -37,6 +39,8 @@ namespace CuahangNongduoc
             this.dtTuNgay = new System.Windows.Forms.DateTimePicker();
             this.dtDenNgay = new System.Windows.Forms.DateTimePicker();
             this.btnXem = new System.Windows.Forms.Button();
+            this.lblNhanVien = new System.Windows.Forms.Label();
+            this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.lblTuNgay = new System.Windows.Forms.Label();
@@ -93,6 +97,23 @@ namespace CuahangNongduoc
             this.btnXem.TabIndex = 4;
             this.btnXem.Text = "Xem báo cáo";
             this.btnXem.Click += new System.EventHandler(this.BtnXem_Click);
+            // 
+            // lblNhanVien
+            // 
+            this.lblNhanVien.AutoSize = true;
+            this.lblNhanVien.Margin = new System.Windows.Forms.Padding(12, 8, 6, 0);
+            this.lblNhanVien.Name = "lblNhanVien";
+            this.lblNhanVien.Size = new System.Drawing.Size(71, 16);
+            this.lblNhanVien.TabIndex = 5;
+            this.lblNhanVien.Text = "Nhân viên";
+            // 
+            // cmbNhanVien
+            // 
+            this.cmbNhanVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Name = "cmbNhanVien";
+            this.cmbNhanVien.Size = new System.Drawing.Size(210, 24);
+            this.cmbNhanVien.TabIndex = 6;
             // 
             // dgvNhanVien
             // 
@@ -202,6 +223,8 @@ namespace CuahangNongduoc
             this.filter.Controls.Add(this.dtTuNgay);
             this.filter.Controls.Add(this.lblDenNgay);
             this.filter.Controls.Add(this.dtDenNgay);
+            this.filter.Controls.Add(this.lblNhanVien);
+            this.filter.Controls.Add(this.cmbNhanVien);
             this.filter.Controls.Add(this.btnXem);
             this.filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filter.Location = new System.Drawing.Point(15, 15);

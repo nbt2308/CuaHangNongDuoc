@@ -34,6 +34,12 @@ namespace CuahangNongduoc.BusinessObject
         {
             get { return (m_SanPham == null || m_SanPham.TenSanPham == null) ? String.Empty : m_SanPham.TenSanPham; }
         }
+
+        // Tên hiển thị trên báo cáo hết hạn: chỉ hiện ở dòng đầu của mỗi sản phẩm.
+        public String TenSanPhamHienThi { get; set; }
+
+        // Đánh dấu dòng cuối của một nhóm sản phẩm để báo cáo kẻ đường ngăn cách.
+        public bool LaDongCuoiNhom { get; set; }
         private long m_GiaNhap;
 
         public long GiaNhap
