@@ -82,9 +82,17 @@
     </DataSet>
     <DataSet Name="TonKhoDataSet">
       <Fields>
-        <Field Name="SanPham">
-          <DataField>SanPham</DataField>
-          <rd:TypeName>CuahangNongduoc.BusinessObject.SanPham</rd:TypeName>
+        <Field Name="MaSanPhamBaoCao">
+          <DataField>MaSanPhamBaoCao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TenSanPhamBaoCao">
+          <DataField>TenSanPhamBaoCao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DonViTinhBaoCao">
+          <DataField>DonViTinhBaoCao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SoLuong">
           <DataField>SoLuong</DataField>
@@ -751,7 +759,7 @@
                       </Style>
                       <ZIndex>33</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!SanPham.Value.Id</Value>
+                      <Value>=Fields!MaSanPhamBaoCao.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -772,7 +780,7 @@
                       </Style>
                       <ZIndex>34</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!SanPham.Value.TenSanPham</Value>
+                      <Value>=Fields!TenSanPhamBaoCao.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -794,7 +802,7 @@
                       </Style>
                       <ZIndex>35</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!SanPham.Value.DonViTinh.Ten</Value>
+                      <Value>=Fields!DonViTinhBaoCao.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
