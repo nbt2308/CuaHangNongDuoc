@@ -32,7 +32,7 @@ namespace CuahangNongduoc
 
             DataRow row = ctrl.NewRow();
             row["ID"] = maphieu;
-            row["NGAY_CHI"] = dtNgayChi.Value.Date;
+            row["NGAY_CHI"] = DateTime.Today;
             row["TONG_TIEN"] = numTongTien.Value;
             ctrl.Add(row);
             bindingNavigator.BindingSource.MoveLast();

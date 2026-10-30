@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using CuahangNongduoc.BusinessObject;
 using CuahangNongduoc.DataLayer;
 
 namespace CuahangNongduoc
@@ -75,7 +76,30 @@ namespace CuahangNongduoc
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
-            bindingNavigatorPositionItem.Focus();
+            dataGridView.EndEdit();
+            bindingNavigator.BindingSource.EndEdit();
+
+            for (int i = 0; i < bindingNavigator.BindingSource.Count; i++)
+            {
+                var rowView = bindingNavigator.BindingSource[i] as DataRowView;
+                if (rowView == null ||
+                    (rowView.Row.RowState != DataRowState.Added &&
+                     rowView.Row.RowState != DataRowState.Modified))
+                {
+                    continue;
+                }
+
+                if (!LyDoChiValidation.IsValid(Convert.ToString(rowView["LY_DO"])))
+                {
+                    bindingNavigator.BindingSource.Position = i;
+                    dataGridView.CurrentCell = dataGridView.Rows[i].Cells["colLyDoChi"];
+                    dataGridView.BeginEdit(true);
+                    MessageBox.Show("Vui lòng nhập lý do chi trước khi lưu.", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             ctrl.Save();
             ctrl.HienthiDataGridview(dataGridView, bindingNavigator);
             bindingNavigator.BindingSource.MoveLast();

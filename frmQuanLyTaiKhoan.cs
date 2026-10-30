@@ -42,11 +42,11 @@ namespace CuahangNongduoc
         {
             dgvTaiKhoan.AutoGenerateColumns = false;
             dgvTaiKhoan.Columns.Clear();
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colId", HeaderText = "ID", DataPropertyName = "Id", Width = 45, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTen", HeaderText = "Tên đăng nhập", DataPropertyName = "TenDangNhap", Width = 150, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colHoTen", HeaderText = "Họ tên", DataPropertyName = "HoTen", Width = 200, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colRole", HeaderText = "Vai trò", DataPropertyName = "RoleDisplayName", Width = 160, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewCheckBoxColumn { Name = "colActive", HeaderText = "Hoạt động", DataPropertyName = "IsActive", Width = 90, ReadOnly = true });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colId", HeaderText = "ID", DataPropertyName = "Id", Width = 45, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Automatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTen", HeaderText = "Tên đăng nhập", DataPropertyName = "TenDangNhap", Width = 150, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Automatic  });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colHoTen", HeaderText = "Họ tên", DataPropertyName = "HoTen", Width = 200, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Automatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colRole", HeaderText = "Vai trò", DataPropertyName = "RoleDisplayName", Width = 160, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Automatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewCheckBoxColumn { Name = "colActive", HeaderText = "Hoạt động", DataPropertyName = "IsActive", Width = 90, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Automatic });
             dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvTaiKhoan.MultiSelect = false;
             dgvTaiKhoan.ReadOnly = true;
