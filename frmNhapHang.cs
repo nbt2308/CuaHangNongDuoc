@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using CuahangNongduoc.Controller;
 using CuahangNongduoc.BusinessObject;
@@ -67,6 +68,68 @@ namespace CuahangNongduoc
             txtMaSo.TextChanged += new EventHandler(DongBoTongTienKhiNhap);
             txtSoLo.TextChanged += new EventHandler(DongBoTongTienKhiNhap);
             cmbSanPham.SelectedValueChanged += new EventHandler(DongBoTongTienKhiNhap);
+
+            ThietLapHuongDanMaSoVaSoLo();
+        }
+
+        // ===== Hướng dẫn phân biệt "Mã số" và "Số lô" cho người nhập =====
+        // Mã số  = mã nội bộ do cửa hàng tự đặt, mỗi lần nhập một mã, không được trùng (cũng là mã chọn lô khi bán hàng).
+        // Số lô  = số lô sản xuất do nhà sản xuất in trên bao bì/nhãn sản phẩm.
+        private const int EM_SETCUEBANNER = 0x1501;
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, string lParam);
+
+        private const string GoiYMaSo = "Mã tự đặt, VD: LO001";
+        private const string GoiYSoLo = "Số in trên bao bì";
+
+        private const string HuongDanMaSo =
+            "MÃ SỐ = mã do cửa hàng TỰ ĐẶT để phân biệt từng lần nhập (VD: LO001, LO002).\n" +
+            "Mỗi lần nhập dùng một mã khác nhau, không được trùng với lô đã có.\n" +
+            "Mã này cũng hiện ở form bán hàng để chọn đúng lô.\n" +
+            "Không nhập số lô của nhà sản xuất vào đây.";
+
+        private const string HuongDanSoLo =
+            "SỐ LÔ = số lô sản xuất do NHÀ SẢN XUẤT in trên bao bì/nhãn sản phẩm (VD: A2406).\n" +
+            "Chép đúng như trên bao bì. Số lô này không cần khác nhau giữa các lần nhập.";
+
+        private static void DatGoiYChoO(TextBox o, string goiY)
+        {
+            // Chữ mờ gợi ý hiện khi ô còn trống (EM_SETCUEBANNER, wParam = 1: vẫn hiện cả khi ô đang được chọn).
+            EventHandler apDung = delegate(object s, EventArgs e) { SendMessage(o.Handle, EM_SETCUEBANNER, (IntPtr)1, goiY); };
+            if (o.IsHandleCreated)
+                apDung(o, EventArgs.Empty);
+            o.HandleCreated += apDung;
+        }
+
+        private void ThietLapHuongDanMaSoVaSoLo()
+        {
+            // Ô Số lô rộng hơn để đọc được chữ gợi ý (vẫn nằm trong khung Thông tin).
+            txtSoLo.Width = 150;
+
+            DatGoiYChoO(txtMaSo, GoiYMaSo);
+            DatGoiYChoO(txtSoLo, GoiYSoLo);
+
+            // Một dòng nhắc cố định ngay dưới các ô nhập.
+            Label lblHuongDan = new Label();
+            lblHuongDan.AutoSize = true;
+            lblHuongDan.ForeColor = System.Drawing.SystemColors.GrayText;
+            lblHuongDan.Location = new System.Drawing.Point(13, 130);
+            lblHuongDan.Text = "Mã số: mã tự đặt cho lần nhập này, không trùng.   Số lô: số in trên bao bì.";
+            grpThongtin.Controls.Add(lblHuongDan);
+
+            // Rê chuột vào nhãn/ô nhập/tiêu đề cột để xem giải thích đầy đủ.
+            ToolTip goiY = new ToolTip();
+            goiY.AutoPopDelay = 20000;
+            goiY.InitialDelay = 300;
+            goiY.ReshowDelay = 100;
+            goiY.ShowAlways = true;
+            goiY.SetToolTip(label2, HuongDanMaSo);
+            goiY.SetToolTip(txtMaSo, HuongDanMaSo);
+            goiY.SetToolTip(label14, HuongDanSoLo);
+            goiY.SetToolTip(txtSoLo, HuongDanSoLo);
+            colMaSanPham.ToolTipText = HuongDanMaSo;
+            colSoLo.ToolTipText = HuongDanSoLo;
         }
 
         public frmNhapHang(PhieuNhapController ctrlPN)
@@ -283,13 +346,13 @@ namespace CuahangNongduoc
             // Guard clauses: mỗi lỗi đều dừng luồng xử lý ngay tại đây.
             if (String.IsNullOrEmpty(maLo))
             {
-                MessageBox.Show("Vui lòng nhập Mã số của lô hàng.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập Mã số.\n\nMã số là mã do cửa hàng tự đặt để phân biệt lần nhập này (VD: LO001). Mỗi lần nhập dùng một mã khác nhau, không được trùng.\n(Số lô in trên bao bì thì nhập ở ô Số lô.)", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaSo.Focus();
                 return;
             }
             if (String.IsNullOrEmpty(soLo))
             {
-                MessageBox.Show("Vui lòng nhập Số lô.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập Số lô.\n\nSố lô là số do nhà sản xuất in trên bao bì/nhãn sản phẩm (VD: A2406).", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSoLo.Focus();
                 return;
             }
@@ -355,7 +418,7 @@ namespace CuahangNongduoc
                     continue;
                 if (String.Equals(maLo, Convert.ToString(view.Cells["colMaSanPham"].Value), StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Mã số lô đã có trong phiếu này. Vui lòng nhập mã khác.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Mã số \"" + maLo + "\" đã dùng cho một lô khác trong phiếu này.\n\nMã số là mã riêng của mỗi lần nhập nên không được trùng - hãy đặt mã khác.\nNếu \"" + maLo + "\" là số in trên bao bì thì hãy nhập vào ô Số lô.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtMaSo.Focus();
                     return;
                 }
@@ -365,7 +428,7 @@ namespace CuahangNongduoc
             {
                 if (new MaSanPhamController().LayMaSanPham(maLo) != null)
                 {
-                    MessageBox.Show("Mã số lô đã tồn tại trong cơ sở dữ liệu. Vui lòng nhập mã khác.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Mã số \"" + maLo + "\" đã được dùng cho một lần nhập trước đó.\n\nMã số là mã riêng của mỗi lần nhập nên không được trùng - hãy đặt mã khác.\nNếu \"" + maLo + "\" là số in trên bao bì thì hãy nhập vào ô Số lô.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtMaSo.Focus();
                     return;
                 }
@@ -553,14 +616,14 @@ namespace CuahangNongduoc
                 string id = Convert.ToString(drv["ID"]).Trim();
                 bool loMoi = drv.Row.RowState == DataRowState.Added;
                 if (String.IsNullOrEmpty(id))
-                    throw new InvalidOperationException("Mã lô không được để trống.");
+                    throw new InvalidOperationException("Mã số của lô không được để trống.");
                 soChiTiet++;
 
                 if (loMoi)
                 {
                     string soLo = Convert.ToString(drv["SO_LO"]).Trim();
                     if (String.IsNullOrEmpty(soLo))
-                        throw new InvalidOperationException("Số lô của lô mới không được để trống.");
+                        throw new InvalidOperationException("Số lô (số in trên bao bì) của lô mới không được để trống.");
                     // Chỉ lô mới mới bắt buộc SL > 0; lô cũ có thể đã bán hết (SL còn lại = 0).
                     if (Convert.ToDecimal(drv["DON_GIA_NHAP"]) <= 0M || Convert.ToDecimal(drv["SO_LUONG"]) <= 0M)
                         throw new InvalidOperationException("Đơn giá và số lượng của mỗi lô mới phải lớn hơn 0.");
