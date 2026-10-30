@@ -66,6 +66,13 @@ namespace CuahangNongduoc
 
                 // 2. Kiểm tra số điện thoại di động Việt Nam (10 số, đầu số hợp lệ)
                 string sdt = txtDienThoai.Text.Trim();
+                if (string.IsNullOrWhiteSpace(sdt))
+                {
+                    MessageBox.Show("Số điện thoại khách hàng là bắt buộc!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDienThoai.Focus();
+                    return;
+                }
+
                 if (!string.IsNullOrEmpty(sdt))
                 {
                     // Bao gồm các đầu số di động hiện hành sau chuyển đổi 11 số về 10 số.
@@ -148,7 +155,34 @@ namespace CuahangNongduoc
             {
                 if (MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    bindingNavigator.BindingSource.RemoveCurrent();
+                    BindingSource source = bindingNavigator.BindingSource;
+                    try
+                    {
+                        // Lưu các chỉnh sửa đang có trước để việc lưu xóa không vô tình
+                        // ghi đè các thay đổi trên một DataTable mới được tải lại.
+                        source.EndEdit();
+                        if (source.Current is DataRowView currentRow)
+                        {
+                            string id = Convert.ToString(currentRow["ID"]);
+                            if (String.IsNullOrWhiteSpace(id))
+                            {
+                                source.RemoveCurrent();
+                                return;
+                            }
+                        }
+
+                        source.RemoveCurrent();
+                        if (!ctrl.Save())
+                        {
+                            ctrl.TaiLaiKhachHang(false, source);
+                            MessageBox.Show("Không có dữ liệu nào được xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ctrl.TaiLaiKhachHang(false, source);
+                        MessageBox.Show("Không thể xóa khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -264,6 +298,13 @@ namespace CuahangNongduoc
                 {
                     BindingSource source = bindingNavigator.BindingSource;
                     source.CancelEdit();
+
+                    // Hủy các thay đổi chưa lưu trong DataTable hiện tại; thao tác xóa
+                    // đã xác nhận được lưu ngay nên không bị phục hồi bởi nút Hủy.
+                    if (source.DataSource is DataTable currentTable)
+                    {
+                        currentTable.RejectChanges();
+                    }
 
                     // Khi đang xem kết quả tìm kiếm, nạp lại toàn bộ danh sách khách hàng.
                     ctrl.TaiLaiKhachHang(false, source);

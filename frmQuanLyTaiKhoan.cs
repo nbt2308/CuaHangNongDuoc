@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using CuahangNongduoc.Auth;
 
@@ -15,6 +16,8 @@ namespace CuahangNongduoc
         private readonly NguoiDungData _data;
         private List<NguoiDung> _danhSach;
         private NguoiDung _taiKhoanDangChon = null;
+        private int _sortColumnIndex = -1;
+        private bool _sortAscending = true;
 
         public frmQuanLyTaiKhoan()
         {
@@ -42,11 +45,11 @@ namespace CuahangNongduoc
         {
             dgvTaiKhoan.AutoGenerateColumns = false;
             dgvTaiKhoan.Columns.Clear();
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colId", HeaderText = "ID", DataPropertyName = "Id", Width = 45, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTen", HeaderText = "Tên đăng nhập", DataPropertyName = "TenDangNhap", Width = 150, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colHoTen", HeaderText = "Họ tên", DataPropertyName = "HoTen", Width = 200, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colRole", HeaderText = "Vai trò", DataPropertyName = "RoleDisplayName", Width = 160, ReadOnly = true });
-            dgvTaiKhoan.Columns.Add(new DataGridViewCheckBoxColumn { Name = "colActive", HeaderText = "Hoạt động", DataPropertyName = "IsActive", Width = 90, ReadOnly = true });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colId", HeaderText = "ID", DataPropertyName = "Id", Width = 45, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Programmatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTen", HeaderText = "Tên đăng nhập", DataPropertyName = "TenDangNhap", Width = 150, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Programmatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colHoTen", HeaderText = "Họ tên", DataPropertyName = "HoTen", Width = 200, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Programmatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewTextBoxColumn { Name = "colRole", HeaderText = "Vai trò", DataPropertyName = "RoleDisplayName", Width = 160, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Programmatic });
+            dgvTaiKhoan.Columns.Add(new DataGridViewCheckBoxColumn { Name = "colActive", HeaderText = "Hoạt động", DataPropertyName = "IsActive", Width = 90, ReadOnly = true, SortMode = DataGridViewColumnSortMode.Programmatic });
             dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvTaiKhoan.MultiSelect = false;
             dgvTaiKhoan.ReadOnly = true;
@@ -55,6 +58,7 @@ namespace CuahangNongduoc
             dgvTaiKhoan.BackgroundColor = Color.White;
             dgvTaiKhoan.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 255, 245);
             dgvTaiKhoan.SelectionChanged += new EventHandler(dgvTaiKhoan_SelectionChanged);
+            dgvTaiKhoan.ColumnHeaderMouseClick += dgvTaiKhoan_ColumnHeaderMouseClick;
         }
 
         private void TaiDanhSach(string tuKhoa = null)
@@ -69,6 +73,7 @@ namespace CuahangNongduoc
                         (x.TenDangNhap ?? "").ToLower().Contains(kw) ||
                         (x.HoTen ?? "").ToLower().Contains(kw));
                 }
+                SapXepDanhSach();
                 dgvTaiKhoan.DataSource = null;
                 dgvTaiKhoan.DataSource = _danhSach;
                 lblSoLuong.Text = string.Format("Tổng: {0} tài khoản", _danhSach.Count);
@@ -78,6 +83,54 @@ namespace CuahangNongduoc
             {
                 MessageBox.Show("Lỗi tải danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvTaiKhoan_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex < 0) return;
+
+            if (_sortColumnIndex == e.ColumnIndex)
+                _sortAscending = !_sortAscending;
+            else
+            {
+                _sortColumnIndex = e.ColumnIndex;
+                _sortAscending = true;
+            }
+
+            SapXepDanhSach();
+            dgvTaiKhoan.DataSource = null;
+            dgvTaiKhoan.DataSource = _danhSach;
+
+            foreach (DataGridViewColumn column in dgvTaiKhoan.Columns)
+                column.HeaderCell.SortGlyphDirection = SortOrder.None;
+            dgvTaiKhoan.Columns[_sortColumnIndex].HeaderCell.SortGlyphDirection =
+                _sortAscending ? SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void SapXepDanhSach()
+        {
+            if (_danhSach == null || _sortColumnIndex < 0 || _sortColumnIndex >= dgvTaiKhoan.Columns.Count)
+                return;
+
+            string propertyName = dgvTaiKhoan.Columns[_sortColumnIndex].DataPropertyName;
+            PropertyInfo property = typeof(NguoiDung).GetProperty(propertyName);
+            if (property == null) return;
+
+            _danhSach.Sort(delegate(NguoiDung left, NguoiDung right)
+            {
+                object leftValue = property.GetValue(left, null);
+                object rightValue = property.GetValue(right, null);
+                int result;
+
+                if (leftValue == null || rightValue == null)
+                    result = leftValue == rightValue ? 0 : (leftValue == null ? -1 : 1);
+                else if (leftValue is string && rightValue is string)
+                    result = string.Compare((string)leftValue, (string)rightValue, StringComparison.CurrentCultureIgnoreCase);
+                else
+                    result = ((IComparable)leftValue).CompareTo(rightValue);
+
+                return _sortAscending ? result : -result;
+            });
         }
 
         private void dgvTaiKhoan_SelectionChanged(object sender, EventArgs e)
