@@ -58,6 +58,14 @@ namespace CuahangNongduoc
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDanhsachSP = new System.Windows.Forms.DataGridView();
+            this.colMaPhieuBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TEN_SAN_PHAM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGiaVon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbCachChonLo = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbCachTinhGiaVon = new System.Windows.Forms.ComboBox();
@@ -132,14 +140,6 @@ namespace CuahangNongduoc
             this.lblTongThanhToanTomTat = new System.Windows.Forms.Label();
             this.lblDaTraTomTat = new System.Windows.Forms.Label();
             this.lblConNoTomTat = new System.Windows.Forms.Label();
-            this.colMaPhieuBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TEN_SAN_PHAM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGiaVon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -366,9 +366,9 @@ namespace CuahangNongduoc
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 322);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(679, 518);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
@@ -379,7 +379,7 @@ namespace CuahangNongduoc
             this.panel2.Controls.Add(this.dgvDanhsachSP);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 19);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(671, 495);
             this.panel2.TabIndex = 1;
@@ -423,7 +423,7 @@ namespace CuahangNongduoc
             this.dgvDanhsachSP.EnableHeadersVisualStyles = false;
             this.dgvDanhsachSP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.dgvDanhsachSP.Location = new System.Drawing.Point(0, 0);
-            this.dgvDanhsachSP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDanhsachSP.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDanhsachSP.MultiSelect = false;
             this.dgvDanhsachSP.Name = "dgvDanhsachSP";
             this.dgvDanhsachSP.ReadOnly = true;
@@ -436,6 +436,72 @@ namespace CuahangNongduoc
             this.dgvDanhsachSP.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDanhsachSP_DataError);
             this.dgvDanhsachSP.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDanhsachSP_UserDeletingRow);
             // 
+            // colMaPhieuBan
+            // 
+            this.colMaPhieuBan.DataPropertyName = "ID_PHIEU_BAN";
+            this.colMaPhieuBan.HeaderText = "MaPhieuBan";
+            this.colMaPhieuBan.MinimumWidth = 6;
+            this.colMaPhieuBan.Name = "colMaPhieuBan";
+            this.colMaPhieuBan.ReadOnly = true;
+            this.colMaPhieuBan.Visible = false;
+            // 
+            // colMaSanPham
+            // 
+            this.colMaSanPham.DataPropertyName = "ID_MA_SAN_PHAM";
+            this.colMaSanPham.HeaderText = "Mã số";
+            this.colMaSanPham.MinimumWidth = 6;
+            this.colMaSanPham.Name = "colMaSanPham";
+            this.colMaSanPham.ReadOnly = true;
+            this.colMaSanPham.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // TEN_SAN_PHAM
+            // 
+            this.TEN_SAN_PHAM.DataPropertyName = "TEN_SAN_PHAM";
+            this.TEN_SAN_PHAM.HeaderText = "Tên sản phẩm";
+            this.TEN_SAN_PHAM.MinimumWidth = 6;
+            this.TEN_SAN_PHAM.Name = "TEN_SAN_PHAM";
+            this.TEN_SAN_PHAM.ReadOnly = true;
+            // 
+            // colDonGia
+            // 
+            this.colDonGia.DataPropertyName = "DON_GIA";
+            this.colDonGia.HeaderText = "Đơn giá";
+            this.colDonGia.MinimumWidth = 6;
+            this.colDonGia.Name = "colDonGia";
+            this.colDonGia.ReadOnly = true;
+            // 
+            // colSoLuong
+            // 
+            this.colSoLuong.DataPropertyName = "SO_LUONG";
+            this.colSoLuong.HeaderText = "Số lượng";
+            this.colSoLuong.MinimumWidth = 6;
+            this.colSoLuong.Name = "colSoLuong";
+            this.colSoLuong.ReadOnly = true;
+            // 
+            // colThanhTien
+            // 
+            this.colThanhTien.DataPropertyName = "THANH_TIEN";
+            this.colThanhTien.HeaderText = "Thành tiền";
+            this.colThanhTien.MinimumWidth = 6;
+            this.colThanhTien.Name = "colThanhTien";
+            this.colThanhTien.ReadOnly = true;
+            // 
+            // colNgayHetHan
+            // 
+            this.colNgayHetHan.DataPropertyName = "NGAY_HET_HAN";
+            this.colNgayHetHan.HeaderText = "Hạn dùng";
+            this.colNgayHetHan.MinimumWidth = 6;
+            this.colNgayHetHan.Name = "colNgayHetHan";
+            this.colNgayHetHan.ReadOnly = true;
+            // 
+            // colGiaVon
+            // 
+            this.colGiaVon.DataPropertyName = "GIA_VON";
+            this.colGiaVon.HeaderText = "Giá vốn";
+            this.colGiaVon.MinimumWidth = 6;
+            this.colGiaVon.Name = "colGiaVon";
+            this.colGiaVon.ReadOnly = true;
+            // 
             // cmbCachChonLo
             // 
             this.cmbCachChonLo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -444,7 +510,7 @@ namespace CuahangNongduoc
             "Tự động - hạn gần trước",
             "Chỉ định lô"});
             this.cmbCachChonLo.Location = new System.Drawing.Point(373, 191);
-            this.cmbCachChonLo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCachChonLo.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCachChonLo.Name = "cmbCachChonLo";
             this.cmbCachChonLo.Size = new System.Drawing.Size(239, 24);
             this.cmbCachChonLo.TabIndex = 65;
@@ -467,7 +533,7 @@ namespace CuahangNongduoc
             "Bình quân gia quyền",
             "Nhập trước xuất trước"});
             this.cmbCachTinhGiaVon.Location = new System.Drawing.Point(373, 228);
-            this.cmbCachTinhGiaVon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCachTinhGiaVon.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCachTinhGiaVon.Name = "cmbCachTinhGiaVon";
             this.cmbCachTinhGiaVon.Size = new System.Drawing.Size(239, 24);
             this.cmbCachTinhGiaVon.TabIndex = 67;
@@ -489,7 +555,7 @@ namespace CuahangNongduoc
             this.panel1.Controls.Add(this.grpPhieuBanLe);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 51);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1469, 271);
             this.panel1.TabIndex = 61;
@@ -516,9 +582,9 @@ namespace CuahangNongduoc
             this.groupBox2.Controls.Add(this.cmbSanPham);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(675, 4);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(610, 263);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
@@ -528,7 +594,7 @@ namespace CuahangNongduoc
             // 
             this.btnThemSanPham.Image = global::CuahangNongduoc.Properties.Resources.add_16;
             this.btnThemSanPham.Location = new System.Drawing.Point(275, 21);
-            this.btnThemSanPham.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemSanPham.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemSanPham.Name = "btnThemSanPham";
             this.btnThemSanPham.Size = new System.Drawing.Size(32, 30);
             this.btnThemSanPham.TabIndex = 63;
@@ -546,9 +612,9 @@ namespace CuahangNongduoc
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(323, 20);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(255, 158);
             this.groupBox3.TabIndex = 61;
             this.groupBox3.TabStop = false;
@@ -558,7 +624,7 @@ namespace CuahangNongduoc
             // 
             this.txtGiaBQGQ.BackColor = System.Drawing.Color.White;
             this.txtGiaBQGQ.Location = new System.Drawing.Point(100, 127);
-            this.txtGiaBQGQ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGiaBQGQ.Margin = new System.Windows.Forms.Padding(4);
             this.txtGiaBQGQ.Name = "txtGiaBQGQ";
             this.txtGiaBQGQ.ReadOnly = true;
             this.txtGiaBQGQ.Size = new System.Drawing.Size(144, 22);
@@ -579,7 +645,7 @@ namespace CuahangNongduoc
             // 
             this.txtGiaBanLe.BackColor = System.Drawing.Color.White;
             this.txtGiaBanLe.Location = new System.Drawing.Point(100, 95);
-            this.txtGiaBanLe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGiaBanLe.Margin = new System.Windows.Forms.Padding(4);
             this.txtGiaBanLe.Name = "txtGiaBanLe";
             this.txtGiaBanLe.ReadOnly = true;
             this.txtGiaBanLe.Size = new System.Drawing.Size(144, 22);
@@ -590,7 +656,7 @@ namespace CuahangNongduoc
             // 
             this.txtGiaBanSi.BackColor = System.Drawing.Color.White;
             this.txtGiaBanSi.Location = new System.Drawing.Point(100, 60);
-            this.txtGiaBanSi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGiaBanSi.Margin = new System.Windows.Forms.Padding(4);
             this.txtGiaBanSi.Name = "txtGiaBanSi";
             this.txtGiaBanSi.ReadOnly = true;
             this.txtGiaBanSi.Size = new System.Drawing.Size(144, 22);
@@ -601,7 +667,7 @@ namespace CuahangNongduoc
             // 
             this.txtGiaNhap.BackColor = System.Drawing.Color.White;
             this.txtGiaNhap.Location = new System.Drawing.Point(100, 30);
-            this.txtGiaNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGiaNhap.Margin = new System.Windows.Forms.Padding(4);
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.ReadOnly = true;
             this.txtGiaNhap.Size = new System.Drawing.Size(144, 22);
@@ -642,7 +708,7 @@ namespace CuahangNongduoc
             // 
             this.btnAdd.Image = global::CuahangNongduoc.Properties.Resources.down;
             this.btnAdd.Location = new System.Drawing.Point(92, 186);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(63, 37);
             this.btnAdd.TabIndex = 60;
@@ -653,7 +719,7 @@ namespace CuahangNongduoc
             // 
             this.btnRemove.Image = global::CuahangNongduoc.Properties.Resources.up;
             this.btnRemove.Location = new System.Drawing.Point(163, 185);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(64, 38);
             this.btnRemove.TabIndex = 59;
@@ -664,7 +730,7 @@ namespace CuahangNongduoc
             // 
             this.numThanhTien.Enabled = false;
             this.numThanhTien.Location = new System.Drawing.Point(93, 153);
-            this.numThanhTien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numThanhTien.Margin = new System.Windows.Forms.Padding(4);
             this.numThanhTien.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -694,7 +760,7 @@ namespace CuahangNongduoc
             // numDonGia
             // 
             this.numDonGia.Location = new System.Drawing.Point(93, 89);
-            this.numDonGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numDonGia.Margin = new System.Windows.Forms.Padding(4);
             this.numDonGia.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -715,7 +781,7 @@ namespace CuahangNongduoc
             // numSoLuong
             // 
             this.numSoLuong.Location = new System.Drawing.Point(93, 121);
-            this.numSoLuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numSoLuong.Margin = new System.Windows.Forms.Padding(4);
             this.numSoLuong.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -754,7 +820,7 @@ namespace CuahangNongduoc
             this.cmbMaSanPham.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMaSanPham.FormattingEnabled = true;
             this.cmbMaSanPham.Location = new System.Drawing.Point(93, 55);
-            this.cmbMaSanPham.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMaSanPham.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMaSanPham.Name = "cmbMaSanPham";
             this.cmbMaSanPham.Size = new System.Drawing.Size(212, 24);
             this.cmbMaSanPham.TabIndex = 51;
@@ -775,7 +841,7 @@ namespace CuahangNongduoc
             this.cmbSanPham.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSanPham.FormattingEnabled = true;
             this.cmbSanPham.Location = new System.Drawing.Point(93, 23);
-            this.cmbSanPham.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbSanPham.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSanPham.Name = "cmbSanPham";
             this.cmbSanPham.Size = new System.Drawing.Size(179, 24);
             this.cmbSanPham.TabIndex = 49;
@@ -807,19 +873,19 @@ namespace CuahangNongduoc
             this.grpPhieuBanLe.Controls.Add(this.label6);
             this.grpPhieuBanLe.Controls.Add(this.label8);
             this.grpPhieuBanLe.Location = new System.Drawing.Point(336, 4);
-            this.grpPhieuBanLe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPhieuBanLe.Margin = new System.Windows.Forms.Padding(4);
             this.grpPhieuBanLe.Name = "grpPhieuBanLe";
-            this.grpPhieuBanLe.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPhieuBanLe.Padding = new System.Windows.Forms.Padding(4);
             this.grpPhieuBanLe.Size = new System.Drawing.Size(331, 263);
             this.grpPhieuBanLe.TabIndex = 60;
             this.grpPhieuBanLe.TabStop = false;
-            this.grpPhieuBanLe.Text = "Phiếu bán lẽ";
+            this.grpPhieuBanLe.Text = "Phiếu bán sỉ";
             // 
             // btnThemDaiLy
             // 
             this.btnThemDaiLy.Image = global::CuahangNongduoc.Properties.Resources.add_16;
             this.btnThemDaiLy.Location = new System.Drawing.Point(283, 81);
-            this.btnThemDaiLy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemDaiLy.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemDaiLy.Name = "btnThemDaiLy";
             this.btnThemDaiLy.Size = new System.Drawing.Size(32, 30);
             this.btnThemDaiLy.TabIndex = 58;
@@ -839,7 +905,7 @@ namespace CuahangNongduoc
             // txtMaPhieu
             // 
             this.txtMaPhieu.Location = new System.Drawing.Point(109, 20);
-            this.txtMaPhieu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaPhieu.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(204, 22);
             this.txtMaPhieu.TabIndex = 55;
@@ -859,7 +925,7 @@ namespace CuahangNongduoc
             this.dtNgayLapPhieu.CustomFormat = "dd/MM/yyyy";
             this.dtNgayLapPhieu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNgayLapPhieu.Location = new System.Drawing.Point(109, 52);
-            this.dtNgayLapPhieu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtNgayLapPhieu.Margin = new System.Windows.Forms.Padding(4);
             this.dtNgayLapPhieu.Name = "dtNgayLapPhieu";
             this.dtNgayLapPhieu.Size = new System.Drawing.Size(204, 22);
             this.dtNgayLapPhieu.TabIndex = 39;
@@ -870,7 +936,7 @@ namespace CuahangNongduoc
             this.cmbKhachHang.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbKhachHang.FormattingEnabled = true;
             this.cmbKhachHang.Location = new System.Drawing.Point(109, 84);
-            this.cmbKhachHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbKhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKhachHang.Name = "cmbKhachHang";
             this.cmbKhachHang.Size = new System.Drawing.Size(169, 24);
             this.cmbKhachHang.TabIndex = 46;
@@ -878,7 +944,7 @@ namespace CuahangNongduoc
             // numConNo
             // 
             this.numConNo.Location = new System.Drawing.Point(109, 181);
-            this.numConNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numConNo.Margin = new System.Windows.Forms.Padding(4);
             this.numConNo.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -919,7 +985,7 @@ namespace CuahangNongduoc
             // numTongTien
             // 
             this.numTongTien.Location = new System.Drawing.Point(109, 117);
-            this.numTongTien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numTongTien.Margin = new System.Windows.Forms.Padding(4);
             this.numTongTien.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -945,7 +1011,7 @@ namespace CuahangNongduoc
             0,
             0});
             this.numDaTra.Location = new System.Drawing.Point(109, 149);
-            this.numDaTra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numDaTra.Margin = new System.Windows.Forms.Padding(4);
             this.numDaTra.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -984,7 +1050,7 @@ namespace CuahangNongduoc
             this.grpChiPhi.Controls.Add(this.grpTomTat);
             this.grpChiPhi.Dock = System.Windows.Forms.DockStyle.Right;
             this.grpChiPhi.Location = new System.Drawing.Point(679, 322);
-            this.grpChiPhi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpChiPhi.Margin = new System.Windows.Forms.Padding(4);
             this.grpChiPhi.Name = "grpChiPhi";
             this.grpChiPhi.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.grpChiPhi.Size = new System.Drawing.Size(790, 518);
@@ -1025,7 +1091,7 @@ namespace CuahangNongduoc
             // 
             this.chkGiaoHang.AutoSize = true;
             this.chkGiaoHang.Location = new System.Drawing.Point(8, 4);
-            this.chkGiaoHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkGiaoHang.Margin = new System.Windows.Forms.Padding(4);
             this.chkGiaoHang.Name = "chkGiaoHang";
             this.chkGiaoHang.Size = new System.Drawing.Size(230, 20);
             this.chkGiaoHang.TabIndex = 0;
@@ -1047,7 +1113,7 @@ namespace CuahangNongduoc
             this.numKhoangCach.DecimalPlaces = 1;
             this.numKhoangCach.Enabled = false;
             this.numKhoangCach.Location = new System.Drawing.Point(20, 52);
-            this.numKhoangCach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numKhoangCach.Margin = new System.Windows.Forms.Padding(4);
             this.numKhoangCach.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1075,7 +1141,7 @@ namespace CuahangNongduoc
             "Giảm giá",
             "Chiết khấu"});
             this.cmbLoaiGiamGia.Location = new System.Drawing.Point(20, 101);
-            this.cmbLoaiGiamGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbLoaiGiamGia.Margin = new System.Windows.Forms.Padding(4);
             this.cmbLoaiGiamGia.Name = "cmbLoaiGiamGia";
             this.cmbLoaiGiamGia.Size = new System.Drawing.Size(350, 24);
             this.cmbLoaiGiamGia.TabIndex = 4;
@@ -1100,7 +1166,7 @@ namespace CuahangNongduoc
             0,
             65536});
             this.numTyLeGiamGia.Location = new System.Drawing.Point(20, 158);
-            this.numTyLeGiamGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numTyLeGiamGia.Margin = new System.Windows.Forms.Padding(4);
             this.numTyLeGiamGia.Maximum = new decimal(new int[] {
             1999,
             0,
@@ -1128,7 +1194,7 @@ namespace CuahangNongduoc
             0,
             0});
             this.numPhiShipThuCong.Location = new System.Drawing.Point(20, 211);
-            this.numPhiShipThuCong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numPhiShipThuCong.Margin = new System.Windows.Forms.Padding(4);
             this.numPhiShipThuCong.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1159,7 +1225,7 @@ namespace CuahangNongduoc
             0,
             0});
             this.numTienBocXep.Location = new System.Drawing.Point(390, 22);
-            this.numTienBocXep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numTienBocXep.Margin = new System.Windows.Forms.Padding(4);
             this.numTienBocXep.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1174,7 +1240,7 @@ namespace CuahangNongduoc
             // 
             this.btnThemBocXep.AutoSize = true;
             this.btnThemBocXep.Location = new System.Drawing.Point(390, 52);
-            this.btnThemBocXep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemBocXep.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemBocXep.Name = "btnThemBocXep";
             this.btnThemBocXep.Size = new System.Drawing.Size(165, 30);
             this.btnThemBocXep.TabIndex = 11;
@@ -1198,7 +1264,7 @@ namespace CuahangNongduoc
             0,
             0});
             this.numTienDongGoi.Location = new System.Drawing.Point(390, 102);
-            this.numTienDongGoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numTienDongGoi.Margin = new System.Windows.Forms.Padding(4);
             this.numTienDongGoi.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1213,7 +1279,7 @@ namespace CuahangNongduoc
             // 
             this.btnThemDongGoi.AutoSize = true;
             this.btnThemDongGoi.Location = new System.Drawing.Point(390, 132);
-            this.btnThemDongGoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemDongGoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemDongGoi.Name = "btnThemDongGoi";
             this.btnThemDongGoi.Size = new System.Drawing.Size(165, 30);
             this.btnThemDongGoi.TabIndex = 14;
@@ -1232,7 +1298,7 @@ namespace CuahangNongduoc
             // txtDichVu
             // 
             this.txtDichVu.Location = new System.Drawing.Point(390, 184);
-            this.txtDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.txtDichVu.MaxLength = 100;
             this.txtDichVu.Name = "txtDichVu";
             this.txtDichVu.Size = new System.Drawing.Size(183, 22);
@@ -1247,7 +1313,7 @@ namespace CuahangNongduoc
             0,
             0});
             this.numTienDichVu.Location = new System.Drawing.Point(583, 184);
-            this.numTienDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numTienDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.numTienDichVu.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -1265,7 +1331,7 @@ namespace CuahangNongduoc
             this.btnThemDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemDichVu.ForeColor = System.Drawing.Color.White;
             this.btnThemDichVu.Location = new System.Drawing.Point(393, 211);
-            this.btnThemDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemDichVu.Name = "btnThemDichVu";
             this.btnThemDichVu.Size = new System.Drawing.Size(180, 32);
             this.btnThemDichVu.TabIndex = 18;
@@ -1277,7 +1343,7 @@ namespace CuahangNongduoc
             this.btnXoaDichVu.AutoSize = true;
             this.btnXoaDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaDichVu.Location = new System.Drawing.Point(583, 211);
-            this.btnXoaDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoaDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaDichVu.Name = "btnXoaDichVu";
             this.btnXoaDichVu.Size = new System.Drawing.Size(164, 32);
             this.btnXoaDichVu.TabIndex = 19;
@@ -1315,7 +1381,7 @@ namespace CuahangNongduoc
             this.dgvDichVu.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvDichVu.EnableHeadersVisualStyles = false;
             this.dgvDichVu.Location = new System.Drawing.Point(0, 246);
-            this.dgvDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDichVu.MultiSelect = false;
             this.dgvDichVu.Name = "dgvDichVu";
             this.dgvDichVu.ReadOnly = true;
@@ -1349,7 +1415,7 @@ namespace CuahangNongduoc
             this.grpTomTat.Controls.Add(this.lblConNoTomTat);
             this.grpTomTat.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpTomTat.Location = new System.Drawing.Point(11, 25);
-            this.grpTomTat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpTomTat.Margin = new System.Windows.Forms.Padding(4);
             this.grpTomTat.Name = "grpTomTat";
             this.grpTomTat.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.grpTomTat.Size = new System.Drawing.Size(768, 140);
@@ -1424,72 +1490,6 @@ namespace CuahangNongduoc
             this.lblConNoTomTat.TabIndex = 4;
             this.lblConNoTomTat.Text = "Còn nợ: 0 đ";
             // 
-            // colMaPhieuBan
-            // 
-            this.colMaPhieuBan.DataPropertyName = "ID_PHIEU_BAN";
-            this.colMaPhieuBan.HeaderText = "MaPhieuBan";
-            this.colMaPhieuBan.MinimumWidth = 6;
-            this.colMaPhieuBan.Name = "colMaPhieuBan";
-            this.colMaPhieuBan.ReadOnly = true;
-            this.colMaPhieuBan.Visible = false;
-            // 
-            // colMaSanPham
-            // 
-            this.colMaSanPham.DataPropertyName = "ID_MA_SAN_PHAM";
-            this.colMaSanPham.HeaderText = "Mã số";
-            this.colMaSanPham.MinimumWidth = 6;
-            this.colMaSanPham.Name = "colMaSanPham";
-            this.colMaSanPham.ReadOnly = true;
-            this.colMaSanPham.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // TEN_SAN_PHAM
-            // 
-            this.TEN_SAN_PHAM.DataPropertyName = "TEN_SAN_PHAM";
-            this.TEN_SAN_PHAM.HeaderText = "Tên sản phẩm";
-            this.TEN_SAN_PHAM.MinimumWidth = 6;
-            this.TEN_SAN_PHAM.Name = "TEN_SAN_PHAM";
-            this.TEN_SAN_PHAM.ReadOnly = true;
-            // 
-            // colDonGia
-            // 
-            this.colDonGia.DataPropertyName = "DON_GIA";
-            this.colDonGia.HeaderText = "Đơn giá";
-            this.colDonGia.MinimumWidth = 6;
-            this.colDonGia.Name = "colDonGia";
-            this.colDonGia.ReadOnly = true;
-            // 
-            // colSoLuong
-            // 
-            this.colSoLuong.DataPropertyName = "SO_LUONG";
-            this.colSoLuong.HeaderText = "Số lượng";
-            this.colSoLuong.MinimumWidth = 6;
-            this.colSoLuong.Name = "colSoLuong";
-            this.colSoLuong.ReadOnly = true;
-            // 
-            // colThanhTien
-            // 
-            this.colThanhTien.DataPropertyName = "THANH_TIEN";
-            this.colThanhTien.HeaderText = "Thành tiền";
-            this.colThanhTien.MinimumWidth = 6;
-            this.colThanhTien.Name = "colThanhTien";
-            this.colThanhTien.ReadOnly = true;
-            // 
-            // colNgayHetHan
-            // 
-            this.colNgayHetHan.DataPropertyName = "NGAY_HET_HAN";
-            this.colNgayHetHan.HeaderText = "Hạn dùng";
-            this.colNgayHetHan.MinimumWidth = 6;
-            this.colNgayHetHan.Name = "colNgayHetHan";
-            this.colNgayHetHan.ReadOnly = true;
-            // 
-            // colGiaVon
-            // 
-            this.colGiaVon.DataPropertyName = "GIA_VON";
-            this.colGiaVon.HeaderText = "Giá vốn";
-            this.colGiaVon.MinimumWidth = 6;
-            this.colGiaVon.Name = "colGiaVon";
-            this.colGiaVon.ReadOnly = true;
-            // 
             // frmBanSi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1500,7 +1500,7 @@ namespace CuahangNongduoc
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bindingNavigator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1486, 824);
             this.Name = "frmBanSi";
             this.Text = "Lập phiếu bán sỉ";
