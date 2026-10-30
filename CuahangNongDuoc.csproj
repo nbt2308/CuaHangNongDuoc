@@ -98,6 +98,7 @@
     <Compile Include="BusinessObject\DaiLy.cs" />
     <Compile Include="BusinessObject\PhieuChi.cs" />
     <Compile Include="BusinessObject\LyDoChi.cs" />
+    <Compile Include="BusinessObject\LyDoChiValidation.cs" />
     <Compile Include="BusinessObject\NhaCungCap.cs" />
     <Compile Include="BusinessObject\CuaHang.cs" />
     <Compile Include="BusinessObject\DuNoKhachHang.cs" />

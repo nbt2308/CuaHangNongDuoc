@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLyDoChi));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLyDoChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -59,7 +59,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
-            this.colDienThoai});
+            this.colLyDoChi});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 46);
             this.dataGridView.Name = "dataGridView";
@@ -75,12 +75,12 @@
             this.colID.ReadOnly = true;
             this.colID.Visible = false;
             // 
-            // colDienThoai
+            // colLyDoChi
             // 
-            this.colDienThoai.DataPropertyName = "LY_DO";
-            this.colDienThoai.HeaderText = "Lý do";
-            this.colDienThoai.Name = "colDienThoai";
-            this.colDienThoai.Width = 200;
+            this.colLyDoChi.DataPropertyName = "LY_DO";
+            this.colLyDoChi.HeaderText = "Lý do";
+            this.colLyDoChi.Name = "colLyDoChi";
+            this.colLyDoChi.Width = 200;
             // 
             // bindingNavigator
             // 
@@ -263,6 +263,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolThoat;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLyDoChi;
     }
 }
