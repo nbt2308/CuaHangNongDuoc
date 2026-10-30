@@ -178,7 +178,9 @@
             this.dtNgayChi.Name = "dtNgayChi";
             this.dtNgayChi.Size = new System.Drawing.Size(140, 22);
             this.dtNgayChi.TabIndex = 8;
-            this.dtNgayChi.Value = new System.DateTime(2026, 10, 19, 20, 26, 48, 0);
+            // this.dtNgayChi.Value = new System.DateTime(2026, 10, 19, 20, 26, 48, 0);
+            this.dtNgayChi.Value = System.DateTime.Today;
+            this.dtNgayChi.Enabled = false;
             // 
             // numTongTien
             // 
