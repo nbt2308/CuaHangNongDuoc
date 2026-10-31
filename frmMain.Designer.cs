@@ -61,6 +61,7 @@ namespace CuahangNongduoc
             this.mnuBaocaoSoluongton = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoLuongBan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoDoanhThu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBaoCaoGiamGia = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSanphamHethan = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTuychinh = new System.Windows.Forms.ToolStripMenuItem();
@@ -357,6 +358,7 @@ namespace CuahangNongduoc
             this.mnuBaocaoSoluongton,
             this.mnuSoLuongBan,
             this.mnuBaocaoDoanhThu,
+            this.mnuBaoCaoGiamGia,
             this.toolStripSeparator5,
             this.mnuSanphamHethan});
             this.mnuBaocao.Name = "mnuBaocao";
@@ -386,6 +388,14 @@ namespace CuahangNongduoc
             this.mnuBaocaoDoanhThu.Size = new System.Drawing.Size(211, 26);
             this.mnuBaocaoDoanhThu.Text = "Thống kê chi phí và tồn kho";
             this.mnuBaocaoDoanhThu.Click += new System.EventHandler(this.mnuBaocaoDoanhThu_Click);
+            // 
+            // mnuBaoCaoGiamGia
+            // 
+            this.mnuBaoCaoGiamGia.Image = global::CuahangNongduoc.Properties.Resources.DoanhThu;
+            this.mnuBaoCaoGiamGia.Name = "mnuBaoCaoGiamGia";
+            this.mnuBaoCaoGiamGia.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaoCaoGiamGia.Text = "Báo cáo giảm giá";
+            this.mnuBaoCaoGiamGia.Click += new System.EventHandler(this.mnuBaoCaoGiamGia_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1107,5 +1117,6 @@ namespace CuahangNongduoc
         private XPExplorerBar.TaskItem itemDangXuat;
         private XPExplorerBar.TaskItem itemNguoiDung;
         private System.Windows.Forms.ToolStripButton toolNguoiDung;
+        private System.Windows.Forms.ToolStripMenuItem mnuBaoCaoGiamGia;
     }
 }

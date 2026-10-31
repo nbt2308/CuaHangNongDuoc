@@ -52,6 +52,7 @@ namespace CuahangNongduoc
             mnuTonghopDuno.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.CongNo);
             mnuBaocaoSoluongton.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.BaoCaoTonKho);
             mnuSoLuongBan.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.BaoCaoSoLuongBan);
+            mnuBaoCaoGiamGia.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.BaoCaoDoanhThu);
             mnuSanphamHethan.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.BaoCaoHetHan);
             mnuTuychinhThongtin.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.CauHinhHeThong);
             mnuNhaCungCap.Visible = AuthorizationService.CoQuyen(AuthorizationService.Permission.XemNhaCungCap);
