@@ -19,6 +19,7 @@ namespace CuahangNongduoc
             bindingNavigator.AddNewItem = null;
             dataGridView.EditingControlShowing += dataGridView_EditingControlShowing;
             dataGridView.CellValidating += dataGridView_CellValidating;
+            txtSDT.Leave += txtSDT_Leave;
         }
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
@@ -127,6 +128,24 @@ namespace CuahangNongduoc
             return Regex.IsMatch(sdt.Trim(), @"^(03|05|07|08|09)[0-9]{8}$");
         }
 
+        /// <summary>
+        /// Kiểm tra số điện thoại có bị trùng với nhà cung cấp khác hay không.
+        /// </summary>
+        /// <param name="sdt">Số điện thoại cần kiểm tra</param>
+        /// <param name="currentId">Mã nhà cung cấp hiện tại (bỏ qua khi sửa)</param>
+        /// <param name="tenTrung">Tên nhà cung cấp bị trùng (nếu có)</param>
+        /// <param name="idTrung">Mã nhà cung cấp bị trùng (nếu có)</param>
+        /// <returns>True nếu trùng, False nếu không trùng</returns>
+        private bool KiemTraTrungSoDienThoai(string sdt, string currentId, out string tenTrung, out string idTrung)
+        {
+            DataTable tbl = bindingNavigator.BindingSource?.DataSource as DataTable;
+            if (tbl == null && bindingNavigator.BindingSource?.DataSource is DataView dv)
+            {
+                tbl = dv.Table;
+            }
+            return ctrl.KiemTraTrungSDT(sdt, currentId, tbl, out tenTrung, out idTrung);
+        }
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             if (bindingNavigator.BindingSource == null)
@@ -138,6 +157,7 @@ namespace CuahangNongduoc
                 string curTen = Convert.ToString(cur["HO_TEN"]).Trim();
                 string curDiaChi = Convert.ToString(cur["DIA_CHI"]).Trim();
                 string curSDT = Convert.ToString(cur["DIEN_THOAI"]).Trim();
+                string curId = Convert.ToString(cur["ID"]).Trim();
 
                 if (string.IsNullOrEmpty(curTen) || string.IsNullOrEmpty(curDiaChi) || string.IsNullOrEmpty(curSDT))
                 {
@@ -152,6 +172,17 @@ namespace CuahangNongduoc
                 {
                     MessageBox.Show("Số điện thoại của nhà cung cấp hiện tại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng các đầu số: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSDT.Focus();
+                    return;
+                }
+
+                if (KiemTraTrungSoDienThoai(curSDT, curId, out string tenTrung, out string idTrung))
+                {
+                    string thongBao = string.IsNullOrEmpty(tenTrung)
+                        ? $"Số điện thoại '{curSDT}' của nhà cung cấp hiện tại đã tồn tại cho nhà cung cấp có mã '{idTrung}'!"
+                        : $"Số điện thoại '{curSDT}' của nhà cung cấp hiện tại đã được sử dụng bởi nhà cung cấp '{tenTrung}' (Mã: {idTrung})!";
+                    MessageBox.Show(thongBao + "\nVui lòng chỉnh sửa số điện thoại trước khi thêm mới.", "Trùng số điện thoại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSDT.Focus();
+                    txtSDT.SelectAll();
                     return;
                 }
             }
@@ -213,8 +244,26 @@ namespace CuahangNongduoc
                     return;
                 }
 
-                // 5. Kiểm tra các dòng đang thêm mới hoặc chỉnh sửa khác trong DataTable
-                if (bindingNavigator.BindingSource.DataSource is DataTable dt)
+                // 5. Kiểm tra trùng số điện thoại của nhà cung cấp đang nhập
+                string curId = txtMaNhaCungCap.Text.Trim();
+                if (KiemTraTrungSoDienThoai(sdt, curId, out string tenTrung, out string idTrung))
+                {
+                    string thongBao = string.IsNullOrEmpty(tenTrung)
+                        ? $"Số điện thoại '{sdt}' đã tồn tại cho nhà cung cấp có mã '{idTrung}'!"
+                        : $"Số điện thoại '{sdt}' đã được sử dụng bởi nhà cung cấp '{tenTrung}' (Mã: {idTrung})!";
+                    MessageBox.Show(thongBao + "\nVui lòng nhập số điện thoại khác.", "Trùng số điện thoại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSDT.Focus();
+                    txtSDT.SelectAll();
+                    return;
+                }
+
+                // 6. Kiểm tra các dòng đang thêm mới hoặc chỉnh sửa khác trong DataTable
+                DataTable dt = bindingNavigator.BindingSource.DataSource as DataTable;
+                if (dt == null && bindingNavigator.BindingSource.DataSource is DataView dvSource)
+                {
+                    dt = dvSource.Table;
+                }
+                if (dt != null)
                 {
                     foreach (DataRow row in dt.Rows)
                     {
@@ -228,40 +277,49 @@ namespace CuahangNongduoc
                         string rTen = Convert.ToString(row["HO_TEN"]).Trim();
                         string rDiaChi = Convert.ToString(row["DIA_CHI"]).Trim();
                         string rSDT = Convert.ToString(row["DIEN_THOAI"]).Trim();
+                        string rId = Convert.ToString(row["ID"]).Trim();
 
                         if (string.IsNullOrWhiteSpace(rTen))
                         {
-                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} chưa nhập tên!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Nhà cung cấp mã {rId} chưa nhập tên!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                         if (string.IsNullOrWhiteSpace(rDiaChi))
                         {
-                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} chưa nhập địa chỉ!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Nhà cung cấp mã {rId} chưa nhập địa chỉ!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                         if (string.IsNullOrWhiteSpace(rSDT))
                         {
-                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} chưa nhập số điện thoại!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Nhà cung cấp mã {rId} chưa nhập số điện thoại!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                         if (!KiemTraSoDienThoaiVN(rSDT))
                         {
-                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} có số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Nhà cung cấp mã {rId} có số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        if (KiemTraTrungSoDienThoai(rSDT, rId, out string rowTenTrung, out string rowIdTrung))
+                        {
+                            string thongBao = string.IsNullOrEmpty(rowTenTrung)
+                                ? $"Nhà cung cấp mã '{rId}' có số điện thoại '{rSDT}' bị trùng với nhà cung cấp mã '{rowIdTrung}'!"
+                                : $"Nhà cung cấp mã '{rId}' có số điện thoại '{rSDT}' bị trùng với nhà cung cấp '{rowTenTrung}' (Mã: {rowIdTrung})!";
+                            MessageBox.Show(thongBao + "\nVui lòng kiểm tra lại trước khi lưu.", "Trùng số điện thoại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
                 }
 
-                // 6. Chuẩn hóa khoảng trắng
+                // 7. Chuẩn hóa khoảng trắng
                 txtNhaCungCap.Text = Regex.Replace(hoTen, @"\s+", " ");
                 txtDiaChi.Text = Regex.Replace(diaChi, @"\s+", " ");
                 txtSDT.Text = sdt;
 
-                // 7. Đồng bộ dữ liệu vào BindingSource
+                // 8. Đồng bộ dữ liệu vào BindingSource
                 bindingNavigator.BindingSource.EndEdit();
                 bindingNavigatorPositionItem.Focus();
 
-                // 8. Lưu vào cơ sở dữ liệu
+                // 9. Lưu vào cơ sở dữ liệu
                 ctrl.Save();
 
                 MessageBox.Show("Đã lưu thông tin nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -382,6 +440,28 @@ namespace CuahangNongduoc
             }
         }
 
+        private void txtSDT_Leave(object sender, EventArgs e)
+        {
+            string sdt = txtSDT.Text.Trim();
+            if (string.IsNullOrEmpty(sdt))
+                return;
+
+            // Nếu người dùng đã nhập đủ 10 số hợp lệ thì kiểm tra ngay xem có bị trùng không
+            if (sdt.Length == 10 && KiemTraSoDienThoaiVN(sdt))
+            {
+                string curId = txtMaNhaCungCap.Text.Trim();
+                if (KiemTraTrungSoDienThoai(sdt, curId, out string tenTrung, out string idTrung))
+                {
+                    string thongBao = string.IsNullOrEmpty(tenTrung)
+                        ? $"Số điện thoại '{sdt}' đã tồn tại cho nhà cung cấp có mã '{idTrung}'!"
+                        : $"Số điện thoại '{sdt}' đã được sử dụng bởi nhà cung cấp '{tenTrung}' (Mã: {idTrung})!";
+                    MessageBox.Show(thongBao + "\nVui lòng nhập số điện thoại khác.", "Trùng số điện thoại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSDT.Focus();
+                    txtSDT.SelectAll();
+                }
+            }
+        }
+
         private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (e.Control is TextBox tb)
@@ -452,6 +532,36 @@ namespace CuahangNongduoc
                     MessageBox.Show(
                         "Số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng các đầu số: 03, 05, 07, 08, 09.",
                         "Dữ liệu không hợp lệ",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    e.Cancel = true;
+                    return;
+                }
+
+                // Lấy ID của dòng đang chỉnh sửa trên DataGridView
+                string rowId = "";
+                if (e.RowIndex >= 0 && e.RowIndex < dataGridView.Rows.Count)
+                {
+                    var row = dataGridView.Rows[e.RowIndex];
+                    if (row.DataBoundItem is DataRowView drv)
+                    {
+                        rowId = Convert.ToString(drv["ID"]).Trim();
+                    }
+                    else if (row.Cells["colID"] != null && row.Cells["colID"].Value != null)
+                    {
+                        rowId = Convert.ToString(row.Cells["colID"].Value).Trim();
+                    }
+                }
+
+                if (KiemTraTrungSoDienThoai(phone, rowId, out string tenTrung, out string idTrung))
+                {
+                    string thongBao = string.IsNullOrEmpty(tenTrung)
+                        ? $"Số điện thoại '{phone}' đã được sử dụng bởi nhà cung cấp có mã '{idTrung}'!"
+                        : $"Số điện thoại '{phone}' đã được sử dụng bởi nhà cung cấp '{tenTrung}' (Mã: {idTrung})!";
+                    MessageBox.Show(
+                        thongBao + "\nVui lòng nhập số điện thoại khác.",
+                        "Trùng số điện thoại",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
 

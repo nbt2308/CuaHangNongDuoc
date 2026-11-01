@@ -42,6 +42,15 @@ namespace CuahangNongduoc.DataLayer
             return m_Ds;
         }
 
+        public DataTable TimTheoDienThoai(string dienthoai)
+        {
+            DataService ds = new DataService();
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM NHA_CUNG_CAP WHERE DIEN_THOAI = @dienthoai");
+            cmd.Parameters.Add("dienthoai", OleDbType.VarChar, 50).Value = (dienthoai ?? "").Trim();
+            ds.Load(cmd);
+            return ds;
+        }
+
         public DataRow NewRow()
         {
             return m_Ds.NewRow();
