@@ -115,6 +115,18 @@ namespace CuahangNongduoc
             return newId;
         }
 
+        /// <summary>
+        /// Kiểm tra số điện thoại có đúng định dạng số di động Việt Nam hay không:
+        /// Gồm đúng 10 chữ số, bắt đầu bằng các đầu số nhà mạng VN: 03, 05, 07, 08, 09.
+        /// </summary>
+        private bool KiemTraSoDienThoaiVN(string sdt)
+        {
+            if (string.IsNullOrWhiteSpace(sdt))
+                return false;
+
+            return Regex.IsMatch(sdt.Trim(), @"^(03|05|07|08|09)[0-9]{8}$");
+        }
+
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             if (bindingNavigator.BindingSource == null)
@@ -136,9 +148,9 @@ namespace CuahangNongduoc
                     return;
                 }
 
-                if (curSDT.Length != 10 || !Regex.IsMatch(curSDT, @"^[0-9]{10}$"))
+                if (!KiemTraSoDienThoaiVN(curSDT))
                 {
-                    MessageBox.Show("Số điện thoại của nhà cung cấp hiện tại phải gồm đúng 10 số (chỉ từ 0 đến 9)!", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Số điện thoại của nhà cung cấp hiện tại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng các đầu số: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSDT.Focus();
                     return;
                 }
@@ -193,10 +205,10 @@ namespace CuahangNongduoc
                     return;
                 }
 
-                // 4. Kiểm tra số điện thoại chỉ được đúng 10 số, không được nhiều hơn hoặc ít hơn
-                if (sdt.Length != 10 || !Regex.IsMatch(sdt, @"^[0-9]{10}$"))
+                // 4. Kiểm tra số điện thoại Việt Nam hợp lệ (đúng 10 số, bắt đầu bằng 03, 05, 07, 08, 09)
+                if (!KiemTraSoDienThoaiVN(sdt))
                 {
-                    MessageBox.Show("Số điện thoại chỉ được nhập đúng 10 số (chữ số từ 0 đến 9), không được nhập nhiều hơn hoặc ít hơn!", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng các đầu số: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSDT.Focus();
                     return;
                 }
@@ -232,9 +244,9 @@ namespace CuahangNongduoc
                             MessageBox.Show($"Nhà cung cấp mã {row["ID"]} chưa nhập số điện thoại!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        if (rSDT.Length != 10 || !Regex.IsMatch(rSDT, @"^[0-9]{10}$"))
+                        if (!KiemTraSoDienThoaiVN(rSDT))
                         {
-                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} có số điện thoại không hợp lệ! Số điện thoại chỉ được nhập đúng 10 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Nhà cung cấp mã {row["ID"]} có số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng: 03, 05, 07, 08, 09.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -335,6 +347,17 @@ namespace CuahangNongduoc
                 return;
             }
 
+            // Số điện thoại Việt Nam bắt buộc chữ số đầu tiên phải là số 0
+            if ((txtSDT.SelectionStart == 0 && txtSDT.SelectionLength == txtSDT.Text.Length) ||
+                (txtSDT.Text.Length == 0 && txtSDT.SelectionStart == 0))
+            {
+                if (e.KeyChar != '0')
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
             // Khống chế tối đa chỉ 10 chữ số, không cho nhập nhiều hơn
             if (txtSDT.Text.Length >= 10 && txtSDT.SelectionLength == 0)
             {
@@ -392,9 +415,23 @@ namespace CuahangNongduoc
                 return;
             }
 
-            if (sender is TextBox tb && tb.Text.Length >= 10 && tb.SelectionLength == 0)
+            if (sender is TextBox tb)
             {
-                e.Handled = true;
+                // Số điện thoại Việt Nam bắt buộc chữ số đầu tiên phải là số 0
+                if ((tb.SelectionStart == 0 && tb.SelectionLength == tb.Text.Length) ||
+                    (tb.Text.Length == 0 && tb.SelectionStart == 0))
+                {
+                    if (e.KeyChar != '0')
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+
+                if (tb.Text.Length >= 10 && tb.SelectionLength == 0)
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -410,22 +447,10 @@ namespace CuahangNongduoc
 
             if (!string.IsNullOrEmpty(phone))
             {
-                if (!Regex.IsMatch(phone, @"^[0-9]+$"))
+                if (!KiemTraSoDienThoaiVN(phone))
                 {
                     MessageBox.Show(
-                        "Số điện thoại chỉ được nhập các chữ số từ 0 đến 9!",
-                        "Dữ liệu không hợp lệ",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
-                    e.Cancel = true;
-                    return;
-                }
-
-                if (phone.Length > 10)
-                {
-                    MessageBox.Show(
-                        "Số điện thoại không được nhập nhiều hơn 10 số!",
+                        "Số điện thoại không hợp lệ!\nSố điện thoại Việt Nam phải gồm đúng 10 chữ số và bắt đầu bằng các đầu số: 03, 05, 07, 08, 09.",
                         "Dữ liệu không hợp lệ",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);

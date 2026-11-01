@@ -19,6 +19,7 @@ namespace CuahangNongduoc
         // FIELDS
         // =====================================================================
         private readonly DonViTinhController ctrl = new DonViTinhController();
+        private bool dangXoa;
 
         // =====================================================================
         // CONSTRUCTOR
@@ -26,6 +27,8 @@ namespace CuahangNongduoc
         public frmDonViTinh()
         {
             InitializeComponent();
+            CauHinhBindingNavigator();
+            dataGridView.UserDeletingRow += dataGridView_UserDeletingRow;
         }
 
         // =====================================================================
@@ -33,8 +36,8 @@ namespace CuahangNongduoc
         // =====================================================================
         private void frmDonViTinh_Load(object sender, EventArgs e)
         {
-            NapDanhSachDonViTinh();
-            CauHinhBindingNavigator();
+            try { NapDanhSachDonViTinh(); }
+            catch (Exception ex) { HienThiLoi(ex); }
         }
 
         // =====================================================================
@@ -55,41 +58,13 @@ namespace CuahangNongduoc
         /// </summary>
         private void CauHinhBindingNavigator()
         {
-            // Gan su kien cho nut Them va Xoa tren BindingNavigator
+            // Gỡ handler mặc định trước khi gắn handler tùy chỉnh.
+            bindingNavigator.AddNewItem = null;
+            bindingNavigator.DeleteItem = null;
+            bindingNavigatorAddNewItem.Enabled = true;
+            bindingNavigatorDeleteItem.Enabled = true;
             bindingNavigatorAddNewItem.Click += new EventHandler(bindingNavigatorAddNewItem_Click);
             bindingNavigatorDeleteItem.Click += new EventHandler(bindingNavigatorDeleteItem_Click);
-        }
-
-        /// <summary>
-        /// Kiem tra ten don vi tinh co hop le (khong trong, khong qua dai).
-        /// Guard Clause pattern.
-        /// </summary>
-        private bool DuLieuHienTaiHopLe()
-        {
-            if (bindingNavigator.BindingSource == null ||
-                bindingNavigator.BindingSource.Current == null)
-                return false;
-
-            DataRowView rowView = bindingNavigator.BindingSource.Current as DataRowView;
-            if (rowView == null) return false;
-
-            string tenDonVi = rowView["TEN_DON_VI"].ToString().Trim();
-
-            if (string.IsNullOrWhiteSpace(tenDonVi))
-            {
-                MessageBox.Show("Ten don vi tinh khong duoc de trong.", "Thong bao",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (tenDonVi.Length > 50)
-            {
-                MessageBox.Show("Ten don vi tinh khong duoc qua 50 ky tu.", "Thong bao",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            return true;
         }
 
         // =====================================================================
@@ -97,23 +72,16 @@ namespace CuahangNongduoc
         // =====================================================================
         private void toolLuu_Click(object sender, EventArgs e)
         {
-            // FIX: Commit pending edits truoc khi luu
-            dataGridView.EndEdit();
-            bindingNavigator.BindingSource.EndEdit();
-
-            if (!DuLieuHienTaiHopLe()) return;
-
-            bool luuThanhCong = ctrl.Save();
-            if (luuThanhCong)
+            try
             {
-                MessageBox.Show("Luu don vi tinh thanh cong.", "Thong bao",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (bindingNavigator.BindingSource == null || !dataGridView.EndEdit()) return;
+                bindingNavigator.BindingSource.EndEdit();
+                // Factory kiểm tra tất cả dòng thay đổi, kể cả khi không còn Current.
+                bool saved = ctrl.Save();
+                MessageBox.Show(saved ? "Lưu đơn vị tính thành công." : "Không có thay đổi nào được lưu.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-            {
-                MessageBox.Show("Khong co thay doi nao duoc luu.", "Thong bao",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            catch (Exception ex) { HienThiLoi(ex); }
         }
 
 
@@ -126,14 +94,14 @@ namespace CuahangNongduoc
         /// </summary>
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            // BindingSource tu dong them dong moi khi AddNew duoc goi
-            // Viec nay xay ra tu dong qua BindingNavigator
-            // Su kien nay chi can dam bao DataGridView o trang thai chinh sua
-            if (bindingNavigator.BindingSource != null)
+            try
             {
+                if (bindingNavigator.BindingSource == null || !dataGridView.EndEdit()) return;
+                bindingNavigator.BindingSource.EndEdit();
                 bindingNavigator.BindingSource.AddNew();
                 bindingNavigator.BindingSource.MoveLast();
             }
+            catch (Exception ex) { HienThiLoi(ex); }
         }
 
         // =====================================================================
@@ -145,33 +113,50 @@ namespace CuahangNongduoc
         /// </summary>
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            // Guard clause: khong co du lieu thi bo qua
-            if (bindingNavigator.BindingSource == null ||
-                bindingNavigator.BindingSource.Count == 0)
-                return;
+            DataRowView view = bindingNavigator.BindingSource == null ? null :
+                bindingNavigator.BindingSource.Current as DataRowView;
+            XoaDonViTinh(view);
+        }
 
-            var xacNhan = MessageBox.Show(
-                "Ban co chac chan muon xoa don vi tinh nay khong?\n" +
-                "Luu y: Khong the xoa neu don vi tinh dang duoc su dung boi san pham.",
-                "Xac nhan xoa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            // Hoãn xử lý đến khi grid kết thúc sự kiện; không sửa Rows ngay trong UserDeletingRow.
+            e.Cancel = true;
+            DataRowView view = e.Row.DataBoundItem as DataRowView;
+            if (view == null || dangXoa) return;
+            BeginInvoke(new MethodInvoker(delegate { XoaDonViTinh(view); }));
+        }
 
-            if (xacNhan != DialogResult.Yes) return;
-
-            bindingNavigator.BindingSource.RemoveCurrent();
-
-            bool xoaThanhCong = ctrl.Save();
-            if (!xoaThanhCong)
+        private void XoaDonViTinh(DataRowView view)
+        {
+            if (dangXoa || view == null || (!view.IsNew && view.Row.RowState == DataRowState.Detached) ||
+                view.Row.RowState == DataRowState.Deleted) return;
+            dangXoa = true;
+            try
             {
-                MessageBox.Show(
-                    "Xoa that bai. Don vi tinh nay co the dang duoc su dung boi san pham.",
-                    "Loi xoa",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                // FIX: Hoan nguyen row Deleted ve Unchanged de du lieu hien thi day du
-                ctrl.RejectChanges();
+                int id;
+                if (ctrl.LayIdDaLuu(view.Row, out id) && ctrl.DangDuocSuDung(id))
+                {
+                    MessageBox.Show(CuahangNongduoc.DataLayer.DonViTinhFactory.DonViDangDuocSuDung,
+                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa đơn vị tính này không?",
+                    "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2) != DialogResult.Yes) return;
+
+                // Chỉ xóa dòng đã xác định, không Save/RejectChanges toàn bộ danh sách.
+                if (view.IsNew) view.CancelEdit();
+                else ctrl.Xoa(view.Row);
             }
+            catch (Exception ex) { HienThiLoi(ex); }
+            finally { dangXoa = false; }
+        }
+
+        private void HienThiLoi(Exception ex)
+        {
+            MessageBox.Show("Không thể thực hiện thao tác.\n" + ex.Message,
+                "Lỗi đơn vị tính", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
