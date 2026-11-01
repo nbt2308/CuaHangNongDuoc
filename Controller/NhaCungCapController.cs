@@ -167,5 +167,111 @@ namespace CuahangNongduoc.Controller
         {
             return factory.Save();
         }
+
+        /// <summary>
+        /// Kiểm tra số điện thoại có bị trùng với nhà cung cấp khác hay không.
+        /// </summary>
+        /// <param name="sdt">Số điện thoại cần kiểm tra</param>
+        /// <param name="currentId">Mã nhà cung cấp hiện tại (bỏ qua khi đang sửa chính mình)</param>
+        /// <param name="tbl">DataTable dữ liệu hiện tại trên giao diện (nếu có)</param>
+        /// <param name="tenTrung">Tên nhà cung cấp bị trùng (trả về nếu tìm thấy)</param>
+        /// <param name="idTrung">Mã nhà cung cấp bị trùng (trả về nếu tìm thấy)</param>
+        /// <returns>True nếu trùng, False nếu không trùng</returns>
+        public bool KiemTraTrungSDT(string sdt, string currentId, DataTable tbl, out string tenTrung, out string idTrung)
+        {
+            tenTrung = string.Empty;
+            idTrung = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(sdt))
+                return false;
+
+            string cleanPhone = sdt.Trim();
+            string cleanCurrentId = (currentId ?? string.Empty).Trim();
+
+            // 1. Kiểm tra trên DataTable trong bộ nhớ (bao gồm các dòng mới thêm/chỉnh sửa chưa lưu)
+            if (tbl != null)
+            {
+                foreach (DataRow row in tbl.Rows)
+                {
+                    // Bỏ qua các dòng đã bị xóa
+                    if (row.RowState == DataRowState.Deleted)
+                        continue;
+
+                    string rowId = Convert.ToString(row["ID"]).Trim();
+
+                    // Bỏ qua chính nhà cung cấp đang cập nhật
+                    if (!string.IsNullOrEmpty(cleanCurrentId) && string.Equals(rowId, cleanCurrentId, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    string rowSDT = Convert.ToString(row["DIEN_THOAI"]).Trim();
+                    if (string.Equals(rowSDT, cleanPhone, StringComparison.OrdinalIgnoreCase))
+                    {
+                        tenTrung = Convert.ToString(row["HO_TEN"]).Trim();
+                        idTrung = rowId;
+                        return true;
+                    }
+                }
+            }
+
+            // 2. Kiểm tra trong cơ sở dữ liệu (phòng trường hợp tbl bị lọc do tìm kiếm hoặc tbl null)
+            try
+            {
+                DataTable dbTbl = factory.TimTheoDienThoai(cleanPhone);
+                if (dbTbl != null && dbTbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dbTbl.Rows)
+                    {
+                        if (row.RowState == DataRowState.Deleted)
+                            continue;
+
+                        string dbId = Convert.ToString(row["ID"]).Trim();
+
+                        // Bỏ qua chính nhà cung cấp đang cập nhật
+                        if (!string.IsNullOrEmpty(cleanCurrentId) && string.Equals(dbId, cleanCurrentId, StringComparison.OrdinalIgnoreCase))
+                            continue;
+
+                        // Nếu dbId này đã có trong tbl bộ nhớ, thì trạng thái trong tbl đã được kiểm tra ở bước 1.
+                        // (Nếu trong tbl người dùng đã đổi số hoặc xóa dòng thì không tính là trùng)
+                        if (tbl != null)
+                        {
+                            bool daTonTaiTrongTbl = false;
+                            foreach (DataRow r in tbl.Rows)
+                            {
+                                if (r.RowState == DataRowState.Deleted)
+                                    continue;
+                                if (string.Equals(Convert.ToString(r["ID"]).Trim(), dbId, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    daTonTaiTrongTbl = true;
+                                    break;
+                                }
+                            }
+                            if (daTonTaiTrongTbl)
+                                continue;
+                        }
+
+                        tenTrung = Convert.ToString(row["HO_TEN"]).Trim();
+                        idTrung = dbId;
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                // Nếu truy vấn CSDL gặp sự cố (ví dụ mất kết nối tạm thời), kết quả dựa trên tbl bộ nhớ
+            }
+
+            return false;
+        }
+
+        public bool KiemTraTrungSDT(string sdt, string currentId, out string tenTrung, out string idTrung)
+        {
+            return KiemTraTrungSDT(sdt, currentId, null, out tenTrung, out idTrung);
+        }
+
+        public bool KiemTraTrungSDT(string sdt, string currentId)
+        {
+            string tenTrung, idTrung;
+            return KiemTraTrungSDT(sdt, currentId, null, out tenTrung, out idTrung);
+        }
     }
 }

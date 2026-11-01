@@ -19,6 +19,7 @@ namespace CuahangNongduoc
             bindingNavigator.AddNewItem = null;
             dataGridView.EditingControlShowing += dataGridView_EditingControlShowing;
             dataGridView.CellValidating += dataGridView_CellValidating;
+            txtSDT.Leave += txtSDT_Leave;
         }
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
@@ -138,6 +139,10 @@ namespace CuahangNongduoc
         private bool KiemTraTrungSoDienThoai(string sdt, string currentId, out string tenTrung, out string idTrung)
         {
             DataTable tbl = bindingNavigator.BindingSource?.DataSource as DataTable;
+            if (tbl == null && bindingNavigator.BindingSource?.DataSource is DataView dv)
+            {
+                tbl = dv.Table;
+            }
             return ctrl.KiemTraTrungSDT(sdt, currentId, tbl, out tenTrung, out idTrung);
         }
 
@@ -253,7 +258,12 @@ namespace CuahangNongduoc
                 }
 
                 // 6. Kiểm tra các dòng đang thêm mới hoặc chỉnh sửa khác trong DataTable
-                if (bindingNavigator.BindingSource.DataSource is DataTable dt)
+                DataTable dt = bindingNavigator.BindingSource.DataSource as DataTable;
+                if (dt == null && bindingNavigator.BindingSource.DataSource is DataView dvSource)
+                {
+                    dt = dvSource.Table;
+                }
+                if (dt != null)
                 {
                     foreach (DataRow row in dt.Rows)
                     {
@@ -427,6 +437,28 @@ namespace CuahangNongduoc
                 int selStart = txtSDT.SelectionStart;
                 txtSDT.Text = digitsOnly;
                 txtSDT.SelectionStart = Math.Min(selStart, txtSDT.Text.Length);
+            }
+        }
+
+        private void txtSDT_Leave(object sender, EventArgs e)
+        {
+            string sdt = txtSDT.Text.Trim();
+            if (string.IsNullOrEmpty(sdt))
+                return;
+
+            // Nếu người dùng đã nhập đủ 10 số hợp lệ thì kiểm tra ngay xem có bị trùng không
+            if (sdt.Length == 10 && KiemTraSoDienThoaiVN(sdt))
+            {
+                string curId = txtMaNhaCungCap.Text.Trim();
+                if (KiemTraTrungSoDienThoai(sdt, curId, out string tenTrung, out string idTrung))
+                {
+                    string thongBao = string.IsNullOrEmpty(tenTrung)
+                        ? $"Số điện thoại '{sdt}' đã tồn tại cho nhà cung cấp có mã '{idTrung}'!"
+                        : $"Số điện thoại '{sdt}' đã được sử dụng bởi nhà cung cấp '{tenTrung}' (Mã: {idTrung})!";
+                    MessageBox.Show(thongBao + "\nVui lòng nhập số điện thoại khác.", "Trùng số điện thoại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSDT.Focus();
+                    txtSDT.SelectAll();
+                }
             }
         }
 
