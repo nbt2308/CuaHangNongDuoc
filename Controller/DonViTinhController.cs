@@ -55,6 +55,24 @@ namespace CuahangNongduoc.Controller
             return factory.Save();
         }
 
+        public bool DangDuocSuDung(int id)
+        {
+            return factory.DangDuocSuDung(id);
+        }
+
+        public bool LayIdDaLuu(DataRow row, out int id)
+        {
+            return factory.LayIdDaLuu(row, out id);
+        }
+
+        public void Xoa(DataRow row)
+        {
+            int id;
+            if (factory.LayIdDaLuu(row, out id) && factory.DangDuocSuDung(id))
+                throw new InvalidOperationException(DonViTinhFactory.DonViDangDuocSuDung);
+            factory.Xoa(row);
+        }
+
         /// <summary>
         /// Hoan nguyen toan bo thay doi chua commit (undo AddNew/Delete chua luu).
         /// </summary>
