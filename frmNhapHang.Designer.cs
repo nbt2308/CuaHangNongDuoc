@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapHang));
+            System.Windows.Forms.DataGridViewCellStyle styleSo = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle styleNgay = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -308,6 +310,8 @@
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.MultiSelect = false;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -333,7 +337,15 @@
             // 
             // colMaPhieu
             // 
+            styleSo.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            styleSo.Format = "N0";
+            styleSo.NullValue = "0";
+            styleNgay.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            styleNgay.Format = "dd/MM/yyyy";
+            styleNgay.NullValue = null;
             this.colMaPhieu.DataPropertyName = "ID_PHIEU_NHAP";
+            this.colMaPhieu.FillWeight = 60F;
+            this.colMaPhieu.MinimumWidth = 60;
             this.colMaPhieu.HeaderText = "Mã Phiếu";
             this.colMaPhieu.Name = "colMaPhieu";
             this.colMaPhieu.ReadOnly = true;
@@ -345,6 +357,8 @@
             this.colSanPham.Name = "colSanPham";
             this.colSanPham.ReadOnly = true;
             this.colSanPham.Width = 150;
+            this.colSanPham.FillWeight = 130F;
+            this.colSanPham.MinimumWidth = 100;
             // 
             // colMaSanPham
             // 
@@ -352,6 +366,8 @@
             this.colMaSanPham.HeaderText = "Mã số";
             this.colMaSanPham.Name = "colMaSanPham";
             this.colMaSanPham.ReadOnly = true;
+            this.colMaSanPham.FillWeight = 100F;
+            this.colMaSanPham.MinimumWidth = 80;
             // 
             // colSoLo
             // 
@@ -360,6 +376,8 @@
             this.colSoLo.Name = "colSoLo";
             this.colSoLo.ReadOnly = true;
             this.colSoLo.Width = 90;
+            this.colSoLo.FillWeight = 90F;
+            this.colSoLo.MinimumWidth = 70;
             // 
             // colDonGiaNhap
             // 
@@ -367,6 +385,9 @@
             this.colDonGiaNhap.HeaderText = "Giá nhập";
             this.colDonGiaNhap.Name = "colDonGiaNhap";
             this.colDonGiaNhap.ReadOnly = true;
+            this.colDonGiaNhap.DefaultCellStyle = styleSo;
+            this.colDonGiaNhap.FillWeight = 80F;
+            this.colDonGiaNhap.MinimumWidth = 70;
             // 
             // colSoLuong
             // 
@@ -374,6 +395,9 @@
             this.colSoLuong.HeaderText = "Số lượng";
             this.colSoLuong.Name = "colSoLuong";
             this.colSoLuong.ReadOnly = true;
+            this.colSoLuong.DefaultCellStyle = styleSo;
+            this.colSoLuong.FillWeight = 70F;
+            this.colSoLuong.MinimumWidth = 60;
             // 
             // colNgayNhap
             // 
@@ -381,6 +405,9 @@
             this.colNgayNhap.HeaderText = "Ngày nhập";
             this.colNgayNhap.Name = "colNgayNhap";
             this.colNgayNhap.ReadOnly = true;
+            this.colNgayNhap.DefaultCellStyle = styleNgay;
+            this.colNgayNhap.FillWeight = 85F;
+            this.colNgayNhap.MinimumWidth = 80;
             // 
             // colNgaySanXuat
             // 
@@ -388,6 +415,9 @@
             this.colNgaySanXuat.HeaderText = "Ngày sản xuất";
             this.colNgaySanXuat.Name = "colNgaySanXuat";
             this.colNgaySanXuat.ReadOnly = true;
+            this.colNgaySanXuat.DefaultCellStyle = styleNgay;
+            this.colNgaySanXuat.FillWeight = 95F;
+            this.colNgaySanXuat.MinimumWidth = 80;
             // 
             // colNgayHetHan
             // 
@@ -395,6 +425,9 @@
             this.colNgayHetHan.HeaderText = "Ngày hết hạn";
             this.colNgayHetHan.Name = "colNgayHetHan";
             this.colNgayHetHan.ReadOnly = true;
+            this.colNgayHetHan.DefaultCellStyle = styleNgay;
+            this.colNgayHetHan.FillWeight = 95F;
+            this.colNgayHetHan.MinimumWidth = 80;
             // 
             // btnThemSanPham
             // 
@@ -780,6 +813,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 468);
+            this.MinimumSize = new System.Drawing.Size(747, 420);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bindingNavigator);
