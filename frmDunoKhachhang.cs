@@ -63,10 +63,10 @@ namespace CuahangNongduoc
             toolProgress.Visible = false;
         }
 
-        private void toolLuu_Click(object sender, EventArgs e)
+        // Ô Khách hàng (combobox) gặp mã không có trong danh sách thì bỏ hộp thoại lỗi mặc định của DataGridView.
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            toolThang.Focus();
-            ctrl.Save();
+            e.ThrowException = false;
         }
 
         private void toolThoat_Click(object sender, EventArgs e)
@@ -74,22 +74,47 @@ namespace CuahangNongduoc
             this.Close();
         }
 
+        private static long LaySoNguyen(object v)
+        {
+            return (v == null || v == DBNull.Value) ? 0 : Convert.ToInt64(v);
+        }
+
         private void toolIn_Click(object sender, EventArgs e)
         {
-            DataRowView row = (DataRowView)bindingNavigator.BindingSource.Current;
-            KhachHangController ctrlKH = new KhachHangController();
-            DuNoKhachHang dn = new DuNoKhachHang();
+            BindingSource bs = bindingNavigator.BindingSource;
+            DataRowView row = bs == null ? null : bs.Current as DataRowView;
+            if (row == null || row.Row == null || row.Row.RowState == DataRowState.Deleted)
+            {
+                MessageBox.Show("Vui lòng bấm Tổng hợp và chọn một dòng dư nợ cần in.", "In dư nợ khách hàng",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            dn.Thang = Convert.ToInt32(row["THANG"]);
-            dn.Nam = Convert.ToInt32(row["NAM"]);
-            dn.DauKy = Convert.ToInt64(row["DAU_KY"]);
-            dn.PhatSinh = Convert.ToInt64(row["PHAT_SINH"]);
-            dn.DaTra = Convert.ToInt64(row["DA_TRA"]);
-            dn.CuoiKy = Convert.ToInt64(row["CUOI_KY"]);
-            dn.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(row["ID_KHACH_HANG"]));
+            try
+            {
+                DuNoKhachHang dn = new DuNoKhachHang();
+                dn.Thang = (int)LaySoNguyen(row["THANG"]);
+                dn.Nam = (int)LaySoNguyen(row["NAM"]);
+                dn.DauKy = LaySoNguyen(row["DAU_KY"]);
+                dn.PhatSinh = LaySoNguyen(row["PHAT_SINH"]);
+                dn.DaTra = LaySoNguyen(row["DA_TRA"]);
+                dn.CuoiKy = LaySoNguyen(row["CUOI_KY"]);
+                dn.KhachHang = ctrlKH.LayKhachHang(Convert.ToString(row["ID_KHACH_HANG"]));
+                if (dn.KhachHang == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin khách hàng của dòng đang chọn.", "In dư nợ khách hàng",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            frmInDunoKhachHang InDuNo = new frmInDunoKhachHang(dn);
-            InDuNo.Show();
+                frmInDunoKhachHang InDuNo = new frmInDunoKhachHang(dn);
+                InDuNo.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể mở trang in dư nợ khách hàng: " + ex.Message, "Lỗi in dư nợ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

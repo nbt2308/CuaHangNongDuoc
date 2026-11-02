@@ -33,6 +33,21 @@ namespace CuahangNongduoc.BusinessObject
             get { return SanPham == null ? string.Empty : (SanPham.TenSanPham ?? string.Empty); }
         }
 
+        public long DonGiaNhapBaoCao
+        {
+            get { return SanPham == null ? 0L : SanPham.DonGiaNhap; }
+        }
+
+        public long GiaBanLeBaoCao
+        {
+            get { return SanPham == null ? 0L : SanPham.GiaBanLe; }
+        }
+
+        public long GiaBanSiBaoCao
+        {
+            get { return SanPham == null ? 0L : SanPham.GiaBanSi; }
+        }
+
         public string DonViTinhBaoCao
         {
             get

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDunoKhachhang));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -57,7 +57,6 @@
             this.toolNam = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolTongHop = new System.Windows.Forms.ToolStripButton();
-            this.toolLuu = new System.Windows.Forms.ToolStripButton();
             this.toolIn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolThoat = new System.Windows.Forms.ToolStripButton();
@@ -95,66 +94,75 @@
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 46);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(744, 370);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
             // 
             // colKhachHang
             // 
             this.colKhachHang.DataPropertyName = "ID_KHACH_HANG";
             this.colKhachHang.HeaderText = "Khách hàng";
             this.colKhachHang.Name = "colKhachHang";
+            this.colKhachHang.ReadOnly = true;
             // 
             // colThang
             // 
             this.colThang.DataPropertyName = "THANG";
             this.colThang.HeaderText = "Tháng";
             this.colThang.Name = "colThang";
+            this.colThang.ReadOnly = true;
             // 
             // colNam
             // 
             this.colNam.DataPropertyName = "NAM";
             this.colNam.HeaderText = "Năm";
             this.colNam.Name = "colNam";
+            this.colNam.ReadOnly = true;
             // 
             // colDauKy
             // 
             this.colDauKy.DataPropertyName = "DAU_KY";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.colDauKy.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.colDauKy.DefaultCellStyle = dataGridViewCellStyle1;
             this.colDauKy.HeaderText = "Đầu kỳ";
             this.colDauKy.Name = "colDauKy";
+            this.colDauKy.ReadOnly = true;
             // 
             // colPhatSinh
             // 
             this.colPhatSinh.DataPropertyName = "PHAT_SINH";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.colPhatSinh.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.colPhatSinh.DefaultCellStyle = dataGridViewCellStyle2;
             this.colPhatSinh.HeaderText = "Phát sinh";
             this.colPhatSinh.Name = "colPhatSinh";
+            this.colPhatSinh.ReadOnly = true;
             // 
             // colDaTra
             // 
             this.colDaTra.DataPropertyName = "DA_TRA";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.colDaTra.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.colDaTra.DefaultCellStyle = dataGridViewCellStyle3;
             this.colDaTra.HeaderText = "Đã trả";
             this.colDaTra.Name = "colDaTra";
+            this.colDaTra.ReadOnly = true;
             // 
             // colConNo
             // 
             this.colConNo.DataPropertyName = "CUOI_KY";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.colConNo.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.colConNo.DefaultCellStyle = dataGridViewCellStyle4;
             this.colConNo.HeaderText = "Cuối kỳ";
             this.colConNo.Name = "colConNo";
+            this.colConNo.ReadOnly = true;
             // 
             // bindingNavigator
             // 
@@ -175,7 +183,6 @@
             this.toolNam,
             this.toolStripSeparator1,
             this.toolTongHop,
-            this.toolLuu,
             this.toolIn,
             this.toolStripSeparator2,
             this.toolThoat,
@@ -225,6 +232,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -279,6 +287,7 @@
             // 
             // toolNam
             // 
+            this.toolNam.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolNam.Name = "toolNam";
             this.toolNam.Size = new System.Drawing.Size(50, 46);
             this.toolNam.Validating += new System.ComponentModel.CancelEventHandler(this.toolNam_Validating);
@@ -298,17 +307,6 @@
             this.toolTongHop.Text = "Tổng hợp";
             this.toolTongHop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTongHop.Click += new System.EventHandler(this.toolTongHop_Click);
-            // 
-            // toolLuu
-            // 
-            this.toolLuu.Image = global::CuahangNongduoc.Properties.Resources.save;
-            this.toolLuu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolLuu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolLuu.Name = "toolLuu";
-            this.toolLuu.Size = new System.Drawing.Size(31, 43);
-            this.toolLuu.Text = "Lưu";
-            this.toolLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolLuu.Click += new System.EventHandler(this.toolLuu_Click);
             // 
             // toolIn
             // 
@@ -351,6 +349,7 @@
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDunoKhachhang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DU NO KHACH HANG";
             this.Load += new System.EventHandler(this.frmDunoKhachhang_Load);
             this.panel2.ResumeLayout(false);
@@ -380,7 +379,6 @@
         private System.Windows.Forms.ToolStripTextBox toolNam;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolTongHop;
-        private System.Windows.Forms.ToolStripButton toolLuu;
         private System.Windows.Forms.ToolStripButton toolIn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolThoat;
