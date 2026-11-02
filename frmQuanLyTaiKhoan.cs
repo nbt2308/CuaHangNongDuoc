@@ -263,15 +263,23 @@ namespace CuahangNongduoc
                 return;
             }
 
-            // Kiểm tra không để hệ thống mất Admin cuối cùng
+            if (_taiKhoanDangChon.IsActive &&
+                string.Equals(_taiKhoanDangChon.Role, "admin", StringComparison.OrdinalIgnoreCase) &&
+                _data.DemAdminDangHoatDong() <= 1)
+            {
+                MessageBox.Show("Không thể xóa tài khoản Admin cuối cùng đang hoạt động.\nHệ thống cần ít nhất một Admin để quản trị.",
+                    "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (MessageBox.Show(
                 string.Format("Bạn có chắc muốn xóa tài khoản '{0}'?", _taiKhoanDangChon.TenDangNhap),
                 "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
-                    _data.XoaNguoiDung(_taiKhoanDangChon.Id);
-                    TaiDanhSach(txtTimKiem.Text);
+                    if (_data.XoaNguoiDung(_taiKhoanDangChon.Id) != null)
+                        TaiDanhSach(txtTimKiem.Text);
                 }
                 catch (Exception ex)
                 {

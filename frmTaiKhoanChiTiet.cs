@@ -83,6 +83,16 @@ namespace CuahangNongduoc
                     return;
                 }
 
+                if (!_laThemMoi && _taiKhoanHienTai.IsActive &&
+                    string.Equals(_taiKhoanHienTai.Role, "admin", StringComparison.OrdinalIgnoreCase) &&
+                    (!isActive || !string.Equals(role, "admin", StringComparison.OrdinalIgnoreCase)) &&
+                    _data.DemAdminDangHoatDong() <= 1)
+                {
+                    MessageBox.Show("Không thể vô hiệu hóa hoặc hạ quyền Admin cuối cùng đang hoạt động.\nHệ thống cần ít nhất một Admin.",
+                        "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (_laThemMoi)
                 {
                     // Tạo hash mật khẩu ban đầu
@@ -104,19 +114,6 @@ namespace CuahangNongduoc
                 }
                 else
                 {
-                    // Kiểm tra không tự hạ quyền Admin cuối cùng
-                    if (string.Equals(_taiKhoanHienTai.Role, "admin", StringComparison.OrdinalIgnoreCase)
-                        && !string.Equals(role, "admin", StringComparison.OrdinalIgnoreCase))
-                    {
-                        int soAdmin = _data.DemAdminDangHoatDong();
-                        if (soAdmin <= 1 && _taiKhoanHienTai.IsActive)
-                        {
-                            MessageBox.Show("Không thể thay đổi vai trò của Admin cuối cùng đang hoạt động.\nHệ thống cần ít nhất một Admin.",
-                                "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-
                     var nd = new NguoiDung
                     {
                         Id = _taiKhoanHienTai.Id,

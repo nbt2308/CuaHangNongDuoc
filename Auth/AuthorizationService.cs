@@ -87,26 +87,23 @@ namespace CuahangNongduoc.Auth
         {
             switch (permission)
             {
-                // Sales được: đổi mật khẩu, xem danh mục, quản lý KH/ĐL, bán hàng, xem báo cáo
+                // Sales được: đổi mật khẩu, xem sản phẩm/NCC, quản lý KH/ĐL, bán hàng, xem báo cáo
                 case Permission.DoiMatKhau:
-                case Permission.XemDonViTinh:
                 case Permission.XemSanPham:
                 case Permission.XemNhaCungCap:
-                case Permission.XemLyDoChi:
                 case Permission.XemKhachHang:
                 case Permission.SuaKhachHang:
                 case Permission.XemDaiLy:
-                case Permission.SuaDaiLy:
                 case Permission.BanHangLe:
                 case Permission.BanHangSi:
                 case Permission.PhieuThu:
                 case Permission.CongNo:
                 case Permission.BaoCaoDoanhThu:
                 case Permission.BaoCaoSoLuongBan:
-                case Permission.BaoCaoHetHan:
                     return true;
 
-                // Sales KHÔNG được: quản lý tài khoản, cấu hình, sửa danh mục, nhập hàng, phiếu chi, tồn kho
+                // Sales KHÔNG được: quản lý tài khoản, cấu hình, sửa danh mục, nhập hàng,
+                // phiếu chi, tồn kho và các báo cáo thuộc nghiệp vụ kho
                 default:
                     return false;
             }
@@ -116,10 +113,9 @@ namespace CuahangNongduoc.Auth
         {
             switch (permission)
             {
-                // Warehouse được: đổi mật khẩu, xem+sửa danh mục sản phẩm/DVT/NCC, nhập hàng, xem tồn kho
+                // Warehouse được: đổi mật khẩu, xem+sửa sản phẩm/NCC, xem DVT và lý do chi, nhập hàng, xem tồn kho
                 case Permission.DoiMatKhau:
                 case Permission.XemDonViTinh:
-                case Permission.SuaDonViTinh:
                 case Permission.XemSanPham:
                 case Permission.SuaSanPham:
                 case Permission.XemNhaCungCap:
@@ -170,6 +166,12 @@ namespace CuahangNongduoc.Auth
         {
             if (control == null) return;
             control.Enabled = CoQuyen(permission);
+        }
+
+        public static void ApDungQuyenToolStripItem(ToolStripItem item, string permission)
+        {
+            if (item == null) return;
+            item.Enabled = CoQuyen(permission);
         }
     }
 }

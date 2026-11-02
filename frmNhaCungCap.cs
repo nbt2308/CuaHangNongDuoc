@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -41,6 +42,19 @@ namespace CuahangNongduoc
 
             // Đồng bộ mã nhà cung cấp tiếp theo
             CapNhatThamSoMa();
+            ApDungPhanQuyen();
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaNhaCungCap);
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
+            txtNhaCungCap.ReadOnly = !coQuyenSua;
+            txtDiaChi.ReadOnly = !coQuyenSua;
+            txtSDT.ReadOnly = !coQuyenSua;
         }
 
         private void CapNhatThamSoMa()

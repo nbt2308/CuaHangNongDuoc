@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -35,11 +36,24 @@ namespace CuahangNongduoc
                 BindControl(txtHoTen, "HO_TEN");
                 BindControl(txtDiaChi, "DIA_CHI");
                 BindControl(txtDienThoai, "DIEN_THOAI");
+                ApDungPhanQuyen();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaKhachHang);
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
+            txtHoTen.ReadOnly = !coQuyenSua;
+            txtDiaChi.ReadOnly = !coQuyenSua;
+            txtDienThoai.ReadOnly = !coQuyenSua;
         }
 
         private void BindControl(Control control, string propertyName)
@@ -53,6 +67,7 @@ namespace CuahangNongduoc
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaKhachHang, "sửa khách hàng")) return;
             try
             {
                 // 1. Kiểm tra trường Họ tên không được để trống hoặc chỉ có khoảng trắng
