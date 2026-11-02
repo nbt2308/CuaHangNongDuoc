@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using CuahangNongduoc.Controller;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -42,6 +43,23 @@ namespace CuahangNongduoc
             NapDanhSachDonViTinh();
             NapCotDonViTinhChoGrid();
             NapDanhSachSanPham();
+            ApDungPhanQuyen();
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaSanPham);
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
+            txtTenSanPham.ReadOnly = !coQuyenSua;
+            cmbDVT.Enabled = coQuyenSua;
+            numSoLuong.Enabled = coQuyenSua;
+            numDonGiaNhap.Enabled = coQuyenSua;
+            numGiaBanSi.Enabled = coQuyenSua;
+            numGiaBanLe.Enabled = coQuyenSua;
+            btnThemDVT.Enabled = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaDonViTinh);
         }
 
         // =====================================================================
@@ -117,6 +135,7 @@ namespace CuahangNongduoc
         // =====================================================================
         private void toolLuu_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaSanPham, "s?a s?n ph?m")) return;
             if (!TenSanPhamHopLe()) return;
 
             // FIX: Commit pending edits truoc khi luu
@@ -147,6 +166,7 @@ namespace CuahangNongduoc
         // =====================================================================
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaSanPham, "th�m s?n ph?m")) return;
             DataRow row = ctrl.NewRow();
 
             long maSanPhamMoi = ThamSo.SanPham;
@@ -176,6 +196,7 @@ namespace CuahangNongduoc
         // =====================================================================
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaSanPham, "x�a s?n ph?m")) return;
             if (bindingNavigator.BindingSource == null ||
                 bindingNavigator.BindingSource.Count == 0)
                 return;

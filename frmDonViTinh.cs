@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using CuahangNongduoc.Controller;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -36,8 +37,17 @@ namespace CuahangNongduoc
         // =====================================================================
         private void frmDonViTinh_Load(object sender, EventArgs e)
         {
-            try { NapDanhSachDonViTinh(); }
+            try { NapDanhSachDonViTinh(); ApDungPhanQuyen(); }
             catch (Exception ex) { HienThiLoi(ex); }
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaDonViTinh);
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
         }
 
         // =====================================================================
@@ -72,6 +82,7 @@ namespace CuahangNongduoc
         // =====================================================================
         private void toolLuu_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaDonViTinh, "sửa đơn vị tính")) return;
             try
             {
                 if (bindingNavigator.BindingSource == null || !dataGridView.EndEdit()) return;
@@ -94,6 +105,7 @@ namespace CuahangNongduoc
         /// </summary>
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaDonViTinh, "thêm đơn vị tính")) return;
             try
             {
                 if (bindingNavigator.BindingSource == null || !dataGridView.EndEdit()) return;
@@ -113,6 +125,7 @@ namespace CuahangNongduoc
         /// </summary>
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaDonViTinh, "xóa đơn vị tính")) return;
             DataRowView view = bindingNavigator.BindingSource == null ? null :
                 bindingNavigator.BindingSource.Current as DataRowView;
             XoaDonViTinh(view);

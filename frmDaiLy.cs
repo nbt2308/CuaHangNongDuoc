@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -38,11 +39,25 @@ namespace CuahangNongduoc
                 txtHoTen.MaxLength = 255;
                 txtDiaChi.MaxLength = 255;
                 txtDienThoai.MaxLength = 50;
+                ApDungPhanQuyen();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaDaiLy);
+
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
+            txtHoTen.ReadOnly = !coQuyenSua;
+            txtDiaChi.ReadOnly = !coQuyenSua;
+            txtDienThoai.ReadOnly = !coQuyenSua;
         }
 
         /// <summary>
@@ -62,6 +77,9 @@ namespace CuahangNongduoc
         // ============================================================
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(
+                AuthorizationService.Permission.SuaDaiLy, "thêm đại lý")) return;
+
             if (bindingNavigator.BindingSource != null)
             {
                 long maso = ThamSo.KhachHang;
@@ -82,6 +100,9 @@ namespace CuahangNongduoc
         // ============================================================
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(
+                AuthorizationService.Permission.SuaDaiLy, "xóa đại lý")) return;
+
             if (bindingNavigator.BindingSource?.Current != null)
             {
                 try
@@ -117,6 +138,12 @@ namespace CuahangNongduoc
         // Bấm phím Delete trên bàn phím (DataGridView)
         private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
+            if (!AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaDaiLy))
+            {
+                e.Cancel = true;
+                return;
+            }
+
             try
             {
                 // Kiểm tra ràng buộc trước khi xóa
@@ -161,6 +188,9 @@ namespace CuahangNongduoc
         // ============================================================
         private void toolLuu_Click(object sender, EventArgs e)
         {
+            if (!AuthorizationService.KiemTraVaThongBao(
+                AuthorizationService.Permission.SuaDaiLy, "lưu đại lý")) return;
+
             try
             {
                 // 1. Kiểm tra trường Tên đại lý không được để trống

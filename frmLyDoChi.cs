@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using CuahangNongduoc.BusinessObject;
 using CuahangNongduoc.DataLayer;
+// ĐÃ THAY ĐỔI: thêm dịch vụ phân quyền cho màn hình Lý do chi.
+using CuahangNongduoc.Auth;
 
 namespace CuahangNongduoc
 {
@@ -20,6 +22,13 @@ namespace CuahangNongduoc
 
         private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
+            // ĐÃ THAY ĐỔI: chặn thao tác xóa trên lưới nếu người dùng không có quyền sửa lý do chi.
+            if (!AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaLyDoChi))
+            {
+                e.Cancel = true;
+                return;
+            }
+
             // Get the ID value of the row being deleted (colID is hidden but present)
             object val = e.Row.Cells["colID"].Value;
             long idLyDo = 0;
@@ -72,10 +81,24 @@ namespace CuahangNongduoc
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
             ctrl.HienthiDataGridview(dataGridView, bindingNavigator);
+            // ĐÃ THAY ĐỔI: áp dụng quyền hiện tại lên các nút và trạng thái chỉnh sửa của lưới.
+            ApDungPhanQuyen();
+        }
+
+        // ĐÃ THAY ĐỔI: bật/tắt các thao tác chỉnh sửa theo quyền sửa lý do chi.
+        private void ApDungPhanQuyen()
+        {
+            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaLyDoChi);
+            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
+            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
+            toolLuu.Enabled = coQuyenSua;
+            dataGridView.ReadOnly = !coQuyenSua;
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            // ĐÃ THAY ĐỔI: yêu cầu quyền sửa trước khi thêm lý do chi.
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaLyDoChi, "thêm lý do chi")) return;
             dataGridView.EndEdit();
             bindingNavigator.BindingSource.EndEdit();
 
@@ -105,6 +128,8 @@ namespace CuahangNongduoc
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
+            // ĐÃ THAY ĐỔI: yêu cầu quyền sửa trước khi lưu lý do chi.
+            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaLyDoChi, "sửa lý do chi")) return;
             dataGridView.EndEdit();
             bindingNavigator.BindingSource.EndEdit();
 
