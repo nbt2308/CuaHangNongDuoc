@@ -225,6 +225,8 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -249,6 +251,8 @@
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             this.colId.Width = 80;
+            this.colId.FillWeight = 60F;
+            this.colId.MinimumWidth = 60;
             // 
             // colNhaCungCap
             // 
@@ -257,16 +261,20 @@
             this.colNhaCungCap.Name = "colNhaCungCap";
             this.colNhaCungCap.ReadOnly = true;
             this.colNhaCungCap.Width = 150;
+            this.colNhaCungCap.FillWeight = 200F;
+            this.colNhaCungCap.MinimumWidth = 120;
             // 
             // colNgayNhap
             // 
             this.colNgayNhap.DataPropertyName = "NGAY_NHAP";
-            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
             dataGridViewCellStyle5.NullValue = null;
             this.colNgayNhap.DefaultCellStyle = dataGridViewCellStyle5;
             this.colNgayNhap.HeaderText = "Ngày nhập";
             this.colNgayNhap.Name = "colNgayNhap";
             this.colNgayNhap.ReadOnly = true;
+            this.colNgayNhap.FillWeight = 90F;
+            this.colNgayNhap.MinimumWidth = 80;
             // 
             // colTongTien
             // 
@@ -278,6 +286,8 @@
             this.colTongTien.HeaderText = "Tổng tiền";
             this.colTongTien.Name = "colTongTien";
             this.colTongTien.ReadOnly = true;
+            this.colTongTien.FillWeight = 100F;
+            this.colTongTien.MinimumWidth = 80;
             // 
             // colDaTra
             // 
@@ -289,6 +299,8 @@
             this.colDaTra.HeaderText = "Đã trả";
             this.colDaTra.Name = "colDaTra";
             this.colDaTra.ReadOnly = true;
+            this.colDaTra.FillWeight = 100F;
+            this.colDaTra.MinimumWidth = 80;
             // 
             // colConNo
             // 
@@ -300,6 +312,8 @@
             this.colConNo.HeaderText = "Còn nợ";
             this.colConNo.Name = "colConNo";
             this.colConNo.ReadOnly = true;
+            this.colConNo.FillWeight = 100F;
+            this.colConNo.MinimumWidth = 80;
             // 
             // toolTimKiem
             // 

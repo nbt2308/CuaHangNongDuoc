@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 using CuahangNongduoc.Controller;
 using CuahangNongduoc.BusinessObject;
@@ -41,6 +44,8 @@ namespace CuahangNongduoc
             numConNo.Enabled = false;
             numThanhTien.Enabled = false;
             txtMaPhieu.ReadOnly = true;
+            // Mã số do hệ thống tự sinh (tên sản phẩm + số thứ tự) nên không cho gõ tay.
+            txtMaSo.ReadOnly = true;
 
             // Quy ước bước tăng của các trường tiền theo yêu cầu tester.
             numGiaNhap.Increment = 10000M;
@@ -67,6 +72,189 @@ namespace CuahangNongduoc
             txtMaSo.TextChanged += new EventHandler(DongBoTongTienKhiNhap);
             txtSoLo.TextChanged += new EventHandler(DongBoTongTienKhiNhap);
             cmbSanPham.SelectedValueChanged += new EventHandler(DongBoTongTienKhiNhap);
+            cmbSanPham.SelectedValueChanged += new EventHandler(CapNhatMaSoTuDong);
+
+            ThietLapHuongDanMaSoVaSoLo();
+        }
+
+        // ===== Hướng dẫn phân biệt "Mã số" và "Số lô" cho người nhập =====
+        // Mã số  = mã nội bộ do hệ thống TỰ SINH (tên sản phẩm + số thứ tự, VD: Nuti001), mỗi lần nhập một mã, không trùng (cũng là mã chọn lô khi bán hàng).
+        // Số lô  = số lô sản xuất do nhà sản xuất in trên bao bì/nhãn sản phẩm.
+        private const int EM_SETCUEBANNER = 0x1501;
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, string lParam);
+
+        private const string GoiYMaSo = "Tự sinh, VD: Nuti001";
+        private const string GoiYSoLo = "Số in trên bao bì";
+
+        private const string HuongDanMaSo =
+            "MÃ SỐ = mã do HỆ THỐNG TỰ SINH theo tên sản phẩm + số thứ tự (VD: Nuti001, Nuti002).\n" +
+            "Chọn sản phẩm thì mã tự hiện; mỗi lần nhập một mã khác nhau, không trùng với lô đã có.\n" +
+            "Mã này cũng hiện ở form bán hàng để chọn đúng lô.\n" +
+            "Không nhập số lô của nhà sản xuất vào đây - số lô nhập ở ô Số lô.";
+
+        private const string HuongDanSoLo =
+            "SỐ LÔ = số lô sản xuất do NHÀ SẢN XUẤT in trên bao bì/nhãn sản phẩm (VD: A2406).\n" +
+            "Chép đúng như trên bao bì. Số lô này không cần khác nhau giữa các lần nhập.";
+
+        private static void DatGoiYChoO(TextBox o, string goiY)
+        {
+            // Chữ mờ gợi ý hiện khi ô còn trống (EM_SETCUEBANNER, wParam = 1: vẫn hiện cả khi ô đang được chọn).
+            EventHandler apDung = delegate(object s, EventArgs e) { SendMessage(o.Handle, EM_SETCUEBANNER, (IntPtr)1, goiY); };
+            if (o.IsHandleCreated)
+                apDung(o, EventArgs.Empty);
+            o.HandleCreated += apDung;
+        }
+
+        private void ThietLapHuongDanMaSoVaSoLo()
+        {
+            // Ô Số lô rộng hơn để đọc được chữ gợi ý (vẫn nằm trong khung Thông tin).
+            txtSoLo.Width = 150;
+
+            DatGoiYChoO(txtMaSo, GoiYMaSo);
+            DatGoiYChoO(txtSoLo, GoiYSoLo);
+
+            // Một dòng nhắc cố định ngay dưới các ô nhập.
+            Label lblHuongDan = new Label();
+            lblHuongDan.AutoSize = true;
+            lblHuongDan.ForeColor = System.Drawing.SystemColors.GrayText;
+            lblHuongDan.Location = new System.Drawing.Point(13, 130);
+            lblHuongDan.Text = "Mã số: tự sinh theo tên sản phẩm.   Số lô: nhập số in trên bao bì.";
+            grpThongtin.Controls.Add(lblHuongDan);
+
+            // Rê chuột vào nhãn/ô nhập/tiêu đề cột để xem giải thích đầy đủ.
+            ToolTip goiY = new ToolTip();
+            goiY.AutoPopDelay = 20000;
+            goiY.InitialDelay = 300;
+            goiY.ReshowDelay = 100;
+            goiY.ShowAlways = true;
+            goiY.SetToolTip(label2, HuongDanMaSo);
+            goiY.SetToolTip(txtMaSo, HuongDanMaSo);
+            goiY.SetToolTip(label14, HuongDanSoLo);
+            goiY.SetToolTip(txtSoLo, HuongDanSoLo);
+            colMaSanPham.ToolTipText = HuongDanMaSo;
+            colSoLo.ToolTipText = HuongDanSoLo;
+        }
+
+        // ===== Tự sinh Mã số: [4 chữ cái đầu của tên sản phẩm, bỏ dấu][số thứ tự 3 chữ số], VD: Nuti001 =====
+        // Chỉ dùng các hàm đọc có sẵn (MaSanPhamController.LayMaSanPham); không thêm truy vấn, không đổi cơ sở dữ liệu.
+        private const int DoDaiTienToMaSo = 4;
+        private const int SoThuTuToiDa = 99999;
+
+        private static string BoDauTiengViet(string s)
+        {
+            if (String.IsNullOrEmpty(s))
+                return String.Empty;
+            string d = s.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder(d.Length);
+            foreach (char c in d)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark)
+                    continue;
+                if (c == '\u0111')
+                    sb.Append('d');
+                else if (c == '\u0110')
+                    sb.Append('D');
+                else
+                    sb.Append(c);
+            }
+            return sb.ToString();
+        }
+
+        private static string LayTienToMaSo(string tenSanPham)
+        {
+            string khongDau = BoDauTiengViet(tenSanPham);
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in khongDau)
+            {
+                if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+                {
+                    sb.Append(c);
+                    if (sb.Length == DoDaiTienToMaSo)
+                        break;
+                }
+            }
+            if (sb.Length == 0)
+                return "SP";   // Tên sản phẩm không có chữ cái nào.
+            string t = sb.ToString().ToLowerInvariant();
+            return Char.ToUpperInvariant(t[0]) + t.Substring(1);
+        }
+
+        private static string GhepMaSo(string tienTo, int soThuTu)
+        {
+            return tienTo + soThuTu.ToString("000", CultureInfo.InvariantCulture);
+        }
+
+        // Mã đã có trong bảng đang nhập (lưới) hoặc đã lưu trong cơ sở dữ liệu.
+        private bool MaSoDaDung(string ma)
+        {
+            foreach (DataGridViewRow view in dataGridView.Rows)
+            {
+                if (view.IsNewRow || view.Cells["colMaSanPham"].Value == null)
+                    continue;
+                if (String.Equals(ma, Convert.ToString(view.Cells["colMaSanPham"].Value), StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+            return new MaSanPhamController().LayMaSanPham(ma) != null;
+        }
+
+        // Tìm số thứ tự chưa dùng bằng cách nhân đôi rồi chia đôi, tránh phải hỏi cơ sở dữ liệu từng số một.
+        private int TimSoThuTuKeTiep(string tienTo)
+        {
+            int dung = 0;     // số đã biết là đang được dùng (0 = chưa có)
+            int thu = 1;      // số đang kiểm tra
+            while (MaSoDaDung(GhepMaSo(tienTo, thu)))
+            {
+                if (thu >= SoThuTuToiDa)
+                    throw new InvalidOperationException("Đã hết số thứ tự cho mã bắt đầu bằng \"" + tienTo + "\".");
+                dung = thu;
+                thu = Math.Min(thu * 2, SoThuTuToiDa);
+            }
+            while (thu - dung > 1)
+            {
+                int giua = dung + (thu - dung) / 2;
+                if (MaSoDaDung(GhepMaSo(tienTo, giua)))
+                    dung = giua;
+                else
+                    thu = giua;
+            }
+            return thu;
+        }
+
+        // Trả về Mã số kế tiếp cho sản phẩm đang chọn; chuỗi rỗng nếu chưa chọn sản phẩm.
+        private string TaoMaSoTuDong()
+        {
+            if (cmbSanPham.SelectedItem == null || cmbSanPham.SelectedValue == null || cmbSanPham.SelectedValue == DBNull.Value)
+                return String.Empty;
+            string tienTo = LayTienToMaSo(cmbSanPham.GetItemText(cmbSanPham.SelectedItem));
+            return GhepMaSo(tienTo, TimSoThuTuKeTiep(tienTo));
+        }
+
+        private void CapNhatMaSoTuDong(object sender, EventArgs e)
+        {
+            // Chế độ xem phiếu đã lưu không sinh mã.
+            if (!m_FormInitialized || status == Controll.Normal)
+                return;
+            try
+            {
+                txtMaSo.Text = TaoMaSoTuDong();
+            }
+            catch (Exception ex)
+            {
+                txtMaSo.Clear();
+                MessageBox.Show("Không thể tự sinh Mã số: " + ex.Message, "Nhập hàng",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // Mã vừa sinh bị người khác dùng trước khi bấm Thêm: cấp lại mã mới (ô Mã số không cho gõ tay).
+        private void CapLaiMaSoKhiTrung(string maCu)
+        {
+            string maMoi = TaoMaSoTuDong();
+            txtMaSo.Text = maMoi;
+            MessageBox.Show("Mã số \"" + maCu + "\" vừa được dùng ở nơi khác nên hệ thống đã cấp lại mã mới \"" + maMoi + "\".\n\nHãy kiểm tra rồi bấm Thêm sản phẩm lần nữa.",
+                "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public frmNhapHang(PhieuNhapController ctrlPN)
@@ -201,6 +389,7 @@ namespace CuahangNongduoc
         private void NapDanhSachPhieuNhap(string maPhieuCanChon)
         {
             status = Controll.Normal;
+            txtMaSo.Clear();   // Xem phiếu đã lưu: không giữ mã tự sinh của lần nhập trước.
             XoaBindingThongTinPhieu();
             ctrl = new PhieuNhapController();
             ctrlMaSP = new MaSanPhamController();
@@ -283,13 +472,13 @@ namespace CuahangNongduoc
             // Guard clauses: mỗi lỗi đều dừng luồng xử lý ngay tại đây.
             if (String.IsNullOrEmpty(maLo))
             {
-                MessageBox.Show("Vui lòng nhập Mã số của lô hàng.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMaSo.Focus();
+                MessageBox.Show("Vui lòng chọn sản phẩm để hệ thống tự sinh Mã số.\n\nMã số tự sinh theo tên sản phẩm + số thứ tự (VD: Nuti001).\n(Số lô in trên bao bì thì nhập ở ô Số lô.)", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbSanPham.Focus();
                 return;
             }
             if (String.IsNullOrEmpty(soLo))
             {
-                MessageBox.Show("Vui lòng nhập Số lô.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập Số lô.\n\nSố lô là số do nhà sản xuất in trên bao bì/nhãn sản phẩm (VD: A2406).", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSoLo.Focus();
                 return;
             }
@@ -355,7 +544,7 @@ namespace CuahangNongduoc
                     continue;
                 if (String.Equals(maLo, Convert.ToString(view.Cells["colMaSanPham"].Value), StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Mã số lô đã có trong phiếu này. Vui lòng nhập mã khác.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CapLaiMaSoKhiTrung(maLo);
                     txtMaSo.Focus();
                     return;
                 }
@@ -365,7 +554,7 @@ namespace CuahangNongduoc
             {
                 if (new MaSanPhamController().LayMaSanPham(maLo) != null)
                 {
-                    MessageBox.Show("Mã số lô đã tồn tại trong cơ sở dữ liệu. Vui lòng nhập mã khác.", "Nhập hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CapLaiMaSoKhiTrung(maLo);
                     txtMaSo.Focus();
                     return;
                 }
@@ -387,6 +576,9 @@ namespace CuahangNongduoc
                 // Dòng đã vào bảng chi tiết nên xóa dữ liệu đang nhập trước khi tính lại tổng.
                 txtMaSo.Clear();
                 txtSoLo.Clear();
+                // Cùng sản phẩm: cấp luôn Mã số kế tiếp cho lô sau.
+                try { txtMaSo.Text = TaoMaSoTuDong(); }
+                catch (Exception) { txtMaSo.Clear(); }
                 numGiaNhap.Value = 0M;
                 numSoLuong.Value = 0M;
                 numThanhTien.Value = 0M;
@@ -553,14 +745,14 @@ namespace CuahangNongduoc
                 string id = Convert.ToString(drv["ID"]).Trim();
                 bool loMoi = drv.Row.RowState == DataRowState.Added;
                 if (String.IsNullOrEmpty(id))
-                    throw new InvalidOperationException("Mã lô không được để trống.");
+                    throw new InvalidOperationException("Mã số của lô không được để trống.");
                 soChiTiet++;
 
                 if (loMoi)
                 {
                     string soLo = Convert.ToString(drv["SO_LO"]).Trim();
                     if (String.IsNullOrEmpty(soLo))
-                        throw new InvalidOperationException("Số lô của lô mới không được để trống.");
+                        throw new InvalidOperationException("Số lô (số in trên bao bì) của lô mới không được để trống.");
                     // Chỉ lô mới mới bắt buộc SL > 0; lô cũ có thể đã bán hết (SL còn lại = 0).
                     if (Convert.ToDecimal(drv["DON_GIA_NHAP"]) <= 0M || Convert.ToDecimal(drv["SO_LUONG"]) <= 0M)
                         throw new InvalidOperationException("Đơn giá và số lượng của mỗi lô mới phải lớn hơn 0.");
@@ -800,8 +992,8 @@ namespace CuahangNongduoc
             txtMaPhieu.ReadOnly = true;
             txtMaPhieu.Enabled = true;
             cmbNhaCungCap.Enabled = val;
-            // Chỉ cho nhập ngày nhập khi lập phiếu mới; đang chỉnh sửa phiếu đã lưu thì khóa, không cho đổi.
-            dtNgayNhap.Enabled = val && status != Controll.Edit;
+            // Ngày nhập luôn bị khóa: phiếu mới tự lấy ngày hiện tại, phiếu đã lưu giữ nguyên ngày cũ.
+            dtNgayNhap.Enabled = false;
             numTongTien.ReadOnly = true;
             numTongTien.Enabled = false;
             numConNo.ReadOnly = true;
@@ -848,6 +1040,7 @@ namespace CuahangNongduoc
             m_ViTriDangSua = bs.Position;
             status = Controll.Edit;
             Allow(true);
+            CapNhatMaSoTuDong(this, EventArgs.Empty);   // Thêm lô mới khi sửa phiếu cũng dùng mã tự sinh.
             DatTrangThaiNutDieuHuong(false);
         }
 

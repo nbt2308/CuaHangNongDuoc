@@ -57,7 +57,6 @@
             this.toolNam = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolTongHop = new System.Windows.Forms.ToolStripButton();
-            this.toolLuu = new System.Windows.Forms.ToolStripButton();
             this.toolIn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolThoat = new System.Windows.Forms.ToolStripButton();
@@ -95,6 +94,8 @@
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 46);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
             this.dataGridView.Size = new System.Drawing.Size(744, 370);
             this.dataGridView.TabIndex = 1;
             // 
@@ -175,7 +176,6 @@
             this.toolNam,
             this.toolStripSeparator1,
             this.toolTongHop,
-            this.toolLuu,
             this.toolIn,
             this.toolStripSeparator2,
             this.toolThoat,
@@ -299,17 +299,6 @@
             this.toolTongHop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTongHop.Click += new System.EventHandler(this.toolTongHop_Click);
             // 
-            // toolLuu
-            // 
-            this.toolLuu.Image = global::CuahangNongduoc.Properties.Resources.save;
-            this.toolLuu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolLuu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolLuu.Name = "toolLuu";
-            this.toolLuu.Size = new System.Drawing.Size(31, 43);
-            this.toolLuu.Text = "Lưu";
-            this.toolLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolLuu.Click += new System.EventHandler(this.toolLuu_Click);
-            // 
             // toolIn
             // 
             this.toolIn.Image = global::CuahangNongduoc.Properties.Resources.printer;
@@ -380,7 +369,6 @@
         private System.Windows.Forms.ToolStripTextBox toolNam;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolTongHop;
-        private System.Windows.Forms.ToolStripButton toolLuu;
         private System.Windows.Forms.ToolStripButton toolIn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolThoat;
