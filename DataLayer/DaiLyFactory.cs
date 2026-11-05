@@ -28,7 +28,7 @@ namespace CuahangNongduoc.DataLayer
             OleDbCommand cmd = new OleDbCommand(
                 "SELECT ID, DAI_LY, DIA_CHI, DIEN_THOAI FROM DAI_LY " +
                 "UNION ALL " +
-                "SELECT ID, HO_TEN AS DAI_LY, DIA_CHI, DIEN_THOAI FROM KHACH_HANG WHERE LOAI_KH=TRUE");
+                "SELECT ID, HO_TEN AS DAI_LY, DIA_CHI, DIEN_THOAI FROM KHACH_HANG WHERE LOAI_KH=FALSE");
             ds.Load(cmd);
             return ds;
         }

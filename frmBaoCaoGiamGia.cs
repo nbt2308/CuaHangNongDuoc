@@ -13,6 +13,7 @@ namespace CuahangNongduoc
         private IList<CuahangNongduoc.BusinessObject.BaoCaoGiamGiaNhanVien> tongHopBaoCao;
         private const string MaTatCaNhanVien = "ALL";
         private const string MaNhanVienChuaXacDinh = "NONE";
+        private bool dangNapDanhSachNhanVien;
 
         private sealed class LuaChonNhanVien
         {
@@ -32,7 +33,10 @@ namespace CuahangNongduoc
                 dtTuNgay.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
                 dtDenNgay.Value = DateTime.Today;
                 TaiBaoCao();
+                dtTuNgay.ValueChanged += (sender, args) => TaiBaoCao();
+                dtDenNgay.ValueChanged += (sender, args) => TaiBaoCao();
             };
+            cmbNhanVien.SelectedIndexChanged += CmbNhanVien_SelectedIndexChanged;
         }
 
         private void BtnXem_Click(object sender, EventArgs e) { TaiBaoCao(); }
@@ -45,15 +49,8 @@ namespace CuahangNongduoc
                     ? MaTatCaNhanVien : Convert.ToString(cmbNhanVien.SelectedValue);
                 tongHopBaoCao = controller.LayTongHop(dtTuNgay.Value.Date, dtDenNgay.Value.Date);
                 chiTietBaoCao = controller.LayChiTiet(dtTuNgay.Value.Date, dtDenNgay.Value.Date);
-                NapDanhSachNhanVien(maDaChon);
-                string maNhanVien = cmbNhanVien.SelectedValue == null
-                    ? MaTatCaNhanVien : Convert.ToString(cmbNhanVien.SelectedValue);
-                bool daChonNhanVien = maNhanVien != MaTatCaNhanVien;
-                dgvNhanVien.DataSource = daChonNhanVien
-                    ? LocTongHopTheoNhanVien(maNhanVien) : tongHopBaoCao;
-                dgvHoaDon.DataSource = LocChiTietTheoNhanVien(maNhanVien);
-                HienThiTongHopNhanVien(true);
-                DinhDangCot(dgvNhanVien); DinhDangCot(dgvHoaDon);
+                if (cmbNhanVien.DataSource == null) NapDanhSachNhanVien(maDaChon);
+                HienThiBaoCaoTheoNhanVien();
             }
             catch (Exception ex) { MessageBox.Show("Không tải được báo cáo. Hãy kiểm tra migration và kết nối cơ sở dữ liệu.\n" + ex.Message, "Báo cáo giảm giá", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -64,14 +61,34 @@ namespace CuahangNongduoc
             {
                 new LuaChonNhanVien { Ma = MaTatCaNhanVien, Ten = "Tất cả nhân viên" }
             };
-            if (tongHopBaoCao != null)
-                foreach (var nv in tongHopBaoCao)
-                    data.Add(new LuaChonNhanVien { Ma = TaoMaNhanVien(nv.IdNguoiDung), Ten = nv.HoTen });
-            cmbNhanVien.DataSource = data;
-            cmbNhanVien.DisplayMember = "Ten";
-            cmbNhanVien.ValueMember = "Ma";
-            cmbNhanVien.SelectedValue = maDaChon;
-            if (cmbNhanVien.SelectedIndex < 0) cmbNhanVien.SelectedIndex = 0;
+            foreach (var nv in new NguoiDungData().LayTatCa())
+                data.Add(new LuaChonNhanVien { Ma = "USER:" + nv.Id, Ten = String.IsNullOrWhiteSpace(nv.HoTen) ? nv.TenDangNhap : nv.HoTen });
+            dangNapDanhSachNhanVien = true;
+            try
+            {
+                cmbNhanVien.DataSource = data;
+                cmbNhanVien.DisplayMember = "Ten";
+                cmbNhanVien.ValueMember = "Ma";
+                cmbNhanVien.SelectedValue = maDaChon;
+                if (cmbNhanVien.SelectedIndex < 0) cmbNhanVien.SelectedIndex = 0;
+            }
+            finally { dangNapDanhSachNhanVien = false; }
+        }
+
+        private void CmbNhanVien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!dangNapDanhSachNhanVien && tongHopBaoCao != null) HienThiBaoCaoTheoNhanVien();
+        }
+
+        private void HienThiBaoCaoTheoNhanVien()
+        {
+            string maNhanVien = cmbNhanVien.SelectedValue == null
+                ? MaTatCaNhanVien : Convert.ToString(cmbNhanVien.SelectedValue);
+            dgvNhanVien.DataSource = maNhanVien != MaTatCaNhanVien
+                ? LocTongHopTheoNhanVien(maNhanVien) : tongHopBaoCao;
+            dgvHoaDon.DataSource = LocChiTietTheoNhanVien(maNhanVien);
+            HienThiTongHopNhanVien(true);
+            DinhDangCot(dgvNhanVien); DinhDangCot(dgvHoaDon);
         }
 
         private IList<CuahangNongduoc.BusinessObject.BaoCaoGiamGiaNhanVien> LocTongHopTheoNhanVien(string maNhanVien)
@@ -126,6 +143,8 @@ namespace CuahangNongduoc
                 if (property == "TongTienHang" || property == "TongTienGiam" || property == "TongThanhToan" || property == "TienHang" || property == "TienGiamGia" || property == "TongTien") col.DefaultCellStyle.Format = "N0";
             }
         }
+
+ 
     }
 
 }

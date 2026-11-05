@@ -41,7 +41,7 @@ namespace CuahangNongduoc
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(4);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1063, 68);
             this.panelTop.TabIndex = 5;
@@ -70,7 +70,7 @@ namespace CuahangNongduoc
             this.panelSearch.Controls.Add(this.lblSoLuong);
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 68);
-            this.panelSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(4);
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Padding = new System.Windows.Forms.Padding(13, 12, 13, 6);
             this.panelSearch.Size = new System.Drawing.Size(1063, 68);
@@ -92,7 +92,7 @@ namespace CuahangNongduoc
             this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTimKiem.Location = new System.Drawing.Point(100, 18);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(558, 27);
             this.txtTimKiem.TabIndex = 1;
@@ -106,7 +106,7 @@ namespace CuahangNongduoc
             this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
             this.btnTimKiem.Location = new System.Drawing.Point(667, 18);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(107, 30);
             this.btnTimKiem.TabIndex = 2;
@@ -121,7 +121,7 @@ namespace CuahangNongduoc
             this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnLamMoi.Location = new System.Drawing.Point(787, 18);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(107, 30);
             this.btnLamMoi.TabIndex = 3;
@@ -158,7 +158,7 @@ namespace CuahangNongduoc
             this.dgvTaiKhoan.EnableHeadersVisualStyles = false;
             this.dgvTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dgvTaiKhoan.Location = new System.Drawing.Point(0, 136);
-            this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTaiKhoan.MultiSelect = false;
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowHeadersWidth = 51;
@@ -177,7 +177,7 @@ namespace CuahangNongduoc
             this.panelButtons.Controls.Add(this.btnDong);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtons.Location = new System.Drawing.Point(0, 547);
-            this.panelButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(1063, 68);
             this.panelButtons.TabIndex = 6;
@@ -190,7 +190,7 @@ namespace CuahangNongduoc
             this.btnXoaNguoiDung.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnXoaNguoiDung.ForeColor = System.Drawing.Color.White;
             this.btnXoaNguoiDung.Location = new System.Drawing.Point(735, 12);
-            this.btnXoaNguoiDung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoaNguoiDung.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaNguoiDung.Name = "btnXoaNguoiDung";
             this.btnXoaNguoiDung.Size = new System.Drawing.Size(184, 43);
             this.btnXoaNguoiDung.TabIndex = 5;
@@ -206,7 +206,7 @@ namespace CuahangNongduoc
             this.btnThemMoi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnThemMoi.ForeColor = System.Drawing.Color.White;
             this.btnThemMoi.Location = new System.Drawing.Point(13, 12);
-            this.btnThemMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemMoi.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(153, 43);
             this.btnThemMoi.TabIndex = 0;
@@ -222,7 +222,7 @@ namespace CuahangNongduoc
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(180, 12);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(153, 43);
             this.btnSua.TabIndex = 1;
@@ -238,7 +238,7 @@ namespace CuahangNongduoc
             this.btnKhoaMoKhoa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnKhoaMoKhoa.ForeColor = System.Drawing.Color.White;
             this.btnKhoaMoKhoa.Location = new System.Drawing.Point(347, 12);
-            this.btnKhoaMoKhoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKhoaMoKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnKhoaMoKhoa.Name = "btnKhoaMoKhoa";
             this.btnKhoaMoKhoa.Size = new System.Drawing.Size(173, 43);
             this.btnKhoaMoKhoa.TabIndex = 2;
@@ -254,7 +254,7 @@ namespace CuahangNongduoc
             this.btnDatLaiMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDatLaiMatKhau.ForeColor = System.Drawing.Color.White;
             this.btnDatLaiMatKhau.Location = new System.Drawing.Point(533, 12);
-            this.btnDatLaiMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDatLaiMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.btnDatLaiMatKhau.Name = "btnDatLaiMatKhau";
             this.btnDatLaiMatKhau.Size = new System.Drawing.Size(193, 43);
             this.btnDatLaiMatKhau.TabIndex = 3;
@@ -269,7 +269,7 @@ namespace CuahangNongduoc
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDong.Location = new System.Drawing.Point(927, 12);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(120, 43);
             this.btnDong.TabIndex = 4;
@@ -287,10 +287,10 @@ namespace CuahangNongduoc
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelButtons);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(927, 605);
             this.Name = "frmQuanLyTaiKhoan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý tài khoản người dùng";
             this.Load += new System.EventHandler(this.frmQuanLyTaiKhoan_Load);
             this.panelTop.ResumeLayout(false);

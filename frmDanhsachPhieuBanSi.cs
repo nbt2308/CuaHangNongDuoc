@@ -19,12 +19,12 @@ namespace CuahangNongduoc
         }
 
         PhieuBanController ctrl = new PhieuBanController();
-        KhachHangController ctrlKH = new KhachHangController();
+        DaiLyController ctrlDL = new DaiLyController();
 
-        private void frmDanhsachPhieuNhap_Load(object sender, EventArgs e)
+        private void frmDanhsachPhieuBanSi_Load(object sender, EventArgs e)
         {
             dataGridView.DataError += dataGridView_DataError;
-            ctrlKH.HienthiDaiLyDataGridviewComboBox(colKhachhang);
+            ctrlDL.HienthiDaiLyDataGridviewComboBox(colKhachHang);
             ctrl.HienthiPhieuBanSi(bindingNavigator, dataGridView);
         }
 

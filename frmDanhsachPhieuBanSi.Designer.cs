@@ -55,7 +55,7 @@
             this.toolTimKiem = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKhachhang = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colKhachHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colConNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -195,7 +195,7 @@
             this.toolXemLai.Size = new System.Drawing.Size(63, 48);
             this.toolXemLai.Text = "Xem lại";
             this.toolXemLai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolXemLai.Click += new System.EventHandler(this.frmDanhsachPhieuNhap_Load);
+            this.toolXemLai.Click += new System.EventHandler(this.frmDanhsachPhieuBanSi_Load);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -243,7 +243,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colKhachhang,
+            this.colKhachHang,
             this.colNgayNhap,
             this.colDaTra,
             this.colConNo,
@@ -277,14 +277,14 @@
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             // 
-            // colKhachhang
+            // colKhachHang
             // 
-            this.colKhachhang.DataPropertyName = "ID_KHACH_HANG";
-            this.colKhachhang.FillWeight = 150F;
-            this.colKhachhang.HeaderText = "Đại lý";
-            this.colKhachhang.MinimumWidth = 6;
-            this.colKhachhang.Name = "colKhachhang";
-            this.colKhachhang.ReadOnly = true;
+            this.colKhachHang.DataPropertyName = "ID_KHACH_HANG";
+            this.colKhachHang.FillWeight = 150F;
+            this.colKhachHang.HeaderText = "Đại lý";
+            this.colKhachHang.MinimumWidth = 6;
+            this.colKhachHang.Name = "colKhachHang";
+            this.colKhachHang.ReadOnly = true;
             // 
             // colNgayNhap
             // 
@@ -417,7 +417,7 @@
             this.Name = "frmDanhsachPhieuBanSi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DANH SACH PHIEU BAN SI";
-            this.Load += new System.EventHandler(this.frmDanhsachPhieuNhap_Load);
+            this.Load += new System.EventHandler(this.frmDanhsachPhieuBanSi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
@@ -447,7 +447,7 @@
         private System.Windows.Forms.ToolStripButton toolIn;
         private System.Windows.Forms.ToolStripButton toolTimKiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colKhachhang;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colKhachHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDaTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn colConNo;

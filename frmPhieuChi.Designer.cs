@@ -498,6 +498,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPhieuChi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PHIEU CHI";
             this.Load += new System.EventHandler(this.frmThanhToan_Load);
             this.panel1.ResumeLayout(false);

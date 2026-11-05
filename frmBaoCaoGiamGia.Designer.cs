@@ -42,12 +42,6 @@ namespace CuahangNongduoc
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.cmbNhanVien = new System.Windows.Forms.ComboBox();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
-            this.dgvHoaDon = new System.Windows.Forms.DataGridView();
-            this.lblTuNgay = new System.Windows.Forms.Label();
-            this.lblDenNgay = new System.Windows.Forms.Label();
-            this.lblChiTiet = new System.Windows.Forms.Label();
-            this.layout = new System.Windows.Forms.TableLayoutPanel();
-            this.filter = new System.Windows.Forms.FlowLayoutPanel();
             this.colNvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNvTenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNvHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +49,7 @@ namespace CuahangNongduoc
             this.colNvTongTienHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNvTongTienGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNvTongThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvHoaDon = new System.Windows.Forms.DataGridView();
             this.colHdId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHdNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHdIdNguoiDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +60,11 @@ namespace CuahangNongduoc
             this.colHdTienHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHdTienGiam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHdTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTuNgay = new System.Windows.Forms.Label();
+            this.lblDenNgay = new System.Windows.Forms.Label();
+            this.lblChiTiet = new System.Windows.Forms.Label();
+            this.layout = new System.Windows.Forms.TableLayoutPanel();
+            this.filter = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.layout.SuspendLayout();
@@ -91,7 +91,7 @@ namespace CuahangNongduoc
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(399, 9);
+            this.btnXem.Location = new System.Drawing.Point(700, 9);
             this.btnXem.Name = "btnXem";
             this.btnXem.Size = new System.Drawing.Size(120, 23);
             this.btnXem.TabIndex = 4;
@@ -101,9 +101,10 @@ namespace CuahangNongduoc
             // lblNhanVien
             // 
             this.lblNhanVien.AutoSize = true;
+            this.lblNhanVien.Location = new System.Drawing.Point(408, 14);
             this.lblNhanVien.Margin = new System.Windows.Forms.Padding(12, 8, 6, 0);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(71, 16);
+            this.lblNhanVien.Size = new System.Drawing.Size(67, 16);
             this.lblNhanVien.TabIndex = 5;
             this.lblNhanVien.Text = "Nhân viên";
             // 
@@ -111,6 +112,7 @@ namespace CuahangNongduoc
             // 
             this.cmbNhanVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNhanVien.FormattingEnabled = true;
+            this.cmbNhanVien.Location = new System.Drawing.Point(484, 9);
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(210, 24);
             this.cmbNhanVien.TabIndex = 6;
@@ -138,101 +140,6 @@ namespace CuahangNongduoc
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(1052, 232);
             this.dgvNhanVien.TabIndex = 1;
-            // 
-            // dgvHoaDon
-            // 
-            this.dgvHoaDon.AllowUserToAddRows = false;
-            this.dgvHoaDon.AllowUserToDeleteRows = false;
-            this.dgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHoaDon.ColumnHeadersHeight = 29;
-            this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colHdId,
-            this.colHdNgay,
-            this.colHdIdNguoiDung,
-            this.colHdTenDangNhap,
-            this.colHdHoTen,
-            this.colHdLoaiGiam,
-            this.colHdTyLe,
-            this.colHdTienHang,
-            this.colHdTienGiam,
-            this.colHdTongTien});
-            this.dgvHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHoaDon.Location = new System.Drawing.Point(15, 333);
-            this.dgvHoaDon.MultiSelect = false;
-            this.dgvHoaDon.Name = "dgvHoaDon";
-            this.dgvHoaDon.ReadOnly = true;
-            this.dgvHoaDon.RowHeadersWidth = 51;
-            this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHoaDon.Size = new System.Drawing.Size(1052, 325);
-            this.dgvHoaDon.TabIndex = 3;
-            // 
-            // lblTuNgay
-            // 
-            this.lblTuNgay.AutoSize = true;
-            this.lblTuNgay.Location = new System.Drawing.Point(0, 14);
-            this.lblTuNgay.Margin = new System.Windows.Forms.Padding(0, 8, 6, 0);
-            this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(56, 16);
-            this.lblTuNgay.TabIndex = 0;
-            this.lblTuNgay.Text = "Từ ngày";
-            // 
-            // lblDenNgay
-            // 
-            this.lblDenNgay.AutoSize = true;
-            this.lblDenNgay.Location = new System.Drawing.Point(200, 14);
-            this.lblDenNgay.Margin = new System.Windows.Forms.Padding(12, 8, 6, 0);
-            this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(64, 16);
-            this.lblDenNgay.TabIndex = 2;
-            this.lblDenNgay.Text = "Đến ngày";
-            // 
-            // lblChiTiet
-            // 
-            this.lblChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblChiTiet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblChiTiet.Location = new System.Drawing.Point(15, 298);
-            this.lblChiTiet.Name = "lblChiTiet";
-            this.lblChiTiet.Size = new System.Drawing.Size(1052, 32);
-            this.lblChiTiet.TabIndex = 2;
-            this.lblChiTiet.Text = "Chi tiết hóa đơn giảm giá / chiết khấu";
-            this.lblChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // layout
-            // 
-            this.layout.ColumnCount = 1;
-            this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layout.Controls.Add(this.filter, 0, 0);
-            this.layout.Controls.Add(this.dgvNhanVien, 0, 1);
-            this.layout.Controls.Add(this.lblChiTiet, 0, 2);
-            this.layout.Controls.Add(this.dgvHoaDon, 0, 3);
-            this.layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layout.Location = new System.Drawing.Point(0, 0);
-            this.layout.Name = "layout";
-            this.layout.Padding = new System.Windows.Forms.Padding(12);
-            this.layout.RowCount = 4;
-            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
-            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58F));
-            this.layout.Size = new System.Drawing.Size(1082, 673);
-            this.layout.TabIndex = 0;
-            // 
-            // filter
-            // 
-            this.filter.Controls.Add(this.lblTuNgay);
-            this.filter.Controls.Add(this.dtTuNgay);
-            this.filter.Controls.Add(this.lblDenNgay);
-            this.filter.Controls.Add(this.dtDenNgay);
-            this.filter.Controls.Add(this.lblNhanVien);
-            this.filter.Controls.Add(this.cmbNhanVien);
-            this.filter.Controls.Add(this.btnXem);
-            this.filter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filter.Location = new System.Drawing.Point(15, 15);
-            this.filter.Name = "filter";
-            this.filter.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.filter.Size = new System.Drawing.Size(1052, 42);
-            this.filter.TabIndex = 0;
-            this.filter.WrapContents = false;
             // 
             // colNvId
             // 
@@ -290,6 +197,33 @@ namespace CuahangNongduoc
             this.colNvTongThanhToan.MinimumWidth = 6;
             this.colNvTongThanhToan.Name = "colNvTongThanhToan";
             this.colNvTongThanhToan.ReadOnly = true;
+            // 
+            // dgvHoaDon
+            // 
+            this.dgvHoaDon.AllowUserToAddRows = false;
+            this.dgvHoaDon.AllowUserToDeleteRows = false;
+            this.dgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHoaDon.ColumnHeadersHeight = 29;
+            this.dgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colHdId,
+            this.colHdNgay,
+            this.colHdIdNguoiDung,
+            this.colHdTenDangNhap,
+            this.colHdHoTen,
+            this.colHdLoaiGiam,
+            this.colHdTyLe,
+            this.colHdTienHang,
+            this.colHdTienGiam,
+            this.colHdTongTien});
+            this.dgvHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHoaDon.Location = new System.Drawing.Point(15, 333);
+            this.dgvHoaDon.MultiSelect = false;
+            this.dgvHoaDon.Name = "dgvHoaDon";
+            this.dgvHoaDon.ReadOnly = true;
+            this.dgvHoaDon.RowHeadersWidth = 51;
+            this.dgvHoaDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHoaDon.Size = new System.Drawing.Size(1052, 325);
+            this.dgvHoaDon.TabIndex = 3;
             // 
             // colHdId
             // 
@@ -372,13 +306,81 @@ namespace CuahangNongduoc
             this.colHdTongTien.Name = "colHdTongTien";
             this.colHdTongTien.ReadOnly = true;
             // 
+            // lblTuNgay
+            // 
+            this.lblTuNgay.AutoSize = true;
+            this.lblTuNgay.Location = new System.Drawing.Point(0, 14);
+            this.lblTuNgay.Margin = new System.Windows.Forms.Padding(0, 8, 6, 0);
+            this.lblTuNgay.Name = "lblTuNgay";
+            this.lblTuNgay.Size = new System.Drawing.Size(56, 16);
+            this.lblTuNgay.TabIndex = 0;
+            this.lblTuNgay.Text = "Từ ngày";
+            // 
+            // lblDenNgay
+            // 
+            this.lblDenNgay.AutoSize = true;
+            this.lblDenNgay.Location = new System.Drawing.Point(200, 14);
+            this.lblDenNgay.Margin = new System.Windows.Forms.Padding(12, 8, 6, 0);
+            this.lblDenNgay.Name = "lblDenNgay";
+            this.lblDenNgay.Size = new System.Drawing.Size(64, 16);
+            this.lblDenNgay.TabIndex = 2;
+            this.lblDenNgay.Text = "Đến ngày";
+            // 
+            // lblChiTiet
+            // 
+            this.lblChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblChiTiet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblChiTiet.Location = new System.Drawing.Point(15, 298);
+            this.lblChiTiet.Name = "lblChiTiet";
+            this.lblChiTiet.Size = new System.Drawing.Size(1052, 32);
+            this.lblChiTiet.TabIndex = 2;
+            this.lblChiTiet.Text = "Chi tiết hóa đơn giảm giá / chiết khấu";
+            this.lblChiTiet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // layout
+            // 
+            this.layout.ColumnCount = 1;
+            this.layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layout.Controls.Add(this.filter, 0, 0);
+            this.layout.Controls.Add(this.dgvNhanVien, 0, 1);
+            this.layout.Controls.Add(this.lblChiTiet, 0, 2);
+            this.layout.Controls.Add(this.dgvHoaDon, 0, 3);
+            this.layout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layout.Location = new System.Drawing.Point(0, 0);
+            this.layout.Name = "layout";
+            this.layout.Padding = new System.Windows.Forms.Padding(12);
+            this.layout.RowCount = 4;
+            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
+            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.layout.Size = new System.Drawing.Size(1082, 673);
+            this.layout.TabIndex = 0;
+            // 
+            // filter
+            // 
+            this.filter.Controls.Add(this.lblTuNgay);
+            this.filter.Controls.Add(this.dtTuNgay);
+            this.filter.Controls.Add(this.lblDenNgay);
+            this.filter.Controls.Add(this.dtDenNgay);
+            this.filter.Controls.Add(this.lblNhanVien);
+            this.filter.Controls.Add(this.cmbNhanVien);
+            this.filter.Controls.Add(this.btnXem);
+            this.filter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filter.Location = new System.Drawing.Point(15, 15);
+            this.filter.Name = "filter";
+            this.filter.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.filter.Size = new System.Drawing.Size(1052, 42);
+            this.filter.TabIndex = 0;
+            this.filter.WrapContents = false;
+            // 
             // frmBaoCaoGiamGia
             // 
             this.ClientSize = new System.Drawing.Size(1082, 673);
             this.Controls.Add(this.layout);
             this.MinimumSize = new System.Drawing.Size(850, 560);
             this.Name = "frmBaoCaoGiamGia";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê hóa đơn giảm giá / khuyến mãi";
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();

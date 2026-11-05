@@ -23,14 +23,14 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable DanhsachPhieuBanLe()
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT PB.* FROM PHIEU_BAN PB INNER JOIN KHACH_HANG KH ON PB.ID_KHACH_HANG=KH.ID WHERE KH.LOAI_KH=FALSE");
+            OleDbCommand cmd = new OleDbCommand("SELECT PB.* FROM PHIEU_BAN PB INNER JOIN KHACH_HANG KH ON PB.ID_KHACH_HANG=KH.ID WHERE KH.LOAI_KH=TRUE");
             m_Ds.Load(cmd);
 
             return m_Ds;
         }
         public DataTable DanhsachPhieuBanSi()
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT PB.* FROM PHIEU_BAN PB INNER JOIN KHACH_HANG KH ON PB.ID_KHACH_HANG=KH.ID WHERE KH.LOAI_KH=TRUE");
+            OleDbCommand cmd = new OleDbCommand("SELECT PB.* FROM PHIEU_BAN PB INNER JOIN DAI_LY DL ON PB.ID_KHACH_HANG=DL.ID");
             m_Ds.Load(cmd);
 
             return m_Ds;

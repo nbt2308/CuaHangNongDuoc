@@ -35,8 +35,8 @@ namespace CuahangNongduoc.Controller
         public void HienthiKhachHangDataGridview(System.Windows.Forms.DataGridView dg, System.Windows.Forms.BindingNavigator bn)
         {
             System.Windows.Forms.BindingSource bs = new System.Windows.Forms.BindingSource();
-            DataTable tbl = factory.DanhsachKhachHang(false);
-            tbl.Columns[4].DefaultValue = false;
+            DataTable tbl = factory.DanhsachKhachHang(true);
+            tbl.Columns[4].DefaultValue = true;
             bs.DataSource = tbl;
             bn.BindingSource = bs;
             dg.DataSource = bs;
@@ -66,7 +66,7 @@ namespace CuahangNongduoc.Controller
         public void HienthiKhachHangDataGridviewComboBox(System.Windows.Forms.DataGridViewComboBoxColumn cmb)
         {
         
-            cmb.DataSource = factory.DanhsachKhachHang(false);
+            cmb.DataSource = factory.DanhsachKhachHang(true);
             cmb.DisplayMember = "HO_TEN";
             cmb.ValueMember = "ID";
             cmb.DataPropertyName = "ID_KHACH_HANG";

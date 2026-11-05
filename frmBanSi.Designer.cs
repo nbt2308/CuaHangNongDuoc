@@ -100,7 +100,7 @@ namespace CuahangNongduoc
             this.txtMaPhieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtNgayLapPhieu = new System.Windows.Forms.DateTimePicker();
-            this.cmbKhachHang = new System.Windows.Forms.ComboBox();
+            this.cmbDaiLy = new System.Windows.Forms.ComboBox();
             this.numConNo = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -864,7 +864,7 @@ namespace CuahangNongduoc
             this.grpPhieuBanLe.Controls.Add(this.txtMaPhieu);
             this.grpPhieuBanLe.Controls.Add(this.label1);
             this.grpPhieuBanLe.Controls.Add(this.dtNgayLapPhieu);
-            this.grpPhieuBanLe.Controls.Add(this.cmbKhachHang);
+            this.grpPhieuBanLe.Controls.Add(this.cmbDaiLy);
             this.grpPhieuBanLe.Controls.Add(this.numConNo);
             this.grpPhieuBanLe.Controls.Add(this.label10);
             this.grpPhieuBanLe.Controls.Add(this.label5);
@@ -930,16 +930,16 @@ namespace CuahangNongduoc
             this.dtNgayLapPhieu.Size = new System.Drawing.Size(204, 22);
             this.dtNgayLapPhieu.TabIndex = 39;
             // 
-            // cmbKhachHang
+            // cmbDaiLy
             // 
-            this.cmbKhachHang.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbKhachHang.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbKhachHang.FormattingEnabled = true;
-            this.cmbKhachHang.Location = new System.Drawing.Point(109, 84);
-            this.cmbKhachHang.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbKhachHang.Name = "cmbKhachHang";
-            this.cmbKhachHang.Size = new System.Drawing.Size(169, 24);
-            this.cmbKhachHang.TabIndex = 46;
+            this.cmbDaiLy.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDaiLy.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDaiLy.FormattingEnabled = true;
+            this.cmbDaiLy.Location = new System.Drawing.Point(109, 84);
+            this.cmbDaiLy.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbDaiLy.Name = "cmbDaiLy";
+            this.cmbDaiLy.Size = new System.Drawing.Size(169, 24);
+            this.cmbDaiLy.TabIndex = 46;
             // 
             // numConNo
             // 
@@ -1503,9 +1503,10 @@ namespace CuahangNongduoc
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1486, 824);
             this.Name = "frmBanSi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lập phiếu bán sỉ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmNhapHang_Load);
+            this.Load += new System.EventHandler(this.frmBanSi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
@@ -1570,7 +1571,7 @@ namespace CuahangNongduoc
         private System.Windows.Forms.TextBox txtMaPhieu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtNgayLapPhieu;
-        private System.Windows.Forms.ComboBox cmbKhachHang;
+        private System.Windows.Forms.ComboBox cmbDaiLy;
         private System.Windows.Forms.NumericUpDown numConNo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
