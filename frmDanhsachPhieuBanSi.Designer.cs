@@ -55,7 +55,7 @@
             this.toolTimKiem = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDaiLy = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colKhachHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colConNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -243,7 +243,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colDaiLy,
+            this.colKhachHang,
             this.colNgayNhap,
             this.colDaTra,
             this.colConNo,
@@ -277,14 +277,14 @@
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
             // 
-            // colDaiLy
+            // colKhachHang
             // 
-            this.colDaiLy.DataPropertyName = "ID_DAI_LY";
-            this.colDaiLy.FillWeight = 150F;
-            this.colDaiLy.HeaderText = "Đại lý";
-            this.colDaiLy.MinimumWidth = 6;
-            this.colDaiLy.Name = "colDaiLy";
-            this.colDaiLy.ReadOnly = true;
+            this.colKhachHang.DataPropertyName = "ID_KHACH_HANG";
+            this.colKhachHang.FillWeight = 150F;
+            this.colKhachHang.HeaderText = "Đại lý";
+            this.colKhachHang.MinimumWidth = 6;
+            this.colKhachHang.Name = "colKhachHang";
+            this.colKhachHang.ReadOnly = true;
             // 
             // colNgayNhap
             // 
@@ -447,7 +447,7 @@
         private System.Windows.Forms.ToolStripButton toolIn;
         private System.Windows.Forms.ToolStripButton toolTimKiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colDaiLy;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colKhachHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDaTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn colConNo;

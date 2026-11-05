@@ -116,7 +116,6 @@ namespace CuahangNongduoc
             this.cmbNhanVien.Name = "cmbNhanVien";
             this.cmbNhanVien.Size = new System.Drawing.Size(210, 24);
             this.cmbNhanVien.TabIndex = 6;
-            
             // 
             // dgvNhanVien
             // 
@@ -381,7 +380,7 @@ namespace CuahangNongduoc
             this.Controls.Add(this.layout);
             this.MinimumSize = new System.Drawing.Size(850, 560);
             this.Name = "frmBaoCaoGiamGia";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê hóa đơn giảm giá / khuyến mãi";
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).EndInit();

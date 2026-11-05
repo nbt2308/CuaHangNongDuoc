@@ -24,7 +24,7 @@ namespace CuahangNongduoc
         private void frmDanhsachPhieuBanSi_Load(object sender, EventArgs e)
         {
             dataGridView.DataError += dataGridView_DataError;
-            ctrlDL.HienthiDaiLyDataGridviewComboBox(colDaiLy);
+            ctrlDL.HienthiDaiLyDataGridviewComboBox(colKhachHang);
             ctrl.HienthiPhieuBanSi(bindingNavigator, dataGridView);
         }
 

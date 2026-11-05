@@ -50,7 +50,7 @@ namespace CuahangNongduoc.Controller
             cmb.DataSource = factory.DanhsachDaiLy();
             cmb.DisplayMember = "DAI_LY";
             cmb.ValueMember = "ID";
-            cmb.DataPropertyName = "ID_DAI_LY";
+            cmb.DataPropertyName = "ID_KHACH_HANG";
             cmb.HeaderText = "Đại lý";
         }
 

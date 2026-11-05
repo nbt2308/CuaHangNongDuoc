@@ -31,17 +31,21 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSanphamHethan));
+            this.MaSanPhamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnXem = new System.Windows.Forms.Button();
             this.dt = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.MaSanPhamBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MaSanPhamBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaSanPhamBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // MaSanPhamBindingSource
+            // 
+            this.MaSanPhamBindingSource.DataSource = typeof(CuahangNongduoc.BusinessObject.MaSanPham);
             // 
             // panel1
             // 
@@ -113,10 +117,6 @@
             this.reportViewer.Size = new System.Drawing.Size(983, 599);
             this.reportViewer.TabIndex = 0;
             // 
-            // MaSanPhamBindingSource
-            // 
-            this.MaSanPhamBindingSource.DataSource = typeof(CuahangNongduoc.BusinessObject.MaSanPham);
-            // 
             // frmSanphamHethan
             // 
             this.AcceptButton = this.btnXem;
@@ -129,12 +129,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSanphamHethan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAN PHAM HET HAN";
             this.Load += new System.EventHandler(this.frmSanphamHethan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MaSanPhamBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MaSanPhamBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
