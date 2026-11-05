@@ -1,6 +1,5 @@
 using System;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace CuahangNongduoc.Auth
 {
@@ -16,9 +15,6 @@ namespace CuahangNongduoc.Auth
         private const int SaltSize = 32;
         // Độ dài hash (bytes)
         private const int HashSize = 32;
-        // Phiên bản thuật toán, lưu để dễ nâng cấp sau này
-        private const string AlgorithmVersion = "PBKDF2-SHA256-v1";
-
         /// <summary>
         /// Tạo hash mật khẩu PBKDF2 + salt ngẫu nhiên.
         /// </summary>
@@ -32,7 +28,7 @@ namespace CuahangNongduoc.Auth
 
             // Tạo salt ngẫu nhiên
             byte[] saltBytes = new byte[SaltSize];
-            using (var rng = new RNGCryptoServiceProvider())
+            using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(saltBytes);
             }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace CuahangNongduoc.Auth
 {
@@ -52,21 +50,17 @@ namespace CuahangNongduoc.Auth
             switch (permission)
             {
                 case AuthorizationService.Permission.DoiMatKhau:
-                case AuthorizationService.Permission.XemDonViTinh:
                 case AuthorizationService.Permission.XemSanPham:
                 case AuthorizationService.Permission.XemNhaCungCap:
-                case AuthorizationService.Permission.XemLyDoChi:
                 case AuthorizationService.Permission.XemKhachHang:
                 case AuthorizationService.Permission.SuaKhachHang:
                 case AuthorizationService.Permission.XemDaiLy:
-                case AuthorizationService.Permission.SuaDaiLy:
                 case AuthorizationService.Permission.BanHangLe:
                 case AuthorizationService.Permission.BanHangSi:
                 case AuthorizationService.Permission.PhieuThu:
                 case AuthorizationService.Permission.CongNo:
                 case AuthorizationService.Permission.BaoCaoDoanhThu:
                 case AuthorizationService.Permission.BaoCaoSoLuongBan:
-                case AuthorizationService.Permission.BaoCaoHetHan:
                     return true;
                 default: return false;
             }
@@ -78,7 +72,6 @@ namespace CuahangNongduoc.Auth
             {
                 case AuthorizationService.Permission.DoiMatKhau:
                 case AuthorizationService.Permission.XemDonViTinh:
-                case AuthorizationService.Permission.SuaDonViTinh:
                 case AuthorizationService.Permission.XemSanPham:
                 case AuthorizationService.Permission.SuaSanPham:
                 case AuthorizationService.Permission.XemNhaCungCap:
@@ -94,44 +87,12 @@ namespace CuahangNongduoc.Auth
         }
     }
 
-    /* Interpreter Pattern: diễn giải biểu thức quyền gồm AND và OR.
-       Ví dụ: "XemSanPham AND SuaSanPham". */
-    public sealed class PermissionExpressionInterpreter
-    {
-        private readonly IAuthorizationImplementor _implementor;
-
-        public PermissionExpressionInterpreter(IAuthorizationImplementor implementor)
-        {
-            _implementor = implementor;
-        }
-
-        public bool Interpret(string expression, string role)
-        {
-            if (string.IsNullOrWhiteSpace(expression)) return false;
-
-            string[] orParts = expression.Split(new[] { " OR " }, StringSplitOptions.RemoveEmptyEntries);
-            return orParts.Any(part =>
-            {
-                string[] andParts = part.Split(new[] { " AND " }, StringSplitOptions.RemoveEmptyEntries);
-                return andParts.All(permission => _implementor.CoQuyen(role, permission.Trim()));
-            });
-        }
-    }
-
     /* Proxy Pattern: kiểm tra quyền trước khi cho phép mở chức năng. */
     public sealed class AuthorizationProxy
     {
         public bool Require(string permission, string tenChucNang = null)
         {
-            if (AuthorizationService.CoQuyen(permission)) return true;
-
-            string message = string.IsNullOrEmpty(tenChucNang)
-                ? "Bạn không có quyền thực hiện chức năng này."
-                : string.Format("Bạn không có quyền truy cập chức năng: {0}.", tenChucNang);
-
-            MessageBox.Show(message, "Từ chối truy cập",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
+            return AuthorizationService.KiemTraVaThongBao(permission, tenChucNang);
         }
     }
 }
