@@ -133,7 +133,7 @@ namespace CuahangNongduoc
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(1061, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1061, 30);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -146,7 +146,7 @@ namespace CuahangNongduoc
             this.mnuDangXua,
             this.mnuThoat});
             this.mnuHeThong.Name = "mnuHeThong";
-            this.mnuHeThong.Size = new System.Drawing.Size(85, 24);
+            this.mnuHeThong.Size = new System.Drawing.Size(85, 26);
             this.mnuHeThong.Text = "Hệ thống";
             // 
             // mnuTaiKhoan
@@ -191,7 +191,7 @@ namespace CuahangNongduoc
             this.mnuThanhCongCu,
             this.mnuThanhChucNang});
             this.mnuHienThi.Name = "mnuHienThi";
-            this.mnuHienThi.Size = new System.Drawing.Size(75, 24);
+            this.mnuHienThi.Size = new System.Drawing.Size(75, 26);
             this.mnuHienThi.Text = "Hiển thị";
             // 
             // mnuThanhCongCu
@@ -221,7 +221,7 @@ namespace CuahangNongduoc
             this.mnuDaiLy,
             this.mnuNhaCungCap});
             this.mnuQuanLy.Name = "mnuQuanLy";
-            this.mnuQuanLy.Size = new System.Drawing.Size(73, 24);
+            this.mnuQuanLy.Size = new System.Drawing.Size(73, 26);
             this.mnuQuanLy.Text = "Quản lý";
             // 
             // mnuLyDoChi
@@ -287,7 +287,7 @@ namespace CuahangNongduoc
             this.toolStripSeparator1,
             this.mnuTonghopDuno});
             this.mnuNghiepVu.Name = "mnuNghiepVu";
-            this.mnuNghiepVu.Size = new System.Drawing.Size(91, 24);
+            this.mnuNghiepVu.Size = new System.Drawing.Size(91, 26);
             this.mnuNghiepVu.Text = "Nghiệp vụ";
             // 
             // mnuNhapHang
@@ -362,14 +362,14 @@ namespace CuahangNongduoc
             this.toolStripSeparator5,
             this.mnuSanphamHethan});
             this.mnuBaocao.Name = "mnuBaocao";
-            this.mnuBaocao.Size = new System.Drawing.Size(77, 24);
+            this.mnuBaocao.Size = new System.Drawing.Size(77, 26);
             this.mnuBaocao.Text = "Báo cáo";
             // 
             // mnuBaocaoSoluongton
             // 
             this.mnuBaocaoSoluongton.Image = global::CuahangNongduoc.Properties.Resources.TonKho;
             this.mnuBaocaoSoluongton.Name = "mnuBaocaoSoluongton";
-            this.mnuBaocaoSoluongton.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaocaoSoluongton.Size = new System.Drawing.Size(274, 26);
             this.mnuBaocaoSoluongton.Text = "Số lượng tồn";
             this.mnuBaocaoSoluongton.Click += new System.EventHandler(this.mnuBaocaoSoluongton_Click);
             // 
@@ -377,7 +377,7 @@ namespace CuahangNongduoc
             // 
             this.mnuSoLuongBan.Image = global::CuahangNongduoc.Properties.Resources.Soluongban;
             this.mnuSoLuongBan.Name = "mnuSoLuongBan";
-            this.mnuSoLuongBan.Size = new System.Drawing.Size(211, 26);
+            this.mnuSoLuongBan.Size = new System.Drawing.Size(274, 26);
             this.mnuSoLuongBan.Text = "Số lượng bán";
             this.mnuSoLuongBan.Click += new System.EventHandler(this.mnuSoLuongBan_Click);
             // 
@@ -385,7 +385,7 @@ namespace CuahangNongduoc
             // 
             this.mnuBaocaoDoanhThu.Image = global::CuahangNongduoc.Properties.Resources.DoanhThu;
             this.mnuBaocaoDoanhThu.Name = "mnuBaocaoDoanhThu";
-            this.mnuBaocaoDoanhThu.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaocaoDoanhThu.Size = new System.Drawing.Size(274, 26);
             this.mnuBaocaoDoanhThu.Text = "Thống kê chi phí và tồn kho";
             this.mnuBaocaoDoanhThu.Click += new System.EventHandler(this.mnuBaocaoDoanhThu_Click);
             // 
@@ -393,20 +393,20 @@ namespace CuahangNongduoc
             // 
             this.mnuBaoCaoGiamGia.Image = global::CuahangNongduoc.Properties.Resources.DoanhThu;
             this.mnuBaoCaoGiamGia.Name = "mnuBaoCaoGiamGia";
-            this.mnuBaoCaoGiamGia.Size = new System.Drawing.Size(211, 26);
+            this.mnuBaoCaoGiamGia.Size = new System.Drawing.Size(274, 26);
             this.mnuBaoCaoGiamGia.Text = "Báo cáo giảm giá";
             this.mnuBaoCaoGiamGia.Click += new System.EventHandler(this.mnuBaoCaoGiamGia_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(208, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(271, 6);
             // 
             // mnuSanphamHethan
             // 
             this.mnuSanphamHethan.Image = global::CuahangNongduoc.Properties.Resources.SanPhamHethan;
             this.mnuSanphamHethan.Name = "mnuSanphamHethan";
-            this.mnuSanphamHethan.Size = new System.Drawing.Size(211, 26);
+            this.mnuSanphamHethan.Size = new System.Drawing.Size(274, 26);
             this.mnuSanphamHethan.Text = "Sản phẩm hết hạn";
             this.mnuSanphamHethan.Click += new System.EventHandler(this.mnuSanphamHethan_Click);
             // 
@@ -415,7 +415,7 @@ namespace CuahangNongduoc
             this.mnuTuychinh.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTuychinhThongtin});
             this.mnuTuychinh.Name = "mnuTuychinh";
-            this.mnuTuychinh.Size = new System.Drawing.Size(85, 24);
+            this.mnuTuychinh.Size = new System.Drawing.Size(85, 26);
             this.mnuTuychinh.Text = "Tùy chỉnh";
             // 
             // mnuTuychinhThongtin
@@ -432,7 +432,7 @@ namespace CuahangNongduoc
             this.mnuTrogiupHuongdan,
             this.mnuTrogiupLienhe});
             this.mnuTrogiup.Name = "mnuTrogiup";
-            this.mnuTrogiup.Size = new System.Drawing.Size(78, 24);
+            this.mnuTrogiup.Size = new System.Drawing.Size(78, 26);
             this.mnuTrogiup.Text = "Trợ giúp";
             // 
             // mnuTrogiupHuongdan
@@ -481,7 +481,7 @@ namespace CuahangNongduoc
             this.toolThanhtoan,
             this.toolStripSeparator4,
             this.toolTonKho});
-            this.toolStrip.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip.Location = new System.Drawing.Point(0, 30);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1061, 51);
             this.toolStrip.TabIndex = 2;
@@ -628,10 +628,10 @@ namespace CuahangNongduoc
             this.expando2,
             this.expando3,
             this.expando4});
-            this.taskPane.Location = new System.Drawing.Point(0, 79);
+            this.taskPane.Location = new System.Drawing.Point(0, 81);
             this.taskPane.Margin = new System.Windows.Forms.Padding(4);
             this.taskPane.Name = "taskPane";
-            this.taskPane.Size = new System.Drawing.Size(257, 954);
+            this.taskPane.Size = new System.Drawing.Size(257, 952);
             this.taskPane.TabIndex = 11;
             this.taskPane.Text = "taskPane1";
             this.taskPane.Visible = false;

@@ -4,12 +4,12 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CuahangNongduoc.Auth;
-
+using CuahangNongduoc.Controller;
 namespace CuahangNongduoc
 {
     public partial class frmKhachHang : Form
     {
-        private readonly CuahangNongduoc.Controller.KhachHangController ctrl = new CuahangNongduoc.Controller.KhachHangController();
+        private readonly KhachHangController ctrl = new KhachHangController();
 
         public frmKhachHang()
         {

@@ -120,7 +120,7 @@ namespace CuahangNongduoc
             ctrlSanPham.HienthiAutoComboBox(cmbSanPham);
             cmbSanPham.AutoCompleteMode = AutoCompleteMode.None;
             cmbSanPham.AutoCompleteSource = AutoCompleteSource.None;
-            ctrlKhachHang.HienthiAutoComboBox(cmbKhachHang, false);
+            ctrlKhachHang.HienthiAutoComboBox(cmbKhachHang, true);
             cmbSanPham.SelectedIndexChanged += cmbSanPham_SelectedIndexChanged;
             cmbMaSanPham.SelectedIndexChanged += cmbMaSanPham_SelectedIndexChanged;
             cmbCachChonLo.SelectedIndexChanged += cmbCachChonLo_SelectedIndexChanged;

@@ -21,8 +21,6 @@ namespace CuahangNongduoc.Controller
             cmb.DataSource = tbl;
             cmb.DisplayMember = "DAI_LY";
             cmb.ValueMember = "ID";
-            cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         public void HienthiAutoComboBoxBanSi(ComboBox cmb)
@@ -30,8 +28,6 @@ namespace CuahangNongduoc.Controller
             cmb.DataSource = factory.DanhsachDaiLyBanSi();
             cmb.DisplayMember = "DAI_LY";
             cmb.ValueMember = "ID";
-            cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmb.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         /// <summary>
@@ -54,7 +50,7 @@ namespace CuahangNongduoc.Controller
             cmb.DataSource = factory.DanhsachDaiLy();
             cmb.DisplayMember = "DAI_LY";
             cmb.ValueMember = "ID";
-            cmb.DataPropertyName = "ID_KHACH_HANG";
+            cmb.DataPropertyName = "ID_DAI_LY";
             cmb.HeaderText = "Đại lý";
         }
 

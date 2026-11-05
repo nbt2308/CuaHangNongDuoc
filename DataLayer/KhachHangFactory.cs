@@ -37,7 +37,7 @@ namespace CuahangNongduoc.DataLayer
 
         public DataTable DanhsachKhachHang()
         {
-            OleDbCommand cmd = new OleDbCommand("SELECT * FROM KHACH_HANG");
+            OleDbCommand cmd = new OleDbCommand("SELECT * FROM KHACH_HANG WHERE LOAI_KH = TRUE");
             m_Ds.Load(cmd);
 
             return m_Ds;
@@ -55,7 +55,7 @@ namespace CuahangNongduoc.DataLayer
             ketQua.Columns.Add("LOAI_KH", typeof(bool));
 
             DataService dsKhachHang = new DataService();
-            dsKhachHang.Load(new OleDbCommand("SELECT * FROM KHACH_HANG"));
+            dsKhachHang.Load(new OleDbCommand("SELECT * FROM KHACH_HANG WHERE LOAI_KH = TRUE"));
             foreach (DataRow row in dsKhachHang.Rows)
             {
                 ketQua.Rows.Add(Convert.ToString(row["ID"]), Convert.ToString(row["HO_TEN"]),
