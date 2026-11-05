@@ -9,12 +9,9 @@ namespace CuahangNongduoc.Auth
     /// </summary>
     public static class AuthorizationService
     {
-        /* Bridge + Interpreter: tách ma trận vai trò khỏi dịch vụ phân quyền
-           và cho phép kiểm tra cả biểu thức quyền. */
+        /* Bridge: tách ma trận vai trò khỏi dịch vụ phân quyền. */
         private static readonly IAuthorizationImplementor Implementor =
             new RoleAuthorizationImplementor();
-        private static readonly PermissionExpressionInterpreter Interpreter =
-            new PermissionExpressionInterpreter(Implementor);
 
         // ======================================================
         // ĐỊNH NGHĨA CÁC PERMISSION
@@ -65,72 +62,7 @@ namespace CuahangNongduoc.Auth
             if (!UserSession.IsLoggedIn)
                 return false;
 
-            string role = (UserSession.Role ?? "").ToLower();
-
-            switch (role)
-            {
-                case "admin":
-                    return true; // Admin có toàn quyền
-
-                case "sales":
-                    return SalesCoQuyen(permission);
-
-                case "warehouse":
-                    return WarehouseCoQuyen(permission);
-
-                default:
-                    return false;
-            }
-        }
-
-        private static bool SalesCoQuyen(string permission)
-        {
-            switch (permission)
-            {
-                // Sales được: đổi mật khẩu, xem sản phẩm/NCC, quản lý KH/ĐL, bán hàng, xem báo cáo
-                case Permission.DoiMatKhau:
-                case Permission.XemSanPham:
-                case Permission.XemNhaCungCap:
-                case Permission.XemKhachHang:
-                case Permission.SuaKhachHang:
-                case Permission.XemDaiLy:
-                case Permission.BanHangLe:
-                case Permission.BanHangSi:
-                case Permission.PhieuThu:
-                case Permission.CongNo:
-                case Permission.BaoCaoDoanhThu:
-                case Permission.BaoCaoSoLuongBan:
-                    return true;
-
-                // Sales KHÔNG được: quản lý tài khoản, cấu hình, sửa danh mục, nhập hàng,
-                // phiếu chi, tồn kho và các báo cáo thuộc nghiệp vụ kho
-                default:
-                    return false;
-            }
-        }
-
-        private static bool WarehouseCoQuyen(string permission)
-        {
-            switch (permission)
-            {
-                // Warehouse được: đổi mật khẩu, xem+sửa sản phẩm/NCC, xem DVT và lý do chi, nhập hàng, xem tồn kho
-                case Permission.DoiMatKhau:
-                case Permission.XemDonViTinh:
-                case Permission.XemSanPham:
-                case Permission.SuaSanPham:
-                case Permission.XemNhaCungCap:
-                case Permission.SuaNhaCungCap:
-                case Permission.XemLyDoChi:
-                case Permission.NhapHang:
-                case Permission.BaoCaoTonKho:
-                case Permission.BaoCaoHetHan:
-                case Permission.BaoCaoSoLuongBan:
-                    return true;
-
-                // Warehouse KHÔNG được: tài khoản, cấu hình, KH/ĐL, bán hàng, thu chi, doanh thu
-                default:
-                    return false;
-            }
+            return Implementor.CoQuyen(UserSession.Role, permission);
         }
 
         /// <summary>
