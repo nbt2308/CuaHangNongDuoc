@@ -122,6 +122,7 @@
     <Compile Include="Controller\PhieuNhapController.cs" />
     <Compile Include="Controller\KhachHangController.cs" />
     <Compile Include="Controller\MaSanPhamController.cs" />
+    <Compile Include="Controller\BaoCaoSanPhamHetHanFacade.cs" />
     <Compile Include="Controller\PhieuBanController.cs" />
     <Compile Include="Controller\BaoCaoGiamGiaController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
