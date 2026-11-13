@@ -261,6 +261,7 @@
             this.toolTimKhachHang.Text = "Tìm theo Họ tên";
             this.toolTimKhachHang.Enter += new System.EventHandler(this.toolTimKhachHang_Enter);
             this.toolTimKhachHang.Leave += new System.EventHandler(this.toolTimKhachHang_Leave);
+            this.toolTimKhachHang.TextChanged += new System.EventHandler(this.toolTimKhachHang_TextChanged);
             this.toolTimKhachHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolTimKhachHang_KeyPress);
             // 
             // dataGridView

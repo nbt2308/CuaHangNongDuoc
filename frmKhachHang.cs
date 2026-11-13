@@ -3,13 +3,12 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CuahangNongduoc.Auth;
-using CuahangNongduoc.Controller;
+
 namespace CuahangNongduoc
 {
     public partial class frmKhachHang : Form
     {
-        private readonly KhachHangController ctrl = new KhachHangController();
+        private readonly CuahangNongduoc.Controller.KhachHangController ctrl = new CuahangNongduoc.Controller.KhachHangController();
 
         public frmKhachHang()
         {
@@ -36,24 +35,11 @@ namespace CuahangNongduoc
                 BindControl(txtHoTen, "HO_TEN");
                 BindControl(txtDiaChi, "DIA_CHI");
                 BindControl(txtDienThoai, "DIEN_THOAI");
-                ApDungPhanQuyen();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ApDungPhanQuyen()
-        {
-            bool coQuyenSua = AuthorizationService.CoQuyen(AuthorizationService.Permission.SuaKhachHang);
-            bindingNavigatorAddNewItem.Enabled = coQuyenSua;
-            bindingNavigatorDeleteItem.Enabled = coQuyenSua;
-            toolLuu.Enabled = coQuyenSua;
-            dataGridView.ReadOnly = !coQuyenSua;
-            txtHoTen.ReadOnly = !coQuyenSua;
-            txtDiaChi.ReadOnly = !coQuyenSua;
-            txtDienThoai.ReadOnly = !coQuyenSua;
         }
 
         private void BindControl(Control control, string propertyName)
@@ -67,7 +53,6 @@ namespace CuahangNongduoc
 
         private void toolLuu_Click(object sender, EventArgs e)
         {
-            if (!AuthorizationService.KiemTraVaThongBao(AuthorizationService.Permission.SuaKhachHang, "sửa khách hàng")) return;
             try
             {
                 // 1. Kiểm tra trường Họ tên không được để trống hoặc chỉ có khoảng trắng
@@ -136,8 +121,23 @@ namespace CuahangNongduoc
 
                 bindingNavigatorPositionItem.Focus();
 
+                BindingSource source = bindingNavigator.BindingSource;
+                string savedId = (source.Current as DataRowView)?["ID"]?.ToString();
                 // 6. Gọi lệnh lưu xuống CSDL thông qua Controller
                 ctrl.Save();
+
+                ctrl.TaiLaiKhachHang(true, source);
+                if (!string.IsNullOrEmpty(savedId))
+                {
+                    for (int i = 0; i < source.Count; i++)
+                    {
+                        if (source[i] is DataRowView row && Convert.ToString(row["ID"]) == savedId)
+                        {
+                            source.Position = i;
+                            break;
+                        }
+                    }
+                }
 
                 MessageBox.Show("Đã lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -189,13 +189,13 @@ namespace CuahangNongduoc
                         source.RemoveCurrent();
                         if (!ctrl.Save())
                         {
-                            ctrl.TaiLaiKhachHang(false, source);
+                            ctrl.TaiLaiKhachHang(true, source);
                             MessageBox.Show("Không có dữ liệu nào được xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception ex)
                     {
-                        ctrl.TaiLaiKhachHang(false, source);
+                        ctrl.TaiLaiKhachHang(true, source);
                         MessageBox.Show("Không thể xóa khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -246,19 +246,35 @@ namespace CuahangNongduoc
             }
         }
 
+        private void toolTimKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(toolTimKhachHang.Text) && bindingNavigator.BindingSource != null)
+            {
+                try
+                {
+                    ctrl.TaiLaiKhachHang(true, bindingNavigator.BindingSource);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tải danh sách khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void toolTimKhachHang_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                e.Handled = true;
                 string keyword = toolTimKhachHang.Text.Trim();
                 if (!string.IsNullOrEmpty(keyword) && !keyword.StartsWith("Tìm theo"))
                 {
                     try
                     {
                         if (toolTimHoTen.Checked)
-                            ctrl.TimHoTen(keyword, false, bindingNavigator.BindingSource);
+                            ctrl.TimHoTen(keyword, true, bindingNavigator.BindingSource);
                         else
-                            ctrl.TimDiaChi(keyword, false, bindingNavigator.BindingSource);
+                            ctrl.TimDiaChi(keyword, true, bindingNavigator.BindingSource);
                     }
                     catch (Exception ex)
                     {
@@ -314,16 +330,9 @@ namespace CuahangNongduoc
                     BindingSource source = bindingNavigator.BindingSource;
                     source.CancelEdit();
 
-                    // Hủy các thay đổi chưa lưu trong DataTable hiện tại; thao tác xóa
-                    // đã xác nhận được lưu ngay nên không bị phục hồi bởi nút Hủy.
-                    if (source.DataSource is DataTable currentTable)
-                    {
-                        currentTable.RejectChanges();
-                    }
-
-                    // Khi đang xem kết quả tìm kiếm, nạp lại toàn bộ danh sách khách hàng.
-                    ctrl.TaiLaiKhachHang(false, source);
-                    source.MoveFirst();
+                    // Bỏ chọn bản ghi để làm trống các ô nhập mà không thay đổi danh sách.
+                    source.Position = -1;
+                    dataGridView.ClearSelection();
                 }
 
                 MessageBox.Show("Đã hủy bỏ thao tác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
