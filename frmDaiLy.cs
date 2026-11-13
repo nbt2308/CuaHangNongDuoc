@@ -14,6 +14,7 @@ namespace CuahangNongduoc
         public frmDaiLy()
         {
             InitializeComponent();
+            CauHinhChiDocDanhSachDaiLy();
 
             // Đảm bảo Form hiển thị chính giữa màn hình
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -23,10 +24,6 @@ namespace CuahangNongduoc
         {
             try
             {
-                // Khóa không cho phép người dùng sửa Mã số
-                txtMa.ReadOnly = true;
-                txtMa.BackColor = Color.WhiteSmoke;
-
                 // Hiển thị dữ liệu lên DataGridView và BindingNavigator
                 ctrl.HienthiDaiLyDataGridview(dataGridView, bindingNavigator);
 
@@ -54,10 +51,27 @@ namespace CuahangNongduoc
             bindingNavigatorAddNewItem.Enabled = coQuyenSua;
             bindingNavigatorDeleteItem.Enabled = coQuyenSua;
             toolLuu.Enabled = coQuyenSua;
-            dataGridView.ReadOnly = !coQuyenSua;
             txtHoTen.ReadOnly = !coQuyenSua;
             txtDiaChi.ReadOnly = !coQuyenSua;
             txtDienThoai.ReadOnly = !coQuyenSua;
+        }
+
+        // Refactoring: Extract Method - tách quy tắc chỉ đọc khỏi phân quyền nhập liệu.
+        private void CauHinhChiDocDanhSachDaiLy()
+        {
+            dataGridView.ReadOnly = true;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridView.CellBeginEdit += dataGridView_CellBeginEdit;
+
+            txtMa.ReadOnly = true;
+            txtMa.BackColor = Color.WhiteSmoke;
+        }
+
+        private void dataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            // Chặn cả BeginEdit nếu cấu hình bảng bị mở khóa ở nơi khác.
+            e.Cancel = true;
         }
 
         /// <summary>
@@ -202,35 +216,14 @@ namespace CuahangNongduoc
                     return;
                 }
 
-                // 2. Kiểm tra số điện thoại di động Việt Nam (10 số, đầu số hợp lệ)
+                // 2. Kiểm tra số điện thoại bắt buộc, đúng định dạng và không trùng.
                 string sdt = txtDienThoai.Text.Trim();
-                if (!string.IsNullOrEmpty(sdt))
+                string loiDienThoai = LayLoiDienThoai(sdt);
+                if (loiDienThoai != null)
                 {
-                    bool sdtHopLe = Regex.IsMatch(sdt, @"^(03[2-9]|05[2-9]|07[0-9]|08[1-9]|09[0-9])[0-9]{7}$");
-                    if (!sdtHopLe)
-                    {
-                        MessageBox.Show("Số điện thoại không hợp lệ! Vui lòng nhập số di động Việt Nam gồm 10 chữ số, bắt đầu bằng đầu số hợp lệ (03, 05, 07, 08 hoặc 09).", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtDienThoai.Focus();
-                        return;
-                    }
-
-                    // 3. Kiểm tra trùng lặp số điện thoại với các dòng khác trong DataTable
-                    if (bindingNavigator.BindingSource != null && bindingNavigator.BindingSource.DataSource is DataTable dt)
-                    {
-                        var currentRow = ((DataRowView)bindingNavigator.BindingSource.Current)?.Row;
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            if (row == currentRow) continue;
-                            if (row.RowState == DataRowState.Deleted) continue;
-
-                            if (row["DIEN_THOAI"] != DBNull.Value && row["DIEN_THOAI"].ToString().Trim() == sdt)
-                            {
-                                MessageBox.Show($"Số điện thoại '{sdt}' đã tồn tại cho đại lý khác ({row["DAI_LY"]}). Vui lòng nhập số khác!", "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtDienThoai.Focus();
-                                return;
-                            }
-                        }
-                    }
+                    MessageBox.Show(loiDienThoai, "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDienThoai.Focus();
+                    return;
                 }
 
                 // 4. Tự động chuẩn hóa khoảng trắng
@@ -257,6 +250,31 @@ namespace CuahangNongduoc
             {
                 MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Refactoring: Extract Method - tách kiểm tra SĐT khỏi sự kiện Lưu.
+        private string LayLoiDienThoai(string sdt)
+        {
+            // Refactoring: Replace Nested Conditional with Guard Clauses.
+            if (string.IsNullOrWhiteSpace(sdt))
+                return "Số điện thoại không được để trống!";
+
+            if (!Regex.IsMatch(sdt, @"^(03[2-9]|05[2-9]|07[0-9]|08[1-9]|09[0-9])[0-9]{7}$"))
+                return "Số điện thoại không hợp lệ! Vui lòng nhập số di động Việt Nam gồm 10 chữ số, bắt đầu bằng đầu số hợp lệ (03, 05, 07, 08 hoặc 09).";
+
+            if (bindingNavigator.BindingSource != null && bindingNavigator.BindingSource.DataSource is DataTable dt)
+            {
+                var currentRow = ((DataRowView)bindingNavigator.BindingSource.Current)?.Row;
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row == currentRow || row.RowState == DataRowState.Deleted) continue;
+
+                    if (row["DIEN_THOAI"] != DBNull.Value && row["DIEN_THOAI"].ToString().Trim() == sdt)
+                        return $"Số điện thoại '{sdt}' đã tồn tại cho đại lý khác ({row["DAI_LY"]}). Vui lòng nhập số khác!";
+                }
+            }
+
+            return null;
         }
 
         // ============================================================
